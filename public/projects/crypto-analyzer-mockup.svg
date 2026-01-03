@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00E5FF;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0.1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0a0a0a"/>
+  
+  <!-- Ambient glow -->
+  <ellipse cx="400" cy="250" rx="350" ry="200" fill="url(#screenGlow)" opacity="0.5"/>
+  
+  <!-- Laptop Base -->
+  <path d="M150 380 L650 380 L680 420 C680 430 670 440 660 440 L140 440 C130 440 120 430 120 420 L150 380Z" fill="url(#laptopGrad)" stroke="#333" stroke-width="1"/>
+  
+  <!-- Laptop hinge -->
+  <rect x="350" y="375" width="100" height="8" rx="2" fill="#1a1a1a"/>
+  
+  <!-- Laptop Screen Frame -->
+  <rect x="140" y="60" width="520" height="330" rx="10" fill="url(#laptopGrad)" stroke="#333" stroke-width="2"/>
+  
+  <!-- Screen -->
+  <rect x="155" y="75" width="490" height="290" rx="3" fill="#1e1e1e"/>
+  
+  <!-- VS Code Title Bar -->
+  <rect x="155" y="75" width="490" height="25" fill="#323233"/>
+  <circle cx="172" cy="87" r="5" fill="#ff5f57"/>
+  <circle cx="190" cy="87" r="5" fill="#febc2e"/>
+  <circle cx="208" cy="87" r="5" fill="#28c840"/>
+  <text x="400" y="91" fill="#888" font-family="monospace" font-size="10" text-anchor="middle">main.py - CRYPTO ANALYZER PRO</text>
+  
+  <!-- VS Code Sidebar -->
+  <rect x="155" y="100" width="45" height="265" fill="#252526"/>
+  
+  <!-- Sidebar Icons -->
+  <rect x="165" y="115" width="25" height="20" rx="2" fill="#3c3c3c"/>
+  <rect x="165" y="145" width="25" height="20" rx="2" fill="#3c3c3c"/>
+  <rect x="165" y="175" width="25" height="20" rx="2" fill="#0e639c"/>
+  
+  <!-- File Tree -->
+  <rect x="200" y="100" width="100" height="265" fill="#1e1e1e" opacity="0.8"/>
+  <text x="210" y="120" fill="#00E5FF" font-family="monospace" font-size="8">📁 BOT_ANALYZER</text>
+  <text x="220" y="135" fill="#888" font-family="monospace" font-size="7">📄 main.py</text>
+  <text x="220" y="148" fill="#888" font-family="monospace" font-size="7">📄 analyzer.py</text>
+  <text x="220" y="161" fill="#888" font-family="monospace" font-size="7">📄 ai_analyzer.py</text>
+  <text x="220" y="174" fill="#888" font-family="monospace" font-size="7">📄 config.py</text>
+  <text x="220" y="187" fill="#888" font-family="monospace" font-size="7">📄 database.py</text>
+  
+  <!-- Code Area -->
+  <rect x="300" y="100" width="345" height="265" fill="#1e1e1e"/>
+  
+  <!-- Line Numbers -->
+  <text x="310" y="120" fill="#555" font-family="monospace" font-size="9">1</text>
+  <text x="310" y="133" fill="#555" font-family="monospace" font-size="9">2</text>
+  <text x="310" y="146" fill="#555" font-family="monospace" font-size="9">3</text>
+  <text x="310" y="159" fill="#555" font-family="monospace" font-size="9">4</text>
+  <text x="310" y="172" fill="#555" font-family="monospace" font-size="9">5</text>
+  <text x="310" y="185" fill="#555" font-family="monospace" font-size="9">6</text>
+  <text x="310" y="198" fill="#555" font-family="monospace" font-size="9">7</text>
+  <text x="310" y="211" fill="#555" font-family="monospace" font-size="9">8</text>
+  <text x="310" y="224" fill="#555" font-family="monospace" font-size="9">9</text>
+  <text x="306" y="237" fill="#555" font-family="monospace" font-size="9">10</text>
+  <text x="306" y="250" fill="#555" font-family="monospace" font-size="9">11</text>
+  <text x="306" y="263" fill="#555" font-family="monospace" font-size="9">12</text>
+  
+  <!-- Code Content -->
+  <text x="330" y="120" fill="#6a9955" font-family="monospace" font-size="9"># CRYPTO ANALYZER PRO v5.1</text>
+  <text x="330" y="133" fill="#6a9955" font-family="monospace" font-size="9"># AI ENHANCED EDITION</text>
+  <text x="330" y="146" fill="#888" font-family="monospace" font-size="9"></text>
+  <text x="330" y="159" fill="#c586c0" font-family="monospace" font-size="9">from</text>
+  <text x="360" y="159" fill="#9cdcfe" font-family="monospace" font-size="9">telegram.ext</text>
+  <text x="445" y="159" fill="#c586c0" font-family="monospace" font-size="9">import</text>
+  <text x="485" y="159" fill="#4ec9b0" font-family="monospace" font-size="9">Application</text>
+  <text x="330" y="172" fill="#c586c0" font-family="monospace" font-size="9">from</text>
+  <text x="360" y="172" fill="#9cdcfe" font-family="monospace" font-size="9">ai_analyzer</text>
+  <text x="440" y="172" fill="#c586c0" font-family="monospace" font-size="9">import</text>
+  <text x="480" y="172" fill="#4ec9b0" font-family="monospace" font-size="9">GeminiAI</text>
+  <text x="330" y="185" fill="#888" font-family="monospace" font-size="9"></text>
+  <text x="330" y="198" fill="#c586c0" font-family="monospace" font-size="9">class</text>
+  <text x="365" y="198" fill="#4ec9b0" font-family="monospace" font-size="9">CryptoAnalyzer</text>
+  <text x="465" y="198" fill="#dcdcaa" font-family="monospace" font-size="9">:</text>
+  <text x="330" y="211" fill="#9cdcfe" font-family="monospace" font-size="9">    def</text>
+  <text x="365" y="211" fill="#dcdcaa" font-family="monospace" font-size="9">__init__</text>
+  <text x="420" y="211" fill="#dcdcaa" font-family="monospace" font-size="9">(self):</text>
+  <text x="330" y="224" fill="#9cdcfe" font-family="monospace" font-size="9">        self.</text>
+  <text x="385" y="224" fill="#9cdcfe" font-family="monospace" font-size="9">ai</text>
+  <text x="400" y="224" fill="#dcdcaa" font-family="monospace" font-size="9">=</text>
+  <text x="415" y="224" fill="#4ec9b0" font-family="monospace" font-size="9">GeminiAI()</text>
+  <text x="330" y="237" fill="#9cdcfe" font-family="monospace" font-size="9">        self.</text>
+  <text x="385" y="237" fill="#9cdcfe" font-family="monospace" font-size="9">vwap</text>
+  <text x="420" y="237" fill="#dcdcaa" font-family="monospace" font-size="9">=</text>
+  <text x="435" y="237" fill="#b5cea8" font-family="monospace" font-size="9">0.0</text>
+  <text x="330" y="250" fill="#888" font-family="monospace" font-size="9"></text>
+  <text x="330" y="263" fill="#9cdcfe" font-family="monospace" font-size="9">    async def</text>
+  <text x="410" y="263" fill="#dcdcaa" font-family="monospace" font-size="9">analyze</text>
+  <text x="465" y="263" fill="#dcdcaa" font-family="monospace" font-size="9">(self, symbol):</text>
+  
+  <!-- Terminal at bottom -->
+  <rect x="300" y="320" width="345" height="45" fill="#1a1a1a"/>
+  <text x="310" y="335" fill="#00E5FF" font-family="monospace" font-size="8">❯ python main.py</text>
+  <text x="310" y="348" fill="#4ec9b0" font-family="monospace" font-size="8">✓ Bot started successfully!</text>
+  <text x="310" y="361" fill="#888" font-family="monospace" font-size="8">Listening for commands...</text>
+  
+  <!-- Webcam dot -->
+  <circle cx="400" cy="68" r="3" fill="#1a1a1a" stroke="#333"/>
+  
+  <!-- Reflection on screen -->
+  <rect x="155" y="75" width="490" height="290" rx="3" fill="url(#screenGlow)" opacity="0.1"/>
+</svg>

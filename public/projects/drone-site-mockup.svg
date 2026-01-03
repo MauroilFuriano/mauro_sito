@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="browserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#2d1f3d"/>
+      <stop offset="100%" style="stop-color:#4a3728"/>
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a3a"/>
+      <stop offset="100%" style="stop-color:#1a1a2a"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0a0a0a"/>
+  
+  <!-- Browser Window Shadow -->
+  <rect x="55" y="35" width="700" height="440" rx="12" fill="#000" opacity="0.5"/>
+  
+  <!-- Browser Window -->
+  <rect x="50" y="30" width="700" height="440" rx="12" fill="url(#browserGrad)" stroke="#333" stroke-width="1"/>
+  
+  <!-- Browser Title Bar -->
+  <rect x="50" y="30" width="700" height="40" rx="12" fill="#323233"/>
+  <rect x="50" y="58" width="700" height="12" fill="#323233"/>
+  
+  <!-- Traffic Lights -->
+  <circle cx="75" cy="50" r="6" fill="#ff5f57"/>
+  <circle cx="95" cy="50" r="6" fill="#febc2e"/>
+  <circle cx="115" cy="50" r="6" fill="#28c840"/>
+  
+  <!-- URL Bar -->
+  <rect x="180" y="40" width="440" height="22" rx="5" fill="#1a1a1a"/>
+  <text x="200" y="55" fill="#888" font-family="Arial" font-size="10">🔒 maicolceccarelli.it</text>
+  
+  <!-- Browser Content Area -->
+  <rect x="60" y="75" width="680" height="385" fill="url(#skyGrad)"/>
+  
+  <!-- Stars -->
+  <circle cx="150" cy="100" r="1" fill="#fff" opacity="0.5"/>
+  <circle cx="280" cy="120" r="1" fill="#fff" opacity="0.3"/>
+  <circle cx="450" cy="95" r="1" fill="#fff" opacity="0.6"/>
+  <circle cx="580" cy="110" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="650" cy="130" r="1" fill="#fff" opacity="0.5"/>
+  <circle cx="200" cy="140" r="1" fill="#fff" opacity="0.3"/>
+  
+  <!-- Mountains Silhouette -->
+  <path d="M60 350 L150 280 L200 310 L280 250 L350 290 L420 230 L500 270 L560 220 L620 260 L680 200 L740 250 L740 460 L60 460 Z" fill="url(#mountainGrad)" opacity="0.6"/>
+  
+  <!-- Castle/Town silhouette -->
+  <path d="M300 320 L310 280 L320 320 L340 260 L360 320 L380 240 L400 320 L420 270 L440 320 L460 290 L480 320 L480 380 L300 380 Z" fill="#1a1a2a" opacity="0.8"/>
+  
+  <!-- Town lights -->
+  <circle cx="320" cy="350" r="2" fill="#ffb347" opacity="0.8"/>
+  <circle cx="350" cy="340" r="2" fill="#ffb347" opacity="0.6"/>
+  <circle cx="380" cy="355" r="2" fill="#ffb347" opacity="0.7"/>
+  <circle cx="420" cy="345" r="2" fill="#ffb347" opacity="0.8"/>
+  <circle cx="450" cy="360" r="2" fill="#ffb347" opacity="0.6"/>
+  <circle cx="340" cy="365" r="1.5" fill="#ffb347" opacity="0.5"/>
+  <circle cx="400" cy="370" r="1.5" fill="#ffb347" opacity="0.7"/>
+  <circle cx="430" cy="358" r="1.5" fill="#ffb347" opacity="0.6"/>
+  
+  <!-- Navigation Menu -->
+  <g transform="translate(60, 85)">
+    <!-- Logo -->
+    <text x="30" y="25" fill="#fff" font-family="Arial" font-size="16" font-weight="bold">M</text>
+    
+    <!-- Menu Items -->
+    <text x="200" y="25" fill="#fff" font-family="Arial" font-size="11">Chi Sono</text>
+    <text x="290" y="25" fill="#fff" font-family="Arial" font-size="11">Alcuni Lavori</text>
+    <text x="400" y="25" fill="#fff" font-family="Arial" font-size="11">Tecnica</text>
+    <text x="480" y="25" fill="#fff" font-family="Arial" font-size="11">Droni</text>
+    <text x="540" y="25" fill="#fff" font-family="Arial" font-size="11">Servizi</text>
+    <text x="610" y="25" fill="#fff" font-family="Arial" font-size="11">Contattami</text>
+  </g>
+  
+  <!-- Main Title -->
+  <text x="400" y="280" fill="#fff" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="8">MAICOL</text>
+  <text x="400" y="340" fill="#fff" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" letter-spacing="8">CECCARELLI</text>
+  <text x="400" y="375" fill="#a0a0a0" font-family="Arial" font-size="18" text-anchor="middle" letter-spacing="4">dronepilot</text>
+  
+  <!-- CTA Button -->
+  <rect x="290" y="395" width="220" height="45" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)"/>
+  <text x="400" y="423" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle">Richiedi un Preventivo →</text>
+  
+  <!-- Drone Icon -->
+  <g transform="translate(550, 240)" opacity="0.6">
+    <ellipse cx="0" cy="0" rx="15" ry="3" fill="#555"/>
+    <line x1="-20" y1="-5" x2="20" y2="-5" stroke="#555" stroke-width="2"/>
+    <circle cx="-20" cy="-5" r="8" fill="none" stroke="#555" stroke-width="1"/>
+    <circle cx="20" cy="-5" r="8" fill="none" stroke="#555" stroke-width="1"/>
+    <circle cx="0" cy="-5" r="4" fill="#555"/>
+  </g>
+  
+  <!-- Ambient light effect -->
+  <ellipse cx="400" cy="460" rx="300" ry="100" fill="#ffb347" opacity="0.05"/>
+</svg>

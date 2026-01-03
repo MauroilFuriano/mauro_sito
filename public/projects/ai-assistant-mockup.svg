@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:0"/>
+    </linearGradient>
+    <clipPath id="screenClip">
+      <rect x="248" y="55" width="304" height="390" rx="25"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0a0a0a"/>
+  
+  <!-- Ambient glow -->
+  <ellipse cx="400" cy="250" rx="250" ry="200" fill="url(#bgGlow)"/>
+  
+  <!-- iPhone Frame Shadow -->
+  <rect x="235" y="35" width="330" height="440" rx="45" fill="#000" opacity="0.5" transform="translate(5,5)"/>
+  
+  <!-- iPhone Frame -->
+  <rect x="235" y="35" width="330" height="440" rx="45" fill="url(#phoneGrad)" stroke="#444" stroke-width="2"/>
+  
+  <!-- iPhone Screen -->
+  <rect x="248" y="55" width="304" height="400" rx="30" fill="#f5f5f5"/>
+  
+  <!-- Notch -->
+  <rect x="340" y="55" width="120" height="28" rx="14" fill="#1a1a1a"/>
+  <circle cx="400" cy="69" r="5" fill="#2a2a2a"/>
+  
+  <!-- Status Bar -->
+  <text x="265" y="75" fill="#333" font-family="Arial" font-size="10" font-weight="bold">9:41</text>
+  <text x="520" y="75" fill="#333" font-family="Arial" font-size="10">100%</text>
+  
+  <!-- App Header -->
+  <rect x="248" y="85" width="304" height="60" fill="#fff"/>
+  <circle cx="275" cy="115" r="16" fill="#b91c1c"/>
+  <text x="278" y="120" fill="#fff" font-family="Arial" font-size="12" font-weight="bold">BN</text>
+  <text x="300" y="108" fill="#1a1a1a" font-family="Arial" font-size="13" font-weight="bold">Ristorante La Bella Napoli</text>
+  <text x="300" y="123" fill="#888" font-family="Arial" font-size="9">Via Roma 123, 00100 Roma</text>
+  <circle cx="520" cy="110" r="4" fill="#22c55e"/>
+  <text x="490" y="125" fill="#22c55e" font-family="Arial" font-size="8">Aperto</text>
+  
+  <!-- Hero Image Area -->
+  <rect x="260" y="155" width="280" height="100" rx="10" fill="#374151"/>
+  <text x="400" y="195" fill="#9ca3af" font-family="Arial" font-size="10" text-anchor="middle">🏙️ Immagine Hero</text>
+  
+  <!-- Restaurant Name on Hero -->
+  <rect x="270" y="210" width="80" height="18" rx="3" fill="#dc2626"/>
+  <text x="280" y="222" fill="#fff" font-family="Arial" font-size="8" font-weight="bold">APERTO ORA</text>
+  <text x="270" y="245" fill="#fff" font-family="Arial" font-size="14" font-weight="bold">La Bella Napoli</text>
+  
+  <!-- Quick Action Buttons -->
+  <rect x="260" y="265" width="130" height="50" rx="8" fill="#fff" stroke="#e5e5e5"/>
+  <text x="325" y="285" fill="#666" font-family="Arial" font-size="16" text-anchor="middle">🍕</text>
+  <text x="325" y="302" fill="#333" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle">Il Menu</text>
+  
+  <rect x="410" y="265" width="130" height="50" rx="8" fill="#fff" stroke="#e5e5e5"/>
+  <text x="475" y="285" fill="#666" font-family="Arial" font-size="16" text-anchor="middle">🤖</text>
+  <text x="475" y="302" fill="#333" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle">Chiedi all'AI</text>
+  
+  <!-- Section Title -->
+  <text x="260" y="340" fill="#1a1a1a" font-family="Arial" font-size="12" font-weight="bold">Piatti Consigliati</text>
+  <text x="490" y="340" fill="#dc2626" font-family="Arial" font-size="9">Vedi tutti</text>
+  
+  <!-- Food Cards -->
+  <rect x="260" y="350" width="130" height="90" rx="8" fill="#fff" stroke="#e5e5e5"/>
+  <rect x="260" y="350" width="130" height="50" rx="8" fill="#fcd34d"/>
+  <text x="325" y="380" fill="#333" font-family="Arial" font-size="20" text-anchor="middle">🍕</text>
+  <rect x="355" y="355" width="30" height="14" rx="3" fill="#fff"/>
+  <text x="360" y="364" fill="#333" font-family="Arial" font-size="7" font-weight="bold">€12</text>
+  <text x="268" y="415" fill="#dc2626" font-family="Arial" font-size="7" font-weight="bold">PIZZE</text>
+  <text x="268" y="428" fill="#1a1a1a" font-family="Arial" font-size="9" font-weight="bold">Pizza Margherita</text>
+  
+  <rect x="410" y="350" width="130" height="90" rx="8" fill="#fff" stroke="#e5e5e5"/>
+  <rect x="410" y="350" width="130" height="50" rx="8" fill="#fde68a"/>
+  <text x="475" y="380" fill="#333" font-family="Arial" font-size="20" text-anchor="middle">🍝</text>
+  <rect x="505" y="355" width="30" height="14" rx="3" fill="#fff"/>
+  <text x="510" y="364" fill="#333" font-family="Arial" font-size="7" font-weight="bold">€14</text>
+  <text x="418" y="415" fill="#dc2626" font-family="Arial" font-size="7" font-weight="bold">PRIMI</text>
+  <text x="418" y="428" fill="#1a1a1a" font-family="Arial" font-size="9" font-weight="bold">Carbonara</text>
+  
+  <!-- Bottom Navigation -->
+  <rect x="248" y="450" width="304" height="55" fill="#fff"/>
+  <line x1="248" y1="450" x2="552" y2="450" stroke="#e5e5e5"/>
+  
+  <!-- Nav Icons -->
+  <text x="280" y="475" fill="#333" font-family="Arial" font-size="16">🏠</text>
+  <text x="280" y="490" fill="#333" font-family="Arial" font-size="7" text-anchor="middle" x="287">Home</text>
+  
+  <text x="340" y="475" fill="#888" font-family="Arial" font-size="16">🍽️</text>
+  <text x="347" y="490" fill="#888" font-family="Arial" font-size="7" text-anchor="middle">Menu</text>
+  
+  <text x="400" y="475" fill="#dc2626" font-family="Arial" font-size="16">💬</text>
+  <text x="407" y="490" fill="#dc2626" font-family="Arial" font-size="7" text-anchor="middle">AI Chat</text>
+  
+  <text x="460" y="475" fill="#888" font-family="Arial" font-size="16">ℹ️</text>
+  <text x="467" y="490" fill="#888" font-family="Arial" font-size="7" text-anchor="middle">Info</text>
+  
+  <text x="520" y="475" fill="#888" font-family="Arial" font-size="16">📅</text>
+  <text x="527" y="490" fill="#888" font-family="Arial" font-size="7" text-anchor="middle">Prenota</text>
+  
+  <!-- Home Indicator -->
+  <rect x="365" y="495" width="70" height="4" rx="2" fill="#1a1a1a"/>
+  
+  <!-- Side buttons -->
+  <rect x="230" y="120" width="3" height="30" rx="1" fill="#333"/>
+  <rect x="230" y="170" width="3" height="50" rx="1" fill="#333"/>
+  <rect x="567" y="150" width="3" height="60" rx="1" fill="#333"/>
+  
+  <!-- Floating Labels -->
+  <g transform="translate(80, 150)">
+    <rect x="0" y="0" width="100" height="30" rx="5" fill="#dc2626" opacity="0.9"/>
+    <text x="50" y="20" fill="#fff" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle">🤖 AI Powered</text>
+  </g>
+  
+  <g transform="translate(620, 200)">
+    <rect x="0" y="0" width="90" height="30" rx="5" fill="#22c55e" opacity="0.9"/>
+    <text x="45" y="20" fill="#fff" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle">📱 PWA</text>
+  </g>
+  
+  <g transform="translate(620, 280)">
+    <rect x="0" y="0" width="100" height="30" rx="5" fill="#3b82f6" opacity="0.9"/>
+    <text x="50" y="20" fill="#fff" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle">⚡ React</text>
+  </g>
+</svg>

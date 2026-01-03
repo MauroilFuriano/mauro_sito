@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #00E5FF; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00B8D4; 
+}
+
+/* Glow Utilities */
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+.glow-box {
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+.glow-box:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+}
+
+/* Cyberpunk Glitch Effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  color: #00E5FF;
+  z-index: -1;
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+  -webkit-text-fill-color: #00E5FF !important;
+  text-shadow: 2px 0 #00E5FF;
+}
+
+.glitch-text::after {
+  color: #a855f7;
+  z-index: -2;
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+  -webkit-text-fill-color: #a855f7 !important;
+  text-shadow: -2px 0 #a855f7;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-4px, 1px); }
+  2% { clip-path: inset(60% 0 10% 0); transform: translate(4px, -1px); }
+  4% { clip-path: inset(40% 0 50% 0); transform: translate(-4px, 3px); }
+  6% { clip-path: inset(80% 0 5% 0); transform: translate(4px, -3px); }
+  8% { clip-path: inset(10% 0 70% 0); transform: translate(-4px, 1px); }
+  10% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(4px, -1px); }
+  2% { clip-path: inset(80% 0 5% 0); transform: translate(-4px, 2px); }
+  4% { clip-path: inset(30% 0 20% 0); transform: translate(4px, -2px); }
+  6% { clip-path: inset(15% 0 80% 0); transform: translate(-4px, 1px); }
+  8% { clip-path: inset(55% 0 10% 0); transform: translate(4px, -1px); }
+  10% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+/* Particle Animation */
+@keyframes float-particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { transform: translateY(-100px) translateX(30px); opacity: 0; }
+}
+
+/* ===== NEW ANIMATIONS ===== */
+
+/* Star Twinkle Animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glow Pulse for buttons */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(0, 229, 255, 0.7); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ===== MOBILE ANIMATIONS (replace hover with auto) ===== */
+
+/* Card animations for mobile */
+@media (max-width: 768px) {
+  /* Auto-animate cards on mobile */
+  .group {
+    animation: card-glow 4s ease-in-out infinite;
+  }
+  
+  .group:nth-child(2) {
+    animation-delay: 1.5s;
+  }
+  
+  .group:nth-child(3) {
+    animation-delay: 3s;
+  }
+  
+  @keyframes card-glow {
+    0%, 100% { 
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: none;
+    }
+    50% { 
+      border-color: rgba(0, 229, 255, 0.5);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.15);
+    }
+  }
+  
+  /* Auto scale images on mobile */
+  .group img {
+    animation: subtle-zoom 6s ease-in-out infinite;
+  }
+  
+  @keyframes subtle-zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  /* Service cards auto-glow */
+  .group .bg-dark-800 {
+    animation: service-highlight 5s ease-in-out infinite;
+  }
+  
+  @keyframes service-highlight {
+    0%, 100% { 
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    50% { 
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+  }
+}
+
+/* Shooting stars effect (occasional) */
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(300px);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(45deg, #00E5FF, transparent);
+  border-radius: 50%;
+  animation: shooting-star 3s ease-out infinite;
+}
+
+/* Nebula/Galaxy effect */
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: nebula-pulse 8s ease-in-out infinite;
+}
+
+@keyframes nebula-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.2; }
+}
+

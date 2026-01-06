@@ -40,36 +40,31 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO MAURO.EXE - VERSIONE GRANDANGOLARE */}
+        {/* LOGO MAURO.EXE - SENZA BORDO QUADRATO */}
         <a 
           href="#home" 
           className="flex items-center gap-4 group" 
           onClick={(e) => handleNavClick(e, '#home')}
         >
-          {/* Contenitore Immagine Logo:
-              - Mobile: w-12 h-12 (48px)
-              - Desktop (md): w-20 h-20 (80px) -> Molto più grande! 
+          {/* Immagine Libera (Senza Div Contenitore) 
+              Ho usato drop-shadow per fare l'effetto neon sulla forma dell'immagine
           */}
-          <div className="relative w-12 h-12 md:w-20 md:h-20 overflow-hidden rounded-xl border-2 border-cyan-400/30 group-hover:border-cyan-400 transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.15)] group-hover:shadow-[0_0_25px_rgba(0,229,255,0.4)]">
-            <img 
-              src="/logo.png" 
-              alt="Mauro.exe Logo" 
-              className="w-full h-full object-cover"
-            />
-            {/* Effetto Scanline (raggio che passa sopra) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent opacity-0 group-hover:opacity-100 animate-pulse" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="Mauro.exe Logo" 
+            className="w-14 h-14 md:w-20 md:h-20 object-contain transition-all duration-300 
+                       drop-shadow-[0_0_5px_rgba(0,229,255,0.5)] 
+                       group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)] 
+                       group-hover:scale-110"
+          />
 
-          {/* Testo Accanto al Logo:
-              - Mobile: text-xl
-              - Desktop (md): text-3xl -> Scritta bella grossa
-          */}
+          {/* Testo Accanto al Logo */}
           <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
             MAURO.EXE
           </span>
         </a>
 
-        {/* Desktop Navigation - Ho aumentato un po' anche il font dei menu */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a

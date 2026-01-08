@@ -1,5 +1,6 @@
 import React from 'react';
-import { Github, Twitter, Linkedin, Terminal } from 'lucide-react';
+// Ho rimosso Twitter e aggiunto Facebook e Instagram
+import { Github, Linkedin, Terminal, Facebook, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -16,14 +17,48 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex gap-6">
-          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110">
+          {/* Github - Link aggiornato */}
+          <a 
+            href="https://github.com/MauroilFuriano" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110"
+            aria-label="GitHub"
+          >
             <Github size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110">
+
+          {/* LinkedIn - Link aggiornato */}
+          <a 
+            href="https://www.linkedin.com/in/mauro-ceccarelli-282255296" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110"
+            aria-label="LinkedIn"
+          >
             <Linkedin size={20} />
           </a>
-          <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110">
-            <Twitter size={20} />
+
+          {/* Instagram -⚠️ INSERISCI IL TUO LINK QUI AL POSTO DI # */}
+          <a 
+            href="https://www.instagram.com/mauroceccarelli.exe/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-pink-500 transition-colors transform hover:scale-110"
+            aria-label="Instagram"
+          >
+            <Instagram size={20} />
+          </a>
+
+          {/* Facebook - ⚠️ INSERISCI IL TUO LINK QUI AL POSTO DI # */}
+          <a 
+            href="https://www.facebook.com/profile.php?id=61585910800513" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-blue-500 transition-colors transform hover:scale-110"
+            aria-label="Facebook"
+          >
+            <Facebook size={20} />
           </a>
         </div>
 

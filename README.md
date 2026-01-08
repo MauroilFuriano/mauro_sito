@@ -1,20 +1,74 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="200" alt="Mauro.exe Banner" src="https://github.com/MauroilFuriano/mauro_sito/blob/main/public/logo.png?raw=true" />
+  
+  # Mauro Ceccarelli | Full Stack & AI Portfolio
+  
+  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+  [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+
+  <p>
+    <strong>Il codice sorgente ufficiale del mio portfolio professionale.</strong><br>
+    Un hub digitale moderno progettato per mostrare progetti di sviluppo web, integrazioni AI e soluzioni software custom.
+  </p>
+
+  [🌐 Visita il sito live](https://www.mauroceccarelli.it)
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## 🚀 Panoramica del Progetto
 
-View your app in AI Studio: https://ai.studio/apps/drive/1tC2fhGd3kTBUNk4yR2dkqdgCZouTbRjY
+Questo non è un semplice sito vetrina. È una piattaforma costruita con un approccio **Mobile-First** e ottimizzata per le massime performance. Integra funzionalità moderne e un design distintivo in stile "Dark Mode / Cyberpunk".
 
-## Run Locally
+### ✨ Caratteristiche Chiave
+* **UI/UX Moderna:** Interfaccia reattiva costruita con React e Tailwind CSS.
+* **AI Integration:** Predisposizione per connessione a LLM (Google Gemini / OpenAI) per funzionalità di chat intelligente.
+* **High Performance:** Punteggio Lighthouse ottimizzato e caricamento istantaneo grazie al deploy su Vercel.
+* **Clean Code:** Architettura modulare e scalabile.
 
-**Prerequisites:**  Node.js
+---
 
+## 🛠 Installazione e Avvio Locale
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Se vuoi clonare questo progetto e testarlo in locale, segui questi passaggi:
+
+**Prerequisiti:** Assicurati di avere [Node.js](https://nodejs.org/) installato.
+
+1.  **Clona la repository:**
+    ```bash
+    git clone [https://github.com/MauroilFuriano/mauro_sito.git](https://github.com/MauroilFuriano/mauro_sito.git)
+    cd mauro_sito
+    ```
+
+2.  **Installa le dipendenze:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configurazione Variabili d'Ambiente:**
+    Crea un file `.env.local` nella root del progetto e inserisci le tue chiavi API (necessario per le funzioni AI):
+    ```env
+    GEMINI_API_KEY=la_tua_chiave_qui
+    ```
+
+4.  **Avvia il server di sviluppo:**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 👤 Autore
+
+**Mauro Ceccarelli**
+* 🌐 **Sito Web:** [mauroceccarelli.it](https://www.mauroceccarelli.it)
+* 💼 **LinkedIn:** [Profilo LinkedIn](https://www.linkedin.com/in/mauro-ceccarelli-282255296)
+* 📧 **Contatto:** [cceccarellimauro3@gmail.com](mailto:cceccarellimauro3@gmail.com)
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ and ☕ by mauro.exe</sub>
+</div>

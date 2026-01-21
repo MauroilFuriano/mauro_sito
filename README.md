@@ -65,7 +65,7 @@ Se vuoi clonare questo progetto e testarlo in locale, segui questi passaggi:
 **Mauro Ceccarelli**
 * 🌐 **Sito Web:** [mauroceccarelli.it](https://www.mauroceccarelli.it)
 * 💼 **LinkedIn:** [Profilo LinkedIn](https://www.linkedin.com/in/mauro-ceccarelli-282255296)
-* 📧 **Contatto:** [cceccarellimauro3@gmail.com](mailto:cceccarellimauro3@gmail.com)
+* 📧 **Contatto:** [ceccarellimauro3@gmail.com](mailto:ceccarellimauro3@gmail.com)
 
 ---
 

@@ -89,7 +89,8 @@ const Hero: React.FC = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
-            Sviluppo siti web ad alte prestazioni e <span className="text-cyan-400 font-bold">Chatbot AI</span> che lavorano per te 24/7. <br className="hidden md:block" /> Smetti di perdere clienti, inizia a convertire.
+            <span className="text-cyan-400 font-bold">Chatbot intelligenti</span> che rispondono 24/7 e siti ottimizzati per vendere. <br className="hidden md:block" />
+            Per PMI che vogliono automatizzare senza assumere personale.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -97,7 +98,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse"
             >
-              ANALISI GRATUITA
+              RICHIEDI ANALISI GRATUITA
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a

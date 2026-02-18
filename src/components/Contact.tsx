@@ -103,10 +103,13 @@ const Contact: React.FC = () => {
           <div>
             <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Contattami</h2>
             <h3 className="text-4xl font-display font-bold text-white mb-6">
-              Costruiamo Qualcosa di <br /> <span className="text-cyan-400">Leggendario.</span>
+              Pronto a Trasformare <br /> <span className="text-cyan-400">il Tuo Business?</span>
             </h3>
-            <p className="text-gray-400 mb-8 max-w-md">
-              Pronto a migliorare la tua presenza digitale? Inviami un messaggio e discutiamo di come trasformare le tue idee in realtà.
+            <p className="text-gray-400 mb-8 max-w-md whitespace-pre-line">
+              Prenota un'analisi gratuita di 30 minuti.
+              Parliamo del tuo progetto e ti mostro come posso aiutarti.
+
+              ✓ Nessun costo ✓ Nessun impegno ✓ Risposta in 24h
             </p>
 
             <div className="space-y-6">
@@ -256,7 +259,7 @@ const Contact: React.FC = () => {
                     <Loader2 size={20} className="animate-spin" /> TRASMISSIONE IN CORSO...
                   </>
                 ) : (
-                  'TRASMETTI MESSAGGIO'
+                  'PRENOTA ANALISI GRATUITA'
                 )}
               </button>
             </form>

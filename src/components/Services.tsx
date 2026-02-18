@@ -50,19 +50,19 @@ const Services: React.FC = () => {
           <ServiceCard
             icon={<Globe size={32} />}
             title="Sviluppo Web"
-            description="Siti web responsive ad alte prestazioni realizzati con framework moderni. Da landing page a complesse dashboard aziendali."
+            description="Siti che convertono visitatori in clienti, non solo belle vetrine. Landing page ottimizzate, e-commerce, dashboard aziendali. ✅ Veloci ✅ Mobile-first ✅ Orientati al risultato"
             delay="0"
           />
           <ServiceCard
             icon={<Bot size={32} />}
             title="Chatbot & IA"
-            description="Agenti conversazionali intelligenti che automatizzano il supporto clienti e coinvolgono gli utenti 24/7 utilizzando NLP all'avanguardia."
+            description="Assistenti AI che rispondono ai clienti in tempo reale, qualificano lead e prenotano appuntamenti. Integrati con WhatsApp, Messenger e sito web. ✅ Risposta immediata ✅ Nessun cliente perso ✅ Lavora H24"
             delay="100"
           />
           <ServiceCard
             icon={<Smartphone size={32} />}
             title="App Su Misura"
-            description="Applicazioni web e mobile personalizzate, progettate per risolvere problemi aziendali specifici e migliorare l'esperienza utente."
+            description="Automazioni e web app che ti fanno risparmiare ore ogni settimana. Dai workflow automatizzati alle integrazioni con i tuoi strumenti. ✅ Meno lavoro manuale ✅ Più efficienza ✅ Scala con te"
             delay="200"
           />
         </div>

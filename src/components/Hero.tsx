@@ -75,36 +75,36 @@ const Hero: React.FC = () => {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase animate-pulse">
             <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#00E5FF]" />
-            Sistema Online
+            Disponibile per nuovi progetti
           </div>
-          
+
           <h1 className="font-display text-5xl md:text-7xl font-black leading-tight text-white">
-            Costruiamo il <br />
-            <span 
+            Trasforma le tue idee in <br />
+            <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
-              data-text="Futuro Digitale"
+              data-text="Business Digitale"
             >
-              Futuro Digitale
+              Business Digitale
             </span>
           </h1>
-          
+
           <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
-            Sono <span className="text-cyan-400 font-bold">Mauro</span>. Sviluppatore creativo che progetta siti web ad alte prestazioni, chatbot intelligenti e applicazioni di nuova generazione.
+            Sviluppo siti web ad alte prestazioni e <span className="text-cyan-400 font-bold">Chatbot AI</span> che lavorano per te 24/7. <br className="hidden md:block" /> Smetti di perdere clienti, inizia a convertire.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#services"
+            <a
+              href="#contact"
               className="px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse"
             >
-              SCOPRI I SERVIZI
+              ANALISI GRATUITA
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="#contact"
+            <a
+              href="#portfolio"
               className="px-8 py-4 bg-transparent border border-white/20 text-white font-display font-bold tracking-wider rounded hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 flex items-center justify-center"
             >
-              CONTATTAMI
+              VEDI PROGETTI
             </a>
           </div>
         </div>
@@ -116,12 +116,12 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-full animate-[spin_10s_linear_infinite]" />
             <div className="absolute inset-4 border border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
             <div className="absolute inset-12 border border-white/10 rounded-full animate-[pulse_3s_ease-in-out_infinite]" />
-            
+
             {/* Center Icon */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-32 h-32 bg-dark-800/80 backdrop-blur-md rounded-2xl border border-cyan-400/50 flex items-center justify-center shadow-[0_0_30px_rgba(0,229,255,0.2)] animate-float">
                 <Code size={48} className="text-cyan-400 drop-shadow-[0_0_10px_rgba(0,229,255,0.8)]" />
-                
+
                 {/* Floating Elements */}
                 <div className="absolute -top-6 -right-6 p-3 bg-dark-900 border border-purple-500/50 rounded-lg shadow-lg animate-bounce delay-75">
                   <Cpu size={20} className="text-purple-400" />

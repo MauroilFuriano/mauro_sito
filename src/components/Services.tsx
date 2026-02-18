@@ -16,20 +16,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
           {icon}
         </div>
       </div>
-      
+
       <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
         {title}
       </h3>
-      
+
       <p className="text-gray-400 mb-6 leading-relaxed">
         {description}
       </p>
-      
+
       <a href="#contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
-        INIZIA PROGETTO <ArrowRight size={16} />
+        PARLIAMONE ORA <ArrowRight size={16} />
       </a>
     </div>
-    
+
     {/* Glow Underlay */}
     <div className="absolute inset-0 bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
   </div>
@@ -47,19 +47,19 @@ const Services: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <ServiceCard 
+          <ServiceCard
             icon={<Globe size={32} />}
             title="Sviluppo Web"
             description="Siti web responsive ad alte prestazioni realizzati con framework moderni. Da landing page a complesse dashboard aziendali."
             delay="0"
           />
-          <ServiceCard 
+          <ServiceCard
             icon={<Bot size={32} />}
             title="Chatbot & IA"
             description="Agenti conversazionali intelligenti che automatizzano il supporto clienti e coinvolgono gli utenti 24/7 utilizzando NLP all'avanguardia."
             delay="100"
           />
-          <ServiceCard 
+          <ServiceCard
             icon={<Smartphone size={32} />}
             title="App Su Misura"
             description="Applicazioni web e mobile personalizzate, progettate per risolvere problemi aziendali specifici e migliorare l'esperienza utente."

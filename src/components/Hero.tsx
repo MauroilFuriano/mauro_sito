@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="font-display text-5xl md:text-7xl font-black leading-tight text-white">
-            Trasforma le tue idee in <br />
+            Sviluppo Web & IA: <br />
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
               data-text="Business Digitale"

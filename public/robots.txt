@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# AI Friendly Configuration (2026 Standard)
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.mauroceccarelli.it/sitemap.xml

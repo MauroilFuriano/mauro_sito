@@ -96,14 +96,14 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="#contact"
-              className="px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse"
+              className="px-6 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse whitespace-nowrap text-sm md:text-base"
             >
               RICHIEDI ANALISI GRATUITA
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#portfolio"
-              className="px-8 py-4 bg-transparent border border-white/20 text-white font-display font-bold tracking-wider rounded hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 flex items-center justify-center"
+              className="px-6 py-3 md:px-8 md:py-4 bg-transparent border border-white/20 text-white font-display font-bold tracking-wider rounded hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 flex items-center justify-center whitespace-nowrap text-sm md:text-base"
             >
               VEDI PROGETTI
             </a>

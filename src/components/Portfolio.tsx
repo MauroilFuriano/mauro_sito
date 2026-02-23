@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExternalLink, Github, Terminal, Bot, Layout } from 'lucide-react';
 
 const projects = [
@@ -42,6 +42,31 @@ const projects = [
 ];
 
 const Portfolio: React.FC = () => {
+  // [FRONTEND SPECIALIST] Stato hook per gestire il 3D Tilt indipendente per ogni card
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [cardTransform, setCardTransform] = useState({ rotateX: 0, rotateY: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    setHoveredCard(index);
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 gradi
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    setCardTransform({ rotateX, rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+    setCardTransform({ rotateX: 0, rotateY: 0 });
+  };
+
   // Handle image error - fallback to alternative image
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>, fallback: string) => {
     const target = e.target as HTMLImageElement;
@@ -52,7 +77,6 @@ const Portfolio: React.FC = () => {
 
   return (
     <section id="portfolio" className="py-24 bg-dark-900 relative">
-      {/* Background Glow */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px]" />
@@ -66,14 +90,23 @@ const Portfolio: React.FC = () => {
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group rounded-2xl bg-dark-800 border border-white/10 overflow-hidden hover:border-cyan-400/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)] flex flex-col"
+              onMouseMove={(e) => handleMouseMove(e, index)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                transform: hoveredCard === index
+                  ? `rotateX(${cardTransform.rotateX}deg) rotateY(${cardTransform.rotateY}deg) scale3d(1.02, 1.02, 1.02)`
+                  : 'rotateX(0) rotateY(0) scale3d(1, 1, 1)',
+                transition: hoveredCard === index ? 'none' : 'transform 0.5s ease',
+                transformStyle: 'preserve-3d'
+              }}
+              className="group rounded-2xl bg-dark-800 border border-white/10 overflow-hidden hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative"
             >
               {/* Image Container */}
-              <div className="relative h-48 overflow-hidden bg-dark-900">
+              <div className="relative h-48 overflow-hidden bg-dark-900 style={{ transform: 'translateZ(20px)' }}">
                 <div className="absolute inset-0 bg-dark-900/20 group-hover:bg-transparent transition-colors z-10" />
 
                 <img
@@ -89,7 +122,7 @@ const Portfolio: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex-1 flex flex-col">
+              <div className="p-6 flex-1 flex flex-col" style={{ transform: 'translateZ(30px)' }}>
                 <div className="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-2">
                   {project.category}
                 </div>
@@ -101,7 +134,7 @@ const Portfolio: React.FC = () => {
                 </p>
 
                 {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-6" style={{ transform: 'translateZ(40px)' }}>
                   {project.tech.map((tech, i) => (
                     <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">
                       {tech}
@@ -110,23 +143,28 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
+                {/* [FRONTEND SPECIALIST] Animazione underline/freccia sui link */}
+                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5" style={{ transform: 'translateZ(50px)' }}>
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition-colors"
+                    className="flex items-center gap-2 text-sm font-bold text-white relative group/link"
                   >
-                    <ExternalLink size={16} /> Live Demo
+                    <ExternalLink size={16} className="text-cyan-400 group-hover/link:-translate-y-1 transition-transform" />
+                    <span>Live Demo</span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover/link:w-full transition-all duration-300"></span>
                   </a>
                   {project.github !== "#" && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-white transition-colors"
+                      className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors relative group/link"
                     >
-                      <Github size={16} /> Codice
+                      <Github size={16} className="group-hover/link:rotate-12 transition-transform" />
+                      <span>Codice</span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover/link:w-full transition-all duration-300"></span>
                     </a>
                   )}
                 </div>

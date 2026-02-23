@@ -8,6 +8,23 @@ body {
   overflow-x: hidden;
 }
 
+/* --- [WEB DESIGNER] Impostazioni Globali --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- [WEB DESIGNER] Scroll Reveal Utilities / Effetto 2026 --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
   width: 8px;

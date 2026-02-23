@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { ChevronRight, Code, Cpu } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -26,6 +26,21 @@ const Hero: React.FC = () => {
       twinkleDuration: Math.random() * 3 + 2, // 2s to 5s
       twinkleDelay: Math.random() * 5, // 0s to 5s
     }));
+  }, []);
+
+  // [FRONTEND SPECIALIST] Logica per Mouse Parallax 3D
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalizzo i valori tra -1 e 1 in base al centro dello schermo
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = (e.clientY / window.innerHeight) * 2 - 1;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
@@ -111,7 +126,8 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Hero Visual/Graphic */}
-        <div className="relative hidden md:flex justify-center items-center">
+        {/* [FRONTEND SPECIALIST] Applico l'effetto Parallax calcolato dal mouse transform */}
+        <div className="relative hidden md:flex justify-center items-center" style={{ transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`, transition: 'transform 0.1s ease-out' }}>
           <div className="relative w-96 h-96">
             {/* Spinning Rings */}
             <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-full animate-[spin_10s_linear_infinite]" />
@@ -119,12 +135,20 @@ const Hero: React.FC = () => {
             <div className="absolute inset-12 border border-white/10 rounded-full animate-[pulse_3s_ease-in-out_infinite]" />
 
             {/* Center Icon */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            {/* [FRONTEND SPECIALIST] Il nucleo 3D ha un parallax invertito per creare profondità */}
+            <div
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`, transition: 'transform 0.15s ease-out' }}
+            >
               <div className="relative w-32 h-32 bg-dark-800/80 backdrop-blur-md rounded-2xl border border-cyan-400/50 flex items-center justify-center shadow-[0_0_30px_rgba(0,229,255,0.2)] animate-float">
                 <Code size={48} className="text-cyan-400 drop-shadow-[0_0_10px_rgba(0,229,255,0.8)]" />
 
                 {/* Floating Elements */}
-                <div className="absolute -top-6 -right-6 p-3 bg-dark-900 border border-purple-500/50 rounded-lg shadow-lg animate-bounce delay-75">
+                {/* [FRONTEND SPECIALIST] Elemento fluttuante con maggiore reattività al mouse */}
+                <div
+                  className="absolute -top-6 -right-6 p-3 bg-dark-900 border border-purple-500/50 rounded-lg shadow-lg animate-bounce delay-75"
+                  style={{ transform: `translate(${mousePosition.x * 45}px, ${mousePosition.y * 45}px)`, transition: 'transform 0.1s ease-out' }}
+                >
                   <Cpu size={20} className="text-purple-400" />
                 </div>
               </div>

@@ -38,19 +38,19 @@ const projects = [
     imageStyle: "object-cover object-top"
   },
   {
-    title: "AI Business Assistant",
-    category: "Web App & AI Chatbot",
-    description: "Piattaforma conversazionale B2B per la gestione automatizzata del customer care.",
+    title: "Chatbot AI per Prenotazioni Hotel",
+    category: "Automazione Ricettiva & IA",
+    description: "Piattaforma Demo per Room Booking dotata di Assistente Virtuale per gestire in totale autonomia il flusso clienti.",
     features: [
-      "Acquisizione prenotazioni fuori orario (40%)",
-      "Riduzione del carico operativo (-12h/settimana)",
-      "Latenza di risposta media garantita in 8s"
+      "Supporto autonomo per Check-in e Check-out",
+      "Generazione e rilascio codice d'accesso univoco",
+      "Azzeramento file e carico fisico in reception"
     ],
-    tech: ["React", "TypeScript", "Gemini AI", "Tailwind CSS"],
+    tech: ["React", "Gemini AI", "Tailwind CSS", "Booking API"],
     image: "/projects/ai-assistant-mockup.svg",
-    fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
+    fallbackImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
     icon: <Bot size={20} />,
-    link: "https://ai-business-assistant-two.vercel.app",
+    link: "https://hotel-automatico.vercel.app/",
     github: "#",
     imageStyle: "object-cover"
   }
@@ -126,17 +126,14 @@ const Portfolio: React.FC = () => {
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative"
             >
               {/* Image Container */}
-              <div
-                className="relative h-48 overflow-hidden bg-dark-900 rounded-t-2xl"
-                style={{ transform: 'translateZ(40px)' }}
-              >
-                <div className="absolute inset-0 bg-dark-900/20 group-hover:bg-transparent transition-colors z-10" />
+              <div className="relative h-48 overflow-hidden bg-dark-900 rounded-t-2xl">
+                <div className="absolute inset-0 bg-dark-900/20 group-hover:bg-transparent transition-colors z-10 rounded-t-2xl" />
 
                 <img
                   src={project.image}
                   alt={project.title}
                   onError={(e) => handleImageError(e, project.fallbackImage)}
-                  className={`w-full h-full transform group-hover:scale-110 transition-transform duration-700 ${project.imageStyle}`}
+                  className={`w-full h-full transform group-hover:scale-110 transition-transform duration-700 rounded-t-2xl ${project.imageStyle}`}
                 />
 
                 <div className="absolute top-4 right-4 z-20 bg-dark-900/80 backdrop-blur border border-cyan-400/30 p-2 rounded-lg text-cyan-400">

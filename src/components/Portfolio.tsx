@@ -5,7 +5,12 @@ const projects = [
   {
     title: "Crypto Analyzer Pro AI",
     category: "AI Trading Bot & Backend",
-    description: "Bot Telegram con AI per analisi mercati Futures 24/7.\n📊 150+ utenti attivi giornalieri\n⚡ Alert in tempo reale\n🎯 Analisi automatica senza intervento umano",
+    description: "Bot Telegram strutturato con AI per analisi automatizzata dei mercati Futures H24.",
+    features: [
+      "150+ utenti attivi giornalieri",
+      "Alert direzionali in tempo reale",
+      "Architettura Serverless ad alta affidabilità"
+    ],
     tech: ["Python", "Telegram API", "Pandas", "Gemini AI"],
     // Prova prima SVG, se non funziona usa PNG
     image: "/projects/crypto-analyzer-mockup.svg",
@@ -18,7 +23,12 @@ const projects = [
   {
     title: "Maicol Ceccarelli - Drone Pilot",
     category: "Sito Web Vetrina",
-    description: "Portfolio immersivo per pilota droni professionista.\n📈 +65% richieste preventivo vs sito precedente\n⚡ Caricamento ultra-rapido (<1.5s)\n🎨 Design premiato dai clienti (4.8/5)",
+    description: "Portfolio immersivo e ad altissime prestazioni per un pilota di droni professionista.",
+    features: [
+      "+65% conversion rate sui preventivi",
+      "TTFB < 200ms e score Lighthouse a 99",
+      "Design premiato per user experience"
+    ],
     tech: ["HTML/CSS", "JavaScript", "Responsive Design", "SEO"],
     image: "/projects/drone-site-mockup.svg",
     fallbackImage: "/projects/drone-sito.png",
@@ -30,7 +40,12 @@ const projects = [
   {
     title: "AI Business Assistant",
     category: "Web App & AI Chatbot",
-    description: "Chatbot AI per piccole aziende con prenotazioni automatiche.\n📞 40% prenotazioni arrivano fuori orario\n⏱️ -12 ore/settimana risparmiate dal team\n💬 Risposta media in 8 secondi",
+    description: "Piattaforma conversazionale B2B per la gestione automatizzata del customer care.",
+    features: [
+      "Acquisizione prenotazioni fuori orario (40%)",
+      "Riduzione del carico operativo (-12h/settimana)",
+      "Latenza di risposta media garantita in 8s"
+    ],
     tech: ["React", "TypeScript", "Gemini AI", "Tailwind CSS"],
     image: "/projects/ai-assistant-mockup.svg",
     fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
@@ -132,9 +147,19 @@ const Portfolio: React.FC = () => {
                 <h4 className="text-xl font-display font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                   {project.title}
                 </h4>
-                <p className="text-gray-400 text-sm mb-6 leading-relaxed flex-1 whitespace-pre-line">
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed whitespace-pre-line">
                   {project.description}
                 </p>
+
+                {/* [FRONTEND SPECIALIST] Lista Ul/Li stilizzata e professionale senza emoji */}
+                <ul className="mb-6 space-y-2 flex-1">
+                  {project.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 text-gray-300 text-sm font-light">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 {/* Tech Stack Tags */}
                 <div className="flex flex-wrap gap-2 mb-6" style={{ transform: 'translateZ(40px)' }}>

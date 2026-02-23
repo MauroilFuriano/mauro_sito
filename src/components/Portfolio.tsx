@@ -103,10 +103,13 @@ const Portfolio: React.FC = () => {
                 transition: hoveredCard === index ? 'none' : 'transform 0.5s ease',
                 transformStyle: 'preserve-3d'
               }}
-              className="group rounded-2xl bg-dark-800 border border-white/10 overflow-hidden hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative"
+              className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative"
             >
               {/* Image Container */}
-              <div className="relative h-48 overflow-hidden bg-dark-900 style={{ transform: 'translateZ(20px)' }}">
+              <div
+                className="relative h-48 overflow-hidden bg-dark-900 rounded-t-2xl"
+                style={{ transform: 'translateZ(40px)' }}
+              >
                 <div className="absolute inset-0 bg-dark-900/20 group-hover:bg-transparent transition-colors z-10" />
 
                 <img

@@ -62,6 +62,9 @@ const Portfolio: React.FC = () => {
   const [cardTransform, setCardTransform] = useState({ rotateX: 0, rotateY: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    // [FRONTEND SPECIALIST] Disabilita il ricalcolo 3D se il device non ha un mouse (è Touch)
+    if (window.matchMedia('(hover: none)').matches) return;
+
     setHoveredCard(index);
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -78,6 +81,8 @@ const Portfolio: React.FC = () => {
   };
 
   const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: none)').matches) return;
+
     setHoveredCard(null);
     setCardTransform({ rotateX: 0, rotateY: 0 });
   };

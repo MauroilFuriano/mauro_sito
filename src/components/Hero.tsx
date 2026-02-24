@@ -94,18 +94,18 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="font-display text-5xl md:text-7xl font-black leading-tight text-white">
-            Sviluppo Web & IA: <br />
+            Automatizza & Scala il tuo <br />
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
-              data-text="Business Digitale"
+              data-text="Business"
             >
-              Business Digitale
+              Business
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
-            <span className="text-cyan-400 font-bold">Chatbot intelligenti</span> che rispondono 24/7 e siti ottimizzati per vendere. <br className="hidden md:block" />
-            Per PMI che vogliono automatizzare senza assumere personale.
+            <span className="text-cyan-400 font-bold">Sviluppo Software B2B</span>, Chatbot AI e architetture cloud ad alte prestazioni per PMI. <br className="hidden md:block" />
+            Automatizziamo i processi aziendali tagliando i costi operativi senza assumere nuovo personale.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="px-6 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse whitespace-nowrap text-sm md:text-base"
             >
-              RICHIEDI ANALISI GRATUITA
+              PRENOTA CONSULENZA AI
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a

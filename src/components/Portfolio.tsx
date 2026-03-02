@@ -53,6 +53,23 @@ const projects = [
     link: "https://hotel-automatico.vercel.app/",
     github: "#",
     imageStyle: "object-cover"
+  },
+  {
+    title: "AI Restaurant Assistant",
+    category: "Ristorazione & Intelligenza Artificiale",
+    description: "Sito dimostrativo per ristoranti con Chatbot AI integrato per la gestione automatizzata delle prenotazioni tavoli e assistenza clienti in tempo reale.",
+    features: [
+      "Prenotazioni tavoli automatizzate H24 tramite AI",
+      "Assistente virtuale intelligente per il menu",
+      "Interfaccia immersiva ottimizzata per la conversione"
+    ],
+    tech: ["React", "AI Integration", "Tailwind CSS", "Frontend UI"],
+    image: "/projects/restaurant-ai-mockup.svg",
+    fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
+    icon: <Bot size={20} />,
+    link: "https://ai-business-assistant-two.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover object-center"
   }
 ];
 
@@ -110,7 +127,7 @@ const Portfolio: React.FC = () => {
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" style={{ perspective: '1000px' }}>
           {projects.map((project, index) => (
             <div
               key={index}

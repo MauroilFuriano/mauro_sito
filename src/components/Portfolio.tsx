@@ -192,13 +192,13 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Links */}
-                {/* [FRONTEND SPECIALIST] Animazione underline/freccia sui link */}
-                <div className="flex items-center gap-4 pt-4 border-t border-white/5" style={{ transform: 'translateZ(50px)' }}>
+                {/* [FRONTEND SPECIALIST] Animazione underline/freccia sui link compatibile Mobile */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 border-t border-white/5 w-full mt-4" style={{ transform: 'translateZ(50px)' }}>
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-bold text-white relative group/link"
+                    className="flex items-center gap-2 text-sm font-bold text-white relative group/link whitespace-nowrap"
                   >
                     <ExternalLink size={16} className="text-cyan-400 group-hover/link:-translate-y-1 transition-transform" />
                     <span>Live Demo</span>
@@ -209,7 +209,7 @@ const Portfolio: React.FC = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors relative group/link"
+                      className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors relative group/link whitespace-nowrap"
                     >
                       <Github size={16} className="group-hover/link:rotate-12 transition-transform" />
                       <span>Codice</span>

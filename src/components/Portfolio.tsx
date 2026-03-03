@@ -159,7 +159,7 @@ const Portfolio: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex-1 flex flex-col" style={{ transform: 'translateZ(30px)' }}>
+              <div className="p-6 flex flex-col flex-1" style={{ transform: 'translateZ(30px)' }}>
                 <div className="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-2">
                   {project.category}
                 </div>
@@ -171,7 +171,7 @@ const Portfolio: React.FC = () => {
                 </p>
 
                 {/* [FRONTEND SPECIALIST] Lista Ul/Li stilizzata e professionale senza emoji */}
-                <ul className="mb-6 space-y-2 flex-1">
+                <ul className="mb-6 space-y-2">
                   {project.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 text-gray-300 text-sm font-light">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 flex-shrink-0" />
@@ -179,6 +179,8 @@ const Portfolio: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+
+                <div className="flex-1"></div> {/* Spacer to push bottom content down on desktop grid */}
 
                 {/* Tech Stack Tags */}
                 <div className="flex flex-wrap gap-2 mb-6" style={{ transform: 'translateZ(40px)' }}>
@@ -191,7 +193,7 @@ const Portfolio: React.FC = () => {
 
                 {/* Links */}
                 {/* [FRONTEND SPECIALIST] Animazione underline/freccia sui link */}
-                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5" style={{ transform: 'translateZ(50px)' }}>
+                <div className="flex items-center gap-4 pt-4 border-t border-white/5" style={{ transform: 'translateZ(50px)' }}>
                   <a
                     href={project.link}
                     target="_blank"

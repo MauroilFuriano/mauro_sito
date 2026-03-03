@@ -140,7 +140,7 @@ const Portfolio: React.FC = () => {
                 transition: hoveredCard === index ? 'none' : 'transform 0.5s ease',
                 transformStyle: 'preserve-3d'
               }}
-              className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative"
+              className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
               {/* Image Container */}
               <div className="relative h-48 overflow-hidden bg-dark-900 rounded-t-2xl">

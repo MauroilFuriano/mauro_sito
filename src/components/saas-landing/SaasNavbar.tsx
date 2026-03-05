@@ -24,9 +24,10 @@ const SaasNavbar: React.FC = () => {
                             href="https://dashboard-theta-khaki-71.vercel.app/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-emerald-500 border border-transparent rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600 focus:ring-offset-slate-900"
+                            className="group relative inline-flex items-center justify-center px-4 py-2 text-sm sm:px-6 sm:py-2.5 font-semibold text-white transition-all duration-200 bg-emerald-500 border border-transparent rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-600 focus:ring-offset-slate-900 whitespace-nowrap"
                         >
-                            <span>Esplora Dashboard</span>
+                            <span className="sm:hidden">Esplora</span>
+                            <span className="hidden sm:inline">Esplora Dashboard</span>
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             {/* Glow effec sulle CTA primarie */}
                             <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-emerald-400 to-emerald-600 opacity-20 blur group-hover:opacity-40 transition duration-200"></div>

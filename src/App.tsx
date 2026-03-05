@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import HotelLanding from './pages/HotelLanding';
+import SaasLanding from './pages/SaasLanding';
 
 const App: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/hotel" element={<HotelLanding />} />
         <Route path="/reception-ai" element={<HotelLanding />} />
+        <Route path="/saas" element={<SaasLanding />} />
       </Routes>
     </Router>
   );

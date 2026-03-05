@@ -6,21 +6,12 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-950 border-t border-white/5 py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        <div className="flex items-center gap-2">
-           <Terminal className="text-cyan-400" size={20} />
-           <span className="font-display font-bold text-white tracking-widest">MAURO.EXE</span>
-        </div>
 
-        <div className="text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Mauro.exe. Tutti i Sistemi Operativi.
-        </div>
-
-        <div className="flex gap-6">
+        <div className="flex gap-6 w-full md:w-auto justify-center md:justify-start">
           {/* Github - Link aggiornato */}
-          <a 
-            href="https://github.com/MauroilFuriano" 
-            target="_blank" 
+          <a
+            href="https://github.com/MauroilFuriano"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110"
             aria-label="GitHub"
@@ -29,9 +20,9 @@ const Footer: React.FC = () => {
           </a>
 
           {/* LinkedIn - Link aggiornato */}
-          <a 
-            href="https://www.linkedin.com/in/mauro-ceccarelli-282255296" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/mauro-ceccarelli-282255296"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-cyan-400 transition-colors transform hover:scale-110"
             aria-label="LinkedIn"
@@ -40,9 +31,9 @@ const Footer: React.FC = () => {
           </a>
 
           {/* Instagram -⚠️ INSERISCI IL TUO LINK QUI AL POSTO DI # */}
-          <a 
-            href="https://www.instagram.com/mauroceccarelli.exe/" 
-            target="_blank" 
+          <a
+            href="https://www.instagram.com/mauroceccarelli.exe/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-pink-500 transition-colors transform hover:scale-110"
             aria-label="Instagram"
@@ -51,15 +42,24 @@ const Footer: React.FC = () => {
           </a>
 
           {/* Facebook - ⚠️ INSERISCI IL TUO LINK QUI AL POSTO DI # */}
-          <a 
-            href="https://www.facebook.com/profile.php?id=61585910800513" 
-            target="_blank" 
+          <a
+            href="https://www.facebook.com/profile.php?id=61585910800513"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-blue-500 transition-colors transform hover:scale-110"
             aria-label="Facebook"
           >
             <Facebook size={20} />
           </a>
+        </div>
+
+        <div className="text-gray-500 text-sm md:text-center w-full md:w-auto text-center order-last md:order-none mt-4 md:mt-0">
+          &copy; {new Date().getFullYear()} Mauro.exe. Tutti i Sistemi Operativi.
+        </div>
+
+        <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-end">
+          <Terminal className="text-cyan-400" size={20} />
+          <span className="font-display font-bold text-white tracking-widest">MAURO.EXE</span>
         </div>
 
       </div>

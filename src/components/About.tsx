@@ -6,50 +6,50 @@ const About: React.FC = () => {
     <section id="about" className="py-24 bg-dark-800 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          
+
           <div className="relative order-2 md:order-1">
-             {/* Abstract Code Visual */}
-             <div className="bg-dark-900 border border-white/10 rounded-xl p-6 font-mono text-sm text-gray-400 shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-purple-600" />
-                <div className="space-y-2">
-                  <div className="flex gap-2">
-                    <span className="text-purple-400">const</span>
-                    <span className="text-cyan-400">developer</span>
-                    <span className="text-white">=</span>
-                    <span className="text-yellow-300">{`{`}</span>
-                  </div>
-                  <div className="pl-6 flex gap-2">
-                    <span className="text-white">nome:</span>
-                    <span className="text-green-400">'Mauro'</span>,
-                  </div>
-                  <div className="pl-6 flex gap-2">
-                    <span className="text-white">classe:</span>
-                    <span className="text-green-400">'Creatore'</span>,
-                  </div>
-                  <div className="pl-6 flex gap-2">
-                    <span className="text-white">skills:</span>
-                    <span className="text-yellow-300">['Web', 'IA', 'App']</span>,
-                  </div>
-                  <div className="pl-6 flex gap-2">
-                    <span className="text-white">passione:</span>
-                    <span className="text-green-400">'Infinita'</span>
-                  </div>
-                  <div className="text-yellow-300">{`};`}</div>
-                  
-                  <div className="pt-4 flex gap-2">
-                    <span className="text-purple-400">while</span>
-                    <span className="text-yellow-300">(</span>
-                    <span className="text-white">vivo</span>
-                    <span className="text-yellow-300">)</span>
-                    <span className="text-yellow-300">{`{`}</span>
-                  </div>
-                  <div className="pl-6 text-cyan-400">developer.crea(futuro);</div>
-                  <div className="text-yellow-300">{`}`}</div>
+            {/* Abstract Code Visual */}
+            <div className="bg-dark-900 border border-white/10 rounded-xl p-6 font-mono text-sm text-gray-400 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-purple-600" />
+              <div className="space-y-2">
+                <div className="flex gap-2">
+                  <span className="text-purple-400">const</span>
+                  <span className="text-cyan-400">developer</span>
+                  <span className="text-white">=</span>
+                  <span className="text-yellow-300">{`{`}</span>
                 </div>
-                
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-             </div>
+                <div className="pl-6 flex gap-2">
+                  <span className="text-white">nome:</span>
+                  <span className="text-green-400">'Mauro'</span>,
+                </div>
+                <div className="pl-6 flex gap-2">
+                  <span className="text-white">classe:</span>
+                  <span className="text-green-400">'Creatore'</span>,
+                </div>
+                <div className="pl-6 flex gap-2">
+                  <span className="text-white">skills:</span>
+                  <span className="text-yellow-300">['Web', 'IA', 'App']</span>,
+                </div>
+                <div className="pl-6 flex gap-2">
+                  <span className="text-white">passione:</span>
+                  <span className="text-green-400">'Infinita'</span>
+                </div>
+                <div className="text-yellow-300">{`};`}</div>
+
+                <div className="pt-4 flex gap-2">
+                  <span className="text-purple-400">while</span>
+                  <span className="text-yellow-300">(</span>
+                  <span className="text-white">vivo</span>
+                  <span className="text-yellow-300">)</span>
+                  <span className="text-yellow-300">{`{`}</span>
+                </div>
+                <div className="pl-6 text-cyan-400">developer.crea(futuro);</div>
+                <div className="text-yellow-300">{`}`}</div>
+              </div>
+
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </div>
           </div>
 
           <div className="order-1 md:order-2">
@@ -58,7 +58,7 @@ const About: React.FC = () => {
               Non solo semplici <br /> <span className="text-gray-500">Righe di Codice.</span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Sono un artigiano digitale che unisce immaginazione e realtà. Il mio viaggio è iniziato nel mondo del gaming, dove ho imparato che ogni pixel conta e le prestazioni sono fondamentali. Oggi applico gli stessi principi per costruire soluzioni web robuste e sistemi intelligenti.
+              Sono un artigiano digitale che unisce immaginazione e realtà. Il mondo del gaming mi ha insegnato l'importanza vitale della fluidità e dell'esperienza utente perfetta. Oggi riverso questa maniacalità nei software che creo per le aziende: applicazioni che non si bloccano mai e che i tuoi clienti ameranno usare.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

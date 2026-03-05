@@ -224,10 +224,11 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   className="w-full bg-dark-800 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_20px_rgba(0,229,255,0.3)] focus:bg-dark-950 focus:scale-[1.02] focus:relative focus:z-10 transition-all duration-300 ease-out"
                 >
-                  <option>Richiesta Generale</option>
-                  <option>Sviluppo Web</option>
-                  <option>Chatbot / IA</option>
-                  <option>App Mobile</option>
+                  <option>Voglio automatizzare l'azienda con l'AI</option>
+                  <option>Voglio creare il mio sito</option>
+                  <option>Voglio rifare un vecchio Sito o E-commerce</option>
+                  <option>Voglio sviluppare una App da zero</option>
+                  <option>Altra Richiesta (Partnership/Varie)</option>
                 </select>
               </div>
 
@@ -259,7 +260,7 @@ const Contact: React.FC = () => {
                     <Loader2 size={20} className="animate-spin" /> TRASMISSIONE IN CORSO...
                   </>
                 ) : (
-                  'PRENOTA ANALISI GRATUITA'
+                  'PRENOTA UNA DEMO GRATUITA'
                 )}
               </button>
             </form>

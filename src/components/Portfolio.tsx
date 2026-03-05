@@ -3,6 +3,57 @@ import { ExternalLink, Github, Terminal, Bot, Layout } from 'lucide-react';
 
 const projects = [
   {
+    title: "AI Restaurant Assistant",
+    category: "Ristorazione & Intelligenza Artificiale",
+    description: "Sito dimostrativo per ristoranti con Chatbot AI integrato per la gestione automatizzata delle prenotazioni tavoli e assistenza clienti in tempo reale.",
+    features: [
+      "📈 Aumento delle prenotazioni dirette senza commissioni TheFork",
+      "📅 Prenotazioni tavoli automatizzate H24 tramite Intelligenza Artificiale",
+      "🍽️ Assistente virtuale per il menu in multilingua"
+    ],
+    tech: ["React", "AI Integration", "Tailwind CSS", "Frontend UI"],
+    image: "/projects/restaurant-ai-mockup.svg",
+    fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
+    icon: <Bot size={20} />,
+    link: "https://ai-business-assistant-two.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover object-center"
+  },
+  {
+    title: "Maicol Ceccarelli - Drone Pilot",
+    category: "Sito Web Vetrina",
+    description: "Portfolio immersivo e ad altissime prestazioni per un pilota di droni professionista.",
+    features: [
+      "🏆 +65% Conversion Rate sui preventivi",
+      "⚡ Velocità di caricamento < 0.2 secondi",
+      "✨ Design premiato per esperienza immersiva"
+    ],
+    tech: ["HTML/CSS", "JavaScript", "Responsive Design", "SEO"],
+    image: "/projects/drone-site-mockup.svg",
+    fallbackImage: "/projects/drone-sito.png",
+    icon: <Layout size={20} />,
+    link: "https://www.maicolceccarelli.it",
+    github: "#",
+    imageStyle: "object-cover object-top"
+  },
+  {
+    title: "Chatbot AI per Prenotazioni Hotel",
+    category: "Automazione Ricettiva & IA",
+    description: "Piattaforma Demo per Room Booking dotata di Assistente Virtuale per gestire in totale autonomia il flusso clienti.",
+    features: [
+      "🕒 Risparmio stimato: 15 ore settimanali in Reception",
+      "🤖 Supporto autonomo H24 per Check-in e Check-out",
+      "🔑 Generazione automatica del codice d'accesso per gli ospiti"
+    ],
+    tech: ["React", "Gemini AI", "Tailwind CSS", "Booking API"],
+    image: "/projects/ai-assistant-mockup.svg",
+    fallbackImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
+    icon: <Bot size={20} />,
+    link: "https://hotel-automatico.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover"
+  },
+  {
     title: "Crypto Analyzer Pro AI",
     category: "AI Trading Bot & Backend",
     description: "Bot Telegram strutturato con AI per analisi automatizzata dei mercati Futures H24.",
@@ -19,57 +70,6 @@ const projects = [
     link: "https://t.me/cryptoanalyzer_AI_Bot",
     github: "#",
     imageStyle: "object-cover object-left-top"
-  },
-  {
-    title: "Maicol Ceccarelli - Drone Pilot",
-    category: "Sito Web Vetrina",
-    description: "Portfolio immersivo e ad altissime prestazioni per un pilota di droni professionista.",
-    features: [
-      "+65% conversion rate sui preventivi",
-      "TTFB < 200ms e score Lighthouse a 99",
-      "Design premiato per user experience"
-    ],
-    tech: ["HTML/CSS", "JavaScript", "Responsive Design", "SEO"],
-    image: "/projects/drone-site-mockup.svg",
-    fallbackImage: "/projects/drone-sito.png",
-    icon: <Layout size={20} />,
-    link: "https://www.maicolceccarelli.it",
-    github: "#",
-    imageStyle: "object-cover object-top"
-  },
-  {
-    title: "Chatbot AI per Prenotazioni Hotel",
-    category: "Automazione Ricettiva & IA",
-    description: "Piattaforma Demo per Room Booking dotata di Assistente Virtuale per gestire in totale autonomia il flusso clienti.",
-    features: [
-      "Supporto autonomo per Check-in e Check-out",
-      "Generazione e rilascio codice d'accesso univoco",
-      "Azzeramento file e carico fisico in reception"
-    ],
-    tech: ["React", "Gemini AI", "Tailwind CSS", "Booking API"],
-    image: "/projects/ai-assistant-mockup.svg",
-    fallbackImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
-    icon: <Bot size={20} />,
-    link: "https://hotel-automatico.vercel.app/",
-    github: "#",
-    imageStyle: "object-cover"
-  },
-  {
-    title: "AI Restaurant Assistant",
-    category: "Ristorazione & Intelligenza Artificiale",
-    description: "Sito dimostrativo per ristoranti con Chatbot AI integrato per la gestione automatizzata delle prenotazioni tavoli e assistenza clienti in tempo reale.",
-    features: [
-      "Prenotazioni tavoli automatizzate H24 tramite AI",
-      "Assistente virtuale intelligente per il menu",
-      "Interfaccia immersiva ottimizzata per la conversione"
-    ],
-    tech: ["React", "AI Integration", "Tailwind CSS", "Frontend UI"],
-    image: "/projects/restaurant-ai-mockup.svg",
-    fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
-    icon: <Bot size={20} />,
-    link: "https://ai-business-assistant-two.vercel.app/",
-    github: "#",
-    imageStyle: "object-cover object-center"
   }
 ];
 

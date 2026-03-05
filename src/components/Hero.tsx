@@ -88,24 +88,23 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase animate-pulse">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase animate-pulse mb-4">
             <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#00E5FF]" />
-            Disponibile per nuovi progetti
+            Per PMI e Imprenditori Digitali
           </div>
 
-          <h1 className="font-display text-5xl md:text-7xl font-black leading-tight text-white">
-            Automatizza & Scala il tuo <br />
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white mb-6">
+            Lavora Meno, <br />
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
-              data-text="Business"
+              data-text="Fattura di Più."
             >
-              Business
+              Fattura di Più.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
-            <span className="text-cyan-400 font-bold">Sviluppo Software B2B</span>, Chatbot AI e architetture cloud ad alte prestazioni per PMI. <br className="hidden md:block" />
-            Automatizziamo i processi aziendali tagliando i costi operativi senza assumere nuovo personale.
+          <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed mb-8">
+            Trasformiamo la tecnologia complessa (<span className="text-cyan-400 font-bold">Web, AI, App</span>) in strumenti automatici che tagliano i costi operativi della tua azienda e ti portano clienti h24, senza dover assumere nuovo personale.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">
@@ -113,7 +112,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="w-full px-2 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.6)] flex items-center justify-center gap-2 group animate-glow-pulse text-xs sm:text-sm md:text-base text-center"
             >
-              PRENOTA CONSULENZA
+              OTTIENI UNA DEMO GRATUITA
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a

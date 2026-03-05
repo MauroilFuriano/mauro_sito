@@ -61,33 +61,33 @@ const Services: React.FC = () => {
           <ServiceCard
             icon={<Globe size={32} />}
             title="Sviluppo Web"
-            description="Piattaforme digitali ingegnerizzate per massimizzare le conversioni B2B."
+            description="Siti web fulminei che trattengono gli utenti e triplicano le vendite sul tuo e-commerce, superando la lentezza dei siti tradizionali."
             features={[
-              "Landing Page ad altissima affidabilità",
-              "Architettura headless e-commerce",
-              "UI/UX scalabile e Mobile-First"
+              "Esperienza utente intuitiva e fluida",
+              "Sistemi E-commerce ad alta conversione",
+              "Gestione dei contenuti semplificata"
             ]}
             delay="0"
           />
           <ServiceCard
             icon={<Bot size={32} />}
             title="Chatbot & IA"
-            description="Agenti intelligenti integrati nei flussi aziendali per qualificazione lead."
+            description="Assistenti virtuali perfetti che qualificano i contatti e rispondono ai tuoi clienti 24/7, mentre tu dormi o ti dedichi ad altro."
             features={[
-              "Supporto conversazionale multicanale H24",
-              "Integrazione WhatsApp e Messenger",
-              "Latenza ottimizzata con GenAI"
+              "Assistenza clienti sempre attiva",
+              "Qualificazione automatica dei contatti",
+              "Risposte intelligenti ed immediate"
             ]}
             delay="100"
           />
           <ServiceCard
             icon={<Smartphone size={32} />}
             title="App Su Misura"
-            description="Applicativi web e automazioni che riducono esponenzialmente il carico manuale."
+            description="Colleghiamo i tuoi software aziendali per eliminare i noiosi lavori manuali di copia-incolla dei tuoi dipendenti."
             features={[
-              "Automazione di workflow complessi",
-              "Interoperabilità tramite API e Webhooks",
-              "Stack performante ad alto traffico"
+              "Automazione delle attività ripetitive",
+              "Sincronizzazione dati tra gestionali",
+              "Piattaforme cloud scalabili e sicure"
             ]}
             delay="200"
           />

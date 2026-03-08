@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import SaasNavbar from '../components/saas-landing/SaasNavbar';
 import SaasHero from '../components/saas-landing/SaasHero';
 import SaasFeatures from '../components/saas-landing/SaasFeatures';
+import SEO from '../components/SEO';
 
 const SaasLanding: React.FC = () => {
     useEffect(() => {
@@ -11,6 +12,12 @@ const SaasLanding: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-slate-950 font-sans text-slate-200 overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200">
+            <SEO
+                title="Dashboard E-commerce Personalizzata | Gestione Negozio Smart"
+                description="Crea la tua area ordini e clienti personalizzata. Nessun costo mensile per piattaforme standard. Dashboard e-commerce sviluppata su misura per la tua attività."
+                canonical="https://www.mauroceccarelli.it/saas"
+                keywords="Dashboard E-commerce, Gestione Ordini, Software Negozio, Piattaforma Personalizzata, E-commerce Su Misura"
+            />
             {/* Navbar Slim (Esclusiva della Landing SaaS) */}
             <SaasNavbar />
 

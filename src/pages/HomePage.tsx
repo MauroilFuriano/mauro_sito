@@ -7,6 +7,7 @@ import Services from '../components/Services';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ChatBot from '../components/ChatBot';
+import SEO from '../components/SEO';
 
 const WhatsappIcon = ({ size = 24, className = "" }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -44,6 +45,12 @@ const HomePage: React.FC = () => {
 
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
+            <SEO
+                title="Mauro.exe | Sviluppo Siti Web & Chatbot AI per il Business"
+                description="Aiuto aziende e professionisti a scalare con Siti Web veloci e Chatbot AI intelligenti. Soluzioni su misura per automatizzare il business e aumentare le conversioni."
+                canonical="https://www.mauroceccarelli.it/"
+                keywords="Sviluppo Web IA, Chatbot Aziendali, Automazione Business, React Developer Italia, Mauro Ceccarelli, Siti Web Veloci"
+            />
             <Navbar />
 
             <main>

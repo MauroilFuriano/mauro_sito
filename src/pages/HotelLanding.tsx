@@ -4,6 +4,7 @@ import DemoSection from '../components/hotel-landing/DemoSection';
 import ProblemSolution from '../components/hotel-landing/ProblemSolution';
 import OfferSection from '../components/hotel-landing/OfferSection';
 import CTASection from '../components/hotel-landing/CTASection';
+import SEO from '../components/SEO';
 
 const HotelLanding: React.FC = () => {
     useEffect(() => {
@@ -25,21 +26,19 @@ const HotelLanding: React.FC = () => {
         const revealElements = document.querySelectorAll('.reveal');
         revealElements.forEach((el) => observer.observe(el));
 
-        // Cambia il title e meta description provvisoriamente per ottimizzazione su condivisioni link
-        document.title = "AI Concierge per Hotel | Disintermedia e lavora H24";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', 'Trasforma il tuo sito web hotel nella tua migliore Receptionist con Intelligenza Artificiale.');
-        }
-
         return () => {
             revealElements.forEach((el) => observer.unobserve(el));
-            document.title = "Mauro.exe | Sviluppatore Frontend & Web Designer"; // reset
         };
     }, []);
 
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
+            <SEO
+                title="AI Concierge per Hotel | Disintermedia e Lavora H24"
+                description="Trasforma il tuo sito web hotel nella tua migliore Receptionist con Intelligenza Artificiale. Chatbot AI che prenota per te 24/7 in multilingua."
+                canonical="https://www.mauroceccarelli.it/hotel"
+                keywords="AI Hotel, Concierge Virtuale, Chatbot Hotel, Prenotazioni Dirette, Disintermediazione Booking, Receptionist AI"
+            />
             {/* Header Isolato Minimal (Solo Logo che refresha la pagina) */}
             <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-7xl mx-auto flex justify-start">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Terminal, Bot, Layout } from 'lucide-react';
+import { ExternalLink, Github, Terminal, Bot, Layout, Video } from 'lucide-react';
 
 const projects = [
   {
@@ -70,6 +70,23 @@ const projects = [
     link: "https://t.me/cryptoanalyzer_AI_Bot",
     github: "#",
     imageStyle: "object-cover object-left-top"
+  },
+  {
+    title: "Alex Nova - Videomaker & Fotografo",
+    category: "Sito Portfolio Creativo",
+    description: "Portfolio professionale per videomaker e fotografo specializzato in Wedding Film, contenuti commerciali e ritratti editoriali. Design cinematografico con forte impatto visivo.",
+    features: [
+      "🎬 Design cinematografico che valorizza il portfolio video",
+      "📍 SEO locale ottimizzato per Milano e provincia",
+      "📱 Esperienza mobile-first per clienti in movimento"
+    ],
+    tech: ["React", "Tailwind CSS", "SEO Schema.org", "Responsive Design"],
+    image: "/alex_nova.png",
+    fallbackImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
+    icon: <Video size={20} />,
+    link: "https://demo-videomaker.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover object-center"
   }
 ];
 

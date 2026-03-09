@@ -94,17 +94,17 @@ const Hero: React.FC = () => {
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white mb-6">
-            Lavora Meno, <br />
+            Siti Web & Chatbot AI <br />
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
-              data-text="Fattura di Più."
+              data-text="Che Lavorano 24/7"
             >
-              Fattura di Più.
+              Che Lavorano 24/7
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed mb-8">
-            Trasformiamo la tecnologia complessa (<span className="text-cyan-400 font-bold">Web, AI, App</span>) in strumenti automatici che tagliano i costi operativi della tua azienda e ti portano clienti h24, senza dover assumere nuovo personale.
+            Creo <span className="text-cyan-400 font-bold">siti web professionali</span> e <span className="text-cyan-400 font-bold">chatbot intelligenti</span> che gestiscono prenotazioni, appuntamenti e vendite in automatico — mentre tu ti concentri sul tuo business.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">

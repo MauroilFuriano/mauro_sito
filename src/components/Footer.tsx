@@ -1,11 +1,24 @@
 import React from 'react';
 // Ho rimosso Twitter e aggiunto Facebook e Instagram
-import { Github, Linkedin, Terminal, Facebook, Instagram } from 'lucide-react';
+import { Github, Linkedin, Terminal, Facebook, Instagram, MapPin, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-950 border-t border-white/5 py-12">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Info Locali */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 text-gray-400 text-sm">
+          <div className="flex items-center gap-2">
+            <MapPin size={16} className="text-cyan-400" />
+            <span>Ascoli Piceno, Marche - Italia</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone size={16} className="text-cyan-400" />
+            <a href="tel:+393480029661" className="hover:text-cyan-400 transition-colors">+39 348 002 9661</a>
+          </div>
+        </div>
+
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
 
         <div className="flex gap-6 w-full md:w-auto justify-center md:justify-start">
           {/* Github - Link aggiornato */}
@@ -62,6 +75,7 @@ const Footer: React.FC = () => {
           <span className="font-display font-bold text-white tracking-widest">MAURO.EXE</span>
         </div>
 
+      </div>
       </div>
     </footer>
   );

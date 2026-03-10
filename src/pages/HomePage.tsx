@@ -46,10 +46,10 @@ const HomePage: React.FC = () => {
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
             <SEO
-                title="Mauro.exe | Sviluppo Siti Web & Chatbot AI per il Business"
-                description="Aiuto aziende e professionisti a scalare con Siti Web veloci e Chatbot AI intelligenti. Soluzioni su misura per automatizzare il business e aumentare le conversioni."
+                title="Sviluppatore Web Ascoli Piceno | Siti Web & Chatbot AI | Mauro.exe"
+                description="Sviluppatore Web ad Ascoli Piceno. Creo Siti Web professionali e Chatbot AI per aziende nelle Marche. Automazione business e soluzioni digitali su misura. Richiedi consulenza gratuita."
                 canonical="https://www.mauroceccarelli.it/"
-                keywords="Sviluppo Web IA, Chatbot Aziendali, Automazione Business, React Developer Italia, Mauro Ceccarelli, Siti Web Veloci"
+                keywords="Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Web Designer Ascoli Piceno, Chatbot AI Marche, Sviluppo Web San Benedetto, Agenzia Web Ascoli, Mauro Ceccarelli"
             />
             <Navbar />
 

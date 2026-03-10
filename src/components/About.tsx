@@ -58,7 +58,7 @@ const About: React.FC = () => {
               Non solo semplici <br /> <span className="text-gray-500">Righe di Codice.</span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Sono un artigiano digitale che unisce immaginazione e realtà. Il mondo del gaming mi ha insegnato l'importanza vitale della fluidità e dell'esperienza utente perfetta. Oggi riverso questa maniacalità nei software che creo per le aziende: applicazioni che non si bloccano mai e che i tuoi clienti ameranno usare.
+              Sono uno sviluppatore web di Ascoli Piceno, un artigiano digitale che unisce immaginazione e realtà. Lavoro con aziende nelle Marche e in tutta Italia. Il mondo del gaming mi ha insegnato l'importanza vitale della fluidità e dell'esperienza utente perfetta. Oggi riverso questa maniacalità nei software che creo: applicazioni che non si bloccano mai e che i tuoi clienti ameranno usare.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase animate-pulse mb-4">
             <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#00E5FF]" />
-            Per PMI e Imprenditori Digitali
+            Sviluppatore Web Ascoli Piceno
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white mb-6">
@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed mb-8">
-            Creo <span className="text-cyan-400 font-bold">siti web professionali</span> e <span className="text-cyan-400 font-bold">chatbot intelligenti</span> che gestiscono prenotazioni, appuntamenti e vendite in automatico — mentre tu ti concentri sul tuo business.
+            Sono un <span className="text-cyan-400 font-bold">sviluppatore web</span> di Ascoli Piceno. Creo <span className="text-cyan-400 font-bold">siti web professionali</span> e <span className="text-cyan-400 font-bold">chatbot AI</span> per aziende nelle Marche e in tutta Italia. Automatizza prenotazioni, appuntamenti e vendite — mentre tu ti concentri sul business.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">

@@ -166,6 +166,7 @@ const Portfolio: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
                   onError={(e) => handleImageError(e, project.fallbackImage)}
                   className={`w-full h-full transform group-hover:scale-110 transition-transform duration-700 rounded-t-2xl ${project.imageStyle}`}
                 />

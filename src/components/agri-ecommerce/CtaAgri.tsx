@@ -13,9 +13,10 @@ const CtaAgri: React.FC = () => {
         <section className="relative py-24 overflow-hidden" id="contatti">
             {/* Background Image Setup */}
             <div className="absolute inset-0 z-0">
-                <img 
-                    src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?q=80&w=2000&auto=format&fit=crop" 
-                    alt="Agricoltura smart" 
+                <img
+                    src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?q=80&w=2000&auto=format&fit=crop"
+                    alt="Agricoltura smart"
+                    loading="lazy"
                     className="w-full h-full object-cover opacity-20"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/90 to-dark-900/50"></div>

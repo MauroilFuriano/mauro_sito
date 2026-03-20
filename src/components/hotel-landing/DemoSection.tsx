@@ -12,15 +12,23 @@ const DemoSection: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Video Player */}
-                    <div className="reveal rounded-2xl overflow-hidden glow-box bg-dark-800 border border-white/10 aspect-video relative">
-                        <iframe
-                            src="https://www.youtube.com/embed/olECVYumod8?autoplay=1&mute=1&controls=0&loop=1&playlist=olECVYumod8&showinfo=0&rel=0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="absolute top-0 left-0 w-full h-full"
-                            title="hotel_ai_demo"
-                        ></iframe>
+                    {/* Demo CTA */}
+                    <div className="reveal rounded-2xl overflow-hidden glow-box bg-dark-800 border border-white/10 relative h-full min-h-[400px] flex items-center justify-center p-8">
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-transparent opacity-50"></div>
+                        <div className="relative z-10 text-center space-y-6">
+                            <h3 className="text-3xl font-bold text-white mb-4">Provalo subito dal vivo!</h3>
+                            <p className="text-gray-300 text-lg max-w-md mx-auto mb-8">
+                                Interagisci con l'AI Concierge sul sito demo ufficiale. Fai domande, sbaglia le date, chiedi in un'altra lingua. Lui risolverà tutto.
+                            </p>
+                            <a 
+                                href="https://hotel-automatico.vercel.app/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-dark-900 bg-cyan-400 rounded-full hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transform hover:-translate-y-1"
+                            >
+                                Vai al Sito Demo
+                            </a>
+                        </div>
                     </div>
 
                     {/* Features */}
@@ -47,7 +55,7 @@ const DemoSection: React.FC = () => {
                                 <div>
                                     <h3 className="text-xl font-bold mb-2 text-white">Corregge gli errori dei clienti</h3>
                                     <p className="text-gray-400 leading-relaxed">
-                                        Come si vede nel video, l'AI rileva incoerenze sulle date (es. check-in 28 Marzo, check-out 1 Marzo) e guida l'utente a correggere senza far saltare la prenotazione.
+                                        Come potrai testare tu stesso, l'AI rileva incoerenze sulle date (es. check-in 28 Marzo, check-out 1 Marzo) e guida l'utente a correggere senza far saltare la prenotazione.
                                     </p>
                                 </div>
                             </div>

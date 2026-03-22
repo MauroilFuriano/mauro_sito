@@ -46,7 +46,7 @@ const projects = [
       "🔑 Generazione automatica del codice d'accesso per gli ospiti"
     ],
     tech: ["React", "Gemini AI", "Tailwind CSS", "Booking API"],
-    image: "/projects/ai-assistant-mockup.svg",
+    image: "/hotel_demo.png",
     fallbackImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
     icon: <Bot size={20} />,
     link: "https://hotel-automatico.vercel.app/",

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Download, CheckCircle, Loader2, AlertCircle, FileText } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -57,6 +57,16 @@ const LeadMagnet: React.FC = () => {
         link.click();
         document.body.removeChild(link);
     };
+
+    // Reset automatico dopo 8 secondi
+    useEffect(() => {
+        if (!isSuccess) return;
+        const timer = setTimeout(() => {
+            setIsSuccess(false);
+            setEmail('');
+        }, 8000);
+        return () => clearTimeout(timer);
+    }, [isSuccess]);
 
     if (isSuccess) {
         return (

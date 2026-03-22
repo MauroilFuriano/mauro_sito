@@ -12,7 +12,7 @@ const projects = [
       "🍽️ Assistente virtuale per il menu in multilingua"
     ],
     tech: ["React", "AI Integration", "Tailwind CSS", "Frontend UI"],
-    image: "/projects/restaurant-ai-mockup.svg",
+    image: "/projects/ai-assistant-mockup.svg",
     fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
     icon: <Bot size={20} />,
     link: "https://ai-business-assistant-two.vercel.app/",

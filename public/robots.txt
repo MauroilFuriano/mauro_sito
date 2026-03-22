@@ -1,14 +1,32 @@
 User-agent: *
 Allow: /
 
-# AI Friendly Configuration (2026 Standard)
+# AI Retrieval Bots (portano traffico e citazioni dirette)
 User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 Sitemap: https://www.mauroceccarelli.it/sitemap.xml

@@ -9,6 +9,7 @@ interface SEOProps {
     ogType?: string;
     keywords?: string;
     noindex?: boolean;
+    structuredData?: Record<string, unknown>;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -19,6 +20,7 @@ const SEO: React.FC<SEOProps> = ({
     ogType = 'website',
     keywords,
     noindex = false,
+    structuredData,
 }) => {
     const fullTitle = title.includes('Mauro') ? title : `${title} | Mauro.exe`;
 
@@ -48,6 +50,13 @@ const SEO: React.FC<SEOProps> = ({
             <meta property="twitter:title" content={fullTitle} />
             <meta property="twitter:description" content={description} />
             <meta property="twitter:image" content={ogImage} />
+
+            {/* Page-specific JSON-LD Structured Data */}
+            {structuredData && (
+                <script type="application/ld+json">
+                    {JSON.stringify(structuredData)}
+                </script>
+            )}
         </Helmet>
     );
 };

@@ -49,12 +49,15 @@ const Navbar: React.FC = () => {
           {/* Immagine Libera (Senza Div Contenitore) 
               Ho usato drop-shadow per fare l'effetto neon sulla forma dell'immagine
           */}
-          <img 
-            src="/logo.png" 
-            alt="Mauro.exe Logo" 
-            className="w-14 h-14 md:w-20 md:h-20 object-contain transition-all duration-300 
-                       drop-shadow-[0_0_5px_rgba(0,229,255,0.5)] 
-                       group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)] 
+          <img
+            src="/logo.png"
+            alt="Mauro.exe - Sviluppatore Web Ascoli Piceno"
+            width="80"
+            height="80"
+            fetchPriority="high"
+            className="w-14 h-14 md:w-20 md:h-20 object-contain transition-all duration-300
+                       drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]
+                       group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)]
                        group-hover:scale-110"
           />
 

@@ -1,0 +1,224 @@
+================================================================================
+PIANO DI CRESCITA MAURO.EXE — Freelance Growth Plan 2026
+Generato il: 22 Marzo 2026
+================================================================================
+
+DIAGNOSI: DOVE SEI ORA
+--------------------------------------------------------------------------------
+- Canale acquisizione:    Biglietti da visita (offline, 1:1)
+- Raggio d'azione:        Solo Ascoli Piceno e immediati dintorni
+- Presenza digitale:      Sito ottimizzato ma senza traffico attivo
+- Funnel:                 Inesistente — dal biglietto direttamente alla trattativa
+- Referral:               Nessun programma strutturato
+- Contenuti:              Zero (niente blog, niente LinkedIn, niente video)
+
+Il problema non e il servizio — e che nessuno sa che esisti al di fuori
+di chi incontri fisicamente.
+
+
+================================================================================
+FASE 1: QUICK WINS A COSTO ZERO (Settimane 1-4)
+================================================================================
+
+1. GOOGLE BUSINESS PROFILE
+   - Crea il profilo su Google Business (gratis)
+   - Categoria: "Sviluppatore di siti web" + "Consulente informatico"
+   - Aggiungi foto, servizi, orari, numero WhatsApp
+   - Impatto: appari nelle ricerche locali tipo "sviluppatore web Ascoli Piceno"
+     e con lo schema markup gia presente, Google ti posiziona bene
+
+2. ATTIVA IL SITO COME MACCHINA DI LEAD
+   Il sito e ottimizzato SEO/GEO ma ha un buco: il chatbot e il form di
+   contatto sono gli unici funnel. Aggiungi:
+   - Un lead magnet nella hero: "Scarica la checklist gratuita: 7 errori
+     che il tuo sito fa perdere clienti" (PDF di 2 pagine, lo scrivi con
+     AI in 30 minuti)
+   - Raccogli email in cambio del PDF (usa EmailJS gia integrato, o Brevo gratuito)
+   - Ora hai un database di contatti da coltivare
+
+3. CHIEDI RECENSIONI AI CLIENTI ESISTENTI
+   - Hai gia dei clienti locali. Chiedi a ognuno una recensione Google
+   - 5 recensioni a 5 stelle ti mettono davanti a qualsiasi competitor locale
+   - Messaggio WhatsApp pronto:
+     "Ciao [nome], ti mando il link per lasciare una recensione su Google,
+     ti rubo solo 2 minuti"
+
+4. TRASFORMA I BIGLIETTI DA VISITA IN UN FUNNEL
+   I biglietti che distribuisci ora sono "fire and forget". Migliorali:
+   - Aggiungi un QR code che porta a una landing page specifica
+     (non la home — una pagina con offerta tipo "Analisi gratuita del tuo sito")
+   - Traccia quanti scansionano il QR (link con UTM)
+
+
+================================================================================
+FASE 2: LINKEDIN COME CANALE PRINCIPALE (Settimane 2-8)
+================================================================================
+
+Il contenuto dal profilo personale genera 5-10x la portata delle pagine
+aziendali. LinkedIn e il canale a ROI piu alto per un freelance B2B.
+Zero costi, massima autorita.
+
+OTTIMIZZA IL PROFILO
+- Headline: "Sviluppatore Web & AI | Creo siti e chatbot che lavorano
+  24/7 per PMI | Ascoli Piceno"
+- Banner: screenshot del tuo sito con il brand MAURO.EXE
+- About: storia personale (gamer che e diventato dev, la passione per la
+  fluidita UX) + servizi + CTA WhatsApp
+- Sezione servizi: aggiungi tutti e 3 (Siti Web, Chatbot AI, Automazione)
+
+PIANO CONTENUTI: 3 POST A SETTIMANA
+
+  Lunedi - BEFORE/AFTER
+  "Un hotel di AP mi ha chiesto un chatbot. In 3 settimane: -40% chiamate
+  alla reception. Ecco come funziona [screenshot]"
+
+  Mercoledi - OPINIONE EDUCATIVA
+  "Nel 2026 il tuo sito web non compete con altri siti. Compete con le
+  risposte di ChatGPT. Ecco perche ho implementato llms.txt per i miei clienti."
+
+  Venerdi - BEHIND THE SCENES
+  "Sto costruendo un e-commerce AI per un'azienda agricola marchigiana.
+  Il chatbot vende miele alle 3 di notte. [video demo 30 sec]"
+
+  Regola d'oro: ogni post deve finire con una DOMANDA (aumenta i commenti)
+  o un CTA morbido ("Se hai un hotel nelle Marche, scrivimi in DM").
+
+OUTREACH DIRETTO (15 min/giorno)
+- Cerca su LinkedIn: proprietari hotel, ristoranti, aziende agricole nelle Marche
+- NON vendere subito. Commenta i loro post, metti like, costruisci visibilita
+- Dopo 1-2 settimane di interazioni, manda un messaggio:
+  "Ho visto che gestisci [nome attivita]. Ho appena creato un chatbot AI
+  per un hotel simile al tuo qui nelle Marche — posso mostrarti come
+  funziona in 10 minuti su Zoom?"
+
+
+================================================================================
+FASE 3: REFERRAL PROGRAM STRUTTURATO (dal Mese 2)
+================================================================================
+
+I clienti referenziati hanno un ROI medio del 312% e una ritenzione
+superiore del 37%.
+
+IL PROGRAMMA
+Per ogni cliente che ti porta un nuovo cliente che firma:
+- Sconto del 20% sul prossimo lavoro/manutenzione
+- oppure 1 mese di manutenzione gratuita
+- oppure una funzionalita aggiuntiva gratis (es. pagina extra,
+  integrazione WhatsApp)
+
+COME ATTIVARLO
+Dopo la consegna di un progetto, manda questo messaggio (WhatsApp):
+
+  "Ciao [nome], sono contento che il sito/chatbot ti stia funzionando bene!
+  Se conosci qualcuno che potrebbe aver bisogno di qualcosa di simile,
+  ti offro [incentivo]. Basta che mi dica 'me l'ha consigliato [nome]'."
+
+Semplice, diretto, zero burocrazia. Niente codici referral, niente
+piattaforme. WhatsApp e parola.
+
+
+================================================================================
+FASE 4: INSTAGRAM COME PORTFOLIO VISIVO (dal Mese 2)
+================================================================================
+
+Instagram non e per vendere — e per mostrare che sei reale e bravo.
+
+PIANO: 2-3 POST A SETTIMANA
+- Reel 15-30 sec: timelapse di te che costruisci un sito (screen recording
+  accelerato + musica)
+- Carousel: "3 cose che il sito del tuo hotel deve avere nel 2026"
+  (slide grafiche semplici)
+- Stories: dietro le quinte, il tuo setup, il chatbot che risponde in
+  tempo reale
+
+HASHTAG LOCALI STRATEGICI
+#ascolipiceno #marche #webdesigneritalia #sviluppatoreweb #chatbotai
+#digitalmarketingitalia #pmi #hotelitalia
+
+
+================================================================================
+FASE 5: PRICING — SMETTI DI VENDERE ORE
+================================================================================
+
+"Il pricing basato sulle ore e un suicidio finanziario."
+
+IL TUO POSIZIONAMENTO
+Non sei "uno che fa siti web". Sei chi fa lavorare il business del cliente
+anche quando dorme. Vendi il risultato, non le ore.
+
+STRUTTURA PRICING CONSIGLIATA
+
+  VETRINA DIGITALE (1.500 - 2.500 EUR)
+  Sito web 5 pagine + SEO locale + Google Business
+
+  CONCIERGE AI (3.000 - 4.500 EUR)
+  Sito + Chatbot AI + Integrazione WhatsApp
+
+  PILOTA AUTOMATICO (5.000 - 8.000 EUR)
+  Sito + Chatbot + E-commerce + Automazioni
+
+  MANUTENZIONE MENSILE: 80-150 EUR/mese
+  (hosting, aggiornamenti, supporto)
+
+COME PRESENTARE IL PREZZO
+Mai dire "costa X". Usa il frame del costo dell'inazione:
+
+  "Se non cambi nulla, quante prenotazioni perdi ogni mese passando da
+  Booking che ti prende il 18%? Su 50 prenotazioni/mese da 100 EUR sono
+  900 EUR/mese regalati. Il chatbot si ripaga in 3 mesi."
+
+
+================================================================================
+CALENDARIO RIASSUNTIVO
+================================================================================
+
+  Settimana 1:    Google Business Profile + chiedi 5 recensioni
+  Settimana 2:    Ottimizza LinkedIn + primo post
+  Settimana 3:    Crea lead magnet PDF + QR sui biglietti
+  Settimana 4:    Inizia outreach LinkedIn (15 min/giorno)
+  Settimana 5-6:  Attiva referral program con clienti esistenti
+  Settimana 7-8:  Apri Instagram + primo reel
+  Mese 3+:        Ritmo costante: 3 post LinkedIn + 2 Instagram
+                   + outreach quotidiano
+
+
+================================================================================
+METRICHE DA TRACCIARE
+================================================================================
+
+  Visite sito ........... Google/Vercel Analytics .. Obiettivo: 500/mese
+  Lead (contatti) ....... WhatsApp + Form .......... Obiettivo: 10/mese
+  Clienti chiusi ........ Manuale .................. Obiettivo: 2-3/mese
+  Recensioni Google ..... Google Business .......... Obiettivo: 10+
+  Connessioni LinkedIn .. LinkedIn ................. Obiettivo: 300+
+  K-factor referral ..... Manuale .................. Obiettivo: 0.3
+
+
+================================================================================
+5 DOMANDE DI DISCOVERY "HIGH-IMPACT" (per le trattative)
+================================================================================
+
+  1. "Cosa vi ha spinto a esplorare una soluzione proprio in questo momento?"
+     → Identifica il trigger
+
+  2. "Qual e l'impatto economico di questo problema in termini di tempo
+     o revenue?"
+     → Quantifica il dolore
+
+  3. "Cosa accadrebbe se non cambiaste nulla nel prossimo trimestre?"
+     → Crea urgenza
+
+  4. "Chi altro e coinvolto nel processo di approvazione di iniziative simili?"
+     → Mappa gli stakeholder
+
+  5. "Come definireste il successo di questo progetto tra 6 mesi?"
+     → Definisce i KPI
+
+
+================================================================================
+NOTA FINALE
+================================================================================
+
+La costanza batte la perfezione. Un post LinkedIn mediocre pubblicato e
+meglio di un post perfetto mai scritto. Inizia dalla Fase 1 questa
+settimana — Google Business Profile e la prima cosa da fare domani mattina.

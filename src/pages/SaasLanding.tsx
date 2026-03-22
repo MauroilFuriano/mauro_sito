@@ -17,6 +17,32 @@ const SaasLanding: React.FC = () => {
                 description="Crea la tua area ordini e clienti personalizzata. Nessun costo mensile per piattaforme standard. Dashboard e-commerce sviluppata su misura per la tua attività."
                 canonical="https://www.mauroceccarelli.it/saas"
                 keywords="Dashboard E-commerce, Gestione Ordini, Software Negozio, Piattaforma Personalizzata, E-commerce Su Misura"
+                structuredData={{
+                    '@context': 'https://schema.org',
+                    '@type': 'SoftwareApplication',
+                    name: 'Dashboard E-commerce Personalizzata',
+                    description: 'Piattaforma e-commerce su misura con gestione ordini, autenticazione, pagamenti e notifiche. Nessun costo mensile per piattaforme standard.',
+                    applicationCategory: 'BusinessApplication',
+                    operatingSystem: 'Web',
+                    url: 'https://www.mauroceccarelli.it/saas',
+                    author: { '@id': 'https://www.mauroceccarelli.it/#person' },
+                    offers: [
+                        {
+                            '@type': 'Offer',
+                            name: 'Starter',
+                            price: '99',
+                            priceCurrency: 'EUR',
+                            description: 'Dashboard base con gestione ordini e clienti',
+                        },
+                        {
+                            '@type': 'Offer',
+                            name: 'Nexus Pro',
+                            price: '249',
+                            priceCurrency: 'EUR',
+                            description: 'Dashboard completa con pagamenti, notifiche e analytics avanzati',
+                        },
+                    ],
+                }}
             />
             {/* Navbar Slim (Esclusiva della Landing SaaS) */}
             <SaasNavbar />

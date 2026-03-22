@@ -1,0 +1,44 @@
+# MAURO.EXE - Sviluppatore Web Ascoli Piceno
+
+> Sito web professionale di Mauro Ceccarelli, sviluppatore web specializzato in siti web, chatbot AI e automazione business per aziende nelle Marche e in tutta Italia.
+
+## Informazioni principali
+
+- Nome: Mauro Ceccarelli
+- Brand: MAURO.EXE
+- Ruolo: Sviluppatore Web
+- Sede: Ascoli Piceno, Marche, Italia
+- Telefono: +39 348 002 9661
+- Sito: https://www.mauroceccarelli.it
+
+## Servizi offerti
+
+- Sviluppo Siti Web: Realizzazione siti web professionali, landing page e e-commerce con tecnologie moderne (React, Vite, Tailwind CSS).
+- Chatbot AI: Assistenti virtuali intelligenti basati su intelligenza artificiale per hotel, ristoranti, aziende agricole e PMI.
+- Automazione Business: Integrazione software, workflow automatizzati e soluzioni digitali su misura per ottimizzare i processi aziendali.
+
+## Pagine principali
+
+- [Home](https://www.mauroceccarelli.it/): Portfolio, servizi, contatti e chatbot AI demo.
+- [Hotel AI Concierge](https://www.mauroceccarelli.it/hotel): Soluzione AI per hotel, B&B e case vacanza. Concierge virtuale 24/7.
+- [Reception AI](https://www.mauroceccarelli.it/reception-ai): Landing page dedicata al chatbot reception per strutture ricettive.
+- [SaaS Dashboard](https://www.mauroceccarelli.it/saas): Dashboard e-commerce professionale con autenticazione, pagamenti e notifiche.
+- [Agri E-commerce](https://www.mauroceccarelli.it/agri-ecommerce): Piattaforma e-commerce con AI per aziende agricole e agri-food.
+
+## Area servita
+
+Ascoli Piceno, San Benedetto del Tronto, Provincia di Ascoli Piceno, Marche, Italia.
+
+## FAQ
+
+### Quali servizi offre Mauro.exe?
+Mauro.exe offre sviluppo siti web professionali, chatbot AI personalizzati e automazione dei processi aziendali per PMI, hotel, ristoranti e aziende agricole.
+
+### Dove opera Mauro Ceccarelli?
+Opera principalmente ad Ascoli Piceno e nelle Marche, ma fornisce servizi in tutta Italia grazie al lavoro da remoto.
+
+### Quanto costa un sito web?
+I prezzi variano in base alla complessita del progetto. E possibile richiedere una consulenza gratuita per un preventivo personalizzato.
+
+### Che tecnologie utilizza?
+React, TypeScript, Vite, Tailwind CSS, Node.js, intelligenza artificiale (Gemini AI), e integrazioni con API di terze parti.

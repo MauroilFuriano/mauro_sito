@@ -38,6 +38,22 @@ const HotelLanding: React.FC = () => {
                 description="Trasforma il tuo sito web hotel nella tua migliore Receptionist con Intelligenza Artificiale. Chatbot AI che prenota per te 24/7 in multilingua."
                 canonical="https://www.mauroceccarelli.it/hotel"
                 keywords="AI Hotel, Concierge Virtuale, Chatbot Hotel, Prenotazioni Dirette, Disintermediazione Booking, Receptionist AI"
+                structuredData={{
+                    '@context': 'https://schema.org',
+                    '@type': 'Service',
+                    name: 'AI Concierge per Hotel',
+                    description: 'Concierge virtuale con intelligenza artificiale per hotel, B&B e case vacanza. Gestisce prenotazioni dirette, risponde agli ospiti 24/7 in multilingua e riduce la dipendenza dalle OTA.',
+                    provider: { '@id': 'https://www.mauroceccarelli.it/#service' },
+                    serviceType: 'Chatbot AI per Hospitality',
+                    areaServed: { '@type': 'Country', name: 'Italia' },
+                    url: 'https://www.mauroceccarelli.it/hotel',
+                    offers: {
+                        '@type': 'Offer',
+                        description: 'Sito web + Chatbot AI Concierge per strutture ricettive',
+                        priceCurrency: 'EUR',
+                        availability: 'https://schema.org/LimitedAvailability',
+                    },
+                }}
             />
             {/* Header Isolato Minimal (Solo Logo che refresha la pagina) */}
             <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-dark-900/80 backdrop-blur-md border-b border-white/5">

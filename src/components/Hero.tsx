@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { ChevronRight, Code, Cpu } from 'lucide-react';
+import LeadMagnet from './LeadMagnet';
 
 const Hero: React.FC = () => {
   // Generate MORE random particles for the background (increased from 30 to 80)
@@ -122,6 +123,9 @@ const Hero: React.FC = () => {
               VEDI PROGETTI
             </a>
           </div>
+
+          {/* Lead Magnet */}
+          <LeadMagnet />
         </div>
 
         {/* Hero Visual/Graphic */}

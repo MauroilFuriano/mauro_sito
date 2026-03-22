@@ -6,6 +6,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const HotelLanding = lazy(() => import('./pages/HotelLanding'));
 const SaasLanding = lazy(() => import('./pages/SaasLanding'));
 const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
+const PromoPasqua = lazy(() => import('./pages/PromoPasqua'));
 
 const Loading = () => (
   <div className="min-h-screen bg-dark-950 flex items-center justify-center">
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <Route path="/reception-ai" element={<HotelLanding />} />
             <Route path="/saas" element={<SaasLanding />} />
             <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
+            <Route path="/promo-pasqua" element={<PromoPasqua />} />
           </Routes>
         </Suspense>
       </Router>

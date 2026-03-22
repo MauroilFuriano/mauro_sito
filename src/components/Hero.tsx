@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-32 overflow-hidden">
       {/* Static Stars Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {stars.map((star) => (

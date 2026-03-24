@@ -1,24 +1,7 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Terminal, Bot, Layout, Video } from 'lucide-react';
+import { ExternalLink, Github, Layout, Video } from 'lucide-react';
 
 const projects = [
-  {
-    title: "AI Restaurant Assistant",
-    category: "Ristorazione & Intelligenza Artificiale",
-    description: "Sito dimostrativo per ristoranti con Chatbot AI integrato per la gestione automatizzata delle prenotazioni tavoli e assistenza clienti in tempo reale.",
-    features: [
-      "📈 Aumento delle prenotazioni dirette senza commissioni TheFork",
-      "📅 Prenotazioni tavoli automatizzate H24 tramite Intelligenza Artificiale",
-      "🍽️ Assistente virtuale per il menu in multilingua"
-    ],
-    tech: ["React", "AI Integration", "Tailwind CSS", "Frontend UI"],
-    image: "/projects/ai-assistant-mockup.svg",
-    fallbackImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop",
-    icon: <Bot size={20} />,
-    link: "https://ai-business-assistant-two.vercel.app/",
-    github: "#",
-    imageStyle: "object-cover object-center"
-  },
   {
     title: "Maicol Ceccarelli - Drone Pilot",
     category: "Sito Web Vetrina",
@@ -35,41 +18,6 @@ const projects = [
     link: "https://www.maicolceccarelli.it",
     github: "#",
     imageStyle: "object-cover object-top"
-  },
-  {
-    title: "Chatbot AI per Prenotazioni Hotel",
-    category: "Automazione Ricettiva & IA",
-    description: "Piattaforma Demo per Room Booking dotata di Assistente Virtuale per gestire in totale autonomia il flusso clienti.",
-    features: [
-      "🕒 Risparmio stimato: 15 ore settimanali in Reception",
-      "🤖 Supporto autonomo H24 per Check-in e Check-out",
-      "🔑 Generazione automatica del codice d'accesso per gli ospiti"
-    ],
-    tech: ["React", "Gemini AI", "Tailwind CSS", "Booking API"],
-    image: "/hotel_demo.png",
-    fallbackImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop",
-    icon: <Bot size={20} />,
-    link: "https://hotel-automatico.vercel.app/",
-    github: "#",
-    imageStyle: "object-cover"
-  },
-  {
-    title: "Crypto Analyzer Pro AI",
-    category: "AI Trading Bot & Backend",
-    description: "Bot Telegram strutturato con AI per analisi automatizzata dei mercati Futures H24.",
-    features: [
-      "150+ utenti attivi giornalieri",
-      "Alert direzionali in tempo reale",
-      "Architettura Serverless ad alta affidabilità"
-    ],
-    tech: ["Python", "Telegram API", "Pandas", "Gemini AI"],
-    // Prova prima SVG, se non funziona usa PNG
-    image: "/projects/crypto-analyzer-mockup.svg",
-    fallbackImage: "/projects/bot-code.png",
-    icon: <Terminal size={20} />,
-    link: "https://t.me/cryptoanalyzer_AI_Bot",
-    github: "#",
-    imageStyle: "object-cover object-left-top"
   },
   {
     title: "Alex Nova - Videomaker & Fotografo",
@@ -219,7 +167,7 @@ const Portfolio: React.FC = () => {
                     className="flex items-center gap-2 text-sm font-bold text-white relative group/link"
                   >
                     <ExternalLink size={16} className="text-cyan-400 group-hover/link:-translate-y-1 transition-transform" />
-                    <span>Live Demo</span>
+                    <span>Live</span>
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover/link:w-full transition-all duration-300"></span>
                   </a>
                   {project.github !== "#" && (

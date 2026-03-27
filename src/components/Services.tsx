@@ -7,9 +7,10 @@ interface ServiceCardProps {
   description: string;
   features: string[];
   delay: string;
+  startingPrice: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, delay }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, delay, startingPrice }) => (
   <div className="group relative p-[1px] rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-cyan-400/50 hover:to-transparent transition-all duration-500 hover:scale-[1.02]">
     <div className="bg-dark-900 rounded-2xl p-8 h-full relative z-10 flex flex-col items-start transition-colors">
       <div className="w-14 h-14 bg-dark-800 rounded-lg flex items-center justify-center mb-6 border border-white/5 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
@@ -39,6 +40,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, fea
       <a href="#contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
         PARLIAMONE ORA <ArrowRight size={16} />
       </a>
+      <p className="text-xs text-gray-600 mt-3">· {startingPrice}</p>
     </div>
 
     {/* Glow Underlay Sober */}
@@ -68,6 +70,7 @@ const Services: React.FC = () => {
               "Gestione dei contenuti semplificata"
             ]}
             delay="0"
+            startingPrice="A partire da €1.200"
           />
           <ServiceCard
             icon={<Bot size={32} />}
@@ -79,6 +82,7 @@ const Services: React.FC = () => {
               "Risposte intelligenti ed immediate"
             ]}
             delay="100"
+            startingPrice="A partire da €3.500"
           />
           <ServiceCard
             icon={<Smartphone size={32} />}
@@ -90,6 +94,7 @@ const Services: React.FC = () => {
               "Piattaforme cloud scalabili e sicure"
             ]}
             delay="200"
+            startingPrice="A partire da €8.000"
           />
         </div>
       </div>

@@ -105,12 +105,17 @@ const Contact: React.FC = () => {
             <h3 className="text-4xl font-display font-bold text-white mb-6">
               Pronto a Trasformare <br /> <span className="text-cyan-400">il Tuo Business?</span>
             </h3>
-            <p className="text-gray-400 mb-8 max-w-md whitespace-pre-line">
+            <p className="text-gray-400 mb-6 max-w-md whitespace-pre-line">
               Prenota un'analisi gratuita di 30 minuti.
               Parliamo del tuo progetto e ti mostro come posso aiutarti.
 
               ✓ Nessun costo ✓ Nessun impegno ✓ Risposta in 24h
             </p>
+
+            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 mb-8 rounded-lg border border-amber-400/30 bg-amber-400/5">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
+              <span className="text-amber-400 text-xs font-bold">Solo 2 nuovi progetti disponibili ad Aprile</span>
+            </div>
 
             <div className="space-y-6">
               {/* --- Email Block --- */}

@@ -5,75 +5,66 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-24 bg-dark-800 relative">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-          {/* ── Left Column — Results Dashboard ──────────── */}
-          <div className="relative order-2 md:order-1">
-            <div className="bg-dark-900 border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
-              {/* Gradient accent bar */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400" />
+          {/* ── Left Column — Profile Photo ──────────── */}
+          <div className="order-1">
+            {/* Gradient border frame */}
+            <div className="relative p-[2px] rounded-2xl bg-gradient-to-br from-cyan-400 via-purple-500 to-cyan-400 shadow-2xl shadow-cyan-400/10">
+              <div className="rounded-2xl overflow-hidden">
+                <picture>
+                  <source srcSet="/mauro.webp" type="image/webp" />
+                  <img
+                    src="/mauro_optimized.jpg"
+                    alt="Mauro Ceccarelli — Full Stack Developer & AI Specialist"
+                    loading="lazy"
+                    className="w-full object-cover object-top"
+                    style={{ aspectRatio: '3/4', maxHeight: '540px' }}
+                  />
+                </picture>
+              </div>
 
-              {/* Card header — Personal brand */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="relative w-10 h-10 flex-shrink-0">
-                  <div className="w-10 h-10 rounded-xl p-[1.5px] bg-gradient-to-br from-cyan-400 to-purple-500">
-                    <picture>
-                      <source srcSet="/mauro.webp" type="image/webp" />
-                      <img
-                        src="/mauro_optimized.jpg"
-                        alt="Mauro Ceccarelli"
-                        width={40}
-                        height={40}
-                        className="w-full h-full rounded-[10px] object-cover object-top"
-                      />
-                    </picture>
+              {/* Name + availability overlay at bottom of photo */}
+              <div className="absolute bottom-0 left-0 right-0 mx-[2px] mb-[2px] rounded-b-2xl bg-gradient-to-t from-dark-900/95 via-dark-900/60 to-transparent px-5 pt-16 pb-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-bold text-base leading-tight">Mauro Ceccarelli</h4>
+                    <p className="text-gray-400 text-xs flex items-center gap-1 mt-0.5">
+                      <MapPin size={10} aria-hidden="true" />
+                      Ascoli Piceno, Marche
+                    </p>
                   </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-dark-900" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="text-white font-bold text-sm truncate">Mauro Ceccarelli</h4>
-                  <p className="text-gray-500 text-xs flex items-center gap-1">
-                    <MapPin size={10} className="flex-shrink-0" aria-hidden="true" />
-                    Ascoli Piceno, Marche
-                  </p>
+                  <div className="flex items-center gap-1.5 bg-dark-900/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1.5">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                    <span className="text-green-400 text-xs font-bold">Disponibile</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Metrics grid */}
-              <div className="grid grid-cols-2 gap-4" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-cyan-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-cyan-400">
-                    98<span className="text-lg text-cyan-400/70">/100</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Lighthouse Score</p>
-                </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-green-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-green-400">
-                    +45<span className="text-lg text-green-400/70">%</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Conversioni Clienti</p>
-                </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-purple-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-purple-400">
-                    99.9<span className="text-lg text-purple-400/70">%</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Uptime Garantito</p>
-                </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-yellow-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-yellow-400">
-                    &lt;2<span className="text-lg text-yellow-400/70">s</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Tempo di Caricamento</p>
-                </div>
+            {/* Metrics strip — 4 columns below photo */}
+            <div className="grid grid-cols-4 gap-2 mt-3" style={{ fontVariantNumeric: 'tabular-nums' }}>
+              <div className="bg-dark-900 rounded-xl p-3 border border-white/5 hover:border-cyan-400/25 transition-colors duration-300 text-center">
+                <p className="text-lg font-display font-black text-cyan-400 leading-none">98<span className="text-xs text-cyan-400/70">/100</span></p>
+                <p className="text-gray-500 text-[10px] mt-1 leading-tight">Lighthouse</p>
               </div>
-
-              {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+              <div className="bg-dark-900 rounded-xl p-3 border border-white/5 hover:border-green-400/25 transition-colors duration-300 text-center">
+                <p className="text-lg font-display font-black text-green-400 leading-none">+45<span className="text-xs text-green-400/70">%</span></p>
+                <p className="text-gray-500 text-[10px] mt-1 leading-tight">Conversioni</p>
+              </div>
+              <div className="bg-dark-900 rounded-xl p-3 border border-white/5 hover:border-purple-400/25 transition-colors duration-300 text-center">
+                <p className="text-lg font-display font-black text-purple-400 leading-none">99.9<span className="text-xs text-purple-400/70">%</span></p>
+                <p className="text-gray-500 text-[10px] mt-1 leading-tight">Uptime</p>
+              </div>
+              <div className="bg-dark-900 rounded-xl p-3 border border-white/5 hover:border-yellow-400/25 transition-colors duration-300 text-center">
+                <p className="text-lg font-display font-black text-yellow-400 leading-none">&lt;2<span className="text-xs text-yellow-400/70">s</span></p>
+                <p className="text-gray-500 text-[10px] mt-1 leading-tight">Caricamento</p>
+              </div>
             </div>
           </div>
 
           {/* ── Right Column — Copy & Value Props ────────── */}
-          <div className="order-1 md:order-2">
+          <div className="order-2 md:pt-4">
             <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">
               Chi Sono?
             </h2>

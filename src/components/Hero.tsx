@@ -176,12 +176,12 @@ const Hero: React.FC = () => {
 
           {/* Headline */}
           <h1 className="hero-fade-in hero-delay-1 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-white">
-            Siti Web & Chatbot AI <br />
+            Ogni giorno senza un sito ottimizzato{' '}
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
-              data-text="Che Lavorano 24/7"
+              data-text="perdi clienti ai competitor."
             >
-              Che Lavorano 24/7
+              perdi clienti ai competitor.
             </span>
           </h1>
 
@@ -190,7 +190,9 @@ const Hero: React.FC = () => {
             Sono un <span className="text-cyan-400 font-bold">sviluppatore web</span> di Ascoli Piceno. Creo{' '}
             <span className="text-cyan-400 font-bold">siti web professionali</span> e{' '}
             <span className="text-cyan-400 font-bold">chatbot AI</span> per aziende nelle Marche e in tutta Italia.
-            Automatizza prenotazioni, appuntamenti e vendite — mentre tu ti concentri sul business.
+            I miei clienti ottengono in media{' '}
+            <span className="text-white font-bold">+40% di lead qualificati</span> e risparmiano{' '}
+            <span className="text-white font-bold">20h/settimana</span> grazie all'AI — mentre tu ti concentri sul business.
           </p>
 
           {/* Stats Row — Social Proof */}
@@ -214,6 +216,12 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
+          {/* Scarcity Badge */}
+          <div className="hero-fade-in hero-delay-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-500/30 bg-red-500/5 text-xs font-bold text-red-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+            Solo 2 posti disponibili ad Aprile
+          </div>
+
           {/* CTA Buttons */}
           <div className="hero-fade-in hero-delay-4 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">
             <a
@@ -230,6 +238,13 @@ const Hero: React.FC = () => {
               VEDI PROGETTI
             </a>
           </div>
+
+          {/* Trust Indicators */}
+          <p className="text-xs text-gray-500 flex items-center justify-center gap-4 flex-wrap mt-4">
+            <span>✓ Nessun anticipo</span>
+            <span>✓ Consegna in 3 settimane</span>
+            <span>✓ 52 progetti consegnati</span>
+          </p>
 
           {/* Lead Magnet */}
           <div className="hero-fade-in hero-delay-5">

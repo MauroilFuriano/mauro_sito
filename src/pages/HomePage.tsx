@@ -22,7 +22,12 @@ const structuredData = {
       "image": "https://www.mauroceccarelli.it/mauro.webp",
       "email": "ceccarellimauro3@gmail.com",
       "telephone": "+393480029661",
-      "sameAs": ["https://www.linkedin.com/in/mauro-ceccarelli-282255296"],
+      "sameAs": [
+        "https://www.linkedin.com/in/mauro-ceccarelli",
+        "https://github.com/mauroceccarelli",
+        "https://www.instagram.com/mauro.exe",
+        "https://www.facebook.com/mauro.exe"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ascoli Piceno",
@@ -74,6 +79,73 @@ const structuredData = {
       "description": "Portfolio e servizi di Mauro Ceccarelli, sviluppatore web specializzato in siti web, chatbot AI e automazione business.",
       "publisher": { "@id": "https://www.mauroceccarelli.it/#person" },
       "inLanguage": "it-IT"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.mauroceccarelli.it/#localbusiness",
+      "name": "MAURO.EXE — Mauro Ceccarelli",
+      "description": "Sviluppatore web freelance specializzato in siti web custom, chatbot AI e automazione business per PMI italiane.",
+      "url": "https://www.mauroceccarelli.it",
+      "telephone": "+393480029661",
+      "email": "ceccarellimauro3@gmail.com",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ascoli Piceno",
+        "addressRegion": "Marche",
+        "addressCountry": "IT",
+        "postalCode": "63100"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.8535,
+        "longitude": 13.5745
+      },
+      "areaServed": ["Ascoli Piceno", "Marche", "Italia"],
+      "serviceType": ["Sviluppo Siti Web", "Chatbot AI", "Automazione Business"],
+      "sameAs": [
+        "https://www.linkedin.com/in/mauro-ceccarelli",
+        "https://github.com/mauroceccarelli",
+        "https://www.instagram.com/mauro.exe"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.mauroceccarelli.it/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto costa un sito web professionale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un sito web professionale parte da €1.200. Il prezzo varia in base alla complessità: sito vetrina, e-commerce o app personalizzata. La consulenza iniziale è gratuita e senza impegno."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo ci vuole per realizzare un sito web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In media 2-3 settimane per un sito vetrina, 3-4 settimane per un chatbot AI, 4-8 settimane per un'app o SaaS complessa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali tecnologie usa Mauro Ceccarelli?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "React, TypeScript, Vite, Tailwind CSS, Node.js, Python, Gemini AI. Niente WordPress o template: ogni progetto è scritto in codice custom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Lavorate solo nelle Marche o anche in tutta Italia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ha sede ad Ascoli Piceno ma lavora da remoto per clienti in tutta Italia. Ha completato progetti da Milano a Napoli."
+          }
+        }
+      ]
     }
   ]
 };

@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     user_name: '',
     user_email: '',
-    subject: 'Richiesta Generale',
+    subject: 'Voglio automatizzare l\'azienda con l\'AI',
     message: ''
   });
 
@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
           setIsSubmitting(false);
           setIsSuccess(true);
           // Reset del form
-          setFormData({ user_name: '', user_email: '', subject: 'Richiesta Generale', message: '' });
+          setFormData({ user_name: '', user_email: '', subject: 'Voglio automatizzare l\'azienda con l\'AI', message: '' });
 
           setTimeout(() => setIsSuccess(false), 5000);
         }, (error) => {
@@ -297,6 +297,11 @@ const Contact: React.FC = () => {
                   'PRENOTA UNA DEMO GRATUITA'
                 )}
               </button>
+              <p className="text-center text-xs text-gray-500 mt-3 flex items-center justify-center gap-3 flex-wrap">
+                <span className="flex items-center gap-1"><span className="text-green-400">✓</span> Risposta in meno di 4 ore</span>
+                <span className="flex items-center gap-1"><span className="text-green-400">✓</span> Nessun impegno</span>
+                <span className="flex items-center gap-1"><span className="text-green-400">✓</span> GDPR compliant</span>
+              </p>
             </form>
           </div>
 

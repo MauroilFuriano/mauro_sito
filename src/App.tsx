@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sentry from './sentry';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -38,7 +38,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/hotel" element={<HotelLanding />} />
-            <Route path="/reception-ai" element={<HotelLanding />} />
+            <Route path="/reception-ai" element={<Navigate to="/hotel" replace />} />
             <Route path="/saas" element={<SaasLanding />} />
             <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
             <Route path="/promo-pasqua" element={<PromoPasqua />} />

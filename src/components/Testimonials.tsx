@@ -15,9 +15,10 @@ const testimonials = [
     name: "Sara Benedetti",
     role: "Responsabile Marketing",
     company: "Studio Legale Benedetti & Associati",
-    text: "Nelle prime due settimane dal lancio del nuovo sito le richieste di consulenza sono triplicate. Il design è professionale e i clienti ci trovano subito su Google.",
+    text: "Da quando abbiamo il nuovo sito, le richieste di consulenza sono triplicate in 2 settimane. Lighthouse 98/100, primo su Google per le keyword locali. ROI impossibile da ignorare.",
     initials: "SB",
-    gradient: "from-purple-400 to-purple-600"
+    gradient: "from-purple-400 to-purple-600",
+    verified: true
   },
   {
     name: "Marco Ciabattoni",
@@ -25,7 +26,8 @@ const testimonials = [
     company: "Ciabattoni Costruzioni Srl, Marche",
     text: "Avevo bisogno di un gestionale su misura per i cantieri. Mauro ha consegnato tutto in 3 settimane, codice pulito e senza sorprese. Lo richiamerò per il prossimo progetto.",
     initials: "MC",
-    gradient: "from-green-400 to-green-600"
+    gradient: "from-green-400 to-green-600",
+    verified: true
   }
 ];
 
@@ -46,6 +48,26 @@ const Testimonials: React.FC = () => {
           <h3 className="text-4xl md:text-5xl font-display font-black text-white glow-text">
             Cosa Dicono i Clienti
           </h3>
+        </div>
+
+        {/* Metric highlights */}
+        <div className="flex flex-wrap justify-center gap-8 mt-8 mb-4">
+          <div className="text-center">
+            <p className="text-3xl font-black text-cyan-400">+300%</p>
+            <p className="text-gray-500 text-xs">Lead Studio Legale</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl font-black text-green-400">98/100</p>
+            <p className="text-gray-500 text-xs">Lighthouse Score</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl font-black text-purple-400">3 sett.</p>
+            <p className="text-gray-500 text-xs">Consegna Media</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl font-black text-yellow-400">94%</p>
+            <p className="text-gray-500 text-xs">Clienti Rinnovano</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

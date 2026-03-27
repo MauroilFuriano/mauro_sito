@@ -1,32 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+interface NavLink {
+  name: string;
+  href: string;
+  isRoute?: boolean;
+}
+
+const navLinks: NavLink[] = [
+  { name: 'Home',      href: '#home' },
+  { name: 'Chi Sono',  href: '#about' },
+  { name: 'Servizi',   href: '#services' },
+  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'FAQ',       href: '/faq', isRoute: true },
+  { name: 'Contatti',  href: '#contact' },
+];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Chi Sono', href: '#about' },
-    { name: 'Servizi', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contatti', href: '#contact' },
-  ];
+  // Close mobile menu on route change
+  useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      setIsOpen(false);
-      element.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+
+    if (link.isRoute) {
+      navigate(link.href);
+      return;
+    }
+
+    // Anchor link: if on homepage scroll to section, else navigate home + hash
+    if (location.pathname !== '/') {
+      navigate('/' + link.href);
+    } else {
+      const el = document.querySelector(link.href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/#contact');
+    } else {
+      const el = document.querySelector('#contact');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -39,16 +70,13 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
-        {/* LOGO MAURO.EXE - SENZA BORDO QUADRATO */}
-        <a 
-          href="#home" 
-          className="flex items-center gap-4 group" 
-          onClick={(e) => handleNavClick(e, '#home')}
+
+        {/* Logo */}
+        <a
+          href="#home"
+          className="flex items-center gap-4 group"
+          onClick={(e) => handleNavClick(e, { name: 'Home', href: '#home' })}
         >
-          {/* Immagine Libera (Senza Div Contenitore) 
-              Ho usato drop-shadow per fare l'effetto neon sulla forma dell'immagine
-          */}
           <img
             src="/logo.png"
             alt="Mauro.exe - Sviluppatore Web Ascoli Piceno"
@@ -60,21 +88,23 @@ const Navbar: React.FC = () => {
                        group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)]
                        group-hover:scale-110"
           />
-
-          {/* Testo Accanto al Logo */}
           <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
             MAURO.EXE
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="relative text-base font-medium tracking-wide text-gray-300 hover:text-cyan-400 transition-colors py-2 group"
+              onClick={(e) => handleNavClick(e, link)}
+              className={`relative text-base font-medium tracking-wide transition-colors py-2 group ${
+                link.isRoute && location.pathname === link.href
+                  ? 'text-cyan-400'
+                  : 'text-gray-300 hover:text-cyan-400'
+              }`}
             >
               <span className="relative z-10">{link.name}</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
@@ -82,7 +112,7 @@ const Navbar: React.FC = () => {
           ))}
           <a
             href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
+            onClick={handleCTA}
             className="px-8 py-3 bg-transparent border-2 border-cyan-400 text-cyan-400 text-sm font-bold tracking-widest rounded hover:bg-cyan-400 hover:text-black transition-all duration-300 glow-box uppercase"
           >
             Lavora con me
@@ -93,7 +123,7 @@ const Navbar: React.FC = () => {
         <button
           className="md:hidden text-white hover:text-cyan-400 transition-colors p-2"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-label={isOpen ? 'Chiudi menu' : 'Apri menu'}
         >
           {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
@@ -101,21 +131,35 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-dark-900/95 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute top-full left-0 w-full bg-dark-900/98 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="flex flex-col p-6 space-y-6 items-center text-center">
+        <div className="flex flex-col p-6 space-y-2 items-center text-center">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="text-xl font-medium text-gray-300 hover:text-cyan-400 transition-all w-full py-2"
+              onClick={(e) => handleNavClick(e, link)}
+              className={`text-lg font-medium transition-all w-full py-3 rounded-lg hover:bg-white/5 ${
+                link.isRoute && location.pathname === link.href
+                  ? 'text-cyan-400'
+                  : 'text-gray-300 hover:text-cyan-400'
+              }`}
             >
               {link.name}
             </a>
           ))}
+          {/* CTA mobile */}
+          <div className="w-full pt-4 border-t border-white/10 mt-2">
+            <a
+              href="#contact"
+              onClick={handleCTA}
+              className="block w-full py-4 bg-cyan-400 text-black font-display font-bold tracking-widest rounded-lg hover:bg-cyan-300 transition-all duration-300 text-sm uppercase text-center"
+            >
+              Lavora con me
+            </a>
+          </div>
         </div>
       </div>
     </nav>

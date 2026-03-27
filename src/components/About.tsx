@@ -15,21 +15,6 @@ const About: React.FC = () => {
 
               {/* Card header */}
               <div className="flex items-center gap-3 mb-8">
-                <div className="relative w-10 h-10 flex-shrink-0">
-                  <div className="w-10 h-10 rounded-xl p-[1.5px] bg-gradient-to-br from-cyan-400 to-purple-500">
-                    <picture>
-                      <source srcSet="/mauro.webp" type="image/webp" />
-                      <img
-                        src="/mauro_optimized.jpg"
-                        alt="Mauro Ceccarelli"
-                        width={40}
-                        height={40}
-                        className="w-full h-full rounded-[10px] object-cover object-top"
-                      />
-                    </picture>
-                  </div>
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-dark-900" />
-                </div>
                 <div className="min-w-0">
                   <h4 className="text-white font-bold text-sm truncate">Mauro Ceccarelli</h4>
                   <p className="text-gray-500 text-xs flex items-center gap-1">

@@ -91,7 +91,7 @@ const LeadMagnet: React.FC = () => {
     }
 
     return (
-        <div className="mt-10 p-6 rounded-2xl bg-dark-800/60 border border-white/5 backdrop-blur-sm max-w-lg">
+        <div id="lead-magnet" className="mt-10 p-6 rounded-2xl bg-dark-800/60 border border-white/5 backdrop-blur-sm max-w-lg">
             <div className="flex items-start gap-3 mb-4">
                 <div className="p-2 bg-cyan-400/10 rounded-lg flex-shrink-0">
                     <FileText className="h-5 w-5 text-cyan-400" />

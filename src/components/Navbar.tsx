@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavLink {
@@ -110,6 +110,22 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
             </a>
           ))}
+          <a
+            href="#lead-magnet"
+            onClick={(e) => {
+              e.preventDefault();
+              if (location.pathname !== '/') {
+                navigate('/#lead-magnet');
+              } else {
+                const el = document.getElementById('lead-magnet');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="flex items-center gap-2 px-5 py-3 bg-green-400/10 border border-green-400/30 text-green-400 text-sm font-bold tracking-wide rounded hover:bg-green-400/20 hover:border-green-400 transition-all duration-300 uppercase whitespace-nowrap"
+          >
+            <Download size={14} />
+            7 Errori Gratis
+          </a>
           <a
             href="#contact"
             onClick={handleCTA}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Layout, Video } from 'lucide-react';
+import { ExternalLink, Github, Layout, Video, Car, Scissors } from 'lucide-react';
 
 const projects = [
   {
@@ -35,6 +35,40 @@ const projects = [
     link: "https://demo-videomaker.vercel.app/",
     github: "#",
     imageStyle: "object-cover object-center"
+  },
+  {
+    title: "Nova Motors - Concessionaria Auto Premium",
+    category: "Sito Concessionaria + Chatbot",
+    description: "Sito vetrina per concessionaria di auto usate certificate premium ad Ascoli Piceno. Chatbot deterministico per qualificazione lead e gestione richieste di permuta e finanziamento.",
+    features: [
+      "🤖 Chatbot deterministico per permuta, finanziamento e info veicoli",
+      "🏎️ Catalog auto usate premium con schede dettagliate",
+      "📍 SEO locale ottimizzato con Schema.org AutoDealer"
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Chatbot deterministico", "Schema.org", "SEO locale"],
+    image: "/projects/nova-motors.png",
+    fallbackImage: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&auto=format&fit=crop",
+    icon: <Car size={20} />,
+    link: "https://egocars.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover object-center"
+  },
+  {
+    title: "Aura Style Studio - Salone Unisex",
+    category: "Sito Parrucchiere + AI + Gestionale",
+    description: "Piattaforma completa per salone unisex: chatbot AI con LLM per assistenza clienti, sistema di prenotazione online e dashboard gestionale per la gestione degli appuntamenti.",
+    features: [
+      "🧠 Chatbot AI (LLM) per assistenza e consulenza stile 24/7",
+      "📅 Sistema prenotazioni online con selezione servizio/data/ora",
+      "🖥️ Dashboard gestionale per amministrazione appuntamenti"
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "LLM Integration", "Booking System", "Admin Dashboard"],
+    image: "/projects/aura-style.png",
+    fallbackImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop",
+    icon: <Scissors size={20} />,
+    link: "https://sito-parrucchieri.vercel.app/",
+    github: "#",
+    imageStyle: "object-cover object-top"
   }
 ];
 

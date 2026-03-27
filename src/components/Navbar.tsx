@@ -169,11 +169,12 @@ const Navbar: React.FC = () => {
           {/* CTA mobile */}
           <div className="w-full pt-4 border-t border-white/10 mt-2">
             <a
-              href="#contact"
-              onClick={handleCTA}
+              href="https://wa.me/393480029661"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full py-4 bg-cyan-400 text-black font-display font-bold tracking-widest rounded-lg hover:bg-cyan-300 transition-all duration-300 text-sm uppercase text-center"
             >
-              Lavora con me
+              WhatsApp
             </a>
           </div>
         </div>

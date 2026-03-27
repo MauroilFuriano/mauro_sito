@@ -216,11 +216,6 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Scarcity Badge */}
-          <div className="hero-fade-in hero-delay-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-500/30 bg-red-500/5 text-xs font-bold text-red-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-            Solo 2 posti disponibili ad Aprile
-          </div>
 
           {/* CTA Buttons */}
           <div className="hero-fade-in hero-delay-4 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">

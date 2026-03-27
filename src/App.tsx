@@ -8,6 +8,8 @@ const SaasLanding = lazy(() => import('./pages/SaasLanding'));
 const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
 const PromoPasqua = lazy(() => import('./pages/PromoPasqua'));
 const FAQPage = lazy(() => import('./pages/FAQPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 
 const Loading = () => (
   <div className="min-h-screen bg-dark-950 flex items-center justify-center">
@@ -41,6 +43,8 @@ const App: React.FC = () => {
             <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
             <Route path="/promo-pasqua" element={<PromoPasqua />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           </Routes>
         </Suspense>
       </Router>

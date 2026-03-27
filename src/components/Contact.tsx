@@ -20,6 +20,7 @@ const Contact: React.FC = () => {
     message: ''
   });
 
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -42,6 +43,10 @@ const Contact: React.FC = () => {
 
     if (!formData.message.trim()) {
       newErrors.message = 'Il messaggio è obbligatorio';
+    }
+
+    if (!privacyAccepted) {
+      newErrors.privacy = 'Devi accettare la privacy policy per inviare il messaggio';
     }
 
     setErrors(newErrors);
@@ -251,6 +256,30 @@ const Contact: React.FC = () => {
                 {errors.message && (
                   <p className="text-red-400 text-xs flex items-center gap-1 mt-1 animate-pulse">
                     <AlertCircle size={12} /> {errors.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    className="mt-1 w-4 h-4 accent-cyan-400 cursor-pointer flex-shrink-0"
+                  />
+                  <label htmlFor="privacy" className="text-gray-400 text-xs leading-relaxed cursor-pointer">
+                    Ho letto e accetto la{' '}
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
+                      Privacy Policy
+                    </a>.
+                    {' '}I miei dati saranno trattati per rispondere alla mia richiesta.
+                  </label>
+                </div>
+                {errors.privacy && (
+                  <p className="text-red-400 text-xs flex items-center gap-1 animate-pulse">
+                    <AlertCircle size={12} /> {errors.privacy}
                   </p>
                 )}
               </div>

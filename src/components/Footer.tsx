@@ -66,8 +66,13 @@ const Footer: React.FC = () => {
           </a>
         </div>
 
-        <div className="text-gray-500 text-sm md:text-center w-full md:w-auto text-center order-last md:order-none mt-4 md:mt-0">
-          &copy; {new Date().getFullYear()} Mauro.exe. Tutti i Sistemi Operativi.
+        <div className="text-gray-500 text-sm md:text-center w-full md:w-auto text-center order-last md:order-none mt-4 md:mt-0 space-y-1">
+          <p>&copy; {new Date().getFullYear()} Mauro.exe. Tutti i Sistemi Operativi.</p>
+          <p className="flex items-center justify-center gap-3 text-xs">
+            <a href="/privacy-policy" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+            <span>·</span>
+            <a href="/cookie-policy" className="hover:text-cyan-400 transition-colors">Cookie Policy</a>
+          </p>
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-end">

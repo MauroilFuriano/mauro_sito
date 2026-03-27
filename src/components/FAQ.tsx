@@ -135,7 +135,9 @@ const FAQ: React.FC = () => {
                   <p className="text-gray-500 text-xs leading-relaxed">{pkg.desc}</p>
                 </div>
                 <a
-                  href="#contact"
+                  href={`https://wa.me/393480029661?text=Ciao%20Mauro!%20Sono%20interessato%20al%20pacchetto%20${encodeURIComponent(pkg.label)}%20e%20vorrei%20un%20preventivo.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`mt-auto text-xs font-bold ${c.text} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1`}
                 >
                   Richiedi preventivo →

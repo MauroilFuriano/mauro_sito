@@ -73,11 +73,16 @@ const About: React.FC = () => {
               <br />
               <span className="text-gray-500">nelle Marche.</span>
             </h3>
+            <p className="text-gray-400 leading-relaxed mb-4">
+              Costruisco tutto da <span className="text-white font-medium">zero in JavaScript, React e Python</span> —
+              niente Shopify, niente WordPress, niente template uguali a quelli di altri mille siti.
+              Ogni riga di codice è scritta per te.
+            </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Aiuto imprenditori e aziende a trasformare la loro presenza online in uno
-              strumento che genera risultati concreti. Niente template, niente soluzioni
-              preconfezionate — solo siti web e chatbot AI costruiti su misura, progettati
-              per convertire visitatori in clienti e automatizzare il tuo business.
+              Il mio punto di forza? <span className="text-cyan-400 font-medium">Portare l'AI nelle PMI italiane.</span>{' '}
+              Mentre i siti dei tuoi competitor restano statici da anni, i miei clienti hanno
+              assistenti virtuali che rispondono a ogni ora, sistemi che qualificano lead in automatico
+              e e-commerce che vendono mentre loro dormono.
             </p>
 
             {/* Value Proposition Cards */}

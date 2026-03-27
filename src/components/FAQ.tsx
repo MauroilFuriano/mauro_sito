@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Globe, Bot, Smartphone, Zap, ShoppingCart, Code2 } from 'lucide-react';
+import { ChevronDown, Globe, Bot, Smartphone, Zap, ShoppingCart } from 'lucide-react';
 
 /* ── Pricing Packages ─────────────────────────────────────── */
 
@@ -76,11 +76,11 @@ const faqs = [
   },
   {
     q: 'Cosa include la consegna?',
-    a: 'Codice sorgente completo su repository Git, deploy in produzione (Vercel/hosting a scelta), SEO on-page ottimizzata, documentazione tecnica. Per i chatbot AI: configurazione completa del modello LLM, training sulla knowledge base, pannello di amministrazione per aggiornare le risposte.',
+    a: 'Sito pubblicato e funzionante, dominio, hosting e certificato SSL gestiti da me — inclusi nel progetto e rinnovati annualmente con una quota concordata. SEO on-page ottimizzata, test cross-browser e cross-device. Per i chatbot AI: configurazione del modello LLM, training sulla tua knowledge base, pannello admin per aggiornare le risposte. Il codice sorgente viene consegnato su richiesta agli sviluppatori o in caso di collaborazione white-label.',
   },
   {
     q: 'Posso richiedere modifiche dopo la consegna?',
-    a: 'Sì. Offro un periodo di 14 giorni di correzioni incluse. Per modifiche aggiuntive o evolutive la tariffa oraria è €50–65/h per sviluppo standard, €70–90/h per integrazioni AI. Consegno il codice: non sei mai bloccato da me, puoi passarlo a chiunque.',
+    a: 'Sì. Ogni progetto include 2 round di revisione dopo la consegna — per correzioni, aggiustamenti grafici o piccole modifiche ai contenuti. Superate le due revisioni, si applica una tariffa oraria per le modifiche aggiuntive o evolutive.',
   },
   {
     q: 'Posso collaborare anche se sono un\'agenzia web?',
@@ -145,23 +145,6 @@ const FAQ: React.FC = () => {
           })}
         </div>
 
-        {/* Tariffe orarie note */}
-        <div className="flex flex-wrap items-center justify-center gap-6 mb-16">
-          <div className="flex items-center gap-2 text-sm text-gray-400">
-            <Code2 size={14} className="text-cyan-400" />
-            Sviluppo web · <span className="text-white font-bold">€50–65/h</span>
-          </div>
-          <div className="w-px h-5 bg-white/10 hidden sm:block" />
-          <div className="flex items-center gap-2 text-sm text-gray-400">
-            <Bot size={14} className="text-purple-400" />
-            Integrazione AI · <span className="text-white font-bold">€70–90/h</span>
-          </div>
-          <div className="w-px h-5 bg-white/10 hidden sm:block" />
-          <div className="flex items-center gap-2 text-sm text-gray-400">
-            <Zap size={14} className="text-yellow-400" />
-            Day rate · <span className="text-white font-bold">€380–520/gg</span>
-          </div>
-        </div>
 
         {/* Accordion FAQ */}
         <div className="max-w-3xl mx-auto space-y-3">

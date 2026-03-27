@@ -131,9 +131,10 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 w-full bg-dark-900/98 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
+        className={`md:hidden absolute top-full left-0 w-full border-b border-white/10 overflow-hidden transition-all duration-300 ${
           isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{ backgroundColor: '#0d0d1a' }}
       >
         <div className="flex flex-col p-6 space-y-2 items-center text-center">
           {navLinks.map((link) => (

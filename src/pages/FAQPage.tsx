@@ -109,7 +109,7 @@ const FAQPage: React.FC = () => {
             </h1>
             <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto leading-relaxed">
               Prezzi chiari, tempi certi, zero costi nascosti. Se hai ancora dubbi,{' '}
-              <a href="/#contact" className="text-cyan-400 font-medium hover:underline">scrivimi direttamente</a>.
+              <a href="https://wa.me/393480029661?text=Ciao%20Mauro!%20Ho%20letto%20le%20FAQ%20e%20vorrei%20un%20preventivo." target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-medium hover:underline">scrivimi su WhatsApp</a>.
             </p>
 
             {/* Scarcità + social proof */}

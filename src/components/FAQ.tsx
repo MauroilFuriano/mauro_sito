@@ -179,10 +179,12 @@ const FAQ: React.FC = () => {
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm mb-4">Non hai trovato risposta alla tua domanda?</p>
           <a
-            href="#contact"
+            href="https://wa.me/393480029661?text=Ciao%20Mauro!%20Ho%20letto%20le%20FAQ%20e%20vorrei%20un%20preventivo."
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-400/10 border border-cyan-400/30 text-cyan-400 font-bold text-sm rounded-lg hover:bg-cyan-400 hover:text-black transition-all duration-300"
           >
-            Scrivimi direttamente →
+            Scrivimi su WhatsApp →
           </a>
         </div>
 

@@ -88,9 +88,12 @@ const Navbar: React.FC = () => {
                        group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)]
                        group-hover:scale-110"
           />
-          <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
-            MAURO.EXE
-          </span>
+          <div className="flex flex-col">
+            <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
+              MAURO.EXE
+            </span>
+            <span className="text-xs text-gray-400 tracking-wide hidden sm:block">Sviluppatore Web Ascoli Piceno</span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}

@@ -228,7 +228,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="w-full px-2 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-2 group animate-glow-pulse text-xs sm:text-sm md:text-base text-center"
             >
-              ANALISI GRATUITA DEL TUO SITO (30 min)
+              ANALISI GRATUITA DEL TUO SITO<br className="sm:hidden" /><span className="sm:inline"> (30 min)</span>
               <ChevronRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
             <a

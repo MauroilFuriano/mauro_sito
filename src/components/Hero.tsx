@@ -171,7 +171,7 @@ const Hero: React.FC = () => {
           {/* Badge */}
           <div className="hero-fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
             <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
-            Sviluppatore Web Ascoli Piceno
+            Solo 2 slot liberi — Aprile 2026
           </div>
 
           {/* Headline */}
@@ -228,7 +228,7 @@ const Hero: React.FC = () => {
               href="#contact"
               className="w-full px-2 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-2 group animate-glow-pulse text-xs sm:text-sm md:text-base text-center"
             >
-              OTTIENI UNA DEMO GRATUITA
+              ANALISI GRATUITA DEL TUO SITO (30 min)
               <ChevronRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
             <a

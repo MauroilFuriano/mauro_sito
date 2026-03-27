@@ -8,10 +8,20 @@ interface ServiceCardProps {
   features: string[];
   delay: string;
   startingPrice: string;
+  originalPrice?: string;
+  isMostRequested?: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, delay, startingPrice }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, delay, startingPrice, originalPrice, isMostRequested }) => (
   <div className="group relative p-[1px] rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-cyan-400/50 hover:to-transparent transition-all duration-500 hover:scale-[1.02]">
+    {isMostRequested && (
+      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+        <span className="bg-cyan-400 text-dark-900 text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_16px_rgba(0,229,255,0.5)]">
+          PIÙ RICHIESTO
+        </span>
+      </div>
+    )}
+
     <div className="bg-dark-900 rounded-2xl p-8 h-full relative z-10 flex flex-col items-start transition-colors">
       <div className="w-14 h-14 bg-dark-800 rounded-lg flex items-center justify-center mb-6 border border-white/5 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
         <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
@@ -40,7 +50,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, fea
       <a href="#contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
         PARLIAMONE ORA <ArrowRight size={16} />
       </a>
-      <p className="text-xs text-gray-600 mt-3">· {startingPrice}</p>
+      <p className="text-xs text-gray-600 mt-3">
+        {originalPrice && (
+          <span className="line-through text-gray-600 mr-1">{originalPrice}</span>
+        )}
+        · {startingPrice}
+      </p>
+      <p className="text-xs text-gray-500 mt-2">✓ Prima call gratuita · ✓ Preventivo senza impegno</p>
     </div>
 
     {/* Glow Underlay Sober */}
@@ -83,6 +99,8 @@ const Services: React.FC = () => {
             ]}
             delay="100"
             startingPrice="A partire da €3.500"
+            originalPrice="€4.200"
+            isMostRequested
           />
           <ServiceCard
             icon={<Smartphone size={32} />}

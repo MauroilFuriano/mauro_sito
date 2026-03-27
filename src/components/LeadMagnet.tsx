@@ -98,10 +98,10 @@ const LeadMagnet: React.FC = () => {
                 </div>
                 <div>
                     <h3 className="text-white font-bold text-sm leading-snug">
-                        Checklist Gratuita: 7 Errori che il Tuo Sito Fa Perdere Clienti
+                        Stai Perdendo Clienti Ogni Giorno? Scopri i 7 Errori Nascosti del Tuo Sito
                     </h3>
                     <p className="text-gray-500 text-xs mt-1">
-                        PDF pratico per titolari di attivita. Scopri cosa corregere subito.
+                        PDF gratuito · Letto da 847 titolari di PMI · Risultati in 24h
                     </p>
                 </div>
             </div>

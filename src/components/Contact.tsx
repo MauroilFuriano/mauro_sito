@@ -41,10 +41,6 @@ const Contact: React.FC = () => {
       newErrors.user_email = 'Formato email non valido';
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Il messaggio è obbligatorio';
-    }
-
     if (!privacyAccepted) {
       newErrors.privacy = 'Devi accettare la privacy policy per inviare il messaggio';
     }
@@ -243,7 +239,7 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-xs font-bold text-gray-500 uppercase tracking-wider">Messaggio</label>
+                <label htmlFor="message" className="text-xs font-bold text-gray-500 uppercase tracking-wider">Messaggio <span className="normal-case font-normal text-gray-600">(opzionale)</span></label>
                 <textarea
                   id="message"
                   name="message"

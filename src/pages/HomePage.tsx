@@ -220,16 +220,6 @@ const HomePage: React.FC = () => {
             {/* ChatBot - posizionato in basso a destra */}
             <ChatBot />
 
-            {/* WhatsApp Floating Button - Che segue lo scorrere della pagina */}
-            <a
-                href="https://wa.me/393480029661?text=Ciao%20Mauro!%20Vorrei%20maggiori%20informazioni%20sui%20tuoi%20servizi."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="fixed bottom-32 right-8 z-40 p-3 rounded-full bg-cyan-400/10 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all duration-300 backdrop-blur-sm glow-box opacity-100 translate-y-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] hover:bg-green-400 hover:border-green-400 hover:text-white"
-                aria-label="Contattami su WhatsApp"
-            >
-                <WhatsappIcon size={24} />
-            </a>
 
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none z-[-1]">

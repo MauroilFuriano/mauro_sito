@@ -125,7 +125,7 @@ const Navbar: React.FC = () => {
             href="https://wa.me/393480029661"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 hover:border-green-400 transition-all duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-400/10 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all duration-300 glow-box"
             aria-label="WhatsApp"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

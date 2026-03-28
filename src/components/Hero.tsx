@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-24 md:pt-32 overflow-hidden">
 
       {/* ── Background Layers ──────────────────────────── */}
 
@@ -163,22 +163,22 @@ const Hero: React.FC = () => {
       </div>
 
       {/* ── Content Grid ───────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full min-w-0">
 
         {/* Left Column */}
-        <div className="space-y-6">
+        <div className="space-y-6 min-w-0 w-full">
 
           {/* Badge */}
-          <div className="hero-fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
+          <div className="hero-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase max-w-full">
             <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
             Solo 2 slot liberi — Aprile 2026
           </div>
 
           {/* Headline */}
-          <h1 className="hero-fade-in hero-delay-1 font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] text-white">
+          <h1 className="hero-fade-in hero-delay-1 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] text-white break-words w-full">
             Ogni giorno senza un sito ottimizzato{' '}
             <span
-              className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text"
+              className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text break-words"
               data-text="perdi clienti ai competitor."
             >
               perdi clienti ai competitor.
@@ -186,7 +186,7 @@ const Hero: React.FC = () => {
           </h1>
 
           {/* Subtext */}
-          <p className="hero-fade-in hero-delay-2 text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed">
+          <p className="hero-fade-in hero-delay-2 text-base md:text-lg lg:text-xl text-gray-400 w-full max-w-lg leading-relaxed break-words">
             Sono un <span className="text-cyan-400 font-bold">sviluppatore web</span> di Ascoli Piceno. Creo{' '}
             <span className="text-cyan-400 font-bold">siti web professionali</span> e{' '}
             <span className="text-cyan-400 font-bold">chatbot AI</span> per aziende nelle Marche e in tutta Italia.
@@ -218,7 +218,7 @@ const Hero: React.FC = () => {
 
 
           {/* CTA Buttons */}
-          <div className="hero-fade-in hero-delay-4 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[100vw] overflow-hidden pr-6">
+          <div className="hero-fade-in hero-delay-4 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full overflow-hidden">
             <a
               href="#contact"
               className="w-full px-2 py-3 md:px-8 md:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-2 group animate-glow-pulse text-xs sm:text-sm md:text-base text-center"

@@ -136,7 +136,7 @@ const LeadMagnet: React.FC = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-5 py-3 bg-cyan-400 text-black font-bold text-sm rounded-lg hover:bg-cyan-300 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_20px_rgba(0,229,255,0.5)] disabled:opacity-70"
+                    className="px-5 py-3 bg-cyan-400 text-black font-bold text-sm rounded-lg hover:bg-cyan-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_20px_rgba(0,229,255,0.5)] disabled:opacity-70 shrink-0"
                 >
                     {isSubmitting ? (
                         <Loader2 size={16} className="animate-spin" />

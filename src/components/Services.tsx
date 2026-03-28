@@ -22,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, fea
       </div>
     )}
 
-    <div className="bg-dark-900 rounded-2xl p-8 h-full relative z-10 flex flex-col items-start transition-colors">
+    <div className="bg-dark-900 rounded-2xl p-5 sm:p-8 h-full relative z-10 flex flex-col items-start transition-colors">
       <div className="w-14 h-14 bg-dark-800 rounded-lg flex items-center justify-center mb-6 border border-white/5 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
         <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
           {icon}
@@ -67,15 +67,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, fea
 const Services: React.FC = () => {
   return (
     <section id="services" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Le Mie Competenze</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-black text-white glow-text">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
             Soluzioni Digitali
           </h3>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ServiceCard
             icon={<Globe size={32} />}
             title="Sviluppo Web"

@@ -118,10 +118,10 @@ const Portfolio: React.FC = () => {
         <div className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Il Mio Lavoro</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-black text-white glow-text">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
             Progetti Recenti
           </h3>
         </div>
@@ -166,7 +166,7 @@ const Portfolio: React.FC = () => {
                 <h4 className="text-xl font-display font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                   {project.title}
                 </h4>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed whitespace-pre-line">
+                <p className="text-gray-400 text-sm mb-4 leading-relaxed break-words">
                   {project.description}
                 </p>
 

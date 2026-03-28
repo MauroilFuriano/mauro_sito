@@ -97,14 +97,15 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 bg-dark-800 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-12">
 
           {/* Contact Info */}
           <div>
             <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Contattami</h2>
-            <h3 className="text-4xl font-display font-bold text-white mb-6">
-              Pronto a Trasformare <br /> <span className="text-cyan-400">il Tuo Business?</span>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6 break-words">
+              Pronto a Trasformare{' '}
+              <span className="text-cyan-400">il Tuo Business?</span>
             </h3>
             <p className="text-gray-400 mb-6 max-w-md whitespace-pre-line">
               Prenota un'analisi gratuita di 30 minuti.
@@ -162,7 +163,7 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-dark-900 p-8 rounded-2xl border border-white/5 relative shadow-2xl">
+          <div className="bg-dark-900 p-5 sm:p-8 rounded-2xl border border-white/5 relative shadow-2xl">
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <Send size={100} />
             </div>
@@ -184,7 +185,7 @@ const Contact: React.FC = () => {
             )}
 
             <form ref={form} className="space-y-6 relative z-10" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="user_name" className="text-xs font-bold text-gray-500 uppercase tracking-wider">Nome</label>
                   <input

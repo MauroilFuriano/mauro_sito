@@ -4,7 +4,7 @@ import { Palette, BrainCircuit, TrendingUp, MapPin } from 'lucide-react';
 const About: React.FC = () => {
   return (
     <section id="about" className="py-24 bg-dark-800 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
 
           {/* ── Left Column — Metrics Dashboard ──────────── */}
@@ -78,7 +78,7 @@ const About: React.FC = () => {
                 <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-1 text-sm uppercase">
                   Chi Sono?
                 </h2>
-                <h3 className="text-3xl md:text-4xl font-display font-bold text-white leading-tight" style={{ textWrap: 'balance' }}>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white leading-tight break-words" style={{ textWrap: 'balance' }}>
                   Il Tuo Partner Digitale{' '}
                   <span className="text-gray-500">nelle Marche.</span>
                 </h3>

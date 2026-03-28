@@ -5,7 +5,7 @@ import { Github, Linkedin, Terminal, Facebook, Instagram, MapPin, Phone } from '
 const Footer: React.FC = () => {
   return (
     <footer className="bg-dark-950 border-t border-white/5 py-12">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Info Locali */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 text-gray-400 text-sm">
           <div className="flex items-center gap-2">

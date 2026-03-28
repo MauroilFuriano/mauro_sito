@@ -108,44 +108,6 @@ const structuredData = {
         "https://github.com/mauroceccarelli",
         "https://www.instagram.com/mauro.exe"
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.mauroceccarelli.it/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quanto costa un sito web professionale?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un sito web professionale parte da €1.200. Il prezzo varia in base alla complessità: sito vetrina, e-commerce o app personalizzata. La consulenza iniziale è gratuita e senza impegno."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto tempo ci vuole per realizzare un sito web?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "In media 2-3 settimane per un sito vetrina, 3-4 settimane per un chatbot AI, 4-8 settimane per un'app o SaaS complessa."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quali tecnologie usa Mauro Ceccarelli?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "React, TypeScript, Vite, Tailwind CSS, Node.js, Python, Gemini AI. Niente WordPress o template: ogni progetto è scritto in codice custom."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Lavorate solo nelle Marche o anche in tutta Italia?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ha sede ad Ascoli Piceno ma lavora da remoto per clienti in tutta Italia. Ha completato progetti da Milano a Napoli."
-          }
-        }
-      ]
     }
   ]
 };

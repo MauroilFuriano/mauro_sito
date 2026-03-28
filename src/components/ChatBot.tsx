@@ -37,40 +37,38 @@ const SYSTEM_PROMPT = `Sei M.A.U.R.O. Bot (Modulo Assistenza Utenti & Risposta O
 Esempi di prodotti realizzabili: Tutorial investimenti/crypto, Guide programmazione, Corsi marketing/AI, Dashboard obiettivi.
 
 ### 2. SVILUPPO WEB
-- **Landing Page (1 pagina)**: a partire da €350
-- **Sito Vetrina (3-5 pagine)**: a partire da €700
-- **Sito Vetrina + Blog**: a partire da €1.200
-- **Sito E-commerce base**: a partire da €1.800
-- **Sito E-commerce avanzato**: a partire da €3.500
-- **Web App personalizzata**: a partire da €2.500
+- **Landing Page (1 pagina)**: a partire da €800
+- **Sito Vetrina (4-6 pagine, responsive + SEO)**: a partire da €1.200
+- **Sito Vetrina professionale (animazioni + CMS)**: a partire da €2.000
+- **Sito E-commerce custom (fino a 100 prodotti, Stripe)**: a partire da €3.500
+- **Sito E-commerce professionale (integrazioni avanzate)**: a partire da €6.000
+- **E-commerce con automazioni AI**: a partire da €8.000
+- **Web App personalizzata**: a partire da €5.000
 
 Tecnologie: React, Next.js, TypeScript, Tailwind CSS, Node.js
 
 ### 3. CHATBOT & INTELLIGENZA ARTIFICIALE
-- **Chatbot base (risposte predefinite, FAQ)**: a partire da €500
-- **Chatbot AI semplice (Gemini/GPT, FAQ + contatti)**: a partire da €1.000
-- **Chatbot AI avanzato (conversazionale, integrazioni)**: a partire da €1.800
-- **Assistente virtuale completo per business**: a partire da €3.000
-- **Bot Telegram semplice (comandi, notifiche)**: a partire da €250
-- **Bot Telegram medio (automazioni, database)**: a partire da €500
-- **Bot Telegram avanzato (con AI integrato)**: a partire da €1.000
-- **Bot Trading/Crypto (analisi, segnali, AI)**: a partire da €2.000
+- **Chatbot AI con LLM (GPT-4o / Gemini / Claude)**: a partire da €3.500
+- **Chatbot AI con RAG (conosce i tuoi documenti aziendali)**: a partire da €6.000
+- **Agente AI multi-step con CRM integrato**: a partire da €10.000
+- **Bot Telegram semplice (comandi, notifiche)**: a partire da €500
+- **Bot Telegram avanzato (con AI integrato)**: a partire da €1.500
+- **Bot Trading/Crypto (analisi, segnali, AI)**: a partire da €2.500
 
-Tecnologie: Gemini AI, OpenAI GPT, Python, Telegram API, Node.js
+Nota: I costi API del modello AI (€35–100/mese) sono a carico del cliente.
+Tecnologie: Gemini AI, OpenAI GPT, Claude, Python, Telegram API, Node.js
 
 ### 4. APP PERSONALIZZATE
-- **App web semplice (dashboard, tool interno)**: a partire da €1.500
-- **App web media complessità**: a partire da €3.000
-- **App web complessa (multi-utente, admin panel)**: a partire da €5.000
-- **Automazioni e integrazioni API**: a partire da €500
-- **Trading Bot base**: a partire da €1.000
-- **Trading Bot avanzato (come Crypto Analyzer Pro)**: a partire da €2.500
+- **App web semplice (dashboard, tool interno)**: a partire da €2.500
+- **App web media complessità**: a partire da €5.000
+- **App web complessa (multi-utente, admin panel)**: a partire da €8.000
+- **Automazioni e integrazioni API**: a partire da €800
+- **Trading Bot avanzato**: a partire da €3.000
 
 ### 5. PACCHETTI COMBINATI (SCONTATI)
-- **Sito Vetrina + Chatbot base**: a partire da €1.000 (Risparmi ~€200)
-- **Sito Vetrina + Chatbot AI**: a partire da €1.800 (Risparmi ~€400)
-- **Sito completo + Chatbot AI + SEO base**: a partire da €2.500
-- **E-commerce + Chatbot assistenza**: a partire da €2.800
+- **Sito Vetrina + Chatbot AI**: a partire da €4.200 (Risparmi ~€300)
+- **Sito completo + Chatbot AI + SEO**: a partire da €5.500
+- **E-commerce + Chatbot assistenza AI**: a partire da €6.500
 - **Soluzione business completa**: preventivo personalizzato
 
 ### FATTORI CHE INFLUENZANO IL PREZZO

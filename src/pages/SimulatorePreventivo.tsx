@@ -396,10 +396,10 @@ export default function SimulatorePreventivo() {
           </div>
 
           {/* ── LAYOUT ─────────────────────────────────────────────────── */}
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,288px] xl:grid-cols-[1fr,320px] gap-8">
 
             {/* ── LEFT: Configuratore ────────────────────────────────── */}
-            <div className="flex-1 space-y-12">
+            <div className="space-y-12">
 
               {/* ① SCELTA BASE ──────────────────────────────────────── */}
               <section>
@@ -407,7 +407,7 @@ export default function SimulatorePreventivo() {
                 <div className="grid sm:grid-cols-2 gap-4 mt-4">
                   {/* Sito Vetrina */}
                   <button
-                    onClick={() => { setPath('vetrina'); setTemplateId(null); setChatbotOption('ai'); setExtras(new Set()); }}
+                    onClick={() => { setPath('vetrina'); setTemplateId(null); setChatbotOption('none'); setExtras(new Set()); }}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
                       path === 'vetrina'
                         ? 'border-cyan-400 bg-cyan-400/5 shadow-[0_0_24px_rgba(0,229,255,0.12)]'
@@ -826,7 +826,7 @@ export default function SimulatorePreventivo() {
             </div>{/* end left */}
 
             {/* ── RIGHT: Sidebar sticky ──────────────────────────────── */}
-            <div className="lg:w-72 xl:w-80 w-full lg:sticky lg:top-6 self-start">
+            <div className="lg:sticky lg:top-6 self-start w-full">
               <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
                 <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
                 <p className="text-xs font-bold text-orange-300 leading-snug">⚡ PROMO PASQUA –30% APPLICATA.<br />SOLO 3 POSTI RIMANENTI AD APRILE.</p>

@@ -163,6 +163,9 @@ const VETRINA_INCLUDED = [
   { label: 'Design Unico (No Template)',         sub: 'Interfaccia grafica studiata su misura per il tuo brand, diversa da qualsiasi competitor.' },
   { label: 'Mobile & Tablet First',             sub: 'Esperienza utente perfetta per smartphone, da dove arriva il 90% del tuo traffico.' },
   { label: 'Assistenza Post-Lancio (30 Giorni)', sub: 'Non ti lascio solo dopo la pubblicazione. Monitoraggio e fix inclusi.' },
+  { label: 'Vetrina Progetti / Servizi',        sub: 'Una sezione studiata per valorizzare al massimo i tuoi lavori o i tuoi servizi di punta.' },
+  { label: 'Integrazione Riprova Sociale',      sub: 'Sezione dedicata a recensioni e testimonial per trasformare i visitatori in clienti fiduciosi.' },
+  { label: 'Sezione FAQ Strategica',            sub: "Risposte alle domande frequenti posizionate per abbattere le obiezioni all'acquisto." },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

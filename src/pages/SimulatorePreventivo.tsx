@@ -940,22 +940,32 @@ export default function SimulatorePreventivo() {
           </div>{/* end layout */}
         </div>
 
-        {/* ── MOBILE STICKY BOTTOM BAR ───────────────────────────────────── */}
+        {/* ── FLOATING PRICE BAR — mobile: full-width bottom, desktop: card bottom-right ── */}
         {promoTotal > 0 && (
-          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d1a]/90 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
+          <div className={`
+            fixed z-50
+            bottom-0 left-0 right-0
+            bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10
+            p-4 flex items-center justify-between gap-4
+            lg:bottom-6 lg:left-auto lg:right-6 lg:w-80
+            lg:rounded-2xl lg:border lg:border-white/15 lg:shadow-2xl
+            transition-all duration-300
+            ${flashPromo ? 'lg:border-cyan-400/40 lg:shadow-cyan-400/10' : ''}
+          `}>
             <div>
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wide hidden lg:block mb-0.5">Preventivo live</p>
               <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>
-              <p className={`text-xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300 scale-105' : 'text-white'}`}>
+              <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300' : 'text-white'}`}>
                 €{animatedPromo.toLocaleString('it-IT')}
               </p>
-              {savings > 0 && <p className="text-green-400 text-[10px] font-bold">–€{savings.toLocaleString('it-IT')} risparmiati</p>}
+              {savings > 0 && <p className="text-green-400 text-[10px] font-bold">Risparmi €{animatedSavings.toLocaleString('it-IT')}</p>}
             </div>
             <button
               onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
               className="flex-shrink-0 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-black text-sm rounded-xl shadow-lg shadow-cyan-400/20"
             >
               <Zap size={14} />
-              Continua
+              Blocca
             </button>
           </div>
         )}

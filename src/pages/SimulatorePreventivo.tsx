@@ -92,7 +92,7 @@ const TEMPLATES: Template[] = [
     emoji: '🍽️',
     label: 'Ristorante / Pizzeria',
     tagline: 'Menu digitale + prenotazione tavoli — sala piena ogni sera.',
-    demoUrl: null,
+    demoUrl: 'https://ai-business-assistant-two.vercel.app/',
     chatbotOptions: [
       { id: 'none',  label: 'Nessun chatbot',           desc: 'Solo form prenotazione',                        price: 0 },
       { id: 'det',   label: 'Chatbot Deterministico',   desc: 'Risponde a menù, orari, prenotazioni',         price: P.chatbotDet },
@@ -217,6 +217,7 @@ export default function SimulatorePreventivo() {
   const [success, setSuccess]               = useState(false);
   const topRef                              = useRef<HTMLDivElement>(null);
   const formRef                             = useRef<HTMLDivElement>(null);
+  const [showMobileDetail, setShowMobileDetail] = useState(false);
 
   const template = TEMPLATES.find(t => t.id === templateId) ?? null;
 
@@ -945,22 +946,99 @@ export default function SimulatorePreventivo() {
 
         {/* ── MOBILE ONLY: floating bottom bar ──────────────────────────── */}
         {promoTotal > 0 && (
-          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
-            <div>
-              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wide hidden lg:block mb-0.5">Preventivo live</p>
-              <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>
-              <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300' : 'text-white'}`}>
-                €{animatedPromo.toLocaleString('it-IT')}
-              </p>
-              {savings > 0 && <p className="text-green-400 text-[10px] font-bold">Risparmi €{animatedSavings.toLocaleString('it-IT')}</p>}
+          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50">
+            {/* Pannello dettaglio espandibile */}
+            <AnimatePresence>
+              {showMobileDetail && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="bg-[#0d0d1a]/98 backdrop-blur-md border-t border-white/10 px-4 pt-4 pb-2 space-y-1.5 text-xs"
+                >
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Riepilogo voci</p>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Sito base</span>
+                    <span className="text-white font-bold">€{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                  </div>
+                  {path === 'template' && template && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">{template.emoji} {template.label}</span>
+                      <span className="text-gray-300">incluso</span>
+                    </div>
+                  )}
+                  {path === 'template' && template && chatbotOption !== 'none' && (() => {
+                    const cb = template.chatbotOptions.find(c => c.id === chatbotOption);
+                    return cb ? (
+                      <div className="flex justify-between">
+                        <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
+                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                      </div>
+                    ) : null;
+                  })()}
+                  {path === 'template' && template && [...extras].map(id => {
+                    const ex = template.extras.find(e => e.id === id);
+                    return ex ? (
+                      <div key={id} className="flex justify-between">
+                        <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
+                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                      </div>
+                    ) : null;
+                  })}
+                  {path === 'vetrina' && chatbotOption !== 'none' && (() => {
+                    const cb = VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption);
+                    return cb ? (
+                      <div className="flex justify-between">
+                        <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
+                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                      </div>
+                    ) : null;
+                  })()}
+                  {path === 'vetrina' && [...extras].map(id => {
+                    const ex = VETRINA_EXTRAS.find(e => e.id === id);
+                    return ex ? (
+                      <div key={id} className="flex justify-between">
+                        <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
+                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                      </div>
+                    ) : null;
+                  })}
+                  {[...globalAddons].filter(id => id !== 'seo').map(id => {
+                    const a = GLOBAL_ADDONS.find(x => x.id === id);
+                    return a ? (
+                      <div key={id} className="flex justify-between">
+                        <span className="text-gray-400 truncate max-w-[200px]">{a.label.split('—')[0].trim()}</span>
+                        <span className="text-cyan-400 font-bold">+€{disc(a.price)}</span>
+                      </div>
+                    ) : null;
+                  })}
+                  <div className="flex justify-between text-gray-600 pb-2 border-b border-white/10">
+                    <span>SEO Base & Lighthouse 98/100</span>
+                    <span className="text-green-400 font-bold">Gratis</span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Barra inferiore */}
+            <div className="bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
+              <button onClick={() => setShowMobileDetail(v => !v)} className="text-left flex-1">
+                <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>
+                <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300' : 'text-white'}`}>
+                  €{animatedPromo.toLocaleString('it-IT')}
+                </p>
+                {savings > 0 && <p className="text-green-400 text-[10px] font-bold">Risparmi €{animatedSavings.toLocaleString('it-IT')}</p>}
+                <p className="text-[10px] text-gray-600 mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
+              </button>
+              <button
+                onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                className="flex-shrink-0 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-black text-sm rounded-xl shadow-lg shadow-cyan-400/20"
+              >
+                <Zap size={14} />
+                Blocca
+              </button>
             </div>
-            <button
-              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-              className="flex-shrink-0 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-black text-sm rounded-xl shadow-lg shadow-cyan-400/20"
-            >
-              <Zap size={14} />
-              Blocca
-            </button>
           </div>
         )}
 

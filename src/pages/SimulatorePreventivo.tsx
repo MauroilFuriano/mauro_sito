@@ -378,14 +378,20 @@ export default function SimulatorePreventivo() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-sm font-bold mb-5">
               <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse inline-block" />
-              🔥 Solo 3 posti liberi ad Aprile 2026
+              ⚡ 2 posti disponibili ad Aprile — promo –30% in scadenza
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
-              Ogni Giorno Senza Sito<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Perdi Clienti.</span>
+              Ogni Giorno Senza Preventivo<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Stai Scegliendo il Buio.</span>
             </h1>
             <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
-              Configura il tuo sito in 2 minuti. Promo Pasqua <span className="text-cyan-400 font-bold">–30%</span> valida fino al 20 aprile.
+              Configura il sito dei tuoi sogni — ottieni il prezzo esatto{' '}
+              <span className="text-white font-bold">in 30 secondi, gratis</span>.<br />
+              Promo <span className="text-cyan-400 font-bold">–30%</span> attiva:{' '}
+              <span className="text-amber-400 font-bold">scade il 20 aprile 2026</span>.
+            </p>
+            <p className="text-xs text-gray-600 mt-3">
+              Nessuna carta di credito &nbsp;·&nbsp; Nessuna email richiesta per configurare &nbsp;·&nbsp; Zero impegno
             </p>
           </div>
 
@@ -604,8 +610,24 @@ export default function SimulatorePreventivo() {
                 <motion.section key={`step3-${templateId}`} {...reveal} style={{ overflow: 'hidden' }}>
                   <SectionLabel number={3} label={`Configura il tuo ${template.label}`} />
 
+                  {/* Sempre incluso */}
+                  <div className="mt-4 mb-6 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
+                    <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
+                    <div className="space-y-3">
+                      {VETRINA_INCLUDED.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                          <p className="text-xs leading-relaxed">
+                            <span className="text-white font-bold">{item.label}:</span>{' '}
+                            <span className="text-gray-400">{item.sub}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                   {/* Chatbot options */}
-                  <div className="mt-4 mb-6">
+                  <div className="mb-6">
                     <p className="text-sm font-bold text-gray-300 mb-3">Opzione Chatbot</p>
                     <div className="space-y-2">
                       {template.chatbotOptions.map(opt => (
@@ -804,7 +826,7 @@ export default function SimulatorePreventivo() {
             </div>{/* end left */}
 
             {/* ── RIGHT: Sidebar sticky ──────────────────────────────── */}
-            <div className="lg:w-72 xl:w-80 w-full lg:sticky lg:top-8 h-fit">
+            <div className="lg:w-72 xl:w-80 w-full lg:sticky lg:top-6 self-start">
               <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
                 <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
                 <p className="text-xs font-bold text-orange-300 leading-snug">⚡ PROMO PASQUA –30% APPLICATA.<br />SOLO 3 POSTI RIMANENTI AD APRILE.</p>

@@ -145,6 +145,27 @@ const GLOBAL_ADDONS = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
+// VETRINA OPTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+const VETRINA_CHATBOT_OPTIONS: ChatbotOption[] = [
+  { id: 'none', label: 'Nessun chatbot',         desc: 'Solo form contatto standard.',                                                                                                                      price: 0           },
+  { id: 'det',  label: 'Chatbot Deterministico', desc: 'Risponditore automatico H24. Filtra i contatti e risponde alle domande frequenti (orari, servizi) mentre tu lavori.',                               price: P.chatbotDet },
+  { id: 'ai',   label: 'Chatbot AI (LLM)',        desc: "Un'Intelligenza Artificiale addestrata sulla tua azienda. Dialoga in modo naturale, capisce le intenzioni del cliente e ti fissa appuntamenti.",  price: P.chatbotAI  },
+];
+
+const VETRINA_EXTRAS: ExtraOption[] = [
+  { id: 'gestionale', label: 'Cruscotto Direzionale (Admin Panel)', desc: "La tua area riservata. Visualizza e gestisci tutti i lead, i contatti e le conversazioni del chatbot da un'unica schermata intuitiva.", price: P.gestionale },
+];
+
+const VETRINA_INCLUDED = [
+  { label: 'SEO Base & Lighthouse 98/100',      sub: 'Sito fulmineo, ottimizzato per piacere a Google fin dal giorno zero.' },
+  { label: 'Dominio .it + Hosting Cloud (1 Anno)', sub: 'Server ad altissime prestazioni per non far mai aspettare i tuoi clienti.' },
+  { label: 'Design Unico (No Template)',         sub: 'Interfaccia grafica studiata su misura per il tuo brand, diversa da qualsiasi competitor.' },
+  { label: 'Mobile & Tablet First',             sub: 'Esperienza utente perfetta per smartphone, da dove arriva il 90% del tuo traffico.' },
+  { label: 'Assistenza Post-Lancio (30 Giorni)', sub: 'Non ti lascio solo dopo la pubblicazione. Monitoraggio e fix inclusi.' },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
 // ANIMATED PRICE HOOK
 // ─────────────────────────────────────────────────────────────────────────────
 function useAnimatedPrice(target: number) {
@@ -224,6 +245,11 @@ export default function SimulatorePreventivo() {
       if (cb) t += cb.price;
       template.extras.forEach(e => { if (extras.has(e.id)) t += e.price; });
     }
+    if (path === 'vetrina') {
+      const vcb = VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption);
+      if (vcb) t += vcb.price;
+      VETRINA_EXTRAS.forEach(e => { if (extras.has(e.id)) t += e.price; });
+    }
     GLOBAL_ADDONS.forEach(a => { if (globalAddons.has(a.id) && !a.locked) t += a.price; });
     return t;
   })();
@@ -252,8 +278,12 @@ export default function SimulatorePreventivo() {
     if (!validate()) return;
     setSubmitting(true);
 
-    const chatbotLabel = template?.chatbotOptions.find(c => c.id === chatbotOption)?.label ?? 'Nessuno';
-    const extrasLabel  = [...extras].map(id => template?.extras.find(x => x.id === id)?.label).filter(Boolean).join(', ');
+    const chatbotLabel = path === 'vetrina'
+      ? VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption)?.label ?? 'Nessuno'
+      : template?.chatbotOptions.find(c => c.id === chatbotOption)?.label ?? 'Nessuno';
+    const extrasLabel  = path === 'vetrina'
+      ? [...extras].map(id => VETRINA_EXTRAS.find(x => x.id === id)?.label).filter(Boolean).join(', ')
+      : [...extras].map(id => template?.extras.find(x => x.id === id)?.label).filter(Boolean).join(', ');
     const globalsLabel = [...globalAddons].filter(id => id !== 'seo').map(id => GLOBAL_ADDONS.find(a => a.id === id)?.label).filter(Boolean).join(', ');
 
     const waMsg = encodeURIComponent(
@@ -371,7 +401,7 @@ export default function SimulatorePreventivo() {
                 <div className="grid sm:grid-cols-2 gap-4 mt-4">
                   {/* Sito Vetrina */}
                   <button
-                    onClick={() => { setPath('vetrina'); setTemplateId(null); }}
+                    onClick={() => { setPath('vetrina'); setTemplateId(null); setChatbotOption('ai'); setExtras(new Set()); }}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
                       path === 'vetrina'
                         ? 'border-cyan-400 bg-cyan-400/5 shadow-[0_0_24px_rgba(0,229,255,0.12)]'
@@ -414,6 +444,113 @@ export default function SimulatorePreventivo() {
                   </button>
                 </div>
               </section>
+
+              {/* ② VETRINA — Incluso + Opzioni ──────────────────────── */}
+              <AnimatePresence>
+              {path === 'vetrina' && (
+                <motion.section key="step2-vetrina" {...reveal} style={{ overflow: 'hidden' }}>
+                  <SectionLabel number={2} label="Cosa ottieni con il Sito Vetrina" />
+
+                  {/* Sempre incluso */}
+                  <div className="mt-4 mb-7 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
+                    <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
+                    <div className="space-y-3">
+                      {VETRINA_INCLUDED.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                          <p className="text-xs leading-relaxed">
+                            <span className="text-white font-bold">{item.label}:</span>{' '}
+                            <span className="text-gray-400">{item.sub}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Chatbot options */}
+                  <div className="mb-6">
+                    <p className="text-sm font-bold text-gray-300 mb-1">Aggiungi un Assistente Virtuale</p>
+                    <p className="text-xs text-gray-500 mb-3">L'AI che lavora per te mentre dormi.</p>
+                    <div className="space-y-2">
+                      {VETRINA_CHATBOT_OPTIONS.map(opt => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setChatbotOption(opt.id)}
+                          className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
+                            chatbotOption === opt.id
+                              ? 'border-cyan-400/60 bg-cyan-400/5'
+                              : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                          }`}
+                        >
+                          <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
+                            chatbotOption === opt.id ? 'border-cyan-400' : 'border-white/30'
+                          }`}>
+                            {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-cyan-400" />}
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <p className="text-sm font-bold text-white">{opt.label}</p>
+                              {opt.id === 'ai' && (
+                                <span className="text-[10px] font-black text-red-400 bg-red-400/10 border border-red-400/30 px-1.5 py-0.5 rounded-full">🔥 SCELTA CONSIGLIATA</span>
+                              )}
+                            </div>
+                            <p className="text-xs text-gray-500 mt-0.5">{opt.desc}</p>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            {opt.price === 0 ? (
+                              <span className="text-gray-500 text-sm">Incluso</span>
+                            ) : (
+                              <div>
+                                <p className="text-[11px] text-gray-600 line-through">+€{opt.price.toLocaleString('it-IT')}</p>
+                                <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
+                                  +€{disc(opt.price).toLocaleString('it-IT')}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Extra: Admin Panel */}
+                  <div>
+                    <p className="text-sm font-bold text-gray-300 mb-1">Moduli Aggiuntivi</p>
+                    <p className="text-xs text-gray-500 mb-3">Potenzia il tuo sito con strumenti professionali.</p>
+                    <div className="space-y-2">
+                      {VETRINA_EXTRAS.map(ex => {
+                        const sel = extras.has(ex.id);
+                        return (
+                          <button
+                            key={ex.id}
+                            onClick={() => toggleExtra(ex.id)}
+                            className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
+                              sel ? 'border-purple-400/50 bg-purple-400/5' : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                            }`}
+                          >
+                            <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${
+                              sel ? 'border-purple-400 bg-purple-400' : 'border-white/30'
+                            }`}>
+                              {sel && <CheckCircle size={11} className="text-black" />}
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-sm font-bold text-white">{ex.label}</p>
+                              <p className="text-xs text-gray-500 mt-0.5">{ex.desc}</p>
+                            </div>
+                            <div className="text-right flex-shrink-0">
+                              <p className="text-[11px] text-gray-600 line-through">+€{ex.price.toLocaleString('it-IT')}</p>
+                              <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
+                                +€{disc(ex.price).toLocaleString('it-IT')}
+                              </p>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </motion.section>
+              )}
+              </AnimatePresence>
 
               {/* ② TEMPLATE SETTORE (solo se path = template) ────────── */}
               <AnimatePresence>
@@ -556,7 +693,7 @@ export default function SimulatorePreventivo() {
               <AnimatePresence>
               {path && (
                 <motion.section key="step4" {...reveal} style={{ overflow: 'hidden' }}>
-                  <SectionLabel number={path === 'template' && template ? 4 : 3} label="Aggiungi moduli al tuo sito" />
+                  <SectionLabel number={path === 'template' && template ? 4 : 3} label="Aggiungi moduli extra al tuo sito" />
                   <p className="text-gray-500 text-sm mt-1 mb-4">Il SEO base è sempre incluso gratis.</p>
                   <div className="space-y-2">
                     {GLOBAL_ADDONS.map(addon => {
@@ -700,6 +837,24 @@ export default function SimulatorePreventivo() {
                     })()}
                     {path === 'template' && template && [...extras].map(id => {
                       const ex = template.extras.find(e => e.id === id);
+                      return ex ? (
+                        <div key={id} className="flex justify-between">
+                          <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>
+                          <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                        </div>
+                      ) : null;
+                    })}
+                    {path === 'vetrina' && chatbotOption !== 'none' && (() => {
+                      const cb = VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption);
+                      return cb ? (
+                        <div className="flex justify-between">
+                          <span className="text-gray-400 truncate max-w-[150px]">{cb.label}</span>
+                          <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                        </div>
+                      ) : null;
+                    })()}
+                    {path === 'vetrina' && [...extras].map(id => {
+                      const ex = VETRINA_EXTRAS.find(e => e.id === id);
                       return ex ? (
                         <div key={id} className="flex justify-between">
                           <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>

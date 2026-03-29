@@ -372,7 +372,11 @@ export default function SimulatorePreventivo() {
           <div className="absolute bottom-0 right-[-10%] w-[40%] h-[35%] bg-purple-600/3 rounded-full blur-[120px]" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-10">
+        {/* ── lg: left scrolls, right sidebar sempre visibile ─────── */}
+        <div className="relative z-10 lg:flex lg:min-h-screen">
+
+          {/* ── LEFT: contenuto scorrevole ──────────────────────────── */}
+          <div className="flex-1 min-w-0 px-4 py-10 lg:pl-8 xl:pl-16 lg:pr-8">
 
           {/* ── HEADER ─────────────────────────────────────────────────── */}
           <div className="text-center mb-12">
@@ -395,11 +399,8 @@ export default function SimulatorePreventivo() {
             </p>
           </div>
 
-          {/* ── LAYOUT ─────────────────────────────────────────────────── */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr,288px] xl:grid-cols-[1fr,320px] gap-8">
-
-            {/* ── LEFT: Configuratore ────────────────────────────────── */}
-            <div className="space-y-12">
+          {/* ── CONFIGURATORE STEPS ─────────────────────────────────── */}
+          <div className="space-y-12">
 
               {/* ① SCELTA BASE ──────────────────────────────────────── */}
               <section>
@@ -823,11 +824,13 @@ export default function SimulatorePreventivo() {
               )}
               </AnimatePresence>
 
-            </div>{/* end left */}
+          </div>{/* end configuratore steps */}
+          </div>{/* end left scrollable */}
 
-            {/* ── RIGHT: Sidebar sticky ──────────────────────────────── */}
-            <div className="lg:sticky lg:top-6 self-start w-full">
-              <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
+          {/* ── RIGHT: sidebar sempre visibile (desktop) ──────────────── */}
+          <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0">
+          <div className="sticky top-0 h-screen overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8">
+              <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
                 <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
                 <p className="text-xs font-bold text-orange-300 leading-snug">⚡ PROMO PASQUA –30% APPLICATA.<br />SOLO 3 POSTI RIMANENTI AD APRILE.</p>
               </div>
@@ -935,23 +938,14 @@ export default function SimulatorePreventivo() {
                   ))}
                 </div>
               </div>
-            </div>
+          </div>{/* end sidebar scroll */}
+          </div>{/* end right sidebar */}
 
-          </div>{/* end layout */}
-        </div>
+        </div>{/* end lg:flex */}
 
-        {/* ── FLOATING PRICE BAR — mobile: full-width bottom, desktop: card bottom-right ── */}
+        {/* ── MOBILE ONLY: floating bottom bar ──────────────────────────── */}
         {promoTotal > 0 && (
-          <div className={`
-            fixed z-50
-            bottom-0 left-0 right-0
-            bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10
-            p-4 flex items-center justify-between gap-4
-            lg:bottom-6 lg:left-auto lg:right-6 lg:w-80
-            lg:rounded-2xl lg:border lg:border-white/15 lg:shadow-2xl
-            transition-all duration-300
-            ${flashPromo ? 'lg:border-cyan-400/40 lg:shadow-cyan-400/10' : ''}
-          `}>
+          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
             <div>
               <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wide hidden lg:block mb-0.5">Preventivo live</p>
               <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>

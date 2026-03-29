@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Loader2, Shield, Star, Zap, Clock, Lock, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
+
+const reveal = {
+  initial:  { opacity: 0, height: 0 },
+  animate:  { opacity: 1, height: 'auto', transition: { duration: 0.35, ease: 'easeOut' as const } },
+  exit:     { opacity: 0, height: 0,      transition: { duration: 0.25, ease: 'easeIn'  as const } },
+};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PREZZI (originali, prima dello sconto -30%)
@@ -188,13 +195,14 @@ export default function SimulatorePreventivo() {
   const [submitting, setSubmitting]         = useState(false);
   const [success, setSuccess]               = useState(false);
   const topRef                              = useRef<HTMLDivElement>(null);
+  const formRef                             = useRef<HTMLDivElement>(null);
 
   const template = TEMPLATES.find(t => t.id === templateId) ?? null;
 
   // Reset template-specific choices when template changes
   const selectTemplate = (id: TemplateId) => {
     setTemplateId(id);
-    setChatbotOption('none');
+    setChatbotOption('ai'); // Pre-seleziona chatbot AI (Status Quo Bias)
     setExtras(new Set());
   };
 
@@ -408,8 +416,9 @@ export default function SimulatorePreventivo() {
               </section>
 
               {/* ② TEMPLATE SETTORE (solo se path = template) ────────── */}
+              <AnimatePresence>
               {path === 'template' && (
-                <section>
+                <motion.section key="step2" {...reveal} style={{ overflow: 'hidden' }}>
                   <SectionLabel number={2} label="Scegli il tuo settore" />
                   <p className="text-gray-500 text-sm mt-1 mb-4">Clicca per selezionare. Ogni template è personalizzabile al 100%.</p>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -448,12 +457,14 @@ export default function SimulatorePreventivo() {
                       </button>
                     ))}
                   </div>
-                </section>
+                </motion.section>
               )}
+              </AnimatePresence>
 
               {/* ③ CONFIGURAZIONE (solo se template selezionato) ─────── */}
+              <AnimatePresence>
               {path === 'template' && template && (
-                <section>
+                <motion.section key={`step3-${templateId}`} {...reveal} style={{ overflow: 'hidden' }}>
                   <SectionLabel number={3} label={`Configura il tuo ${template.label}`} />
 
                   {/* Chatbot options */}
@@ -476,7 +487,12 @@ export default function SimulatorePreventivo() {
                             {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-cyan-400" />}
                           </div>
                           <div className="flex-1">
-                            <p className="text-sm font-bold text-white">{opt.label}</p>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <p className="text-sm font-bold text-white">{opt.label}</p>
+                              {opt.id === 'ai' && (
+                                <span className="text-[10px] font-black text-amber-400 bg-amber-400/10 border border-amber-400/30 px-1.5 py-0.5 rounded-full">MIGLIOR ROI</span>
+                              )}
+                            </div>
                             <p className="text-xs text-gray-500 mt-0.5">{opt.desc}</p>
                           </div>
                           <div className="text-right flex-shrink-0">
@@ -532,12 +548,14 @@ export default function SimulatorePreventivo() {
                       </div>
                     </div>
                   )}
-                </section>
+                </motion.section>
               )}
+              </AnimatePresence>
 
               {/* ④ ADD-ON GLOBALI (visibili se path scelto) ────────────── */}
+              <AnimatePresence>
               {path && (
-                <section>
+                <motion.section key="step4" {...reveal} style={{ overflow: 'hidden' }}>
                   <SectionLabel number={path === 'template' && template ? 4 : 3} label="Aggiungi moduli al tuo sito" />
                   <p className="text-gray-500 text-sm mt-1 mb-4">Il SEO base è sempre incluso gratis.</p>
                   <div className="space-y-2">
@@ -586,12 +604,15 @@ export default function SimulatorePreventivo() {
                       );
                     })}
                   </div>
-                </section>
+                </motion.section>
               )}
+              </AnimatePresence>
 
               {/* ⑤ FORM ─────────────────────────────────────────────── */}
+              <AnimatePresence>
               {path && (
-                <section>
+                <motion.section key="step5" {...reveal} style={{ overflow: 'hidden' }}>
+                <div ref={formRef}>
                   <SectionLabel number={path === 'template' && template ? 5 : 4} label="Blocca il tuo prezzo Pasqua" />
                   <div className="flex items-center gap-2 my-4 p-3 bg-amber-400/10 border border-amber-400/30 rounded-lg">
                     <Clock size={15} className="text-amber-400 flex-shrink-0" />
@@ -638,8 +659,10 @@ export default function SimulatorePreventivo() {
                     <p className="text-center text-gray-600 text-xs">No grazie, preferisco pagare il prezzo pieno</p>
                     <p className="text-center text-gray-600 text-xs flex items-center justify-center gap-1.5"><Lock size={10} /> I tuoi dati sono al sicuro. Nessuno spam.</p>
                   </form>
-                </section>
+                </div>
+                </motion.section>
               )}
+              </AnimatePresence>
 
             </div>{/* end left */}
 
@@ -739,6 +762,27 @@ export default function SimulatorePreventivo() {
 
           </div>{/* end layout */}
         </div>
+
+        {/* ── MOBILE STICKY BOTTOM BAR ───────────────────────────────────── */}
+        {promoTotal > 0 && (
+          <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d1a]/90 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>
+              <p className={`text-xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300 scale-105' : 'text-white'}`}>
+                €{animatedPromo.toLocaleString('it-IT')}
+              </p>
+              {savings > 0 && <p className="text-green-400 text-[10px] font-bold">–€{savings.toLocaleString('it-IT')} risparmiati</p>}
+            </div>
+            <button
+              onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="flex-shrink-0 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-black text-sm rounded-xl shadow-lg shadow-cyan-400/20"
+            >
+              <Zap size={14} />
+              Continua
+            </button>
+          </div>
+        )}
+
       </div>
     </>
   );

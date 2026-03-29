@@ -51,6 +51,7 @@ const COPY = {
         label: 'Fotografo',
         tagline: 'Portfolio che vende da solo — i clienti ti trovano e prenotano online.',
         price: 490,
+        demoUrl: 'https://demo-videomaker.vercel.app/',
       },
       {
         id: 'parruccheria',
@@ -58,6 +59,7 @@ const COPY = {
         label: 'Parruccheria / Beauty',
         tagline: 'Prenotazioni H24 — niente più telefonate perse, agenda sempre piena.',
         price: 490,
+        demoUrl: 'https://sito-parrucchieri.vercel.app/',
       },
       {
         id: 'hotel',
@@ -65,6 +67,7 @@ const COPY = {
         label: 'Hotel / B&B',
         tagline: 'Prenota dirette senza commissioni OTA — guadagni di più su ogni camera.',
         price: 590,
+        demoUrl: 'https://hotel-automatico.vercel.app/',
       },
       {
         id: 'ristorante',
@@ -72,6 +75,7 @@ const COPY = {
         label: 'Ristorante / Pizzeria',
         tagline: 'Menu digitale + prenotazioni online — sala piena ogni sera.',
         price: 490,
+        demoUrl: null,
       },
       {
         id: 'cantina',
@@ -79,6 +83,7 @@ const COPY = {
         label: 'Cantina / Agriturismo',
         tagline: 'Racconta il territorio, vendi vino online — turisti da tutta Italia.',
         price: 590,
+        demoUrl: 'https://sitodemovini.vercel.app/',
       },
       {
         id: 'concessionaria',
@@ -86,6 +91,7 @@ const COPY = {
         label: 'Concessionaria / Auto',
         tagline: 'Showroom virtuale 24/7 — lead qualificati mentre dormi.',
         price: 690,
+        demoUrl: 'https://egocars.vercel.app/',
       },
     ],
   },
@@ -468,9 +474,22 @@ const Step2: React.FC<Step2Props> = ({ onSelect, selected }) => (
             </div>
             <h3 className="font-display font-bold text-white text-sm mb-1">{t.label}</h3>
             <p className="text-gray-500 text-xs leading-relaxed mb-3">{t.tagline}</p>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-cyan-400 font-bold">€{discountedPrice}</span>
-              <span className="text-gray-600 line-through text-xs">€{t.price}</span>
+            <div className="flex items-center justify-between mt-3">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-cyan-400 font-bold">€{discountedPrice}</span>
+                <span className="text-gray-600 line-through text-xs">€{t.price}</span>
+              </div>
+              {t.demoUrl && (
+                <a
+                  href={t.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="text-[11px] font-bold text-cyan-400 border border-cyan-400/30 px-2 py-1 rounded-lg hover:bg-cyan-400/10 transition-colors whitespace-nowrap"
+                >
+                  Vedi Demo →
+                </a>
+              )}
             </div>
           </button>
         );

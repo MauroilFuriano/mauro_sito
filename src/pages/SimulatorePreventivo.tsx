@@ -656,7 +656,7 @@ const Step4: React.FC<Step4Props> = ({ formData, onChange, onSubmit, isSubmittin
 // SUCCESS SCREEN
 // ─────────────────────────────────────────────────────────────────────────────
 
-const SuccessScreen: React.FC = () => (
+const SuccessScreen: React.FC<{ onReset: () => void }> = ({ onReset }) => (
   <div className="text-center py-12 px-4 max-w-lg mx-auto">
     <div className="w-20 h-20 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
       <CheckCircle size={40} className="text-green-400" />
@@ -683,6 +683,13 @@ const SuccessScreen: React.FC = () => (
     </a>
 
     <p className="text-gray-600 text-xs mt-6">{COPY.success.closingNote}</p>
+
+    <button
+      onClick={onReset}
+      className="mt-8 text-gray-600 hover:text-gray-400 text-xs underline underline-offset-4 transition-colors"
+    >
+      ← Ricomincia il simulatore
+    </button>
   </div>
 );
 
@@ -783,6 +790,18 @@ const SimulatorePreventivo: React.FC = () => {
         window.open(`https://wa.me/393480029661?text=${waMessage}`, '_blank');
       }, 1000);
     }, 1200);
+  };
+
+  const handleReset = () => {
+    setCurrentStep(1);
+    setPath(null);
+    setSelectedTemplate(null);
+    setSelectedAddons(['seo', 'chatbot']);
+    setFormData({ name: '', email: '', phone: '', privacy: false });
+    setErrors({});
+    setIsSubmitting(false);
+    setIsSuccess(false);
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const canProceedStep1 = path !== null;
@@ -903,7 +922,7 @@ const SimulatorePreventivo: React.FC = () => {
               </div>
             </>
           ) : (
-            <SuccessScreen />
+            <SuccessScreen onReset={handleReset} />
           )}
         </div>
       </div>

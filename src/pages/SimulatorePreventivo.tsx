@@ -627,22 +627,6 @@ export default function SimulatorePreventivo() {
                 <motion.section key={`step3-${templateId}`} {...reveal} style={{ overflow: 'hidden' }}>
                   <SectionLabel number={3} label={`Configura il tuo ${template.label}`} />
 
-                  {/* Sempre incluso */}
-                  <div className="mt-4 mb-6 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
-                    <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
-                    <div className="space-y-3">
-                      {VETRINA_INCLUDED.map((item, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
-                          <p className="text-xs leading-relaxed">
-                            <span className="text-white font-bold">{item.label}:</span>{' '}
-                            <span className="text-gray-400">{item.sub}</span>
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* Chatbot options */}
                   <div className="mb-6">
                     <p className="text-sm font-bold text-gray-300 mb-3">Opzione Chatbot</p>

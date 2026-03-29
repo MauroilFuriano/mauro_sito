@@ -601,6 +601,22 @@ export default function SimulatorePreventivo() {
                       </button>
                     ))}
                   </div>
+
+                  {/* Sempre incluso */}
+                  <div className="mt-6 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
+                    <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
+                    <div className="space-y-3">
+                      {VETRINA_INCLUDED.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                          <p className="text-xs leading-relaxed">
+                            <span className="text-white font-bold">{item.label}:</span>{' '}
+                            <span className="text-gray-400">{item.sub}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </motion.section>
               )}
               </AnimatePresence>
@@ -828,8 +844,9 @@ export default function SimulatorePreventivo() {
           </div>{/* end left scrollable */}
 
           {/* ── RIGHT: sidebar sempre visibile (desktop) ──────────────── */}
-          <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0">
-          <div className="sticky top-0 h-screen overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8">
+          {/* spacer per non far sovrapporre il contenuto sinistro */}
+          <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0" />
+          <div className="hidden lg:block fixed top-0 right-0 h-screen w-[300px] xl:w-[340px] overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8 z-20">
               <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
                 <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
                 <p className="text-xs font-bold text-orange-300 leading-snug">⚡ PROMO PASQUA –30% APPLICATA.<br />SOLO 3 POSTI RIMANENTI AD APRILE.</p>
@@ -938,8 +955,7 @@ export default function SimulatorePreventivo() {
                   ))}
                 </div>
               </div>
-          </div>{/* end sidebar scroll */}
-          </div>{/* end right sidebar */}
+          </div>{/* end sidebar fixed */}
 
         </div>{/* end lg:flex */}
 

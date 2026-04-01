@@ -112,54 +112,6 @@ const structuredData = {
   ]
 };
 
-const faqHomePageData = {
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Quali servizi offre Mauro.exe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mauro.exe offre sviluppo siti web professionali, chatbot AI personalizzati e automazione dei processi aziendali per PMI, hotel, ristoranti e aziende agricole nelle Marche e in tutta Italia."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Dove opera Mauro Ceccarelli come sviluppatore web?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mauro Ceccarelli opera ad Ascoli Piceno, nelle Marche, ma fornisce servizi di sviluppo web e chatbot AI in tutta Italia grazie al lavoro da remoto."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quanto costa realizzare un sito web con Mauro.exe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "I prezzi variano in base alla complessità del progetto. Mauro.exe offre una consulenza gratuita per valutare le esigenze e fornire un preventivo personalizzato senza impegno."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Cos'è un chatbot AI per hotel e come funziona?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "È un concierge virtuale attivo 24/7 che risponde automaticamente alle domande degli ospiti, gestisce prenotazioni e fornisce informazioni sulla struttura in più lingue, riducendo il carico sulla reception."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Che tecnologie utilizza Mauro.exe per sviluppare siti web?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mauro.exe utilizza React, TypeScript, Vite, Tailwind CSS, Node.js e intelligenza artificiale (Gemini AI) per creare siti web veloci, moderni e ottimizzati per i motori di ricerca."
-      }
-    }
-  ]
-};
-
-// Merge FAQData into structuredData graph
-structuredData["@graph"].push(faqHomePageData as any);
 
 
 const WhatsappIcon = ({ size = 24, className = "" }) => (

@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "reactSnap": {
+    "source": "dist",
+    "destination": "dist",
     "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
     "crawlMode": false,
     "include": [

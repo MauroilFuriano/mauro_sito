@@ -116,7 +116,7 @@ const FAQPage: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-amber-400/30 bg-amber-400/5">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
-                <span className="text-amber-400 text-xs font-bold">Solo 2 nuovi progetti disponibili ad Aprile</span>
+                <span className="text-amber-400 text-xs font-bold">Solo 3 nuovi progetti disponibili ad Aprile</span>
               </div>
             </div>
           </div>

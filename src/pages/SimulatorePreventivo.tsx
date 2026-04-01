@@ -17,7 +17,7 @@ const PROMO = 0.30;
 const disc = (p: number) => Math.round(p * (1 - PROMO));
 
 const P = {
-  siteBase:          2000,   // sito vetrina professionale custom
+  siteBase:          1200,   // sito vetrina professionale custom
   chatbotDet:         800,   // chatbot deterministico (info azienda)
   chatbotAI:         3500,   // chatbot LLM (GPT-4o / Gemini)
   gestionale:        1200,   // gestionale prenotazioni / admin panel
@@ -386,7 +386,7 @@ export default function SimulatorePreventivo() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-sm font-bold mb-5">
               <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse inline-block" />
-              ⚡ 2 posti disponibili ad Aprile — promo –30% in scadenza
+              ⚡ 3 posti disponibili ad Aprile — promo –30% in scadenza
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
               Ogni Giorno Senza Preventivo<br />

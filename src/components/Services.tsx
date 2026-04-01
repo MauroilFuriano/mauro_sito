@@ -86,7 +86,7 @@ const Services: React.FC = () => {
               "Gestione dei contenuti semplificata"
             ]}
             delay="0"
-            startingPrice="A partire da €1.200"
+            startingPrice="A partire da €1.500"
           />
           <ServiceCard
             icon={<Bot size={32} />}
@@ -98,8 +98,7 @@ const Services: React.FC = () => {
               "Risposte intelligenti ed immediate"
             ]}
             delay="100"
-            startingPrice="A partire da €3.500"
-            originalPrice="€4.200"
+            startingPrice="A partire da €4.200"
             isMostRequested
           />
           <ServiceCard

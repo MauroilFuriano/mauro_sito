@@ -17,9 +17,9 @@ const PROMO = 0.30;
 const disc = (p: number) => Math.round(p * (1 - PROMO));
 
 const P = {
-  siteBase:          1200,   // sito vetrina professionale custom
+  siteBase:          1500,   // sito vetrina professionale custom
   chatbotDet:         800,   // chatbot deterministico (info azienda)
-  chatbotAI:         3500,   // chatbot LLM (GPT-4o / Gemini)
+  chatbotAI:         4200,   // chatbot LLM (GPT-4o / Gemini)
   gestionale:        1200,   // gestionale prenotazioni / admin panel
   ecommerce:         3500,   // e-commerce Stripe starter
   apiCarfax:         2000,   // API Carfax + funzione "Salva nel Garage"

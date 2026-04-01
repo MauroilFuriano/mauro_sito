@@ -7,7 +7,7 @@ const packages = [
   {
     icon: <Globe size={20} />,
     label: 'Sito Vetrina',
-    price: 'da €1.200',
+    price: 'da €1.500',
     desc: '4–10 pagine custom, SEO on-page, responsive, form contatto',
     color: 'cyan',
   },
@@ -21,7 +21,7 @@ const packages = [
   {
     icon: <Bot size={20} />,
     label: 'Sito + Chatbot AI',
-    price: 'da €4.700',
+    price: 'da €5.700',
     desc: 'Sito vetrina + assistente LLM con RAG sui tuoi documenti',
     color: 'cyan',
   },

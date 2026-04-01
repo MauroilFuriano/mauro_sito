@@ -22,7 +22,7 @@ const faqStructuredData = {
       "name": "Quanto costa un sito web vetrina?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Un sito vetrina custom parte da €1.200 per 4–6 pagine (design responsive, SEO on-page, form contatto). Un sito professionale con animazioni e CMS parte da €2.000. I prezzi includono dominio, hosting e SSL gestiti da me con rinnovo annuale concordato."
+        "text": "Un sito vetrina custom parte da €1.500 per 4–6 pagine (design responsive, SEO on-page, form contatto). Un sito professionale con animazioni e CMS parte da €2.000. I prezzi includono dominio, hosting e SSL gestiti da me con rinnovo annuale concordato."
       }
     },
     {
@@ -30,7 +30,7 @@ const faqStructuredData = {
       "name": "Quanto costa un chatbot AI per il sito?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Un chatbot con LLM (GPT-4o / Gemini / Claude) parte da €3.500. Con RAG (conosce i tuoi documenti aziendali) da €6.000. Un agente AI multi-step con CRM da €10.000. I costi API del modello AI (€35–100/mese) sono a carico del cliente."
+        "text": "Un chatbot con LLM (GPT-4o / Gemini / Claude) parte da €4.200. Con RAG (conosce i tuoi documenti aziendali) da €6.000. Un agente AI multi-step con CRM da €10.000. I costi API del modello AI (€35–100/mese) sono a carico del cliente."
       }
     },
     {
@@ -81,7 +81,7 @@ const FAQPage: React.FC = () => {
     <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
       <SEO
         title="FAQ & Prezzi | Mauro.exe — Sviluppatore Web Ascoli Piceno"
-        description="Prezzi trasparenti e risposte chiare: sito vetrina da €1.200, chatbot AI da €3.500, e-commerce custom da €3.500. Niente Shopify, niente template. Codice custom, AI integrata."
+        description="Prezzi trasparenti e risposte chiare: sito vetrina da €1.500, chatbot AI da €4.200, e-commerce custom da €3.500. Niente Shopify, niente template. Codice custom, AI integrata."
         canonical="https://www.mauroceccarelli.it/faq"
         keywords="prezzi sito web, costo chatbot AI, tariffe sviluppatore web, FAQ sviluppatore Ascoli Piceno, quanto costa sito web"
         structuredData={faqStructuredData}

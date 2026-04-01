@@ -38,7 +38,7 @@ Esempi di prodotti realizzabili: Tutorial investimenti/crypto, Guide programmazi
 
 ### 2. SVILUPPO WEB
 - **Landing Page (1 pagina)**: a partire da €800
-- **Sito Vetrina (4-6 pagine, responsive + SEO)**: a partire da €1.200
+- **Sito Vetrina (4-6 pagine, responsive + SEO)**: a partire da €1.500
 - **Sito Vetrina professionale (animazioni + CMS)**: a partire da €2.000
 - **Sito E-commerce custom (fino a 100 prodotti, Stripe)**: a partire da €3.500
 - **Sito E-commerce professionale (integrazioni avanzate)**: a partire da €6.000
@@ -48,7 +48,7 @@ Esempi di prodotti realizzabili: Tutorial investimenti/crypto, Guide programmazi
 Tecnologie: React, Next.js, TypeScript, Tailwind CSS, Node.js
 
 ### 3. CHATBOT & INTELLIGENZA ARTIFICIALE
-- **Chatbot AI con LLM (GPT-4o / Gemini / Claude)**: a partire da €3.500
+- **Chatbot AI con LLM (GPT-4o / Gemini / Claude)**: a partire da €4.200
 - **Chatbot AI con RAG (conosce i tuoi documenti aziendali)**: a partire da €6.000
 - **Agente AI multi-step con CRM integrato**: a partire da €10.000
 - **Bot Telegram semplice (comandi, notifiche)**: a partire da €500

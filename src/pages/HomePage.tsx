@@ -23,9 +23,9 @@ const structuredData = {
       "email": "ceccarellimauro3@gmail.com",
       "telephone": "+393480029661",
       "sameAs": [
-        "https://www.linkedin.com/in/mauro-ceccarelli",
+        "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
         "https://github.com/mauroceccarelli",
-        "https://www.instagram.com/mauro.exe",
+        "https://www.instagram.com/mauroceccarelli.exe",
         "https://www.facebook.com/mauro.exe"
       ],
       "address": {
@@ -43,7 +43,7 @@ const structuredData = {
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://www.mauroceccarelli.it/#business",
+      "@id": "https://www.mauroceccarelli.it/#service",
       "name": "Mauro.exe — Sviluppo Web & AI",
       "url": "https://www.mauroceccarelli.it",
       "telephone": "+393480029661",
@@ -103,10 +103,18 @@ const structuredData = {
       },
       "areaServed": ["Ascoli Piceno", "Marche", "Italia"],
       "serviceType": ["Sviluppo Siti Web", "Chatbot AI", "Automazione Business"],
+      "openingHours": ["Mo-Fr 09:00-18:00"],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "sameAs": [
-        "https://www.linkedin.com/in/mauro-ceccarelli",
+        "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
         "https://github.com/mauroceccarelli",
-        "https://www.instagram.com/mauro.exe"
+        "https://www.instagram.com/mauroceccarelli.exe"
       ]
     }
   ]

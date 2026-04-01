@@ -40,6 +40,7 @@ const PromoPasqua: React.FC = () => {
                 description="Offerta di Pasqua: 30% di sconto sulla creazione o rinnovo del tuo sito web con ottimizzazione SEO/GEO 2026. Solo 3 posti disponibili. Scade il 20 Aprile."
                 canonical="https://www.mauroceccarelli.it/promo-pasqua"
                 keywords="Promo Pasqua Sito Web, Sconto Sito Web, Offerta SEO 2026, Sviluppatore Web Ascoli Piceno, Promo Pasqua"
+                noindex={countdown.expired}
                 structuredData={{
                     '@context': 'https://schema.org',
                     '@type': 'Offer',

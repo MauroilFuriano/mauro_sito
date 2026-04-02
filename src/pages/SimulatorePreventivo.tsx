@@ -334,7 +334,7 @@ export default function SimulatorePreventivo() {
           <h2 className="text-3xl font-black text-white mb-3">Preventivo bloccato!</h2>
           <p className="text-cyan-400 font-bold mb-4">Hai appena fatto la mossa più intelligente per la tua attività.</p>
           <p className="text-gray-400 leading-relaxed mb-6">
-            Ti ho riservato uno dei 3 posti di Aprile. Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato e la promo –30% già applicata.
+            Ti ho riservato uno dei <strong className="text-white">3 posti rimasti</strong> di Aprile. Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato e la promo –30% già applicata.
           </p>
           <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4 mb-8">
             <p className="text-amber-300 text-sm">

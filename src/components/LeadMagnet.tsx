@@ -70,12 +70,12 @@ const LeadMagnet: React.FC = () => {
 
     if (isSuccess) {
         return (
-            <div className="mt-10 p-6 rounded-2xl bg-dark-800/80 border border-green-500/20 backdrop-blur-sm max-w-lg">
+            <div className="mt-4 p-5 rounded-2xl bg-dark-800/80 border border-green-500/20 backdrop-blur-sm max-w-lg">
                 <div className="flex items-center gap-3 text-green-400 mb-2">
                     <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-semibold">Download avviato!</span>
+                    <span className="font-semibold text-sm">Download avviato!</span>
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-xs">
                     Se il download non parte,{' '}
                     <a
                         href="/checklist_7_errori.pdf"
@@ -91,26 +91,26 @@ const LeadMagnet: React.FC = () => {
     }
 
     return (
-        <div id="lead-magnet" className="mt-10 p-6 rounded-2xl bg-dark-800/60 border border-white/5 backdrop-blur-sm max-w-lg">
+        <div id="lead-magnet" className="mt-4 p-5 rounded-2xl bg-dark-800/40 border border-white/5 backdrop-blur-sm max-w-lg">
             <div className="flex items-start gap-3 mb-4">
                 <div className="p-2 bg-cyan-400/10 rounded-lg flex-shrink-0">
-                    <FileText className="h-5 w-5 text-cyan-400" />
+                    <FileText className="h-4 w-4 text-cyan-400" />
                 </div>
                 <div>
-                    <h3 className="text-white font-bold text-sm leading-snug">
+                    <h3 className="text-white font-bold text-[13px] leading-snug">
                         Stai Perdendo Clienti Ogni Giorno? Scopri i 7 Errori Nascosti del Tuo Sito
                     </h3>
-                    <p className="text-gray-500 text-xs mt-1">
+                    <p className="text-gray-500 text-[10px] mt-1">
                         PDF gratuito · Letto da 847 titolari di PMI · Risultati in 24h
                     </p>
                 </div>
             </div>
 
             <form ref={form} onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                {/* Campo nascosto per EmailJS: invia il subject e il nome automatico */}
+                {/* Campo nascosto per EmailJS */}
                 <input type="hidden" name="user_name" value="Lead Magnet - Checklist 7 Errori" />
                 <input type="hidden" name="subject" value="Nuovo Lead: Checklist 7 Errori" />
-                <input type="hidden" name="message" value="Questo contatto ha scaricato la checklist '7 Errori che il Tuo Sito Fa Perdere Clienti'. Contattalo per un follow-up." />
+                <input type="hidden" name="message" value="Questo contatto ha scaricato la checklist '7 Errori'." />
 
                 <div className="flex-1">
                     <input
@@ -122,13 +122,13 @@ const LeadMagnet: React.FC = () => {
                             if (error) setError('');
                         }}
                         placeholder="La tua email"
-                        className={`w-full bg-dark-900 border ${
-                            error ? 'border-red-500/50' : 'border-white/10 focus:border-cyan-400'
-                        } rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
+                        className={`w-full bg-dark-900/50 border ${
+                            error ? 'border-red-500/50' : 'border-white/10 focus:border-cyan-400/50'
+                        } rounded-lg px-3 py-2 text-white text-xs focus:outline-none transition-all duration-300`}
                     />
                     {error && (
-                        <p className="text-red-400 text-xs flex items-center gap-1 mt-1.5">
-                            <AlertCircle size={12} /> {error}
+                        <p className="text-red-400 text-[10px] flex items-center gap-1 mt-1">
+                            <AlertCircle size={10} /> {error}
                         </p>
                     )}
                 </div>
@@ -136,13 +136,13 @@ const LeadMagnet: React.FC = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-5 py-3 bg-cyan-400 text-black font-bold text-sm rounded-lg hover:bg-cyan-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_20px_rgba(0,229,255,0.5)] disabled:opacity-70 shrink-0"
+                    className="px-4 py-2 bg-cyan-400 text-black font-bold text-xs rounded-lg hover:bg-cyan-300 transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,229,255,0.2)] disabled:opacity-70 shrink-0"
                 >
                     {isSubmitting ? (
-                        <Loader2 size={16} className="animate-spin" />
+                        <Loader2 size={14} className="animate-spin" />
                     ) : (
                         <>
-                            <Download size={16} />
+                            <Download size={14} />
                             Scarica Gratis
                         </>
                     )}

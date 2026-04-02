@@ -88,7 +88,7 @@ const SimulatoreCTA: React.FC = () => {
               {/* ── Colonna sinistra: Copy ── */}
               <div className="space-y-6">
 
-                {/* Badge counter + promo — [SITO_2026] Information Gain originale */}
+                {/* Badge counter — [SITO_2026] Social proof: preventivi generati */}
                 <div className="flex flex-wrap gap-3">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
                     <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
@@ -96,11 +96,6 @@ const SimulatoreCTA: React.FC = () => {
                       <span className="font-display text-base text-white">{preventiviCount}</span>
                       {' '}preventivi già generati
                     </span>
-                  </div>
-                  {/* [FRONTEND SPECIALIST] Badge urgenza — scarcity psicologica per abbattere le obiezioni */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-400/40 bg-orange-400/10 text-orange-400 text-xs font-bold tracking-widest uppercase">
-                    <div className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.8)] animate-pulse" />
-                    🔥 Promo –30% attiva: scade il 20 aprile 2026
                   </div>
                 </div>
 

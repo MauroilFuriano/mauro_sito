@@ -217,10 +217,10 @@ const ChatBot: React.FC = () => {
 
   return (
     <>
-      {/* Chat Button - POSIZIONE: BASSO DESTRA */}
+      {/* Chat Button - POSIZIONE: BASSO SINISTRA — separato dal WhatsApp in Navbar (top-right) */}
       <button
         onClick={() => { setIsOpen(true); setIsMinimized(false); }}
-        className={`fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center shadow-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all duration-300 group ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-8 left-8 z-50 w-16 h-16 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center shadow-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all duration-300 group ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Apri chat"
       >
         {/* Bot Icon SVG inline */}
@@ -261,15 +261,15 @@ const ChatBot: React.FC = () => {
         {/* Pulse effect */}
         <span className="absolute inset-0 rounded-full border-2 border-cyan-400 animate-ping opacity-30" />
         
-        {/* Tooltip */}
-        <span className="absolute right-full mr-3 px-3 py-1 bg-dark-800 border border-cyan-400/50 rounded text-cyan-400 text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Tooltip — aperto verso destra perché il bot è a sinistra */}
+        <span className="absolute left-full ml-3 px-3 py-1 bg-dark-800 border border-cyan-400/50 rounded text-cyan-400 text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
           🤖 Chatta con me!
         </span>
       </button>
 
-      {/* Chat Window - POSIZIONE: BASSO DESTRA */}
+      {/* Chat Window - POSIZIONE: BASSO SINISTRA — allineata al bottone */}
       <div
-        className={`fixed bottom-8 right-8 z-50 w-[380px] max-w-[calc(100vw-2rem)] transition-all duration-300 ${
+        className={`fixed bottom-8 left-8 z-50 w-[380px] max-w-[calc(100vw-2rem)] transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
       >

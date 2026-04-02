@@ -86,8 +86,12 @@ const About: React.FC = () => {
             </div>
 
             <p className="text-gray-400 leading-relaxed mb-4">
-              Costruisco tutto da <span className="text-white font-medium">zero in JavaScript, React e Python</span> —
-              niente Shopify, niente WordPress, niente template uguali a quelli di altri mille siti.
+              <span className="text-white font-medium">Sono un sviluppatore web di Ascoli Piceno.</span><br />
+              Creo siti web professionali e chatbot AI per aziende nelle Marche e in tutta Italia.
+            </p>
+            <p className="text-gray-400 leading-relaxed mb-4 text-sm opacity-80">
+              Costruisco tutto da <span className="text-white font-medium">zero in JavaScript, React e Python</span> — 
+              niente Shopify, niente WordPress, niente template uguali a quelli di altri mille siti. 
               Ogni riga di codice è scritta per te.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">

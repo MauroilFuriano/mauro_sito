@@ -99,11 +99,11 @@ html {
 }
 
 .glitch-text::after {
-  color: #a855f7;
+  color: #00E5FF;
   z-index: -2;
   animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-  -webkit-text-fill-color: #a855f7 !important;
-  text-shadow: -2px 0 #a855f7;
+  -webkit-text-fill-color: #00E5FF !important;
+  text-shadow: -2px 0 #00E5FF;
 }
 
 @keyframes glitch-anim-1 {

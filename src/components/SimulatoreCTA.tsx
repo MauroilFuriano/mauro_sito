@@ -88,13 +88,20 @@ const SimulatoreCTA: React.FC = () => {
               {/* ── Colonna sinistra: Copy ── */}
               <div className="space-y-6">
 
-                {/* Badge con counter animato — [SITO_2026] Information Gain originale */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
-                  <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
-                  <span>
-                    <span className="font-display text-base text-white">{preventiviCount}</span>
-                    {' '}preventivi già generati
-                  </span>
+                {/* Badge counter + promo — [SITO_2026] Information Gain originale */}
+                <div className="flex flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
+                    <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
+                    <span>
+                      <span className="font-display text-base text-white">{preventiviCount}</span>
+                      {' '}preventivi già generati
+                    </span>
+                  </div>
+                  {/* [FRONTEND SPECIALIST] Badge urgenza — scarcity psicologica per abbattere le obiezioni */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-400/40 bg-orange-400/10 text-orange-400 text-xs font-bold tracking-widest uppercase">
+                    <div className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_8px_rgba(251,146,60,0.8)] animate-pulse" />
+                    🔥 Promo –30% attiva: scade il 20 aprile 2026
+                  </div>
                 </div>
 
                 {/* [SITO_2026] H2 formulato come domanda naturale dell'utente */}
@@ -188,32 +195,36 @@ const SimulatoreCTA: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Righe mockup configurazione */}
+                    {/* Righe mockup configurazione — Feature chiave del Sito Vetrina */}
                     {[
-                      { label: 'Tipo progetto', value: 'Sito Vetrina Pro', color: 'text-cyan-400' },
-                      { label: 'Chatbot AI', value: 'Incluso ✓', color: 'text-green-400' },
-                      { label: 'SEO Avanzato', value: 'Incluso ✓', color: 'text-green-400' },
-                      { label: 'Manutenzione', value: '12 mesi', color: 'text-purple-400' },
+                      { label: 'Tipo progetto', value: 'Sito Vetrina', color: 'text-cyan-400' },
+                      { label: 'SEO Base & Lighthouse 98/100', value: '✓ Incluso', color: 'text-green-400' },
+                      { label: 'Dominio .it + Hosting Cloud', value: '✓ 1 Anno', color: 'text-green-400' },
+                      { label: 'Assistenza Post-Lancio', value: '✓ 30 Giorni', color: 'text-green-400' },
                     ].map((row, i) => (
-                      <div key={i} className="flex items-center justify-between text-sm">
-                        <span className="text-gray-500">{row.label}</span>
-                        <span className={`font-bold ${row.color}`}>{row.value}</span>
+                      <div key={i} className="flex items-center justify-between text-sm gap-2">
+                        <span className="text-gray-500 text-xs">{row.label}</span>
+                        <span className={`font-bold text-xs flex-shrink-0 ${row.color}`}>{row.value}</span>
                       </div>
                     ))}
 
-                    {/* Divider */}
+                    {/* Divider — prezzo attrattivo per invogliare il simulatore */}
                     <div className="border-t border-white/5 pt-4">
                       <div className="flex items-end justify-between">
                         <div>
                           <span className="text-gray-500 text-xs uppercase tracking-widest">Stima totale</span>
-                          <div className="text-white font-display text-3xl font-black mt-1">
-                            €<span className="text-cyan-400">3.200</span>
+                          {/* Prezzo barrato originale + prezzo scontato */}
+                          <div className="flex items-baseline gap-2 mt-1">
+                            <span className="text-gray-600 text-base line-through font-mono">€1.499</span>
+                            <div className="text-white font-display text-3xl font-black">
+                              €<span className="text-cyan-400">1.050</span>
+                            </div>
                           </div>
                           <span className="text-gray-600 text-xs">IVA esclusa · pagamento dilazionabile</span>
                         </div>
                         <div className="text-right">
                           <div className="text-xs text-gray-500">Consegna stimata</div>
-                          <div className="text-white font-bold text-sm mt-1">21 giorni</div>
+                          <div className="text-white font-bold text-sm mt-1">10 giorni</div>
                         </div>
                       </div>
                     </div>
@@ -224,9 +235,9 @@ const SimulatoreCTA: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Badge floating */}
-                  <div className="absolute -top-4 -right-4 px-3 py-1.5 bg-green-500/15 border border-green-500/25 rounded-lg backdrop-blur-md">
-                    <span className="text-green-400 text-xs font-bold font-mono">✓ Senza registrazione</span>
+                  {/* Badge floating — urgenza promo */}
+                  <div className="absolute -top-4 -right-4 px-3 py-1.5 bg-orange-500/15 border border-orange-500/30 rounded-lg backdrop-blur-md shadow-[0_0_12px_rgba(251,146,60,0.2)]">
+                    <span className="text-orange-400 text-xs font-bold font-mono">🔥 –30% fino al 20 apr</span>
                   </div>
                 </div>
               </div>

@@ -174,14 +174,17 @@ const Hero: React.FC = () => {
             Solo 3 slot liberi — Aprile 2026
           </div>
 
-          {/* Headline */}
-          <h1 className="hero-fade-in hero-delay-1 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] text-white break-words w-full">
-            Ogni giorno senza un sito ottimizzato{' '}
+          {/* Headline — Variante 5: SEO locale (riga 1) + Loss Aversion con glitch (riga 2) */}
+          {/* [SEO] H1 keyword-first: "Siti Web e Chatbot AI per le Marche" per Local SEO Ascoli/Marche */}
+          {/* [PSICOLOGIA] Prima parola "Siti Web" = soluzione immediata; riga 2 = Loss Aversion */}
+          <h1 className="hero-fade-in hero-delay-1 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] break-words w-full">
+            <span className="text-white">Siti Web e Chatbot AI per le Marche.</span>
+            <br />
             <span
               className="glitch-text text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 glow-text break-words"
-              data-text="perdi clienti ai competitor."
+              data-text="Ogni cliente che non ti trova online, va da un competitor."
             >
-              perdi clienti ai competitor.
+              Ogni cliente che non ti trova online, va da un competitor.
             </span>
           </h1>
 

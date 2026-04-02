@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
+import SimulatoreCTA from '../components/SimulatoreCTA';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
@@ -175,6 +176,10 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="reveal overflow-hidden">
                     <Services />
+                </div>
+                {/* [SITO_2026] SimulatoreCTA: posizionato dopo Services per sfruttare l'interesse sui prezzi */}
+                <div className="reveal">
+                    <SimulatoreCTA />
                 </div>
                 <div className="reveal">
                     <Testimonials />

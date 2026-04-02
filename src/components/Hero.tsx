@@ -216,12 +216,7 @@ const Hero: React.FC = () => {
               <LeadMagnet />
             </div>
 
-            {/* Trust micro-garanzie (Senza statistiche fisse) */}
-            <p className="hero-fade-in hero-delay-5 text-[10px] sm:text-xs text-gray-500 flex items-center gap-6 flex-wrap mt-6 pb-20 lg:pb-0">
-              <span className="flex items-center gap-1 underline decoration-cyan-400/30">✓ Nessun anticipo</span>
-              <span className="flex items-center gap-1 underline decoration-cyan-400/30">✓ Consegna in 3 settimane</span>
-              <span className="flex items-center gap-1 underline decoration-cyan-400/30">✓ Pagamenti flessibili</span>
-            </p>
+
           </div>
 
           {/* ── COL 2: Terminale animato ─────────────────────── */}

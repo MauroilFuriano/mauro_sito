@@ -229,10 +229,6 @@ const SimulatoreCTA: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Pulsante finto disabilitato */}
-                    <div className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-center text-gray-600 text-sm font-bold cursor-not-allowed select-none">
-                      → Clicca il pulsante qui sopra per calcolare il tuo ←
-                    </div>
                   </div>
 
                   {/* Badge floating — urgenza promo */}

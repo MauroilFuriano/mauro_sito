@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { ChevronRight, Zap, Users, Clock } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 /* ── Static Data ─────────────────────────────────────────────── */
 
@@ -164,7 +164,10 @@ const Hero: React.FC = () => {
       {/* ── Content Grid ───────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full min-w-0">
 
-        {/* Left Column */}
+        {/* Left Column — Layout 3 Zone Orizzontali [WEB DESIGNER 2026] */}
+        {/* ZONA 1: Badge scarsità */}
+        {/* ZONA 2: H1 + banda flex (subtext sx | stats dx) */}
+        {/* ZONA 3: CTA affiancate + trust */}
         <div className="space-y-6 min-w-0 w-full">
 
           {/* Badge */}
@@ -187,34 +190,37 @@ const Hero: React.FC = () => {
             </span>
           </h1>
 
-          {/* Subtext */}
-          <p className="hero-fade-in hero-delay-2 text-base md:text-lg lg:text-xl text-gray-400 w-full max-w-lg leading-relaxed break-words">
-            Sono un <span className="text-cyan-400 font-bold">sviluppatore web</span> di Ascoli Piceno. Creo{' '}
-            <span className="text-cyan-400 font-bold">siti web professionali</span> e{' '}
-            <span className="text-cyan-400 font-bold">chatbot AI</span> per aziende nelle Marche e in tutta Italia.
-            I miei clienti ottengono in media{' '}
-            <span className="text-white font-bold">+40% di lead qualificati</span> e risparmiano{' '}
-            <span className="text-white font-bold">20h/settimana</span> grazie all'AI — mentre tu ti concentri sul business.
-          </p>
+          {/* ── ZONA 2b: Banda orizzontale — Subtext (sx) + Stats (dx) ── */}
+          {/* [WEB DESIGNER 2026] flex row: subtext compatto a sinistra, stats verticali a destra */}
+          {/* Elimina l'impilamento verticale: tutto in un'unica riga orizzontale leggibile */}
+          <div className="hero-fade-in hero-delay-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-4 border-t border-b border-white/5">
 
-          {/* Stats Row — Social Proof */}
-          <div className="hero-fade-in hero-delay-3 flex flex-wrap items-center gap-4 sm:gap-6 py-4 border-t border-b border-white/5">
-            <div className="flex items-center gap-2">
-              <Zap size={16} className="text-cyan-400" />
-              <span className="text-white font-bold text-lg font-display">50+</span>
-              <span className="text-gray-500 text-sm">Progetti</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-white/10" />
-            <div className="flex items-center gap-2">
-              <Users size={16} className="text-cyan-400" />
-              <span className="text-white font-bold text-lg font-display">30+</span>
-              <span className="text-gray-500 text-sm">Clienti</span>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-white/10" />
-            <div className="flex items-center gap-2">
-              <Clock size={16} className="text-cyan-400" />
-              <span className="text-white font-bold text-lg font-display">24/7</span>
-              <span className="text-gray-500 text-sm">AI Attiva</span>
+            {/* Subtext sintetico — keyword SEO concentrate in 1 riga */}
+            {/* [SEO] "sviluppatore web · Ascoli Piceno" supporto semantico all'H1 */}
+            <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+              <span className="text-cyan-400 font-semibold">Sviluppatore web</span>
+              {' · '}Ascoli Piceno
+              {' · '}<span className="text-white font-semibold">+40% lead</span>
+              {' · '}<span className="text-white font-semibold">–20h/sett con AI</span>
+            </p>
+
+            {/* Stats verticali affiancate — sfruttano lo spazio orizzontale libero */}
+            {/* [WEB DESIGNER] Numbers in column + dividers per scansione rapida a destra */}
+            <div className="flex items-center gap-4 sm:gap-5 flex-shrink-0">
+              <div className="flex flex-col items-center">
+                <span className="text-white font-black text-xl font-display leading-none">50+</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-wider mt-0.5">Progetti</span>
+              </div>
+              <div className="w-px h-8 bg-white/10" />
+              <div className="flex flex-col items-center">
+                <span className="text-white font-black text-xl font-display leading-none">30+</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-wider mt-0.5">Clienti</span>
+              </div>
+              <div className="w-px h-8 bg-white/10" />
+              <div className="flex flex-col items-center">
+                <span className="text-cyan-400 font-black text-xl font-display leading-none">24/7</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-wider mt-0.5">AI Attiva</span>
+              </div>
             </div>
           </div>
 
@@ -236,8 +242,9 @@ const Hero: React.FC = () => {
             </a>
           </div>
 
-          {/* Trust Indicators */}
-          <p className="text-xs text-gray-500 flex items-center justify-center gap-4 flex-wrap mt-4">
+          {/* Trust Indicators — riga orizzontale compatta, allineata a sinistra */}
+          {/* [TRUST UX] Micro-garanzie visibili senza occupare spazio verticale extra */}
+          <p className="text-xs text-gray-500 flex items-center gap-4 flex-wrap">
             <span>✓ Nessun anticipo</span>
             <span>✓ Consegna in 3 settimane</span>
             <span>✓ 52 progetti consegnati</span>

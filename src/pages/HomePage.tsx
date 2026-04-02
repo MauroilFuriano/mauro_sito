@@ -10,7 +10,6 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ChatBot from '../components/ChatBot';
 import LeadMagnet from '../components/LeadMagnet';
-import ClosingCTA from '../components/ClosingCTA';
 import SEO from '../components/SEO';
 
 const structuredData = {
@@ -198,11 +197,6 @@ const HomePage: React.FC = () => {
                     <Contact />
                 </div>
             </main>
-
-            {/* [REGOLA PICCO-FINE] Sezione di chiusura narrativa — massimo impatto emotivo prima del footer */}
-            <div className="reveal">
-                <ClosingCTA />
-            </div>
 
             <Footer />
 

@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { ChevronRight, Zap, Users, Clock } from 'lucide-react';
-import LeadMagnet from './LeadMagnet';
 
 /* ── Static Data ─────────────────────────────────────────────── */
 
@@ -244,10 +243,6 @@ const Hero: React.FC = () => {
             <span>✓ 52 progetti consegnati</span>
           </p>
 
-          {/* Lead Magnet */}
-          <div className="hero-fade-in hero-delay-5">
-            <LeadMagnet />
-          </div>
         </div>
 
         {/* ── Right Column — Terminal Mockup ────────────── */}

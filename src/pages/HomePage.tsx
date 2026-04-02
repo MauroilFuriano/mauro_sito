@@ -9,6 +9,8 @@ import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ChatBot from '../components/ChatBot';
+import LeadMagnet from '../components/LeadMagnet';
+import ClosingCTA from '../components/ClosingCTA';
 import SEO from '../components/SEO';
 
 const structuredData = {
@@ -184,6 +186,11 @@ const HomePage: React.FC = () => {
                 <div className="reveal">
                     <Testimonials />
                 </div>
+                {/* [TRUST UX] LeadMagnet spostato qui da Hero: dopo le recensioni l'utente è in fase fiducia max */}
+                {/* [LEGGE di HICK] Rimosso da Hero per non competere con le 2 CTA principali */}
+                <div className="reveal">
+                    <LeadMagnet />
+                </div>
                 <div className="reveal">
                     <Portfolio />
                 </div>
@@ -191,6 +198,11 @@ const HomePage: React.FC = () => {
                     <Contact />
                 </div>
             </main>
+
+            {/* [REGOLA PICCO-FINE] Sezione di chiusura narrativa — massimo impatto emotivo prima del footer */}
+            <div className="reveal">
+                <ClosingCTA />
+            </div>
 
             <Footer />
 

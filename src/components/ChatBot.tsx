@@ -106,6 +106,10 @@ Aiutare i visitatori a capire i servizi, ottenere preventivi indicativi (senza s
 const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  // [REGOLA PICCO-FINE] Badge notifica: appare dopo 5s per catturare l'attenzione
+  const [showBadge, setShowBadge] = useState(false);
+  // [REGOLA PICCO-FINE] Tooltip auto-pop: appare dopo 20s, scompare dopo 6s — WOW moment
+  const [showAutoTooltip, setShowAutoTooltip] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -118,6 +122,21 @@ const ChatBot: React.FC = () => {
   const [chatSession, setChatSession] = useState<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Badge notifica: compare dopo 5 secondi dal caricamento
+  useEffect(() => {
+    const t = setTimeout(() => setShowBadge(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Tooltip auto-pop: compare dopo 20s e sparisce dopo 6s
+  // Si disattiva se l'utente apre la chat prima
+  useEffect(() => {
+    if (isOpen) { setShowAutoTooltip(false); return; }
+    const tShow = setTimeout(() => setShowAutoTooltip(true), 20000);
+    const tHide = setTimeout(() => setShowAutoTooltip(false), 26000);
+    return () => { clearTimeout(tShow); clearTimeout(tHide); };
+  }, [isOpen]);
 
   // Inizializza la chat session con Gemini
   useEffect(() => {
@@ -219,7 +238,7 @@ const ChatBot: React.FC = () => {
     <>
       {/* Chat Button - POSIZIONE: BASSO SINISTRA — separato dal WhatsApp in Navbar (top-right) */}
       <button
-        onClick={() => { setIsOpen(true); setIsMinimized(false); }}
+        onClick={() => { setIsOpen(true); setIsMinimized(false); setShowBadge(false); setShowAutoTooltip(false); }}
         className={`fixed bottom-8 left-8 z-50 w-16 h-16 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center shadow-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all duration-300 group ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Apri chat"
       >
@@ -260,11 +279,26 @@ const ChatBot: React.FC = () => {
         
         {/* Pulse effect */}
         <span className="absolute inset-0 rounded-full border-2 border-cyan-400 animate-ping opacity-30" />
-        
-        {/* Tooltip — aperto verso destra perché il bot è a sinistra */}
+
+        {/* [B1] Badge notifica — pallino rosso pulsante che appare dopo 5s */}
+        {showBadge && (
+          <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 border-2 border-dark-900 animate-pulse z-10" />
+        )}
+
+        {/* Tooltip hover manuale */}
         <span className="absolute left-full ml-3 px-3 py-1 bg-dark-800 border border-cyan-400/50 rounded text-cyan-400 text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
           🤖 Chatta con me!
         </span>
+
+        {/* [B2] Tooltip auto-pop — appare dopo 20s, WOW moment non invasivo */}
+        {showAutoTooltip && (
+          <span
+            className="absolute left-full ml-3 px-4 py-2 bg-dark-800 border border-cyan-400/60 rounded-xl text-white text-sm whitespace-nowrap shadow-[0_0_20px_rgba(0,229,255,0.2)] z-20"
+            style={{ animation: 'fadeInSlide 0.4s ease forwards' }}
+          >
+            👋 Hai domande? Sono qui!
+          </span>
+        )}
       </button>
 
       {/* Chat Window - POSIZIONE: BASSO SINISTRA — allineata al bottone */}

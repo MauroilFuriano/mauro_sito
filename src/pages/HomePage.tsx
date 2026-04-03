@@ -8,6 +8,7 @@ import SimulatoreCTA from '../components/SimulatoreCTA';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import FAQ from '../components/FAQ';
 import ChatBot from '../components/ChatBot';
 import SEO from '../components/SEO';
 
@@ -117,6 +118,76 @@ const structuredData = {
         "https://github.com/mauroceccarelli",
         "https://www.instagram.com/mauroceccarelli.exe"
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.mauroceccarelli.it/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Perché non usi Shopify, WordPress o template?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costruisco tutto da zero con React, TypeScript e Python. Il sito non dipende da plugin, abbonamenti a piattaforme terze o template uguali ad altri 50.000 siti. Lighthouse score 98/100 è il mio standard minimo di consegna."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa un sito web vetrina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un sito vetrina custom parte da €1.500 per 4–6 pagine (design responsive, SEO on-page, form contatto). Un sito professionale con animazioni e CMS parte da €2.000. I prezzi includono dominio, hosting e SSL gestiti da me con rinnovo annuale concordato."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa un chatbot AI per il sito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un chatbot con LLM (GPT-4o / Gemini / Claude) parte da €4.200. Con RAG (conosce i tuoi documenti aziendali) da €6.000. Un agente AI multi-step con CRM da €10.000. I costi API del modello AI (€35–100/mese) sono a carico del cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto costa un e-commerce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un e-commerce custom React/Next.js headless parte da €3.500 (starter, fino a 100 prodotti con Stripe). La versione professionale con integrazioni parte da €6.000. Un e-commerce con automazioni AI (raccomandazioni, recupero carrello) parte da €8.000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo ci vuole per la consegna?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Landing page: 5 giorni. Sito vetrina: 7–14 giorni. E-commerce: 20–60 giorni. Web App/SaaS: 8–12 settimane. Lavoro con sprint settimanali e milestone concordate. Tempi certi, aggiornamenti continui, zero sorprese."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa include la consegna?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sito pubblicato e funzionante, dominio, hosting e certificato SSL gestiti da me con quota annuale concordata. SEO on-page, test cross-browser e cross-device. Il codice sorgente viene consegnato solo su richiesta a sviluppatori o in collaborazione white-label."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso richiedere modifiche dopo la consegna?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì. Ogni progetto include 2 round di revisione dopo la consegna per correzioni, aggiustamenti grafici o modifiche ai contenuti. Superate le due revisioni, si applica una tariffa oraria per le modifiche aggiuntive o evolutive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso collaborare con te se sono un'agenzia web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Assolutamente. Lavoro in white-label: sviluppo il progetto, consegno i sorgenti all'agenzia, nessun contatto con il cliente finale. Mantenimento, hosting e rinnovi restano in carico all'agenzia. Contattami per discutere tariffe B2B."
+          }
+        }
+      ]
     }
   ]
 };
@@ -186,6 +257,9 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="reveal">
                     <Portfolio />
+                </div>
+                <div id="faq" className="reveal">
+                    <FAQ />
                 </div>
                 <div className="reveal overflow-hidden">
                     <Contact />

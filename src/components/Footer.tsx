@@ -72,6 +72,8 @@ const Footer: React.FC = () => {
             <a href="/privacy-policy" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
             <span>·</span>
             <a href="/cookie-policy" className="hover:text-cyan-400 transition-colors">Cookie Policy</a>
+            <span>·</span>
+            <a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a>
           </p>
         </div>
 

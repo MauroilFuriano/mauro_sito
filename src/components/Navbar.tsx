@@ -13,7 +13,7 @@ const navLinks: NavLink[] = [
   { name: 'Chi Sono',  href: '#about' },
   { name: 'Servizi',   href: '#services' },
   { name: 'Portfolio', href: '#portfolio' },
-  { name: 'FAQ',       href: '/faq', isRoute: true },
+  { name: 'FAQ',       href: '#faq' },
   { name: 'Contatti',  href: '#contact' },
 ];
 

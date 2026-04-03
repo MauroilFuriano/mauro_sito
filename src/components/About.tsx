@@ -3,128 +3,124 @@ import { Palette, BrainCircuit, TrendingUp, MapPin } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-dark-800 relative">
+    <section id="about" className="py-24 bg-dark-800 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        
+        {/* 1. Header Centralizzato */}
+        <div className="text-center mb-12">
+          <p className="text-cyan-400 font-display font-bold tracking-widest mb-3 text-sm uppercase">
+            Chi Sono
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+            Il Tuo Partner Digitale <span className="text-gray-500 font-normal">nelle Marche.</span>
+          </h2>
+        </div>
 
-          {/* ── Left Column — Metrics Dashboard ──────────── */}
-          <div className="relative order-2 md:order-1">
-            <div className="bg-dark-900 border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
-              {/* Gradient accent bar */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400" />
+        {/* 2. Immagine "Hero" 1200x630 (Contenitore con bordi Neon) */}
+        <div className="relative mb-20 group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 blur-2xl opacity-40 group-hover:opacity-60 transition duration-700"></div>
+          <div className="relative aspect-[21/9] md:aspect-[1200/630] w-full overflow-hidden rounded-2xl border border-white/10 bg-dark-900 shadow-2xl">
+            <picture>
+              <source srcSet="/mauro.webp" type="image/webp" />
+              <img
+                src="/mauro_optimized.jpg"
+                alt="Mauro Ceccarelli - Web & AI Specialist"
+                className="w-full h-full object-cover object-top opacity-70 group-hover:scale-105 transition-transform duration-1000"
+                loading="lazy"
+              />
+            </picture>
+            {/* Overlay Gradient per profondità */}
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent"></div>
+            
+            {/* Bordo Neon Dinamico */}
+            <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-colors duration-500 pointer-events-none"></div>
+          </div>
+        </div>
 
-              {/* Card header */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="min-w-0">
-                  <h4 className="text-white font-bold text-sm truncate">Mauro Ceccarelli</h4>
-                  <p className="text-gray-500 text-xs flex items-center gap-1">
-                    <MapPin size={10} className="flex-shrink-0" aria-hidden="true" />
-                    Ascoli Piceno, Marche
-                  </p>
+        {/* 3. Griglia Informativa: Bio & Stats */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Colonna Bio/Valori (Left) */}
+          <div className="lg:col-span-7 space-y-10">
+            <div className="space-y-6">
+              <p className="text-xl md:text-2xl text-white font-display font-medium leading-relaxed">
+                Sono uno sviluppatore web di Ascoli Piceno focalizzato sulla creazione di <span className="text-cyan-400">ecosistemi digitali</span> ad alte prestazioni.
+              </p>
+              <div className="space-y-4 text-gray-400 leading-relaxed text-lg">
+                <p>
+                  Costruisco tutto da <span className="text-white font-semibold">zero</span> (React, Next.js, Python), 
+                  rifiutando template standard o piattaforme chiuse. Il mio codice è scritto per essere veloce, sicuro e pronto a scalare.
+                </p>
+                <p>
+                  Integro <span className="text-purple-400 font-semibold italic">Intelligenza Artificiale</span> e automazione per trasformare la presenza online in uno strumento di vendita attivo 24/7, garantendo ai miei clienti un vantaggio competitivo reale sul mercato.
+                </p>
+              </div>
+            </div>
+
+            {/* Value Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div className="flex flex-col p-5 bg-white/[0.02] backdrop-blur-sm rounded-xl border border-white/5 hover:border-cyan-400/30 transition-all duration-300 group/card hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-cyan-400/10 flex items-center justify-center mb-4 group-hover/card:bg-cyan-400/20">
+                  <Palette className="text-cyan-400" size={20} />
                 </div>
+                <span className="font-display font-bold text-sm text-white mb-1">Design Su Misura</span>
+                <span className="text-gray-500 text-xs leading-snug">UX/UI orientata alla conversione</span>
+              </div>
+              
+              <div className="flex flex-col p-5 bg-white/[0.02] backdrop-blur-sm rounded-xl border border-white/5 hover:border-purple-400/30 transition-all duration-300 group/card hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-purple-400/10 flex items-center justify-center mb-4 group-hover/card:bg-purple-400/20">
+                  <BrainCircuit className="text-purple-400" size={20} />
+                </div>
+                <span className="font-display font-bold text-sm text-white mb-1">AI & Chatbot</span>
+                <span className="text-gray-500 text-xs leading-snug">Automazione lead generation</span>
               </div>
 
-              {/* Metrics grid */}
-              <div className="grid grid-cols-2 gap-4" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-cyan-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-cyan-400">
-                    98<span className="text-lg text-cyan-400/70">/100</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Lighthouse Score</p>
+              <div className="flex flex-col p-5 bg-white/[0.02] backdrop-blur-sm rounded-xl border border-white/5 hover:border-green-400/30 transition-all duration-300 group/card hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-lg bg-green-400/10 flex items-center justify-center mb-4 group-hover/card:bg-green-400/20">
+                  <TrendingUp className="text-green-400" size={20} />
                 </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-green-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-green-400">
-                    +45<span className="text-lg text-green-400/70">%</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Conversioni Clienti</p>
-                </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-purple-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-purple-400">
-                    99.9<span className="text-lg text-purple-400/70">%</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Uptime Garantito</p>
-                </div>
-                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5 hover:border-yellow-400/20 transition-colors duration-300">
-                  <p className="text-3xl font-display font-black text-yellow-400">
-                    &lt;2<span className="text-lg text-yellow-400/70">s</span>
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">Tempo di Caricamento</p>
-                </div>
+                <span className="font-display font-bold text-sm text-white mb-1">Risultati Reali</span>
+                <span className="text-gray-500 text-xs leading-snug">ROI misurabile e scalabile</span>
               </div>
-
-              <div className="absolute inset-0 bg-cyan-400/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
             </div>
           </div>
 
-          {/* ── Right Column — Photo + Copy ───────────── */}
-          <div className="order-1 md:order-2">
-
-            {/* Photo + Heading side by side */}
-            <div className="flex items-center gap-5 mb-6">
-              <div className="flex-shrink-0">
-                <div className="p-[2px] rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 shadow-lg shadow-cyan-400/10">
-                  <picture>
-                    <source srcSet="/mauro.webp" type="image/webp" />
-                    <img
-                      src="/mauro_optimized.jpg"
-                      alt="Mauro Ceccarelli"
-                      loading="lazy"
-                      className="w-24 h-24 md:w-28 md:h-28 rounded-[14px] object-cover object-top block"
-                    />
-                  </picture>
+          {/* Colonna Metriche (Right) */}
+          <div className="lg:col-span-5">
+            <div className="bg-dark-900/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 relative overflow-hidden shadow-2xl">
+              {/* Gradient accent bar */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400 animate-pulse" />
+              
+              <div className="flex items-center gap-3 mb-10">
+                <div className="p-2 rounded-lg bg-white/[0.03] border border-white/5 flex-shrink-0">
+                  <MapPin size={18} className="text-gray-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-sm">Mauro Ceccarelli</h4>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest font-semibold">Ascoli Piceno, MARCHE</p>
                 </div>
               </div>
-              <div>
-                <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-1 text-sm uppercase">
-                  Chi Sono?
-                </h2>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white leading-tight break-words" style={{ textWrap: 'balance' }}>
-                  Il Tuo Partner Digitale{' '}
-                  <span className="text-gray-500">nelle Marche.</span>
-                </h3>
-              </div>
-            </div>
-
-            <p className="text-gray-400 leading-relaxed mb-4">
-              <span className="text-white font-medium">Sono un sviluppatore web di Ascoli Piceno.</span><br />
-              Creo siti web professionali e chatbot AI per aziende nelle Marche e in tutta Italia.
-            </p>
-            <p className="text-gray-400 leading-relaxed mb-4 text-sm opacity-80">
-              Costruisco tutto da <span className="text-white font-medium">zero in JavaScript, React e Python</span> — 
-              niente Shopify, niente WordPress, niente template uguali a quelli di altri mille siti. 
-              Ogni riga di codice è scritta per te.
-            </p>
-            <p className="text-gray-400 leading-relaxed mb-8">
-              Il mio punto di forza? <span className="text-cyan-400 font-medium">Portare l'AI nelle PMI italiane.</span>{' '}
-              Mentre i siti dei tuoi competitor restano statici da anni, i miei clienti hanno
-              assistenti virtuali che rispondono a ogni ora, sistemi che qualificano lead in automatico
-              e e-commerce che vendono mentre loro dormono.
-            </p>
-
-            {/* Value Proposition Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="flex flex-col items-center p-5 bg-white/[0.03] rounded-xl border border-white/5 hover:border-cyan-400/30 transition-colors duration-300 group/card">
-                <div className="w-12 h-12 rounded-xl bg-cyan-400/10 flex items-center justify-center mb-3 group-hover/card:bg-cyan-400/20 transition-colors duration-300">
-                  <Palette className="text-cyan-400" size={24} aria-hidden="true" />
-                </div>
-                <span className="font-display font-bold text-sm text-white">Design Su Misura</span>
-                <span className="text-gray-500 text-xs text-center mt-1">Ogni progetto è unico</span>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Lighthouse Score', value: '98', suffix: '/100', color: 'text-cyan-400', border: 'hover:border-cyan-400/20' },
+                  { label: 'Conversioni Clienti', value: '+45', suffix: '%', color: 'text-green-400', border: 'hover:border-green-400/20' },
+                  { label: 'Uptime Garantito', value: '99.9', suffix: '%', color: 'text-purple-400', border: 'hover:border-purple-400/20' },
+                  { label: 'Caricamento', value: '<2', suffix: 's', color: 'text-yellow-400', border: 'hover:border-yellow-400/20' }
+                ].map((metric, idx) => (
+                  <div key={idx} className={`bg-white/[0.02] rounded-xl p-5 border border-white/5 transition-colors duration-300 ${metric.border}`}>
+                    <p className={`text-3xl font-display font-black leading-none mb-2 ${metric.color}`}>
+                      {metric.value}<span className="text-xs opacity-60 ml-0.5">{metric.suffix}</span>
+                    </p>
+                    <p className="text-gray-500 text-[10px] uppercase font-bold tracking-tighter sm:tracking-normal">{metric.label}</p>
+                  </div>
+                ))}
               </div>
 
-              <div className="flex flex-col items-center p-5 bg-white/[0.03] rounded-xl border border-white/5 hover:border-purple-400/30 transition-colors duration-300 group/card">
-                <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center mb-3 group-hover/card:bg-purple-400/20 transition-colors duration-300">
-                  <BrainCircuit className="text-purple-400" size={24} aria-hidden="true" />
-                </div>
-                <span className="font-display font-bold text-sm text-white">AI Integrata</span>
-                <span className="text-gray-500 text-xs text-center mt-1">Automazione intelligente</span>
-              </div>
-
-              <div className="flex flex-col items-center p-5 bg-white/[0.03] rounded-xl border border-white/5 hover:border-green-400/30 transition-colors duration-300 group/card">
-                <div className="w-12 h-12 rounded-xl bg-green-400/10 flex items-center justify-center mb-3 group-hover/card:bg-green-400/20 transition-colors duration-300">
-                  <TrendingUp className="text-green-400" size={24} aria-hidden="true" />
-                </div>
-                <span className="font-display font-bold text-sm text-white">Risultati Concreti</span>
-                <span className="text-gray-500 text-xs text-center mt-1">Conversioni misurabili</span>
+              <div className="mt-8 pt-6 border-t border-white/5">
+                <p className="text-[10px] text-gray-500 text-center italic">
+                  "Ogni sito è un motore ad alte prestazioni sviluppato su misura."
+                </p>
               </div>
             </div>
           </div>

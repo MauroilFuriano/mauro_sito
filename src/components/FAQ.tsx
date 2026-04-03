@@ -156,9 +156,11 @@ const FAQ: React.FC = () => {
               className="border border-white/5 rounded-xl overflow-hidden bg-dark-900 hover:border-white/10 transition-colors duration-300"
             >
               <button
+                id={`faq-button-${i}`}
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
                 aria-expanded={openIndex === i}
+                aria-controls={`faq-panel-${i}`}
               >
                 <span className="text-white font-bold text-sm leading-snug pr-2">{faq.q}</span>
                 <ChevronDown
@@ -167,6 +169,9 @@ const FAQ: React.FC = () => {
                 />
               </button>
               <div
+                id={`faq-panel-${i}`}
+                role="region"
+                aria-labelledby={`faq-button-${i}`}
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
               >
                 <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">

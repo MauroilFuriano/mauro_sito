@@ -174,7 +174,7 @@ const Hero: React.FC = () => {
             {/* Badge */}
             <div className="hero-fade-in inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase">
               <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00E5FF] animate-pulse" />
-              Slot limitati — Aprile 2026
+              Sviluppatore Web Ascoli Piceno
             </div>
 
             {/* Headline + Sottoscritta Glitch */}

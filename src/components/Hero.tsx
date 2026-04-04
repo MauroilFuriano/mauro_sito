@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
+import LeadMagnet from './LeadMagnet';
 
 /* ── Static Data ─────────────────────────────────────────────── */
 
@@ -194,7 +195,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="hero-fade-in hero-delay-4 flex flex-col sm:flex-row gap-5 w-full">
+            <div className="hero-fade-in hero-delay-4 flex flex-col sm:flex-row gap-5 w-full lg:flex-row">
               <a
                 href="#contact"
                 className="px-10 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-2 group animate-glow-pulse text-base whitespace-nowrap"
@@ -208,6 +209,11 @@ const Hero: React.FC = () => {
               >
                 VEDI PROGETTI
               </a>
+            </div>
+
+            {/* Lead Magnet — solo mobile, su desktop è nel dropdown navbar */}
+            <div className="hero-fade-in hero-delay-5 pt-2 lg:hidden">
+              <LeadMagnet />
             </div>
 
 

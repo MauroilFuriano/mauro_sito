@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
 
       {/* ── Background Layers ──────────────────────────── */}
 

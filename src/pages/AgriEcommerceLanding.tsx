@@ -33,7 +33,7 @@ const AgriEcommerceLanding: React.FC = () => {
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-emerald-400 selection:text-black">
             <SEO
-                title="AI E-Commerce Agroalimentare | Vendi Vino, Miele e Formaggio 24/7"
+                title="AI E-Commerce Agroalimentare | Marche Italia"
                 description="Sviluppo di siti web ed E-Commerce per aziende agricole con Chatbot AI. Vendi più velocemente h24 in automatico i tuoi prodotti d'eccellenza."
                 canonical="https://www.mauroceccarelli.it/agri-ecommerce"
                 keywords="Ecommerce Agricolo, Vendita Vino Online, AI Ecommerce, Chatbot Azienda Agricola, Vendita Miele, Vendita Formaggi AI"

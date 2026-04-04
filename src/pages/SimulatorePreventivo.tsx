@@ -325,6 +325,7 @@ export default function SimulatorePreventivo() {
         description="Preventivo ricevuto. Ti contatto entro 2 ore su WhatsApp."
         canonical="https://www.mauroceccarelli.it/simulatore"
         keywords="preventivo sito web Ascoli Piceno"
+        noindex={true}
       />
       <div className="min-h-screen bg-[#0d0d1a] flex items-center justify-center px-4">
         <div className="text-center max-w-lg">

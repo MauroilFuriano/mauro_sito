@@ -232,7 +232,7 @@ const HomePage: React.FC = () => {
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
             <SEO
                 title="Sviluppatore Web Ascoli Piceno | Siti Web & Chatbot AI | Mauro.exe"
-                description="Sviluppatore Web ad Ascoli Piceno. Creo Siti Web professionali e Chatbot AI per aziende nelle Marche. Automazione business e soluzioni digitali su misura. Richiedi consulenza gratuita."
+                description="Creo siti web professionali e chatbot AI ad Ascoli Piceno. Automazione business per aziende nelle Marche e in tutta Italia. Contattami."
                 canonical="https://www.mauroceccarelli.it/"
                 keywords="Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Web Designer Ascoli Piceno, Chatbot AI Marche, Sviluppo Web San Benedetto, Agenzia Web Ascoli, Mauro Ceccarelli"
                 structuredData={structuredData}

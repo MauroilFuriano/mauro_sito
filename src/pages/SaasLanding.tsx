@@ -14,7 +14,7 @@ const SaasLanding: React.FC = () => {
         <div className="min-h-screen bg-slate-950 font-sans text-slate-200 overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200">
             <SEO
                 title="Dashboard E-commerce Personalizzata | Gestione Negozio Smart"
-                description="Crea la tua area ordini e clienti personalizzata. Nessun costo mensile per piattaforme standard. Dashboard e-commerce sviluppata su misura per la tua attività."
+                description="Crea la tua area ordini e clienti personalizzata. Dashboard e-commerce sviluppata su misura, senza costi mensili di piattaforme standard."
                 canonical="https://www.mauroceccarelli.it/saas"
                 keywords="Dashboard E-commerce, Gestione Ordini, Software Negozio, Piattaforma Personalizzata, E-commerce Su Misura"
                 structuredData={{

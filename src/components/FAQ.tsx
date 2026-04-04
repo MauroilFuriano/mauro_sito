@@ -182,6 +182,11 @@ const FAQ: React.FC = () => {
           ))}
         </div>
 
+        {/* GEO: timestamp visibile per segnale di freschezza */}
+        <p className="text-center text-gray-600 text-xs mt-10">
+          Aggiornato: Aprile 2026 · Mauro Ceccarelli — Sviluppatore Web, Ascoli Piceno
+        </p>
+
         {/* Bottom CTA */}
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm mb-4">Non hai trovato risposta alla tua domanda?</p>

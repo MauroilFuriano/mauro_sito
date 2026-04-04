@@ -239,7 +239,7 @@ const ChatBot: React.FC = () => {
       {/* Chat Button - POSIZIONE: BASSO SINISTRA — separato dal WhatsApp in Navbar (top-right) */}
       <button
         onClick={() => { setIsOpen(true); setIsMinimized(false); setShowBadge(false); setShowAutoTooltip(false); }}
-        className={`fixed bottom-8 left-8 z-50 w-16 h-16 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center shadow-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all duration-300 group ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-6 right-4 lg:bottom-8 lg:left-8 lg:right-auto z-50 w-16 h-16 rounded-full bg-dark-800 border-2 border-cyan-400 flex items-center justify-center shadow-lg hover:shadow-[0_0_30px_rgba(0,229,255,0.5)] transition-all duration-300 group ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
         aria-label="Apri chat"
       >
         {/* Bot Icon SVG inline */}
@@ -303,7 +303,7 @@ const ChatBot: React.FC = () => {
 
       {/* Chat Window - POSIZIONE: BASSO SINISTRA — allineata al bottone */}
       <div
-        className={`fixed bottom-8 left-8 z-50 w-[380px] max-w-[calc(100vw-2rem)] transition-all duration-300 ${
+        className={`fixed bottom-6 right-4 lg:bottom-8 lg:left-8 lg:right-auto z-50 w-[380px] max-w-[calc(100vw-2rem)] transition-all duration-300 ${
           isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
         }`}
       >

@@ -92,7 +92,6 @@ const Navbar: React.FC = () => {
             <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
               MAURO.EXE
             </span>
-            <span className="text-xs text-gray-400 tracking-wide hidden sm:block">Sviluppatore Web Ascoli Piceno</span>
           </div>
         </a>
 

@@ -1,6 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { ChevronRight } from 'lucide-react';
-import LeadMagnet from './LeadMagnet';
 
 /* ── Static Data ─────────────────────────────────────────────── */
 
@@ -209,11 +208,6 @@ const Hero: React.FC = () => {
               >
                 VEDI PROGETTI
               </a>
-            </div>
-
-            {/* [LEAD MAGNET] Ripristinato — Subito sotto i pulsanti per immediatezza visuale */}
-            <div className="hero-fade-in hero-delay-5 pt-2">
-              <LeadMagnet />
             </div>
 
 

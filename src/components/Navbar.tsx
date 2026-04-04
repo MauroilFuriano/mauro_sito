@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, FileText } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import LeadMagnet from './LeadMagnet';
 
 interface NavLink {
   name: string;
@@ -20,6 +21,9 @@ const navLinks: NavLink[] = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLeadOpen, setIsLeadOpen] = useState(false);
+  const [isMobileLeadOpen, setIsMobileLeadOpen] = useState(false);
+  const leadRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,6 +36,17 @@ const Navbar: React.FC = () => {
   // Close mobile menu on route change
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
+  // Close lead dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (leadRef.current && !leadRef.current.contains(e.target as Node)) {
+        setIsLeadOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
     e.preventDefault();
     setIsOpen(false);
@@ -41,22 +56,10 @@ const Navbar: React.FC = () => {
       return;
     }
 
-    // Anchor link: if on homepage scroll to section, else navigate home + hash
     if (location.pathname !== '/') {
       navigate('/' + link.href);
     } else {
       const el = document.querySelector(link.href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setIsOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/#contact');
-    } else {
-      const el = document.querySelector('#contact');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -113,13 +116,25 @@ const Navbar: React.FC = () => {
             </a>
           ))}
 
-          <a
-            href="#contact"
-            onClick={handleCTA}
-            className="px-8 py-3 bg-transparent border-2 border-cyan-400 text-cyan-400 text-sm font-bold tracking-widest rounded hover:bg-cyan-400 hover:text-black transition-all duration-300 glow-box uppercase"
-          >
-            Lavora con me
-          </a>
+          {/* Lead Magnet CTA */}
+          <div className="relative" ref={leadRef}>
+            <button
+              onClick={() => setIsLeadOpen(prev => !prev)}
+              className="flex items-center gap-2 px-5 py-3 bg-cyan-400 text-black text-xs font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] uppercase whitespace-nowrap"
+            >
+              <FileText size={14} />
+              Scopri i 7 Errori
+              <span className="hidden xl:inline opacity-60 font-normal normal-case tracking-normal">· PDF Gratis</span>
+            </button>
+
+            {/* Dropdown form */}
+            {isLeadOpen && (
+              <div className="absolute top-full right-0 mt-3 w-[400px] z-50 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+                <LeadMagnet />
+              </div>
+            )}
+          </div>
+
           <a
             href="https://wa.me/393480029661"
             target="_blank"
@@ -146,7 +161,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Navigation */}
       <div
         className={`md:hidden absolute top-full left-0 w-full border-b border-white/10 overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{ backgroundColor: '#0d0d1a' }}
       >
@@ -165,13 +180,26 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          {/* CTA mobile */}
-          <div className="w-full pt-4 border-t border-white/10 mt-2">
+
+          {/* Lead Magnet mobile */}
+          <div className="w-full pt-4 border-t border-white/10 mt-2 space-y-3">
+            <button
+              onClick={() => setIsMobileLeadOpen(prev => !prev)}
+              className="flex items-center justify-center gap-2 w-full py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 text-sm uppercase"
+            >
+              <FileText size={16} />
+              Scopri i 7 Errori · PDF Gratis
+            </button>
+            {isMobileLeadOpen && (
+              <div className="text-left">
+                <LeadMagnet />
+              </div>
+            )}
             <a
               href="https://wa.me/393480029661"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full py-4 bg-cyan-400 text-black font-display font-bold tracking-widest rounded-lg hover:bg-cyan-300 transition-all duration-300 text-sm uppercase text-center"
+              className="block w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-lg hover:border-cyan-400/40 transition-all duration-300 text-sm uppercase text-center"
             >
               WhatsApp
             </a>

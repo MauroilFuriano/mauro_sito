@@ -186,7 +186,7 @@ const Hero: React.FC = () => {
               {/* Sottoscritta più pulita, glow ridotto — [PSICOLOGIA] Loss Aversion */}
               <div className="hero-fade-in hero-delay-2 block mt-6 mb-8 max-w-2xl">
                 <span
-                  className="glitch-text text-cyan-400 text-xl sm:text-2xl lg:text-3xl font-bold leading-snug block drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]"
+                  className="glitch-text text-cyan-400 text-xl sm:text-2xl lg:text-3xl font-bold leading-snug block"
                   data-text="Ogni cliente che non ti trova online, va da un competitor."
                 >
                   Ogni cliente che non ti trova online, va da un competitor.

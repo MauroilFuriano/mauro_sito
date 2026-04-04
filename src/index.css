@@ -350,3 +350,21 @@ html {
     opacity: 0.2;
   }
 }
+
+/* Accessibilità: rispetta preferenza utente per animazioni ridotte */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

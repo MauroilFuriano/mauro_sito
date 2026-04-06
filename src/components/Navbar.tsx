@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLeadOpen, setIsLeadOpen] = useState(false);
-  const [isMobileLeadOpen, setIsMobileLeadOpen] = useState(false);
   const leadRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();

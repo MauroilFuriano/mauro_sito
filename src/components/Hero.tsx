@@ -21,21 +21,11 @@ const Hero: React.FC = () => {
           loading="eager"
         />
 
-        {/* Fallback Statico Mobile — Liquid Glass & Aurora UI */}
-        <img
-          src="/mobile_hero_bg_2026.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover lg:hidden"
-          style={{ opacity: 1, objectPosition: 'center', zIndex: 0 }}
-          loading="eager"
-        />
-
         {/* Galassia GLSL: Via Lattea, nebulosa, stelle. Active su Desktop se motion consentita */}
         <HeroGalaxy />
 
         {/* Stelle + particelle Canvas 2D — solo mobile, no nebulosa, battery-safe */}
-        <div className="lg:hidden">
+        <div className="absolute inset-0 lg:hidden">
           <HeroStarsMobile />
         </div>
 

@@ -181,20 +181,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
 
-          {/* Lead Magnet mobile */}
-          <div className="w-full pt-4 border-t border-white/10 mt-2 space-y-3">
-            <button
-              onClick={() => setIsMobileLeadOpen(prev => !prev)}
-              className="flex items-center justify-center gap-2 w-full py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 text-sm uppercase"
-            >
-              <FileText size={16} />
-              Scopri i 7 Errori · PDF Gratis
-            </button>
-            {isMobileLeadOpen && (
-              <div className="text-left">
-                <LeadMagnet />
-              </div>
-            )}
+          <div className="w-full pt-4 border-t border-white/10 mt-2">
             <a
               href="https://wa.me/393480029661"
               target="_blank"

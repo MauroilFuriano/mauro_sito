@@ -75,6 +75,7 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = (e.clientY / window.innerHeight) * 2 - 1;
       setMousePosition({ x, y });
@@ -107,7 +108,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-16 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-0 overflow-hidden">
 
       {/* ── Background Layers ──────────────────────────── */}
 

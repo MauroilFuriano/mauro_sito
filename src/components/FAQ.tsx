@@ -86,6 +86,14 @@ const faqs = [
     q: 'Posso collaborare anche se sono un\'agenzia web?',
     a: "Assolutamente. Lavoro anche in white-label: sviluppo il progetto, consegno i sorgenti all'agenzia, nessun contatto con il cliente finale. Mantenimento, hosting e rinnovi restano in carico all'agenzia. Contattami per discutere tariffe B2B.",
   },
+  {
+    q: 'Ho già Facebook e Instagram. Perché dovrei pagare anche un sito web?',
+    a: "I social sono in affitto: se Facebook chiude l'account, cambia l'algoritmo o aumenta i costi delle sponsorizzate, la tua visibilità scompare da un giorno all'altro. Il tuo sito è di tua proprietà — nessuno te lo può togliere. In più, un cliente che ti cerca su Google non troverà mai il tuo profilo Instagram: i motori di ricerca indicizzano i siti, non i social. Fare sponsorizzate senza un sito professionale è come pagare pubblicità che porta le persone davanti a una porta chiusa. Il sito è la tua sede digitale — i social sono solo i cartelli stradali che ci portano.",
+  },
+  {
+    q: 'Cos\'è la GEO e perché è importante per la mia attività?',
+    a: "GEO (Generative Engine Optimization) è la nuova SEO: l'ottimizzazione per essere citati da ChatGPT, Google AI Overview, Perplexity e gli altri assistenti AI. Oggi milioni di persone non cercano più su Google digitando parole chiave — chiedono direttamente a ChatGPT 'qual è il miglior sviluppatore web di Ascoli Piceno?' o 'chi fa siti web nelle Marche?'. Se il tuo sito non è ottimizzato per rispondere a queste domande, sei invisibile nella nuova generazione di ricerche. SEO + GEO insieme significa essere trovati sia dai motori di ricerca tradizionali che da quelli AI — massima visibilità su tutti i canali, oggi e nei prossimi anni.",
+  },
 ];
 
 /* ── Component ───────────────────────────────────────────── */

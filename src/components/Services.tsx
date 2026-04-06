@@ -78,24 +78,26 @@ const Services: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ServiceCard
             icon={<Globe size={32} />}
-            title="Sviluppo Web"
-            description="Siti web fulminei che trattengono gli utenti e triplicano le vendite sul tuo e-commerce, superando la lentezza dei siti tradizionali."
+            title="Sito Web Professionale"
+            description="Se il tuo sito si carica lentamente, Google ti penalizza e i visitatori scappano. Creo siti veloci, ottimizzati SEO e GEO — così ti trovano sia su Google che su ChatGPT e Google AI. Sponsorizzarti sui social senza un sito è come aprire un negozio senza insegna."
             features={[
-              "Esperienza utente intuitiva e fluida",
-              "Sistemi E-commerce ad alta conversione",
-              "Gestione dei contenuti semplificata"
+              "Caricamento in meno di 2 secondi — Google premia la velocità",
+              "SEO + GEO: visibile su Google, ChatGPT e tutti i motori AI",
+              "Design professionale che trasmette fiducia al primo colpo d'occhio",
+              "Mobile perfetto: il 70% dei tuoi clienti naviga da smartphone"
             ]}
             delay="0"
             startingPrice="A partire da €1.500"
           />
           <ServiceCard
             icon={<Bot size={32} />}
-            title="Chatbot & IA"
-            description="Assistenti virtuali perfetti che qualificano i contatti e rispondono ai tuoi clienti 24/7, mentre tu dormi o ti dedichi ad altro."
+            title="Chatbot & Assistente AI"
+            description="La tua attività perde clienti ogni sera alle 18:00 quando chiudi. Un assistente AI risponde, prende appuntamenti e gestisce prenotazioni 24/7 — come una segretaria che non dorme mai, non si ammala e non va in ferie."
             features={[
-              "Assistenza clienti sempre attiva",
-              "Qualificazione automatica dei contatti",
-              "Risposte intelligenti ed immediate"
+              "Prenota appuntamenti e gestisce prenotazioni in autonomia",
+              "Risponde ai clienti alle 23:00 di domenica senza intervento umano",
+              "Si collega al tuo gestionale, CRM o sistema di prenotazioni",
+              "Qualifica i contatti e li passa a te solo quando sono pronti ad acquistare"
             ]}
             delay="100"
             startingPrice="A partire da €4.200"
@@ -103,12 +105,13 @@ const Services: React.FC = () => {
           />
           <ServiceCard
             icon={<Smartphone size={32} />}
-            title="App Su Misura"
-            description="Colleghiamo i tuoi software aziendali per eliminare i noiosi lavori manuali di copia-incolla dei tuoi dipendenti."
+            title="Automazione & App Aziendali"
+            description="Quante ore al giorno i tuoi dipendenti sprecano a copiare dati da un programma all'altro? Collego i tuoi software aziendali e creo app su misura che eliminano il lavoro manuale ripetitivo — liberando tempo per ciò che conta."
             features={[
-              "Automazione delle attività ripetitive",
-              "Sincronizzazione dati tra gestionali",
-              "Piattaforme cloud scalabili e sicure"
+              "Eliminazione copia-incolla tra gestionali e fogli Excel",
+              "Dashboard unica per controllare tutta l'attività in tempo reale",
+              "Automazioni che inviano email, aggiornano scorte e generano report",
+              "Integrazione con qualsiasi software già in uso in azienda"
             ]}
             delay="200"
             startingPrice="A partire da €8.000"

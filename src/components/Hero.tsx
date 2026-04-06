@@ -7,17 +7,46 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-0 overflow-hidden">
 
-      {/* ── Background Galaxy ── */}
+      {/* ── Background Galaxy & Fallbacks ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-        {/* Galassia GLSL: Via Lattea, nebulosa, stelle, shooting stars */}
+        {/* Fallback Statico Desktop (per prefers-reduced-motion) */}
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover hidden lg:block"
+          style={{ opacity: 1, objectPosition: '65% 25%', zIndex: 0 }}
+          loading="eager"
+        />
+
+        {/* Fallback Statico Mobile — Liquid Glass & Aurora UI */}
+        <img
+          src="/mobile_hero_bg_2026.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover lg:hidden"
+          style={{ opacity: 1, objectPosition: 'center', zIndex: 0 }}
+          loading="eager"
+        />
+
+        {/* Galassia GLSL: Via Lattea, nebulosa, stelle. Active su Desktop se motion consentita */}
         <HeroGalaxy />
 
-        {/* Gradiente sinistra per leggibilità testo */}
+        {/* Gradiente overlay per leggibilità testo (Desktop) */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden lg:block"
           style={{
             background: 'linear-gradient(to right, rgba(10,10,20,0.92) 0%, rgba(10,10,20,0.80) 25%, rgba(10,10,20,0.30) 55%, transparent 100%)',
+            zIndex: 5,
+          }}
+        />
+
+        {/* Gradiente overlay per leggibilità testo (Mobile) */}
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(10,10,20,0.3) 0%, rgba(10,10,20,0.85) 100%)',
             zIndex: 5,
           }}
         />
@@ -67,7 +96,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Lead Magnet — sotto i CTA */}
-          <div className="hero-fade-in hero-delay-5 pt-2">
+          <div className="hero-fade-in hero-delay-5 pt-2 min-h-[120px]">
             <LeadMagnet />
           </div>
 

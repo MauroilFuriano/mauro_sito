@@ -28,7 +28,7 @@ float noise(vec2 p){
 
 float fbm(vec2 p){
   float v=0.0, a=0.5;
-  for(int i=0;i<5;i++){v+=a*noise(p); p=p*2.03+vec2(3.1,1.7); a*=0.5;}
+  for(int i=0;i<3;i++){v+=a*noise(p); p=p*2.03+vec2(3.1,1.7); a*=0.5;}
   return v;
 }
 
@@ -73,19 +73,15 @@ void main(){
   vec2 c2 = p-vec2(0.2,-0.35);
   col += vec3(0.90,0.45,0.0)*smoothstep(0.50,0.78,n3)*exp(-dot(c2,c2)*2.5)*0.09;
 
-  /* ── Star field — 10 layer con densità e colori diversi ─── */
+  /* ── Star field — Ottimizzato a 6 layer per performance ─── */
   col += vec3(0.90,0.95,1.00)*star(uv,        80.0, 0.65)*1.00;
-  col += vec3(0.75,0.88,1.00)*star(uv,        48.0, 0.70)*1.30;
   col += vec3(1.00,0.92,0.75)*star(uv+0.09,   62.0, 0.70)*0.90;
-  col += vec3(0.90,0.93,1.00)*star(uv,       150.0, 0.55)*0.45;
   col += vec3(1.00,1.00,1.00)*star(uv,       280.0, 0.42)*0.28;
-  col += vec3(0.80,0.90,1.00)*star(uv+0.15,  400.0, 0.38)*0.18;
   /* stelle extra nella Via Lattea */
   col += vec3(0.85,0.92,1.00)*star(uv*1.4+0.07,200.0,0.45)*mw*1.60;
   /* stelle luminose / colorate in primo piano */
   col += vec3(0.50,0.80,1.00)*star(uv,        18.0, 0.965)*4.5;
   col += vec3(1.00,0.90,0.55)*star(uv+0.50,   22.0, 0.968)*3.5;
-  col += vec3(1.00,1.00,1.00)*star(uv+0.30,   12.0, 0.972)*5.5;
 
   /* ── Shooting star ───────────────────────────────────────── */
   float ep  = floor(u_time*0.14);
@@ -119,6 +115,16 @@ export default function HeroGalaxy() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Degrado Grazioso: Niente WebGL su mobile, fallback immagine gestita dal CSS in Hero
+    if (window.innerWidth < 768) return; 
+
+    // IntersectionObserver per spegnere la GPU quando fuori viewport
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
 
     const gl = (
       canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
@@ -161,7 +167,8 @@ export default function HeroGalaxy() {
     /* ── Resize ── */
     let W = 0, H = 0;
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 1.5);
+      // Limitiamo il DPR a 1.0 per preservare FPS su display densi
+      const dpr = Math.min(window.devicePixelRatio, 1.0);
       W = canvas.width  = canvas.offsetWidth  * dpr;
       H = canvas.height = canvas.offsetHeight * dpr;
       gl.viewport(0, 0, W, H);
@@ -173,15 +180,18 @@ export default function HeroGalaxy() {
     let raf = 0;
     const t0 = performance.now();
     const draw = (now: number) => {
-      gl.uniform2f(uRes, W, H);
-      gl.uniform1f(uTime, (now - t0) / 1000);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (isVisible) {
+        gl.uniform2f(uRes, W, H);
+        gl.uniform1f(uTime, (now - t0) / 1000);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
       raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(raf);
+      observer.disconnect();
       window.removeEventListener('resize', resize);
     };
   }, []);

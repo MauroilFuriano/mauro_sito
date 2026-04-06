@@ -15,8 +15,8 @@ const Hero: React.FC = () => {
           src="/hero-bg.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          style={{ opacity: 1 }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 1, objectPosition: '65% 25%' }}
           loading="eager"
         />
 

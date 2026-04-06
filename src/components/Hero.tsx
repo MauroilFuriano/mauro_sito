@@ -74,18 +74,20 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hero-fade-in hero-delay-4 flex flex-col sm:flex-row gap-5">
+          {/* CTA Buttons — side-by-side anche mobile, gerarchia primario/secondario */}
+          <div className="hero-fade-in hero-delay-4 flex flex-row gap-3">
+            {/* Primario — pieno, prominente */}
             <a
               href="#contact"
-              className="px-10 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-2xl sm:rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse text-base whitespace-nowrap"
+              className="flex-1 sm:flex-none px-6 sm:px-8 py-3.5 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-xl hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] active:scale-95 flex items-center justify-center gap-1.5 group animate-glow-pulse text-sm sm:text-base whitespace-nowrap"
             >
               ANALISI GRATUITA
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              <ChevronRight className="group-hover:translate-x-1 transition-transform" size={16} />
             </a>
+            {/* Secondario — bordo sottile, meno peso visivo */}
             <a
               href="#portfolio"
-              className="px-10 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-display font-bold tracking-wider rounded-2xl sm:rounded-lg hover:bg-white/10 hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 active:scale-95 flex items-center justify-center text-base whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+              className="flex-1 sm:flex-none px-6 sm:px-8 py-3.5 border border-white/20 text-white/80 font-display font-bold tracking-wider rounded-xl hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 active:scale-95 flex items-center justify-center text-sm sm:text-base whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
             >
               VEDI PROGETTI
             </a>

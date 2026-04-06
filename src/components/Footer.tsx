@@ -1,6 +1,6 @@
 import React from 'react';
 // Ho rimosso Twitter e aggiunto Facebook e Instagram
-import { Github, Linkedin, Terminal, Facebook, Instagram, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Facebook, Instagram, MapPin, Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-end">
-          <Terminal className="text-cyan-400" size={20} />
+          <img src="/logo.png" alt="Mauro.exe" width="28" height="28" className="object-contain" />
           <span className="font-display font-bold text-white tracking-widest">MAURO.EXE</span>
         </div>
 

@@ -1,44 +1,30 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import LeadMagnet from './LeadMagnet';
+import HeroAurora from './HeroAurora';
 import HeroParticles from './HeroParticles';
 
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-0 overflow-hidden">
 
-      {/* ── Background ── */}
+      {/* ── Background Aurora UI 2026 ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-        {/* Immagine — piena luminosità */}
-        <img
-          src="/hero-bg.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 1, objectPosition: '65% 25%' }}
-          loading="eager"
-        />
+        {/* Blob gradiente animati — stile Vercel/Linear */}
+        <HeroAurora />
 
-        {/* Overlay desktop: abbastanza scuro a sinistra per leggibilità testo,
-            quasi trasparente a destra per mostrare l'immagine */}
-        <div
-          className="absolute inset-0 hidden lg:block"
-          style={{
-            background: 'linear-gradient(to right, #0a0a14 0%, #0a0a14 28%, rgba(10,10,20,0.38) 50%, rgba(10,10,20,0.08) 100%)',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Overlay mobile — leggermente ridotto */}
-        <div
-          className="absolute inset-0 lg:hidden"
-          style={{ background: 'rgba(10,10,20,0.52)', zIndex: 1 }}
-        />
-
-        {/* Stelle + particelle + shooting stars */}
+        {/* Stelle, particelle, shooting stars */}
         <HeroParticles />
 
+        {/* Gradiente sinistra per leggibilità testo */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to right, rgba(10,10,20,0.92) 0%, rgba(10,10,20,0.80) 25%, rgba(10,10,20,0.30) 55%, transparent 100%)',
+            zIndex: 5,
+          }}
+        />
       </div>
 
       {/* ── Contenuto Hero ── */}
@@ -71,14 +57,14 @@ const Hero: React.FC = () => {
           <div className="hero-fade-in hero-delay-4 flex flex-col sm:flex-row gap-5">
             <a
               href="#contact"
-              className="px-10 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-2 group animate-glow-pulse text-base whitespace-nowrap"
+              className="px-10 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-2xl sm:rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse text-base whitespace-nowrap"
             >
               ANALISI GRATUITA
               <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
             </a>
             <a
               href="#portfolio"
-              className="px-10 py-4 bg-transparent border border-white/20 text-white font-display font-bold tracking-wider rounded-lg hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 flex items-center justify-center text-base whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+              className="px-10 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-display font-bold tracking-wider rounded-2xl sm:rounded-lg hover:bg-white/10 hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 active:scale-95 flex items-center justify-center text-base whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
             >
               VEDI PROGETTI
             </a>

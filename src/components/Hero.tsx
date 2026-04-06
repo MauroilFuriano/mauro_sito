@@ -1,21 +1,17 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import LeadMagnet from './LeadMagnet';
-import HeroAurora from './HeroAurora';
-import HeroParticles from './HeroParticles';
+import HeroGalaxy from './HeroGalaxy';
 
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-24 lg:pt-0 overflow-hidden">
 
-      {/* ── Background Aurora UI 2026 ── */}
+      {/* ── Background Galaxy ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-        {/* Blob gradiente animati — stile Vercel/Linear */}
-        <HeroAurora />
-
-        {/* Stelle, particelle, shooting stars */}
-        <HeroParticles />
+        {/* Galassia GLSL: Via Lattea, nebulosa, stelle, shooting stars */}
+        <HeroGalaxy />
 
         {/* Gradiente sinistra per leggibilità testo */}
         <div
@@ -70,8 +66,8 @@ const Hero: React.FC = () => {
             </a>
           </div>
 
-          {/* Lead Magnet — solo mobile */}
-          <div className="hero-fade-in hero-delay-5 pt-2 lg:hidden">
+          {/* Lead Magnet — sotto i CTA */}
+          <div className="hero-fade-in hero-delay-5 pt-2">
             <LeadMagnet />
           </div>
 

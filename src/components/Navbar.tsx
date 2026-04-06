@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import LeadMagnet from './LeadMagnet';
 
 interface NavLink {
   name: string;
@@ -21,8 +20,6 @@ const navLinks: NavLink[] = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isLeadOpen, setIsLeadOpen] = useState(false);
-  const leadRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -34,17 +31,6 @@ const Navbar: React.FC = () => {
 
   // Close mobile menu on route change
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
-
-  // Close lead dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (leadRef.current && !leadRef.current.contains(e.target as Node)) {
-        setIsLeadOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
     e.preventDefault();
@@ -114,25 +100,6 @@ const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
             </a>
           ))}
-
-          {/* Lead Magnet CTA */}
-          <div className="relative" ref={leadRef}>
-            <button
-              onClick={() => setIsLeadOpen(prev => !prev)}
-              className="flex items-center gap-2 px-5 py-3 bg-cyan-400 text-black text-xs font-bold tracking-wider rounded-lg hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] uppercase whitespace-nowrap"
-            >
-              <FileText size={14} />
-              Scopri i 7 Errori
-              <span className="hidden xl:inline opacity-60 font-normal normal-case tracking-normal">· PDF Gratis</span>
-            </button>
-
-            {/* Dropdown form */}
-            {isLeadOpen && (
-              <div className="absolute top-full right-0 mt-3 w-[400px] z-50 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-                <LeadMagnet />
-              </div>
-            )}
-          </div>
 
           <a
             href="https://wa.me/393480029661"

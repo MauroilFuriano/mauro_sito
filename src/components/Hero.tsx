@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import LeadMagnet from './LeadMagnet';
 import HeroGalaxy from './HeroGalaxy';
+import HeroStarsMobile from './HeroStarsMobile';
 
 const Hero: React.FC = () => {
   return (
@@ -32,6 +33,11 @@ const Hero: React.FC = () => {
 
         {/* Galassia GLSL: Via Lattea, nebulosa, stelle. Active su Desktop se motion consentita */}
         <HeroGalaxy />
+
+        {/* Stelle + particelle Canvas 2D — solo mobile, no nebulosa, battery-safe */}
+        <div className="lg:hidden">
+          <HeroStarsMobile />
+        </div>
 
         {/* Gradiente overlay per leggibilità testo (Desktop) */}
         <div

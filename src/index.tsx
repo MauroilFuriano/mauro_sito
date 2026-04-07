@@ -1,9 +1,18 @@
-import './sentry';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './index.css';
+
+/* Sentry caricato dopo page load — non blocca rendering né TTI
+   457KB → fuori dal critical path, save ~151KB gzip sul first load */
+const loadSentry = () => import('./sentry').catch(() => {});
+const w = window as typeof window & { requestIdleCallback?: (cb: () => void) => void };
+if (w.requestIdleCallback) {
+  w.requestIdleCallback(loadSentry);
+} else {
+  w.addEventListener('load', loadSentry, { once: true });
+}
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

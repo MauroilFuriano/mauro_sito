@@ -55,9 +55,16 @@ const Hero: React.FC = () => {
         {/* Galassia GLSL: Via Lattea, nebulosa, stelle. Active su Desktop se motion consentita */}
         <HeroGalaxy />
 
-        {/* Stelle + particelle Canvas 2D — solo mobile, no nebulosa, battery-safe */}
-        <div className="absolute inset-0 lg:hidden">
-          <HeroStarsMobile />
+        {/* Sfondo Spettacolare Mobile (Immagine Cyberpunk Spazio/Aurora) */}
+        <div className="absolute inset-0 lg:hidden bg-[#05050A]">
+          <img
+            src="/mobile-bg.png"
+            alt="Cyberpunk Space Background"
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.9, objectPosition: 'center' }}
+            loading="eager"
+            aria-hidden="true"
+          />
         </div>
 
         {/* Gradiente overlay per leggibilità testo (Desktop) */}

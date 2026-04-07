@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronDown } from 'lucide-react';
 import gsap from 'gsap';
 import LeadMagnet from './LeadMagnet';
 import HeroGalaxy from './HeroGalaxy';
@@ -53,8 +53,8 @@ const Hero: React.FC = () => {
               src="/mobile-bg.png"
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-cover mobile-bg-zoom"
-              style={{ opacity: 0.88, objectPosition: 'center' }}
+              className="w-full h-full object-cover mobile-bg-zoom filter brightness-[1.15] contrast-[1.10]"
+              style={{ opacity: 1, objectPosition: 'center' }}
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -73,11 +73,11 @@ const Hero: React.FC = () => {
           }}
         />
 
-        {/* Gradiente overlay per leggibilità testo (Mobile) */}
+        {/* Gradiente overlay per leggibilità testo (Mobile) schiarito */}
         <div
-          className="absolute inset-0 lg:hidden"
+          className="absolute inset-0 lg:hidden pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(10,10,20,0.3) 0%, rgba(10,10,20,0.85) 100%)',
+            background: 'linear-gradient(to bottom, rgba(10,10,20,0.1) 0%, rgba(10,10,20,0.5) 100%)',
             zIndex: 5,
           }}
         />
@@ -115,11 +115,14 @@ const Hero: React.FC = () => {
             {/* Primario */}
             <a
               href="#contact"
-              className="gsap-cta flex-none px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-xl hover:bg-cyan-300 transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse motion-reduce:animate-none text-base sm:text-lg whitespace-nowrap"
+              className="gsap-cta relative overflow-hidden flex-none px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] hover:bg-white hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse motion-reduce:animate-none text-base sm:text-lg whitespace-nowrap"
               style={{ opacity: 0 }}
             >
-              ANALISI GRATUITA
-              <ChevronRight className="group-hover:translate-x-1 motion-reduce:transition-none transition-transform" size={20} />
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-in-out" />
+              <span className="relative z-10 flex items-center gap-2">
+                ANALISI GRATUITA
+                <ChevronRight className="group-hover:translate-x-1 motion-reduce:transition-none transition-transform" size={20} />
+              </span>
             </a>
             {/* Secondario */}
             <a
@@ -138,6 +141,22 @@ const Hero: React.FC = () => {
 
         </div>
 
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div 
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 z-20 animate-bounce cursor-pointer group"
+        onClick={() => {
+          const aboutSection = document.getElementById('about');
+          if (aboutSection) {
+            const yOffset = -50; 
+            const y = aboutSection.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+          }
+        }}
+      >
+        <span className="text-cyan-400/60 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-cyan-400 transition-colors">Esplora</span>
+        <ChevronDown className="text-cyan-400/50 group-hover:text-cyan-400 transition-colors" size={20} />
       </div>
 
     </section>

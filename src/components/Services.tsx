@@ -22,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, fea
       </div>
     )}
 
-    <div className="bg-dark-900 rounded-2xl p-5 sm:p-8 h-full relative z-10 flex flex-col items-start transition-colors">
+    <div className="bg-dark-900/50 backdrop-blur-2xl rounded-2xl p-5 sm:p-8 h-full relative z-10 flex flex-col items-start transition-colors">
       <div className="w-14 h-14 bg-dark-800 rounded-lg flex items-center justify-center mb-6 border border-white/5 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.15)] transition-all duration-500">
         <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
           {icon}

@@ -2,10 +2,18 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-dark-800 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="about" className="py-24 relative overflow-hidden">
+      {/* Background astratto scuro che funge da continuazione dello spazio */}
+      <div className="absolute inset-0 bg-dark-900 border-t border-white/5" />
+      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#05050A] to-transparent pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-2xl rounded-[2.5rem] p-6 lg:p-12 relative overflow-hidden group">
+          {/* Subtle glow hover effect su tutta la card */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
 
           {/* ── Left Column — Portrait Image ───────────── */}
           <div className="lg:col-span-5 relative">
@@ -78,7 +86,9 @@ const About: React.FC = () => {
 
           </div>
 
+          </div>
         </div>
+
       </div>
     </section>
   );

@@ -53,8 +53,8 @@ const Hero: React.FC = () => {
               src="/mobile-bg.png"
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.9, objectPosition: 'center' }}
+              className="w-full h-full object-cover mobile-bg-zoom"
+              style={{ opacity: 0.88, objectPosition: 'center' }}
               loading="eager"
               decoding="async"
               fetchPriority="high"

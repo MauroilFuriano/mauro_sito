@@ -42,6 +42,20 @@ html {
   to   { opacity: 1; transform: translateX(0); }
 }
 
+/* Ken Burns — lento zoom galassia mobile, effetto immersione */
+@keyframes mobile-bg-zoom {
+  0%,100% { transform: scale(1.0); }
+  50%     { transform: scale(1.12); }
+}
+.mobile-bg-zoom {
+  animation: mobile-bg-zoom 28s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-bg-zoom { animation: none; }
+}
+
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {

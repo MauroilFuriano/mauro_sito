@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, Suspense } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import LeadMagnet from './LeadMagnet';
@@ -42,29 +42,26 @@ const Hero: React.FC = () => {
       {/* ── Background Galaxy & Fallbacks ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
 
-        {/* Fallback Statico Desktop (per prefers-reduced-motion) */}
-        <img
-          src="/hero-bg.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover hidden lg:block"
-          style={{ opacity: 1, objectPosition: '65% 25%', zIndex: 0 }}
-          loading="eager"
-        />
-
-        {/* Galassia GLSL: Via Lattea, nebulosa, stelle. Active su Desktop se motion consentita */}
+        {/* Galassia GLSL — desktop, si disattiva se prefers-reduced-motion */}
         <HeroGalaxy />
 
-        {/* Sfondo Spettacolare Mobile (Immagine Cyberpunk Spazio/Aurora) */}
+        {/* Sfondo Mobile — WebP (70KB) con fallback PNG */}
         <div className="absolute inset-0 lg:hidden bg-[#05050A]">
-          <img
-            src="/mobile-bg.png"
-            alt="Cyberpunk Space Background"
-            className="w-full h-full object-cover"
-            style={{ opacity: 0.9, objectPosition: 'center' }}
-            loading="eager"
-            aria-hidden="true"
-          />
+          <picture>
+            <source srcSet="/mobile-bg.webp" type="image/webp" />
+            <img
+              src="/mobile-bg.png"
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover"
+              style={{ opacity: 0.9, objectPosition: 'center' }}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
+          </picture>
+          {/* Stelle + Particelle animate — Canvas 2D, battery-safe */}
+          <HeroStarsMobile />
         </div>
 
         {/* Gradiente overlay per leggibilità testo (Desktop) */}

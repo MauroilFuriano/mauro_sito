@@ -17,6 +17,21 @@ export default defineConfig({
       webp: { quality: 75 },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react':  ['react', 'react-dom', 'react-router-dom'],
+          'vendor-gsap':   ['gsap'],
+          'vendor-framer': ['framer-motion'],
+          'vendor-spline': ['@splinetool/react-spline', '@splinetool/runtime'],
+          'vendor-sentry': ['@sentry/react'],
+          'vendor-misc':   ['lenis', 'lucide-react', 'react-helmet-async'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 800,
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),

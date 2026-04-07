@@ -30,9 +30,12 @@ const ErrorFallback = () => (
   </div>
 );
 
+import SmoothScroll from './components/SmoothScroll';
+
 const App: React.FC = () => {
   return (
     <Sentry.ErrorBoundary fallback={<ErrorFallback />}>
+      <SmoothScroll />
       <Router>
         <Suspense fallback={<Loading />}>
           <Routes>

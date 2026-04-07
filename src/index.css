@@ -18,9 +18,11 @@ html, body {
 }
 
 /* --- [WEB DESIGNER] Impostazioni Globali --- */
+/* Disabilitato scroll-behavior nativo per usare Lenis Smooth Scroll
 html {
   scroll-behavior: smooth;
 }
+*/
 
 /* --- [WEB DESIGNER] Scroll Reveal Utilities / Effetto 2026 --- */
 .reveal {

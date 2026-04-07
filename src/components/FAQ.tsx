@@ -170,7 +170,7 @@ const FAQ: React.FC = () => {
                 aria-expanded={openIndex === i}
                 aria-controls={`faq-panel-${i}`}
               >
-                <span className="text-white font-bold text-sm leading-snug pr-2">{faq.q}</span>
+                <h3 className="text-white font-bold text-sm leading-snug pr-2 m-0 p-0">{faq.q}</h3>
                 <ChevronDown
                   size={18}
                   className={`text-cyan-400 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}

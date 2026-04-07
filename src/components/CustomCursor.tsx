@@ -54,9 +54,9 @@ const CustomCursor: React.FC = () => {
         translateY: cursorY,
         x: '-50%',
         y: '-50%',
-        backgroundColor: hovered ? 'rgba(0, 229, 255, 0.2)' : 'rgba(255, 255, 255, 1)',
+        backgroundColor: hovered ? 'rgba(0, 229, 255, 0.2)' : 'rgba(255, 255, 255, 0.8)',
         border: hovered ? '1px solid #00E5FF' : 'none',
-        mixBlendMode: 'difference'
+        boxShadow: hovered ? '0 0 10px rgba(0, 229, 255, 0.5)' : 'none'
       }}
       animate={{
         scale: hovered ? 3 : 1,

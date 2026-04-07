@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import gsap from 'gsap';
 import LeadMagnet from './LeadMagnet';
@@ -7,10 +7,20 @@ import HeroStarsMobile from './HeroStarsMobile';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [isGlitching, setIsGlitching] = useState(true);
 
   useEffect(() => {
+    // Observer per disabilitare l'animazione glitch (pesante su CPU/GPU) fuori viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsGlitching(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+    
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) return () => observer.disconnect();
 
     const ctx = gsap.context(() => {
       // Timeline per entrata mozzafiato (Hero + Testi principali)
@@ -33,7 +43,10 @@ const Hero: React.FC = () => {
 
     }, heroRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -102,7 +115,7 @@ const Hero: React.FC = () => {
 
             <div className="gsap-subtitle block mt-6 mb-8" style={{ opacity: 0 }}>
               <span
-                className="glitch-text motion-reduce:before:hidden motion-reduce:after:hidden motion-reduce:animate-none text-cyan-400 text-xl sm:text-2xl lg:text-3xl font-bold leading-snug block max-w-3xl mx-auto"
+                className={`${isGlitching ? 'glitch-text' : ''} motion-reduce:before:hidden motion-reduce:after:hidden motion-reduce:animate-none text-cyan-400 text-xl sm:text-2xl lg:text-3xl font-bold leading-snug block max-w-3xl mx-auto`}
                 data-text="Ogni cliente che non ti trova online, va da un competitor."
               >
                 Ogni cliente che non ti trova online, va da un competitor.

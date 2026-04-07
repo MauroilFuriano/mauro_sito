@@ -231,7 +231,7 @@ const HomePage: React.FC = () => {
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
             <SEO
-                title="Sviluppatore Web Ascoli Piceno | Siti Web & Chatbot AI | Mauro.exe"
+                title="Siti Web & Chatbot AI Ascoli Piceno | Mauro Ceccarelli"
                 description="Creo siti web professionali e chatbot AI ad Ascoli Piceno. Automazione business per aziende nelle Marche e in tutta Italia. Contattami."
                 canonical="https://www.mauroceccarelli.it/"
                 keywords="Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Web Designer Ascoli Piceno, Chatbot AI Marche, Sviluppo Web San Benedetto, Agenzia Web Ascoli, Mauro Ceccarelli"
@@ -274,8 +274,14 @@ const HomePage: React.FC = () => {
 
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none z-[-1]">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-400/5 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/5 rounded-full blur-[100px]" />
+                <div 
+                    className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full" 
+                    style={{ background: 'radial-gradient(circle, rgba(0,229,255,0.05) 0%, rgba(0,0,0,0) 60%)' }} 
+                />
+                <div 
+                    className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full" 
+                    style={{ background: 'radial-gradient(circle, rgba(147,51,234,0.05) 0%, rgba(0,0,0,0) 60%)' }} 
+                />
             </div>
         </div>
     );

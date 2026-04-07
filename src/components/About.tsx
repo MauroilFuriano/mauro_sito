@@ -1,7 +1,10 @@
-import React from 'react';
-import { Linkedin, Github, Instagram, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Linkedin, Github, Instagram, ExternalLink, Zap, Cat, User } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const About: React.FC = () => {
+  const [showBadges, setShowBadges] = useState(false);
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background astratto scuro che funge da continuazione dello spazio */}
@@ -21,7 +24,10 @@ const About: React.FC = () => {
             {/* Background Glow */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-400/20 via-purple-500/10 to-transparent blur-3xl opacity-60"></div>
 
-            <div className="relative group">
+            <div 
+              className="relative group cursor-pointer"
+              onClick={() => setShowBadges(!showBadges)}
+            >
               <div className="absolute -inset-1 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
 
               <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-[1.8rem] overflow-hidden border border-white/10 bg-dark-900 shadow-2xl">
@@ -30,7 +36,7 @@ const About: React.FC = () => {
                   <img
                     src="/mauro_optimized.jpg"
                     alt="Mauro Ceccarelli"
-                    className="w-full h-full object-cover object-top filter grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                    className={`w-full h-full object-cover object-top filter transition-all duration-1000 ${showBadges ? 'grayscale-0 scale-105' : 'grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105'}`}
                     loading="lazy"
                   />
                 </picture>
@@ -38,13 +44,57 @@ const About: React.FC = () => {
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/20 to-transparent"></div>
 
-                {/* Bottom Badge */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/[0.03] backdrop-blur-md rounded-xl border border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                    <span className="text-white font-display font-bold text-sm tracking-wide uppercase">Disponibile per Progetti</span>
-                  </div>
-                </div>
+                {/* Dynamic Badges Interaction */}
+                <AnimatePresence>
+                  {showBadges && (
+                    <>
+                      {/* Titti Badge - Over the cat (adjusting coordinates based on common photo composition) */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                        className="absolute top-[60%] left-[15%] z-20"
+                      >
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                          <Cat size={14} className="text-purple-400" />
+                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">Titti - Frontend Specialist</span>
+                        </div>
+                      </motion.div>
+
+                      {/* Mauro Badge - Over Mauro */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, y: 10, x: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                        transition={{ delay: 0.1 }}
+                        className="absolute top-[40%] right-[15%] z-20"
+                      >
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+                          <User size={14} className="text-cyan-400" />
+                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">Mauro - Web Developer</span>
+                        </div>
+                      </motion.div>
+                    </>
+                  )}
+                </AnimatePresence>
+
+                {/* Initial Interaction Toast/Hint */}
+                <AnimatePresence>
+                  {!showBadges && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute bottom-6 left-6 right-6 p-4 bg-white/[0.03] backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                        <span className="text-white font-display font-medium text-xs tracking-wide uppercase">Clicca per scoprire il team</span>
+                      </div>
+                      <Zap size={14} className="text-cyan-400 animate-bounce" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               {/* Decorative Frame */}
@@ -63,7 +113,7 @@ const About: React.FC = () => {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white leading-tight">
                 Il Tuo Partner Digitale <br />
-                <span className="text-gray-400 font-normal">nelle Marche.</span>
+                <span className="text-cyan-400">nelle Marche e in Italia.</span>
               </h2>
             </div>
 
@@ -77,7 +127,7 @@ const About: React.FC = () => {
                   Chi è Mauro Ceccarelli?
                 </h3>
                 <p>
-                  Sono uno <span className="text-white font-medium">sviluppatore web full-stack</span> specializzato in soluzioni AI-driven ad Ascoli Piceno. Aiuto le aziende a scalare tramite siti web ad alte prestazioni e <span className="text-white font-medium">agenti AI personalizzati</span> che automatizzano processi complessi.
+                  Sono uno <span className="text-white font-medium">sviluppatore web full-stack</span> e il tuo partner digitale per la scalabilità. Aiuto le aziende a crescere tramite siti web ad alte prestazioni e <span className="text-white font-medium">chatbot AI</span> di ultima generazione.
                 </p>
               </div>
 

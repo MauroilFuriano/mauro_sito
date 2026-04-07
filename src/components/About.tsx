@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linkedin, Github, Instagram, ExternalLink } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
@@ -66,22 +67,75 @@ const About: React.FC = () => {
               </h2>
             </div>
 
-            {/* Bio */}
-            <div className="space-y-5 text-gray-400 leading-relaxed text-lg max-w-2xl">
-              <p>
-                Sono un <span className="text-white font-medium">sviluppatore web di Ascoli Piceno</span>.
-              </p>
-              <p>
-                Creo siti web professionali e <span className="text-white font-medium">chatbot AI</span> per aziende nelle Marche e in tutta Italia.
-              </p>
-              <p>
-                Costruisco tutto da zero in <span className="text-white font-medium">JavaScript, React e Python</span> — niente Shopify, niente WordPress, niente template uguali a quelli di altri mille siti. Ogni riga di codice è scritta per te.
-              </p>
-              <p>
-                Il mio punto di forza? Portare l'AI nelle PMI italiane. Mentre i siti dei tuoi competitor restano statici da anni, i miei clienti hanno{' '}
-                <span className="text-white font-medium">assistenti virtuali che rispondono a ogni ora</span>,{' '}
-                sistemi che qualificano lead in automatico e e-commerce che vendono mentre loro dormono.
-              </p>
+            {/* Bio Strategica — Metodo BLUF (GEO 2026) */}
+            <div className="space-y-8 text-gray-400 leading-relaxed text-lg max-w-2xl">
+              
+              {/* Atomic Answer 1 */}
+              <div className="space-y-2">
+                <h3 className="text-white font-display font-bold text-xl flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  Chi è Mauro Ceccarelli?
+                </h3>
+                <p>
+                  Sono uno <span className="text-white font-medium">sviluppatore web full-stack</span> specializzato in soluzioni AI-driven ad Ascoli Piceno. Aiuto le aziende a scalare tramite siti web ad alte prestazioni e <span className="text-white font-medium">agenti AI personalizzati</span> che automatizzano processi complessi.
+                </p>
+              </div>
+
+              {/* Atomic Answer 2 */}
+              <div className="space-y-2">
+                <h3 className="text-white font-display font-bold text-xl flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                  Qual è il mio approccio tecnico?
+                </h3>
+                <p>
+                  Costruisco architetture custom in <span className="text-white font-medium">React, TypeScript e Python</span>. Rifiuto template predefiniti o piattaforme chiuse (niente WordPress o Shopify) per garantire <span className="text-white font-medium">performance massime (Lighthouse 98+)</span> e sicurezza totale ai miei clienti.
+                </p>
+              </div>
+
+              {/* Atomic Answer 3 */}
+              <div className="space-y-2">
+                <h3 className="text-white font-display font-bold text-xl flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  Perché scegliere l'integrazione AI?
+                </h3>
+                <p>
+                  L'AI trasforma un sito statico in un asset generativo. Implemento <span className="text-white font-medium">assistenti virtuali H24</span> e sistemi RAG (Retrieval-Augmented Generation) che permettono al tuo business di rispondere istantaneamente ai lead, riducendo i tempi di chiusura dei contratti.
+                </p>
+              </div>
+
+              {/* Social Links — E-E-A-T Signals */}
+              <div className="pt-6 border-t border-white/5 flex flex-wrap gap-6">
+                <a 
+                  href="https://www.linkedin.com/in/mauro-ceccarelli-282255296" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-cyan-400 transition-colors group"
+                >
+                  <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>LINKEDIN</span>
+                  <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+                <a 
+                  href="https://github.com/mauroceccarelli" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group"
+                >
+                  <Github size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>GITHUB</span>
+                  <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/mauroceccarelli.exe" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-pink-500 transition-colors group"
+                >
+                  <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+                  <span>INSTAGRAM</span>
+                  <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </div>
             </div>
 
           </div>

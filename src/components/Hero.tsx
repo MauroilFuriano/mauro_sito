@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 
   // Particelle e Stelle generate dinamicamente per l'effetto "Original"
   const particles = useMemo(() => {
-    return Array.from({ length: 25 }).map((_, i) => ({
+    return Array.from({ length: 120 }).map((_, i) => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
   }, []);
 
   const stars = useMemo(() => {
-    return Array.from({ length: 50 }).map((_, i) => ({
+    return Array.from({ length: 250 }).map((_, i) => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `${Math.random() * 3}s`,
@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-start w-full lg:w-auto">
             <a
               href="#contact"
-              className="gsap-cta relative overflow-hidden flex-none px-8 py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] hover:bg-white hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse text-base sm:text-lg whitespace-nowrap"
+              className="gsap-cta relative overflow-hidden flex-none px-4 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 bg-cyan-400 text-black font-display font-bold tracking-wider rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] hover:bg-white hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2 group animate-glow-pulse text-sm sm:text-base lg:text-lg whitespace-nowrap"
               style={{ opacity: 0 }}
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -149,7 +149,7 @@ const Hero: React.FC = () => {
             </a>
             <a
               href="#portfolio"
-              className="gsap-cta flex-none px-8 py-4 border border-white/20 text-white/80 font-display font-bold tracking-wider rounded-xl hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 active:scale-95 flex items-center justify-center text-base sm:text-lg whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
+              className="gsap-cta flex-none px-4 py-2.5 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4 border border-white/20 text-white/80 font-display font-bold tracking-wider rounded-xl hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-300 active:scale-95 flex items-center justify-center text-sm sm:text-base lg:text-lg whitespace-nowrap hover:shadow-[0_0_20px_rgba(0,229,255,0.15)]"
               style={{ opacity: 0 }}
             >
               VEDI PROGETTI

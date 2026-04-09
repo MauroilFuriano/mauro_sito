@@ -1,38 +1,42 @@
 import { useEffect, useRef, useState } from 'react';
 
 const ELFSIGHT_ID = 'ef9abb2a-7350-46f1-9833-ff3cedbb9df2';
+const ELFSIGHT_SRC = 'https://elfsightcdn.com/platform.js';
 
 const Testimonials: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  /* Lazy load: carica Elfsight platform.js solo quando la sezione
-     entra nel viewport — zero impatto su performance iniziale */
   useEffect(() => {
-    if (loaded) return;
+    if (scriptLoaded) return;
     const el = sectionRef.current;
     if (!el) return;
+
+    const injectScript = () => {
+      if (document.querySelector(`script[src="${ELFSIGHT_SRC}"]`)) {
+        setScriptLoaded(true);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = ELFSIGHT_SRC;
+      script.async = true;
+      script.onload = () => setScriptLoaded(true);
+      document.body.appendChild(script);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Inietta script solo una volta
-          if (!document.querySelector('script[src*="elfsight"]')) {
-            const script = document.createElement('script');
-            script.src = 'https://elfsightcdn.com/platform.js';
-            script.async = true;
-            document.head.appendChild(script);
-          }
-          setLoaded(true);
+          injectScript();
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' } // pre-carica 200px prima del viewport
+      { rootMargin: '300px' }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [loaded]);
+  }, [scriptLoaded]);
 
   return (
     <section id="testimonials" className="py-24 relative overflow-hidden" ref={sectionRef}>
@@ -52,14 +56,10 @@ const Testimonials: React.FC = () => {
           </h3>
         </div>
 
-        {/* Elfsight Google Reviews — certificato Google */}
-        <div
-          className={`elfsight-app-${ELFSIGHT_ID}`}
-          data-elfsight-app-lazy=""
-        />
+        {/* Elfsight Google Reviews — NO data-elfsight-app-lazy (gestiamo noi il lazy) */}
+        <div className={`elfsight-app-${ELFSIGHT_ID}`} />
 
-        {/* Placeholder minimo mentre il widget carica */}
-        {!loaded && (
+        {!scriptLoaded && (
           <div className="flex justify-center py-12">
             <span className="text-gray-500 text-sm animate-pulse">Caricamento recensioni Google...</span>
           </div>

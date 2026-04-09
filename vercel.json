@@ -36,7 +36,7 @@
                 },
                 {
                     "key": "Content-Security-Policy",
-                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://*.unsplash.com blob:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://generativelanguage.googleapis.com https://api.emailjs.com; frame-ancestors 'none'"
+                    "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://elfsightcdn.com https://static.elfsight.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com https://*.unsplash.com https://lh3.googleusercontent.com https://*.elfsight.com blob:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://generativelanguage.googleapis.com https://api.emailjs.com https://*.elfsight.com https://core.service.elfsight.com; frame-ancestors 'none'"
                 }
             ]
         },

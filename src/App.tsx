@@ -64,6 +64,10 @@ const App: React.FC = () => (
           <Route path="/simulatore"     element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/cookie-policy"  element={<CookiePolicyPage />} />
+          {/* /faq non esiste come pagina — è un anchor nella home. Redirect. */}
+          <Route path="/faq"            element={<Navigate to="/#faq" replace />} />
+          {/* Catch-all: qualsiasi URL sconosciuto torna in home (evita pagine bianche) */}
+          <Route path="*"               element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </Router>

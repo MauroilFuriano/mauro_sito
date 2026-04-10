@@ -18,7 +18,6 @@
     "crawlMode": false,
     "include": [
       "/",
-      "/faq",
       "/simulatore",
       "/hotel",
       "/saas",

@@ -27,8 +27,6 @@ const app = (
   </React.StrictMode>
 );
 
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrateRoot(rootElement, app);
-} else {
-  ReactDOM.createRoot(rootElement).render(app);
-}
+/* Sempre createRoot: #root contiene SEO fallback statico che React sostituisce
+   al mount. Hydrate causerebbe mismatch error. */
+ReactDOM.createRoot(rootElement).render(app);

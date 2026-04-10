@@ -8,7 +8,7 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description"
-    content="Creo siti web professionali e chatbot AI ad Ascoli Piceno. Automazione business per aziende nelle Marche e in tutta Italia. Contattami." />
+    content="Sviluppatore Web ad Ascoli Piceno. Creo siti web professionali e chatbot AI per PMI nelle Marche. Consegna in 7-14 giorni. Analisi gratuita." />
   <meta name="keywords"
     content="Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Web Designer Ascoli Piceno, Chatbot AI Marche, Sviluppo Web San Benedetto, Agenzia Web Ascoli, Mauro Ceccarelli" />
   <meta name="author" content="Mauro Ceccarelli" />
@@ -54,7 +54,65 @@
 
 <body>
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-black focus:font-bold focus:rounded-lg">Vai al contenuto</a>
-  <div id="root"></div>
+
+  <!--
+    Static SEO fallback — visibile a Googlebot PRIMA che React idrati.
+    Contiene H1, keyword locali, servizi, schema breve.
+    React sostituisce questo contenuto su mount (createRoot().render()).
+    Stile minimale inline per evitare FOUC durante il brief flash.
+  -->
+  <div id="root">
+    <div style="min-height:100vh;background:#05050A;color:#fff;padding:80px 20px;font-family:system-ui,-apple-system,sans-serif;">
+      <header style="max-width:1200px;margin:0 auto;">
+        <div style="color:#00E5FF;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">
+          Sviluppatore Web Ascoli Piceno
+        </div>
+        <h1 style="font-size:clamp(32px,6vw,72px);font-weight:900;line-height:1.05;margin:0 0 24px;max-width:900px;">
+          Sviluppatore Web<br/>
+          <span style="background:linear-gradient(90deg,#00E5FF,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent;">ad Ascoli Piceno</span>
+        </h1>
+        <p style="color:#00E5FF;font-size:clamp(18px,2vw,24px);font-weight:700;max-width:700px;margin:0 0 24px;">
+          Ogni cliente che non ti trova online, va da un competitor.
+        </p>
+        <p style="color:#a0a0a0;font-size:16px;line-height:1.6;max-width:700px;margin:0 0 32px;">
+          Mauro Ceccarelli, freelance sviluppatore web ad Ascoli Piceno. Creo
+          siti web professionali, chatbot AI e automazioni business per PMI
+          nelle Marche e in tutta Italia. Consegna in 7-14 giorni, codice custom
+          React e TypeScript, Lighthouse 98/100 garantito.
+        </p>
+
+        <h2 style="font-size:24px;font-weight:700;margin:40px 0 16px;">Servizi Principali</h2>
+        <ul style="color:#a0a0a0;font-size:16px;line-height:1.8;list-style:none;padding:0;margin:0 0 32px;">
+          <li>Siti Web professionali custom React/Next.js (da €1.500)</li>
+          <li>Chatbot AI con GPT-4o, Gemini o Claude (da €4.200)</li>
+          <li>E-commerce Headless con Stripe (da €3.500)</li>
+          <li>Web App e SaaS su misura (da €8.000)</li>
+          <li>Automazioni business e integrazioni API</li>
+        </ul>
+
+        <h2 style="font-size:24px;font-weight:700;margin:40px 0 16px;">Perché scegliermi</h2>
+        <ul style="color:#a0a0a0;font-size:16px;line-height:1.8;list-style:none;padding:0;margin:0 0 32px;">
+          <li>Sviluppatore locale Ascoli Piceno, contatto diretto senza intermediari</li>
+          <li>Codice custom — niente Shopify, WordPress, template</li>
+          <li>Lighthouse 98/100 come standard minimo</li>
+          <li>Consegna garantita in tempi certi</li>
+          <li>Recensioni Google verificate 5 stelle</li>
+        </ul>
+
+        <address style="color:#a0a0a0;font-style:normal;font-size:14px;margin:32px 0;">
+          <strong style="color:#fff;">MAURO.EXE</strong><br/>
+          Sviluppatore Web freelance<br/>
+          Ascoli Piceno, Marche, Italia<br/>
+          Email: <a href="mailto:ceccarellimauro3@gmail.com" style="color:#00E5FF;">ceccarellimauro3@gmail.com</a><br/>
+          Telefono: <a href="tel:+393480029661" style="color:#00E5FF;">+39 348 002 9661</a>
+        </address>
+
+        <p style="color:#666;font-size:13px;margin-top:40px;">
+          Caricamento esperienza interattiva...
+        </p>
+      </header>
+    </div>
+  </div>
 
   <script type="module" src="/src/index.tsx"></script>
 </body>

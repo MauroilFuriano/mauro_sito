@@ -119,9 +119,9 @@ const Hero: React.FC = () => {
           {/* Headline */}
           <div>
             <h1 className="gsap-title font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] text-white mb-6" style={{ opacity: 0 }}>
-              Siti Web che<br />
+              Sviluppatore Web<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                Dominano il Futuro.
+                ad Ascoli Piceno
               </span>
             </h1>
 

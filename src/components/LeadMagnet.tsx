@@ -115,7 +115,9 @@ const LeadMagnet: React.FC = () => {
                 <div className="flex-1">
                     <input
                         type="email"
+                        id="lead-email"
                         name="user_email"
+                        aria-label="La tua email"
                         value={email}
                         onChange={(e) => {
                             setEmail(e.target.value);

@@ -408,6 +408,9 @@ const ChatBot: React.FC = () => {
                   <input
                     ref={inputRef}
                     type="text"
+                    id="chatbot-input"
+                    name="chatbot_message"
+                    aria-label="Messaggio chatbot"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyPress}

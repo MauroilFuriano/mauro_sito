@@ -262,6 +262,7 @@ const Contact: React.FC = () => {
                   <input
                     type="checkbox"
                     id="privacy"
+                    name="privacy"
                     checked={privacyAccepted}
                     onChange={(e) => setPrivacyAccepted(e.target.checked)}
                     className="mt-1 w-4 h-4 accent-cyan-400 cursor-pointer flex-shrink-0"

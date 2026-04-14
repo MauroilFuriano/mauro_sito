@@ -50,6 +50,8 @@ const structuredData = {
       "url": "https://www.mauroceccarelli.it",
       "telephone": "+393480029661",
       "email": "ceccarellimauro3@gmail.com",
+      "vatID": "IT02606790448",
+      "taxID": "02606790448",
       "founder": { "@id": "https://www.mauroceccarelli.it/#person" },
       "address": {
         "@type": "PostalAddress",
@@ -90,6 +92,8 @@ const structuredData = {
       "url": "https://www.mauroceccarelli.it",
       "telephone": "+393480029661",
       "email": "ceccarellimauro3@gmail.com",
+      "vatID": "IT02606790448",
+      "taxID": "02606790448",
       "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",

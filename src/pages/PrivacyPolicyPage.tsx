@@ -32,6 +32,7 @@ const PrivacyPolicyPage: React.FC = () => {
               <div className="mt-3 p-4 bg-dark-800 rounded-xl border border-white/5 text-sm space-y-1">
                 <p><strong className="text-gray-300">Mauro Ceccarelli</strong></p>
                 <p>Ascoli Piceno (AP), Italia</p>
+                <p>P.IVA: 02606790448</p>
                 <p>Email: <a href="mailto:ceccarellimauro3@gmail.com" className="text-cyan-400 hover:underline">ceccarellimauro3@gmail.com</a></p>
                 <p>Telefono: <a href="tel:+393480029661" className="text-cyan-400 hover:underline">+39 348 002 9661</a></p>
               </div>

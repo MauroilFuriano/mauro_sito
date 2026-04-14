@@ -166,7 +166,7 @@ const About: React.FC = () => {
                   <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
                 <a 
-                  href="https://github.com/mauroceccarelli" 
+                  href="https://github.com/MauroilFuriano"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group"

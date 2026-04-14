@@ -26,7 +26,7 @@ const structuredData = {
       "telephone": "+393480029661",
       "sameAs": [
         "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
-        "https://github.com/mauroceccarelli",
+        "https://github.com/MauroilFuriano",
         "https://www.instagram.com/mauroceccarelli.exe",
         "https://www.facebook.com/mauro.exe"
       ],
@@ -115,7 +115,7 @@ const structuredData = {
       },
       "sameAs": [
         "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
-        "https://github.com/mauroceccarelli",
+        "https://github.com/MauroilFuriano",
         "https://www.instagram.com/mauroceccarelli.exe"
       ]
     },

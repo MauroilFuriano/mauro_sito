@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Layout, Video, Car, Scissors } from 'lucide-react';
+import { ExternalLink, Github, Layout, Video, Car, Scissors, Hammer } from 'lucide-react';
 
 const projects = [
   {
@@ -18,6 +18,23 @@ const projects = [
     link: "https://www.maicolceccarelli.it",
     github: "#",
     imageStyle: "object-cover object-top"
+  },
+  {
+    title: "FC Resinwood Creations",
+    category: "Sito Vetrina Artigianale",
+    description: "Sito vetrina per laboratorio artigianale di Ascoli Piceno specializzato in tavoli live edge in ulivo e resina epossidica. Ogni pezzo è unico, fatto a mano su misura.",
+    features: [
+      "🪵 Gallery immersiva che valorizza i pezzi unici in legno e resina",
+      "📍 SEO locale ottimizzato per artigianato Ascoli Piceno",
+      "📱 Design mobile-first per clienti che arrivano da Instagram e TikTok"
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Schema.org", "SEO Locale", "Social Integration"],
+    image: "/projects/fcresinwood-new.png",
+    fallbackImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=75&w=800&auto=format&fm=webp&fit=crop",
+    icon: <Hammer size={20} />,
+    link: "https://fcresinwoodcreations.com/",
+    github: "#",
+    imageStyle: "object-cover object-center"
   },
   {
     title: "Alex Nova - Videomaker & Fotografo",

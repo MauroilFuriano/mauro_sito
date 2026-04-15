@@ -39,11 +39,22 @@ const Testimonials: React.FC = () => {
   }, [scriptLoaded]);
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden" ref={sectionRef}>
-      {/* Background glows */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[30%] left-[5%] w-[400px] h-[400px] bg-cyan-400/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[5%] w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[80px]" />
+    <section
+      id="testimonials"
+      className="py-24 relative overflow-hidden"
+      ref={sectionRef}
+      style={{ contain: 'layout paint style', contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}
+    >
+      {/* Background glows — promossi a GPU layer, blur ridotto, size ridotta */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute top-[30%] left-[5%] w-[280px] h-[280px] bg-cyan-400/5 rounded-full will-change-transform"
+          style={{ filter: 'blur(60px)', transform: 'translate3d(0,0,0)' }}
+        />
+        <div
+          className="absolute bottom-[10%] right-[5%] w-[220px] h-[220px] bg-purple-500/5 rounded-full will-change-transform"
+          style={{ filter: 'blur(50px)', transform: 'translate3d(0,0,0)' }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -56,14 +67,16 @@ const Testimonials: React.FC = () => {
           </h3>
         </div>
 
-        {/* Elfsight Google Reviews — NO data-elfsight-app-lazy (gestiamo noi il lazy) */}
-        <div className={`elfsight-app-${ELFSIGHT_ID}`} />
+        {/* Container con altezza riservata per evitare CLS quando Elfsight mount */}
+        <div className="relative min-h-[600px] md:min-h-[500px]">
+          <div className={`elfsight-app-${ELFSIGHT_ID}`} />
 
-        {!scriptLoaded && (
-          <div className="flex justify-center py-12">
-            <span className="text-gray-500 text-sm animate-pulse">Caricamento recensioni Google...</span>
-          </div>
-        )}
+          {!scriptLoaded && (
+            <div className="absolute inset-0 flex justify-center items-start pt-12 pointer-events-none">
+              <span className="text-gray-500 text-sm animate-pulse">Caricamento recensioni Google...</span>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

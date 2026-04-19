@@ -7,7 +7,6 @@ const HomePage             = lazy(() => import('./pages/HomePage'));
 const HotelLanding         = lazy(() => import('./pages/HotelLanding'));
 const SaasLanding          = lazy(() => import('./pages/SaasLanding'));
 const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
-const PromoPasqua          = lazy(() => import('./pages/PromoPasqua'));
 const SimulatorePreventivo = lazy(() => import('./pages/SimulatorePreventivo'));
 const PrivacyPolicyPage    = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage     = lazy(() => import('./pages/CookiePolicyPage'));
@@ -60,7 +59,6 @@ const App: React.FC = () => (
           <Route path="/reception-ai"   element={<Navigate to="/hotel" replace />} />
           <Route path="/saas"           element={<SaasLanding />} />
           <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
-          <Route path="/promo-pasqua"   element={<PromoPasqua />} />
           <Route path="/simulatore"     element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/cookie-policy"  element={<CookiePolicyPage />} />

@@ -37,7 +37,7 @@ const PromoPasqua: React.FC = () => {
         <div className="min-h-screen bg-dark-900 text-gray-200 selection:bg-amber-400 selection:text-black">
             <SEO
                 title="Promo Pasqua 2026 | -30% Sito Web + SEO/GEO | MAURO.EXE"
-                description="Offerta di Pasqua: 30% di sconto sulla creazione o rinnovo del tuo sito web con ottimizzazione SEO/GEO 2026. Solo 3 posti disponibili. Scade il 20 Aprile."
+                description="Offerta di Pasqua: 30% di sconto sulla creazione o rinnovo del tuo sito web con ottimizzazione SEO/GEO 2026. Ultimo posto disponibile. Scade il 20 Aprile."
                 canonical="https://www.mauroceccarelli.it/promo-pasqua"
                 keywords="Promo Pasqua Sito Web, Sconto Sito Web, Offerta SEO 2026, Sviluppatore Web Ascoli Piceno, Promo Pasqua"
                 noindex={countdown.expired}
@@ -197,11 +197,11 @@ const PromoPasqua: React.FC = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                             </span>
-                            <span className="text-red-400 text-sm font-medium">Solo 3 posti disponibili</span>
+                            <span className="text-red-400 text-sm font-medium">Ultimo posto disponibile</span>
                         </div>
 
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                            Perché solo 3 posti?
+                            Perché l'ultimo posto disponibile?
                         </h2>
                         <p className="text-gray-400 mb-10 leading-relaxed max-w-xl mx-auto">
                             Lavoro da solo e seguo ogni progetto personalmente. Per garantire qualità e attenzione, accetto

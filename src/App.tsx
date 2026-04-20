@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import SmoothScroll from './components/SmoothScroll';
 
 /* ── Lazy pages ─────────────────────────────────────────────── */
-const HomePage             = lazy(() => import('./pages/HomePage'));
-const HotelLanding         = lazy(() => import('./pages/HotelLanding'));
-const SaasLanding          = lazy(() => import('./pages/SaasLanding'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const HotelLanding = lazy(() => import('./pages/HotelLanding'));
+const SaasLanding = lazy(() => import('./pages/SaasLanding'));
 const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
+const PromoPasqua = lazy(() => import('./pages/PromoPasqua'));
 const SimulatorePreventivo = lazy(() => import('./pages/SimulatorePreventivo'));
-const PrivacyPolicyPage    = lazy(() => import('./pages/PrivacyPolicyPage'));
-const CookiePolicyPage     = lazy(() => import('./pages/CookiePolicyPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 
 /* ── Loading fallback ───────────────────────────────────────── */
 const Loading = () => (
@@ -54,18 +55,19 @@ const App: React.FC = () => (
     <Router>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/"               element={<HomePage />} />
-          <Route path="/hotel"          element={<HotelLanding />} />
-          <Route path="/reception-ai"   element={<Navigate to="/hotel" replace />} />
-          <Route path="/saas"           element={<SaasLanding />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/hotel" element={<HotelLanding />} />
+          <Route path="/reception-ai" element={<Navigate to="/hotel" replace />} />
+          <Route path="/saas" element={<SaasLanding />} />
           <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
-          <Route path="/simulatore"     element={<SimulatorePreventivo />} />
+          <Route path="/promo-pasqua" element={<PromoPasqua />} />
+          <Route path="/simulatore" element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/cookie-policy"  element={<CookiePolicyPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           {/* /faq non esiste come pagina — è un anchor nella home. Redirect. */}
-          <Route path="/faq"            element={<Navigate to="/#faq" replace />} />
+          <Route path="/faq" element={<Navigate to="/#faq" replace />} />
           {/* Catch-all: qualsiasi URL sconosciuto torna in home (evita pagine bianche) */}
-          <Route path="*"               element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </Router>

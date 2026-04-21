@@ -208,11 +208,10 @@ const SimulatoreCTA: React.FC = () => {
                       <div className="flex items-end justify-between">
                         <div>
                           <span className="text-gray-500 text-xs uppercase tracking-widest">Stima totale</span>
-                          {/* Prezzo barrato originale + prezzo scontato */}
+                          {/* Prezzo stima totale */}
                           <div className="flex items-baseline gap-2 mt-1">
-                            <span className="text-gray-600 text-base line-through font-mono">€1.499</span>
                             <div className="text-white font-display text-3xl font-black">
-                              €<span className="text-cyan-400">1.050</span>
+                              €<span className="text-cyan-400">1.499</span>
                             </div>
                           </div>
                           <span className="text-gray-600 text-xs">IVA esclusa · pagamento dilazionabile</span>
@@ -226,10 +225,7 @@ const SimulatoreCTA: React.FC = () => {
 
                   </div>
 
-                  {/* Badge floating — urgenza promo */}
-                  <div className="absolute -top-4 -right-4 px-3 py-1.5 bg-orange-500/15 border border-orange-500/30 rounded-lg backdrop-blur-md shadow-[0_0_12px_rgba(251,146,60,0.2)]">
-                    <span className="text-orange-400 text-xs font-bold font-mono">🔥 –30% fino al 20 apr</span>
-                  </div>
+
                 </div>
               </div>
 

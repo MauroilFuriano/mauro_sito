@@ -10,11 +10,9 @@ const reveal = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PREZZI (originali, prima dello sconto -30%)
-// Fonte: FAQ mauroceccarelli.it
+// PREZZI — listino ufficiale mauroceccarelli.it
 // ─────────────────────────────────────────────────────────────────────────────
-const PROMO = 0.30;
-const disc = (p: number) => Math.round(p * (1 - PROMO));
+const disc = (p: number) => p;
 
 const P = {
   siteBase: 1500,   // sito vetrina professionale custom
@@ -259,11 +257,8 @@ export default function SimulatorePreventivo() {
   })();
 
   const promoTotal = disc(originalTotal);
-  const savings = originalTotal - promoTotal;
 
   const { value: animatedPromo, flash: flashPromo } = useAnimatedPrice(promoTotal);
-  const { value: animatedOriginal, flash: flashOriginal } = useAnimatedPrice(originalTotal);
-  const { value: animatedSavings, flash: flashSavings } = useAnimatedPrice(savings);
 
   // ── Form ─────────────────────────────────────────────────────────────────
   const validate = () => {
@@ -297,9 +292,9 @@ export default function SimulatorePreventivo() {
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
-      `Preventivo promo: €${promoTotal} (invece di €${originalTotal})\n` +
+      `Preventivo stimato: €${promoTotal}\n` +
       `Email: ${form.email}\n` +
-      `Attendo il tuo preventivo con la promo –30%!`
+      `Attendo il preventivo dettagliato!`
     );
 
     setTimeout(() => {
@@ -335,7 +330,7 @@ export default function SimulatorePreventivo() {
           <h2 className="text-3xl font-black text-white mb-3">Preventivo bloccato!</h2>
           <p className="text-cyan-400 font-bold mb-4">Hai appena fatto la mossa più intelligente per la tua attività.</p>
           <p className="text-gray-400 leading-relaxed mb-6">
-            Ti ho riservato l'<strong className="text-white">unico posto disponibile</strong> di Aprile. Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato e la promo –30% già applicata.
+            Ti ho riservato l'<strong className="text-white">unico posto disponibile</strong> di Aprile. Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato.
           </p>
           <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4 mb-8">
             <p className="text-amber-300 text-sm">
@@ -366,7 +361,7 @@ export default function SimulatorePreventivo() {
     <>
       <SEO
         title="Simulatore Preventivo Sito Web | Mauro.exe — Ascoli Piceno"
-        description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli. Promo Pasqua –30%. Solo 1 posto disponibile ad Aprile."
+        description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli extra. Solo 1 posto disponibile ad Aprile."
         canonical="https://www.mauroceccarelli.it/simulatore"
         keywords="preventivo sito web Ascoli Piceno, costo chatbot AI, template sito web PMI Marche"
       />
@@ -387,7 +382,7 @@ export default function SimulatorePreventivo() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-sm font-bold mb-5">
                 <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse inline-block" />
-                ⚡ Solo 1 posto disponibile ad Aprile — promo –30% in scadenza
+                ⚡ Solo 1 posto disponibile ad Aprile
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
                 Ogni Giorno Senza Preventivo<br />
@@ -395,9 +390,7 @@ export default function SimulatorePreventivo() {
               </h1>
               <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
                 Configura il sito dei tuoi sogni — ottieni il prezzo esatto{' '}
-                <span className="text-white font-bold">in 30 secondi, gratis</span>.<br />
-                Promo <span className="text-cyan-400 font-bold">–30%</span> attiva:{' '}
-                <span className="text-amber-400 font-bold">scade il 20 aprile 2026</span>.
+                <span className="text-white font-bold">in 30 secondi, gratis</span>.
               </p>
               <p className="text-xs text-gray-600 mt-3">
                 Nessuna carta di credito &nbsp;·&nbsp; Nessuna email richiesta per configurare &nbsp;·&nbsp; Zero impegno
@@ -425,8 +418,6 @@ export default function SimulatorePreventivo() {
                     <p className="text-gray-500 text-xs mb-3">Design su misura, mobile-first, architettura unica. Per chi non vuole somigliare a nessun altro.</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-cyan-400 font-black text-xl">€{disc(P.siteBase).toLocaleString('it-IT')}</span>
-                      <span className="text-gray-600 line-through text-sm">€{P.siteBase.toLocaleString('it-IT')}</span>
-                      <span className="text-green-400 text-xs font-bold">–30%</span>
                     </div>
                   </button>
 
@@ -448,8 +439,6 @@ export default function SimulatorePreventivo() {
                     <p className="text-gray-500 text-xs mb-3">Layout 3D già ottimizzato per il tuo settore. Chatbot, gestionale e moduli configurabili.</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-cyan-400 font-black text-xl">da €{disc(P.siteBase).toLocaleString('it-IT')}</span>
-                      <span className="text-gray-600 line-through text-sm">€{P.siteBase.toLocaleString('it-IT')}</span>
-                      <span className="text-green-400 text-xs font-bold">–30%</span>
                     </div>
                   </button>
                 </div>
@@ -508,12 +497,9 @@ export default function SimulatorePreventivo() {
                               {opt.price === 0 ? (
                                 <span className="text-gray-500 text-sm">Incluso</span>
                               ) : (
-                                <div>
-                                  <p className="text-[11px] text-gray-600 line-through">+€{opt.price.toLocaleString('it-IT')}</p>
-                                  <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                    +€{disc(opt.price).toLocaleString('it-IT')}
-                                  </p>
-                                </div>
+                                <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
+                                  +€{disc(opt.price).toLocaleString('it-IT')}
+                                </p>
                               )}
                             </div>
                           </button>
@@ -544,7 +530,6 @@ export default function SimulatorePreventivo() {
                                 <p className="text-xs text-gray-500 mt-0.5">{ex.desc}</p>
                               </div>
                               <div className="text-right flex-shrink-0">
-                                <p className="text-[11px] text-gray-600 line-through">+€{ex.price.toLocaleString('it-IT')}</p>
                                 <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
                                   +€{disc(ex.price).toLocaleString('it-IT')}
                                 </p>
@@ -655,12 +640,9 @@ export default function SimulatorePreventivo() {
                               {opt.price === 0 ? (
                                 <span className="text-gray-500 text-sm">Incluso</span>
                               ) : (
-                                <div>
-                                  <p className="text-[11px] text-gray-600 line-through">+€{opt.price.toLocaleString('it-IT')}</p>
-                                  <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                    +€{disc(opt.price).toLocaleString('it-IT')}
-                                  </p>
-                                </div>
+                                <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
+                                  +€{disc(opt.price).toLocaleString('it-IT')}
+                                </p>
                               )}
                             </div>
                           </button>
@@ -691,7 +673,6 @@ export default function SimulatorePreventivo() {
                                   <p className="text-xs text-gray-500 mt-0.5">{ex.desc}</p>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <p className="text-[11px] text-gray-600 line-through">+€{ex.price.toLocaleString('it-IT')}</p>
                                   <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
                                     +€{disc(ex.price).toLocaleString('it-IT')}
                                   </p>
@@ -746,10 +727,7 @@ export default function SimulatorePreventivo() {
                               {addon.locked ? (
                                 <span className="text-green-400 font-black text-sm">€0</span>
                               ) : (
-                                <div>
-                                  <p className="text-[11px] text-gray-600 line-through">+€{addon.price}</p>
-                                  <p className={`font-black text-sm ${sel ? 'text-cyan-400' : 'text-gray-400'}`}>+€{disc(addon.price)}</p>
-                                </div>
+                                <p className={`font-black text-sm ${sel ? 'text-cyan-400' : 'text-gray-400'}`}>+€{disc(addon.price)}</p>
                               )}
                             </div>
                           </button>
@@ -765,10 +743,10 @@ export default function SimulatorePreventivo() {
                 {path && (
                   <motion.section key="step5" {...reveal} style={{ overflow: 'hidden' }}>
                     <div ref={formRef}>
-                      <SectionLabel number={path === 'template' && template ? 5 : 4} label="Blocca il tuo prezzo Pasqua" />
-                      <div className="flex items-center gap-2 my-4 p-3 bg-amber-400/10 border border-amber-400/30 rounded-lg">
-                        <Clock size={15} className="text-amber-400 flex-shrink-0" />
-                        <span className="text-amber-400 text-sm font-bold">Promo –30% Pasqua · Scade 20 Aprile 2026</span>
+                      <SectionLabel number={path === 'template' && template ? 5 : 4} label="Richiedi il tuo preventivo" />
+                      <div className="flex items-center gap-2 my-4 p-3 bg-cyan-400/10 border border-cyan-400/30 rounded-lg">
+                        <Clock size={15} className="text-cyan-400 flex-shrink-0" />
+                        <span className="text-cyan-400 text-sm font-bold">Riceverai il preventivo su WhatsApp entro 2 ore</span>
                       </div>
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid sm:grid-cols-2 gap-4">
@@ -825,7 +803,7 @@ export default function SimulatorePreventivo() {
           <div className="hidden lg:block fixed top-0 right-0 h-screen w-[300px] xl:w-[340px] overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8 z-20">
             <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
               <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
-              <p className="text-xs font-bold text-orange-300 leading-snug">⚡ PROMO PASQUA –30% APPLICATA.<br />SOLO 1 POSTO DISPONIBILE AD APRILE.</p>
+              <p className="text-xs font-bold text-orange-300 leading-snug">⚡ SOLO 1 POSTO DISPONIBILE AD APRILE.</p>
             </div>
 
             <div className={`p-5 rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ${flashPromo ? 'shadow-[0_0_24px_rgba(0,229,255,0.2)]' : ''}`}>
@@ -899,17 +877,9 @@ export default function SimulatorePreventivo() {
               {/* Price display */}
               {promoTotal > 0 ? (
                 <div className="text-center mb-4">
-                  <p className={`text-gray-500 line-through text-sm mb-1 tabular-nums transition-all ${flashOriginal ? 'text-red-400/70' : ''}`}>
-                    €{animatedOriginal.toLocaleString('it-IT')}
-                  </p>
                   <p className={`text-4xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300 scale-105' : 'text-white'}`}>
                     €{animatedPromo.toLocaleString('it-IT')}
                   </p>
-                  {savings > 0 && (
-                    <p className={`text-xs font-bold mt-2 transition-all ${flashSavings ? 'text-green-300' : 'text-green-400'}`}>
-                      Risparmi €{animatedSavings.toLocaleString('it-IT')} con la promo
-                    </p>
-                  )}
                 </div>
               ) : (
                 <p className="text-center text-gray-600 text-sm py-6 italic">
@@ -1015,11 +985,9 @@ export default function SimulatorePreventivo() {
             {/* Barra inferiore */}
             <div className="bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
               <button onClick={() => setShowMobileDetail(v => !v)} className="text-left flex-1">
-                <p className="text-gray-500 text-xs line-through tabular-nums">€{originalTotal.toLocaleString('it-IT')}</p>
                 <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300' : 'text-white'}`}>
                   €{animatedPromo.toLocaleString('it-IT')}
                 </p>
-                {savings > 0 && <p className="text-green-400 text-[10px] font-bold">Risparmi €{animatedSavings.toLocaleString('it-IT')}</p>}
                 <p className="text-[10px] text-gray-600 mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
               </button>
               <button

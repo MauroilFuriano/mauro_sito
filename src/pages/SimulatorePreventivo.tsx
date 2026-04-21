@@ -330,7 +330,7 @@ export default function SimulatorePreventivo() {
           <h2 className="text-3xl font-black text-white mb-3">Preventivo bloccato!</h2>
           <p className="text-cyan-400 font-bold mb-4">Hai appena fatto la mossa più intelligente per la tua attività.</p>
           <p className="text-gray-400 leading-relaxed mb-6">
-            Ti ho riservato l'<strong className="text-white">unico posto disponibile</strong> di Aprile. Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato.
+            Riceverai un messaggio WhatsApp da me entro 2 ore con il preventivo dettagliato.
           </p>
           <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-4 mb-8">
             <p className="text-amber-300 text-sm">
@@ -361,7 +361,7 @@ export default function SimulatorePreventivo() {
     <>
       <SEO
         title="Simulatore Preventivo Sito Web | Mauro.exe — Ascoli Piceno"
-        description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli extra. Solo 1 posto disponibile ad Aprile."
+        description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli extra."
         canonical="https://www.mauroceccarelli.it/simulatore"
         keywords="preventivo sito web Ascoli Piceno, costo chatbot AI, template sito web PMI Marche"
       />
@@ -380,10 +380,6 @@ export default function SimulatorePreventivo() {
 
             {/* ── HEADER ─────────────────────────────────────────────────── */}
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-sm font-bold mb-5">
-                <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse inline-block" />
-                ⚡ Solo 1 posto disponibile ad Aprile
-              </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
                 Ogni Giorno Senza Preventivo<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Stai Scegliendo il Buio.</span>
@@ -801,10 +797,6 @@ export default function SimulatorePreventivo() {
           {/* spacer per non far sovrapporre il contenuto sinistro */}
           <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0" />
           <div className="hidden lg:block fixed top-0 right-0 h-screen w-[300px] xl:w-[340px] overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8 z-20">
-            <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-orange-500/15 to-red-500/15 border border-orange-500/25 flex items-start gap-2">
-              <Zap size={13} className="text-orange-400 flex-shrink-0 mt-0.5 animate-pulse" />
-              <p className="text-xs font-bold text-orange-300 leading-snug">⚡ SOLO 1 POSTO DISPONIBILE AD APRILE.</p>
-            </div>
 
             <div className={`p-5 rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ${flashPromo ? 'shadow-[0_0_24px_rgba(0,229,255,0.2)]' : ''}`}>
               <p className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">Il tuo preventivo</p>

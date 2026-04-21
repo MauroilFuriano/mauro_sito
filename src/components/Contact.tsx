@@ -114,10 +114,6 @@ const Contact: React.FC = () => {
               ✓ Nessun costo ✓ Nessun impegno ✓ Risposta in 24h
             </p>
 
-            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 mb-8 rounded-lg border border-amber-400/30 bg-amber-400/5">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse flex-shrink-0" />
-              <span className="text-amber-400 text-xs font-bold">Solo 1 posto disponibile ad Aprile</span>
-            </div>
 
             <div className="space-y-6">
               {/* --- Email Block --- */}

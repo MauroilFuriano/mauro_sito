@@ -30,20 +30,26 @@ const CookiePolicyPage: React.FC = () => {
             </section>
 
             <section>
-              <h2 className="text-white font-bold text-xl mb-3">Cookie utilizzati da questo sito</h2>
-              <p className="mb-4">Il sito <strong className="text-gray-200">mauroceccarelli.it</strong> utilizza esclusivamente <strong className="text-gray-200">cookie tecnici</strong>, necessari al corretto funzionamento del sito. Non vengono utilizzati cookie di profilazione, cookie di marketing o cookie di terze parti a scopo pubblicitario.</p>
+              <h2 className="text-white font-bold text-xl mb-3">Cookie e Tracciamenti utilizzati</h2>
+              <p className="mb-4">Il sito <strong className="text-gray-200">mauroceccarelli.it</strong> utilizza di default esclusivamente <strong className="text-gray-200">cookie tecnici</strong> (e tecnologie affini come il localStorage), necessari al corretto funzionamento del sito e per i quali non è richiesto un preventivo consenso. Solo previa esplicita accettazione tramite l'apposito banner, il sito potrà installare cookie analitici e di profilazione.</p>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
                     <tr className="border-b border-white/10">
-                      <th className="text-left py-3 pr-4 text-gray-300 font-bold">Cookie</th>
+                      <th className="text-left py-3 pr-4 text-gray-300 font-bold">Nome / Cookie</th>
                       <th className="text-left py-3 pr-4 text-gray-300 font-bold">Tipo</th>
                       <th className="text-left py-3 pr-4 text-gray-300 font-bold">Finalità</th>
                       <th className="text-left py-3 text-gray-300 font-bold">Durata</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
+                    <tr>
+                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">cookie_consent / analytics / marketing</td>
+                      <td className="py-3 pr-4">Tecnico (Local Storage)</td>
+                      <td className="py-3 pr-4">Memorizzare le preferenze di consenso dell'utente</td>
+                      <td className="py-3">12 Mesi</td>
+                    </tr>
                     <tr>
                       <td className="py-3 pr-4 text-gray-300 font-mono text-xs">__sentry_sdk</td>
                       <td className="py-3 pr-4">Tecnico</td>
@@ -56,13 +62,19 @@ const CookiePolicyPage: React.FC = () => {
                       <td className="py-3 pr-4">Funzionamento infrastruttura hosting (Vercel)</td>
                       <td className="py-3">Sessione</td>
                     </tr>
+                    <tr>
+                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">Analytics / Pixel Terze Parti</td>
+                      <td className="py-3 pr-4">Analitico / Profilazione</td>
+                      <td className="py-3 pr-4">Raccolta statistiche o tracciamento conversioni (solo se accettati)</td>
+                      <td className="py-3">Variabile</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
 
-              <div className="mt-4 p-4 bg-green-400/5 border border-green-400/20 rounded-xl text-sm">
-                <p className="text-green-400 font-bold mb-1">Nessun cookie di profilazione</p>
-                <p>Questo sito non utilizza Google Analytics, Facebook Pixel, cookie pubblicitari o qualsiasi altro strumento di tracciamento comportamentale. Non è pertanto richiesto il banner di consenso ai sensi del Provvedimento Garante 2022.</p>
+              <div className="mt-4 p-4 bg-dark-800 border border-white/5 rounded-xl text-sm">
+                <p className="text-cyan-400 font-bold mb-1">Gestione delle Preferenze</p>
+                <p>Puoi modificare o revocare il tuo consenso in qualsiasi momento aprendo il pannello di gestione dei cookie cliccando l'icona in basso a sinistra (oppure eliminando i dati di navigazione dal browser).</p>
               </div>
             </section>
 

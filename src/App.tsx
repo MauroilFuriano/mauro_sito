@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
+import CookieBanner from './components/CookieBanner';
 
 /* ── Lazy pages ─────────────────────────────────────────────── */
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -52,6 +53,7 @@ const App: React.FC = () => (
   <ErrorBoundary>
     <SmoothScroll />
     <Router>
+      <CookieBanner />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

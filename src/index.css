@@ -28,12 +28,14 @@ html {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 /* [REGOLA PICCO-FINE] Animazione tooltip auto-pop ChatBot */
@@ -241,17 +243,10 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Glow Pulse for buttons */
+/* Glow Pulse for buttons — opacity only (composite, no paint) */
 @keyframes glow-pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-  }
-
-  50% {
-    box-shadow: 0 0 35px rgba(0, 229, 255, 0.7);
-  }
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
 }
 
 .animate-glow-pulse {

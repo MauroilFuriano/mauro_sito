@@ -8,25 +8,29 @@ const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
   const [isGlitching, setIsGlitching] = useState(true);
 
-  // Particelle e Stelle generate dinamicamente per l'effetto "Original"
+  // Ridotto per performance: 370 elementi animati → 130 (mobile: 60)
+  const isMobile = useMemo(() => window.matchMedia('(max-width: 768px)').matches, []);
+
   const particles = useMemo(() => {
-    return Array.from({ length: 120 }).map((_, i) => ({
+    const count = isMobile ? 25 : 55;
+    return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `${Math.random() * 5}s`,
       duration: `${15 + Math.random() * 20}s`,
       size: `${1.5 + Math.random() * 2.5}px`
     }));
-  }, []);
+  }, [isMobile]);
 
   const stars = useMemo(() => {
-    return Array.from({ length: 250 }).map((_, i) => ({
+    const count = isMobile ? 60 : 120;
+    return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `${Math.random() * 3}s`,
       size: `${Math.random() * 2 + 1}px`
     }));
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

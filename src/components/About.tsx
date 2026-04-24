@@ -13,7 +13,7 @@ const About: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
-        <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-2xl rounded-[2.5rem] p-6 lg:p-12 relative overflow-hidden group">
+        <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 shadow-2xl rounded-[2.5rem] p-6 lg:p-12 relative overflow-hidden group">
           {/* Subtle glow hover effect su tutta la card */}
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 

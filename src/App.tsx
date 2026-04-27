@@ -1,7 +1,24 @@
-import React, { lazy, Suspense, Component } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { lazy, Suspense, Component, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
+
+/* ── GA4 page view tracker per SPA — solo con consenso analytics ── */
+const GA4PageTracker: React.FC = () => {
+  const location = useLocation();
+  useEffect(() => {
+    const analyticsConsent = localStorage.getItem('cookie_analytics');
+    if (analyticsConsent !== 'true') return;
+    const gtag = (window as any).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_location: window.location.href,
+      });
+    }
+  }, [location]);
+  return null;
+};
 
 /* ── Lazy pages ─────────────────────────────────────────────── */
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -54,6 +71,7 @@ const App: React.FC = () => (
     <SmoothScroll />
     <Router>
       <CookieBanner />
+      <GA4PageTracker />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

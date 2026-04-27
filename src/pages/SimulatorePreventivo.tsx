@@ -3,6 +3,16 @@ import { CheckCircle, AlertCircle, Loader2, Shield, Star, Zap, Clock, Lock, Exte
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 
+// Fires GA4 conversion event for Google Ads tracking
+const fireSimulatoreConversion = () => {
+  const gtag = (window as any).gtag;
+  if (typeof gtag === 'function') {
+    gtag('event', 'ads_conversion_Richiesta_preventivo_2', {
+      send_to: 'G-29CR0733KS',
+    });
+  }
+};
+
 const reveal = {
   initial: { opacity: 0, height: 0 },
   animate: { opacity: 1, height: 'auto', transition: { duration: 0.35, ease: 'easeOut' as const } },
@@ -300,6 +310,7 @@ export default function SimulatorePreventivo() {
     setTimeout(() => {
       setSubmitting(false);
       setSuccess(true);
+      fireSimulatoreConversion(); // GA4 → Google Ads conversion tracking
       setTimeout(() => window.open(`https://wa.me/393480029661?text=${waMsg}`, '_blank'), 800);
     }, 1200);
   };

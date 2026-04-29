@@ -142,7 +142,7 @@ const ChatBot: React.FC = () => {
   useEffect(() => {
     const initChat = async () => {
       try {
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite' });
         const chat = model.startChat({
           history: [
             {
@@ -178,28 +178,18 @@ const ChatBot: React.FC = () => {
     }
   }, [isOpen, isMinimized]);
 
-  const sendWithRetry = async (text: string, retries = 3, delayMs = 2000): Promise<string> => {
-    for (let attempt = 1; attempt <= retries; attempt++) {
-      try {
-        const result = await chatSession.sendMessage(text);
-        return result.response.text();
-      } catch (err: any) {
-        const is429 = err?.message?.includes('429') || err?.status === 429;
-        if (is429 && attempt < retries) {
-          await new Promise(res => setTimeout(res, delayMs * attempt));
-          continue;
-        }
-        throw err;
-      }
-    }
-    throw new Error('Max retries reached');
-  };
+  const lastSentRef = useRef<number>(0);
 
-  const handleSend = async () => {
-    if (!input.trim() || isTyping) return;
+  const handleSend = async (overrideText?: string) => {
+    const userText = overrideText ?? input;
+    if (!userText.trim() || isTyping) return;
 
-    const userText = input;
-    setInput('');
+    // Cooldown 3s tra invii per non saturare il rate limit
+    const now = Date.now();
+    if (now - lastSentRef.current < 3000) return;
+    lastSentRef.current = now;
+
+    if (!overrideText) setInput('');
 
     const userMsg: Message = { id: Date.now().toString(), role: 'user', text: userText };
     setMessages(prev => [...prev, userMsg]);
@@ -209,7 +199,8 @@ const ChatBot: React.FC = () => {
       let botResponse = '';
 
       if (chatSession) {
-        botResponse = await sendWithRetry(userText);
+        const result = await chatSession.sendMessage(userText);
+        botResponse = result.response.text();
       } else {
         botResponse = 'Mi dispiace, al momento ho qualche difficoltà tecnica. 😅\n\nPuoi contattare Mauro direttamente a:\n📧 ceccarellimauro3@gmail.com';
       }
@@ -219,7 +210,7 @@ const ChatBot: React.FC = () => {
       console.error('Errore Gemini:', error);
       const is429 = error?.message?.includes('429') || error?.status === 429;
       const errorText = is429
-        ? 'Il servizio AI è momentaneamente sovraccarico. ⏳\n\nRiprova tra qualche secondo, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com'
+        ? 'Il servizio AI è momentaneamente sovraccarico. ⏳\n\nAttendi ~60 secondi e riprova, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com'
         : 'Ops! Qualcosa è andato storto. 😅\n\nProva a riformulare la domanda, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com';
       setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'bot', text: errorText }]);
     } finally {
@@ -393,10 +384,7 @@ const ChatBot: React.FC = () => {
                   {quickActions.map((action) => (
                     <button
                       key={action}
-                      onClick={() => {
-                        setInput(action);
-                        setTimeout(handleSend, 50);
-                      }}
+                      onClick={() => handleSend(action)}
                       className="px-3 py-1 bg-dark-800 border border-cyan-400/30 rounded-full text-xs text-cyan-400 hover:bg-cyan-400/10 transition-colors"
                     >
                       {action}
@@ -422,7 +410,7 @@ const ChatBot: React.FC = () => {
                     disabled={isTyping}
                   />
                   <button
-                    onClick={handleSend}
+                    onClick={() => handleSend()}
                     disabled={!input.trim() || isTyping}
                     className={`p-1.5 rounded-full transition-colors ${
                       input.trim() && !isTyping

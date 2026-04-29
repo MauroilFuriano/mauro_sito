@@ -142,7 +142,7 @@ const ChatBot: React.FC = () => {
   useEffect(() => {
     try {
       const chat = ai.chats.create({
-        model: 'gemini-2.5-flash-preview-04-17',
+        model: 'gemini-2.5-flash-lite-preview-06-17',
         config: {
           systemInstruction: SYSTEM_PROMPT,
           maxOutputTokens: 500,

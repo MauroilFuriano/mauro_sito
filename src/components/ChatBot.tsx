@@ -178,18 +178,30 @@ const ChatBot: React.FC = () => {
     }
   }, [isOpen, isMinimized]);
 
+  const sendWithRetry = async (text: string, retries = 3, delayMs = 2000): Promise<string> => {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const result = await chatSession.sendMessage(text);
+        return result.response.text();
+      } catch (err: any) {
+        const is429 = err?.message?.includes('429') || err?.status === 429;
+        if (is429 && attempt < retries) {
+          await new Promise(res => setTimeout(res, delayMs * attempt));
+          continue;
+        }
+        throw err;
+      }
+    }
+    throw new Error('Max retries reached');
+  };
+
   const handleSend = async () => {
     if (!input.trim() || isTyping) return;
 
     const userText = input;
     setInput('');
 
-    // Aggiungi messaggio utente
-    const userMsg: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      text: userText
-    };
+    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: userText };
     setMessages(prev => [...prev, userMsg]);
     setIsTyping(true);
 
@@ -197,28 +209,19 @@ const ChatBot: React.FC = () => {
       let botResponse = '';
 
       if (chatSession) {
-        // Usa Gemini
-        const result = await chatSession.sendMessage(userText);
-        botResponse = result.response.text();
+        botResponse = await sendWithRetry(userText);
       } else {
-        // Fallback se Gemini non è disponibile
         botResponse = 'Mi dispiace, al momento ho qualche difficoltà tecnica. 😅\n\nPuoi contattare Mauro direttamente a:\n📧 ceccarellimauro3@gmail.com';
       }
 
-      const botMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'bot',
-        text: botResponse
-      };
-      setMessages(prev => [...prev, botMsg]);
-    } catch (error) {
+      setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'bot', text: botResponse }]);
+    } catch (error: any) {
       console.error('Errore Gemini:', error);
-      const errorMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'bot',
-        text: 'Ops! Qualcosa è andato storto. 😅\n\nProva a riformulare la domanda, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com'
-      };
-      setMessages(prev => [...prev, errorMsg]);
+      const is429 = error?.message?.includes('429') || error?.status === 429;
+      const errorText = is429
+        ? 'Il servizio AI è momentaneamente sovraccarico. ⏳\n\nRiprova tra qualche secondo, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com'
+        : 'Ops! Qualcosa è andato storto. 😅\n\nProva a riformulare la domanda, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com';
+      setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'bot', text: errorText }]);
     } finally {
       setIsTyping(false);
     }

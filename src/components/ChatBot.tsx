@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Loader2, Minimize2 } from 'lucide-react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 
 interface Message {
   id: string;
@@ -8,8 +8,8 @@ interface Message {
   text: string;
 }
 
-// Configurazione Gemini
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
+// Configurazione Gemini (nuovo SDK v1 — supporta modelli 2.5)
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
 // System prompt con struttura originale ma prezzi "A PARTIRE DA"
 const SYSTEM_PROMPT = `Sei M.A.U.R.O. Bot (Modulo Assistenza Utenti & Risposta Operativa), l'assistente virtuale del portfolio di Mauro, uno sviluppatore freelance italiano.
@@ -138,34 +138,21 @@ const ChatBot: React.FC = () => {
     return () => { clearTimeout(tShow); clearTimeout(tHide); };
   }, [isOpen]);
 
-  // Inizializza la chat session con Gemini
+  // Inizializza la chat session con Gemini 2.5 (nuovo SDK @google/genai)
   useEffect(() => {
-    const initChat = async () => {
-      try {
-        const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-        const chat = model.startChat({
-          history: [
-            {
-              role: 'user',
-              parts: [{ text: 'Inizializza la conversazione con queste istruzioni: ' + SYSTEM_PROMPT }],
-            },
-            {
-              role: 'model',
-              parts: [{ text: 'Perfetto! Sono pronto ad assistere i visitatori del portfolio di Mauro. Conosco tutti i servizi, i prezzi e sono pronto a fornire preventivi personalizzati. Come posso aiutare?' }],
-            },
-          ],
-          generationConfig: {
-            maxOutputTokens: 500,
-            temperature: 0.7,
-          },
-        });
-        setChatSession(chat);
-      } catch (error) {
-        console.error('Errore inizializzazione Gemini:', error);
-      }
-    };
-
-    initChat();
+    try {
+      const chat = ai.chats.create({
+        model: 'gemini-2.5-flash-preview-04-17',
+        config: {
+          systemInstruction: SYSTEM_PROMPT,
+          maxOutputTokens: 500,
+          temperature: 0.7,
+        },
+      });
+      setChatSession(chat);
+    } catch (error) {
+      console.error('Errore inizializzazione Gemini:', error);
+    }
   }, []);
 
   useEffect(() => {
@@ -199,8 +186,8 @@ const ChatBot: React.FC = () => {
       let botResponse = '';
 
       if (chatSession) {
-        const result = await chatSession.sendMessage(userText);
-        botResponse = result.response.text();
+        const result = await chatSession.sendMessage({ message: userText });
+        botResponse = result.text ?? '';
       } else {
         botResponse = 'Mi dispiace, al momento ho qualche difficoltà tecnica. 😅\n\nPuoi contattare Mauro direttamente a:\n📧 ceccarellimauro3@gmail.com';
       }

@@ -1,17 +1,16 @@
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect } from 'react';
+import Portfolio from '../components/Portfolio';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import About from '../components/About';
+import Services from '../components/Services';
+import SimulatoreCTA from '../components/SimulatoreCTA';
+import Testimonials from '../components/Testimonials';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+import FAQ from '../components/FAQ';
+import ChatBot from '../components/ChatBot';
 import SEO from '../components/SEO';
-
-const About = lazy(() => import('../components/About'));
-const Services = lazy(() => import('../components/Services'));
-const SimulatoreCTA = lazy(() => import('../components/SimulatoreCTA'));
-const Testimonials = lazy(() => import('../components/Testimonials'));
-const Portfolio = lazy(() => import('../components/Portfolio'));
-const FAQ = lazy(() => import('../components/FAQ'));
-const Contact = lazy(() => import('../components/Contact'));
-const Footer = lazy(() => import('../components/Footer'));
-const ChatBot = lazy(() => import('../components/ChatBot'));
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -247,38 +246,34 @@ const HomePage: React.FC = () => {
             <main>
                 {/* [FRONTEND SPECIALIST] Hero è above the fold, quindi visibile di default. Aggiungo 'reveal' alle altre sezioni */}
                 <Hero />
-                
-                <Suspense fallback={<div className="min-h-[50vh]" />}>
-                    <div className="reveal">
-                        <About />
-                    </div>
-                    <div className="reveal overflow-hidden">
-                        <Services />
-                    </div>
-                    {/* [SITO_2026] SimulatoreCTA: posizionato dopo Services per sfruttare l'interesse sui prezzi */}
-                    <div className="reveal">
-                        <SimulatoreCTA />
-                    </div>
-                    <div className="reveal">
-                        <Testimonials />
-                    </div>
-                    <div className="reveal">
-                        <Portfolio />
-                    </div>
-                    <div id="faq" className="reveal">
-                        <FAQ />
-                    </div>
-                    <div className="reveal overflow-hidden">
-                        <Contact />
-                    </div>
-                </Suspense>
+                <div className="reveal">
+                    <About />
+                </div>
+                <div className="reveal overflow-hidden">
+                    <Services />
+                </div>
+                {/* [SITO_2026] SimulatoreCTA: posizionato dopo Services per sfruttare l'interesse sui prezzi */}
+                <div className="reveal">
+                    <SimulatoreCTA />
+                </div>
+                <div className="reveal">
+                    <Testimonials />
+                </div>
+                <div className="reveal">
+                    <Portfolio />
+                </div>
+                <div id="faq" className="reveal">
+                    <FAQ />
+                </div>
+                <div className="reveal overflow-hidden">
+                    <Contact />
+                </div>
             </main>
 
-            <Suspense fallback={null}>
-                <Footer />
-                {/* ChatBot - posizionato in basso a destra */}
-                <ChatBot />
-            </Suspense>
+            <Footer />
+
+            {/* ChatBot - posizionato in basso a destra */}
+            <ChatBot />
 
 
             {/* Background Decorative Elements */}

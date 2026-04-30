@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
             </div>
 
             {isSuccess && (
-              <div className="absolute inset-0 bg-dark-900/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center rounded-2xl text-center p-6 animate-fade-in">
+              <div role="alert" className="absolute inset-0 bg-dark-900/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center rounded-2xl text-center p-6 animate-fade-in">
                 <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle size={40} />
                 </div>
@@ -190,12 +190,14 @@ const Contact: React.FC = () => {
                     name="user_name"
                     value={formData.user_name}
                     onChange={handleChange}
+                    aria-describedby={errors.user_name ? 'err-user_name' : undefined}
+                    aria-invalid={!!errors.user_name}
                     className={`w-full bg-dark-800 border ${errors.user_name ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-cyan-400'} rounded-lg p-3 text-white focus:outline-none focus:shadow-[0_0_20px_rgba(0,229,255,0.3)] focus:bg-dark-950 focus:scale-[1.02] focus:relative focus:z-10 transition-all duration-300 ease-out`}
                     placeholder="Mario Rossi"
                   />
                   {errors.user_name && (
-                    <p className="text-red-400 text-xs flex items-center gap-1 mt-1 animate-pulse">
-                      <AlertCircle size={12} /> {errors.user_name}
+                    <p id="err-user_name" role="alert" className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                      <AlertCircle size={12} aria-hidden="true" /> {errors.user_name}
                     </p>
                   )}
                 </div>
@@ -207,12 +209,14 @@ const Contact: React.FC = () => {
                     name="user_email"
                     value={formData.user_email}
                     onChange={handleChange}
+                    aria-describedby={errors.user_email ? 'err-user_email' : undefined}
+                    aria-invalid={!!errors.user_email}
                     className={`w-full bg-dark-800 border ${errors.user_email ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-cyan-400'} rounded-lg p-3 text-white focus:outline-none focus:shadow-[0_0_20px_rgba(0,229,255,0.3)] focus:bg-dark-950 focus:scale-[1.02] focus:relative focus:z-10 transition-all duration-300 ease-out`}
                     placeholder="mario@esempio.com"
                   />
                   {errors.user_email && (
-                    <p className="text-red-400 text-xs flex items-center gap-1 mt-1 animate-pulse">
-                      <AlertCircle size={12} /> {errors.user_email}
+                    <p id="err-user_email" role="alert" className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                      <AlertCircle size={12} aria-hidden="true" /> {errors.user_email}
                     </p>
                   )}
                 </div>
@@ -272,8 +276,8 @@ const Contact: React.FC = () => {
                   </label>
                 </div>
                 {errors.privacy && (
-                  <p className="text-red-400 text-xs flex items-center gap-1 animate-pulse">
-                    <AlertCircle size={12} /> {errors.privacy}
+                  <p id="err-privacy" role="alert" className="text-red-400 text-xs flex items-center gap-1">
+                    <AlertCircle size={12} aria-hidden="true" /> {errors.privacy}
                   </p>
                 )}
               </div>

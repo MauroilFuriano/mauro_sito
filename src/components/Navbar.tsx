@@ -99,6 +99,7 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link)}
+              aria-current={link.isRoute && location.pathname === link.href ? 'page' : undefined}
               className={`relative text-base font-medium tracking-wide transition-colors py-2 group ${
                 link.isRoute && location.pathname === link.href
                   ? 'text-cyan-400'

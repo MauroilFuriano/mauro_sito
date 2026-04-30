@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
     <section id="home" ref={heroRef} className="relative min-h-screen flex items-center pt-24 lg:pt-0 overflow-hidden bg-[#05050A]">
 
       {/* ── Background: Stelle e Particelle Originali ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(15,15,35,1)_0%,rgba(5,5,10,1)_100%)]" />
         
         {/* Stelle scintillanti */}
@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
 
           {/* Badge */}
           <div className="gsap-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase" style={{ opacity: 0 }}>
-            <Cpu size={14} className="animate-pulse" />
+            <Cpu size={14} className="animate-pulse" aria-hidden="true" />
             Sviluppatore Web & AI 2026
           </div>
 

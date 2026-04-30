@@ -138,8 +138,9 @@ const ChatBot: React.FC = () => {
     return () => { clearTimeout(tShow); clearTimeout(tHide); };
   }, [isOpen]);
 
-  // Inizializza la chat session con Gemini 2.5 (nuovo SDK @google/genai)
+  // Inizializza la chat session solo quando l'utente apre la chat per la prima volta
   useEffect(() => {
+    if (!isOpen || chatSession) return;
     try {
       const chat = ai.chats.create({
         model: 'gemini-2.5-flash-lite',
@@ -153,7 +154,7 @@ const ChatBot: React.FC = () => {
     } catch (error) {
       console.error('Errore inizializzazione Gemini:', error);
     }
-  }, []);
+  }, [isOpen, chatSession]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
 
             <div className="gsap-subtitle block mt-6 mb-8" style={{ opacity: 0 }}>
               <span
-                className={`${isGlitching ? 'glitch-text' : ''} text-cyan-400 text-xl sm:text-2xl font-bold leading-snug block`}
+                className={`glitch-text ${isGlitching ? 'glitch-active' : ''} text-cyan-400 text-xl sm:text-2xl font-bold leading-snug block`}
                 data-text="Ogni cliente che non ti trova online, va da un competitor."
               >
                 Ogni cliente che non ti trova online, va da un competitor.

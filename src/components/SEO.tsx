@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
     title,
     description,
     canonical = 'https://www.mauroceccarelli.it/',
-    ogImage = 'https://www.mauroceccarelli.it/logo.png',
+    ogImage = 'https://www.mauroceccarelli.it/og-image.jpg',
     ogType = 'website',
     keywords,
     noindex = false,

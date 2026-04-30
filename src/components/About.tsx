@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Linkedin, Github, ExternalLink, Zap, Cat, User } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const About: React.FC = () => {
   const [showBadges, setShowBadges] = useState(false);
@@ -45,56 +44,45 @@ const About: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/20 to-transparent"></div>
 
                 {/* Dynamic Badges Interaction */}
-                <AnimatePresence>
-                  {showBadges && (
-                    <>
-                      {/* Titti Badge - Over the cat (adjusting coordinates based on common photo composition) */}
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.8, y: 10, x: -20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                        className="absolute top-[60%] left-[15%] z-20"
-                      >
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
-                          <Cat size={14} className="text-purple-400" />
-                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">Titti - Frontend Specialist</span>
-                        </div>
-                      </motion.div>
+                <div
+                  className="absolute top-[60%] left-[15%] z-20 transition-all duration-300"
+                  style={{
+                    opacity: showBadges ? 1 : 0,
+                    transform: showBadges ? 'translate(0,0) scale(1)' : 'translate(-20px,10px) scale(0.8)',
+                    pointerEvents: showBadges ? 'auto' : 'none',
+                  }}
+                >
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                    <Cat size={14} className="text-purple-400" />
+                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Titti - Frontend Specialist</span>
+                  </div>
+                </div>
 
-                      {/* Mauro Badge - Over Mauro */}
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.8, y: 10, x: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-                        exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                        transition={{ delay: 0.1 }}
-                        className="absolute top-[40%] right-[15%] z-20"
-                      >
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
-                          <User size={14} className="text-cyan-400" />
-                          <span className="text-[10px] font-bold text-white uppercase tracking-wider">Mauro - Web Developer</span>
-                        </div>
-                      </motion.div>
-                    </>
-                  )}
-                </AnimatePresence>
+                <div
+                  className="absolute top-[40%] right-[15%] z-20 transition-all duration-300 delay-100"
+                  style={{
+                    opacity: showBadges ? 1 : 0,
+                    transform: showBadges ? 'translate(0,0) scale(1)' : 'translate(20px,10px) scale(0.8)',
+                    pointerEvents: showBadges ? 'auto' : 'none',
+                  }}
+                >
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-full border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+                    <User size={14} className="text-cyan-400" />
+                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Mauro - Web Developer</span>
+                  </div>
+                </div>
 
-                {/* Initial Interaction Toast/Hint */}
-                <AnimatePresence>
-                  {!showBadges && (
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute bottom-6 left-6 right-6 p-4 bg-white/[0.03] backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                        <span className="text-white font-display font-medium text-xs tracking-wide uppercase">Clicca per scoprire il team</span>
-                      </div>
-                      <Zap size={14} className="text-cyan-400 animate-bounce" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Hint toast */}
+                <div
+                  className="absolute bottom-6 left-6 right-6 p-4 bg-white/[0.03] backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between transition-opacity duration-300"
+                  style={{ opacity: showBadges ? 0 : 1, pointerEvents: showBadges ? 'none' : 'auto' }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <span className="text-white font-display font-medium text-xs tracking-wide uppercase">Clicca per scoprire il team</span>
+                  </div>
+                  <Zap size={14} className="text-cyan-400 animate-bounce" />
+                </div>
               </div>
 
               {/* Decorative Frame */}

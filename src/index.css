@@ -61,7 +61,6 @@ html {
 /* Utilities per isolamento GPU e rendering ottimizzato */
 .isolate-blur {
   transform: translateZ(0);
-  will-change: transform;
 }
 
 
@@ -126,7 +125,6 @@ html {
 .glitch-text::before {
   color: #00E5FF;
   z-index: -1;
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
   -webkit-text-fill-color: #00E5FF !important;
   text-shadow: 1px 0 rgba(0, 229, 255, 0.5);
 }
@@ -134,9 +132,23 @@ html {
 .glitch-text::after {
   color: #00E5FF;
   z-index: -2;
-  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
   -webkit-text-fill-color: #00E5FF !important;
   text-shadow: -1px 0 rgba(0, 229, 255, 0.5);
+}
+
+/* Animazione solo quando visibile (classe aggiunta via JS) */
+.glitch-text.glitch-active::before {
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+.glitch-text.glitch-active::after {
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-text.glitch-active::before,
+  .glitch-text.glitch-active::after {
+    animation: none;
+  }
 }
 
 @keyframes glitch-anim-1 {

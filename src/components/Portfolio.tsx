@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { ExternalLink, Github, Layout, Video, Car, Scissors, Hammer } from 'lucide-react';
 
 const projects = [
@@ -29,7 +29,7 @@ const projects = [
       "📱 Design mobile-first per clienti che arrivano da Instagram e TikTok"
     ],
     tech: ["React", "TypeScript", "Tailwind CSS", "Schema.org", "SEO Locale", "Social Integration"],
-    image: "/projects/fcresinwood-new.png",
+    image: "/projects/fcresinwood-new.webp",
     fallbackImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Hammer size={20} />,
     link: "https://fcresinwoodcreations.com/",
@@ -46,7 +46,7 @@ const projects = [
       "📱 Esperienza mobile-first per clienti in movimento"
     ],
     tech: ["React", "Tailwind CSS", "SEO Schema.org", "Responsive Design"],
-    image: "/alex_nova.png",
+    image: "/alex_nova.webp",
     fallbackImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Video size={20} />,
     link: "https://demo-videomaker.vercel.app/",
@@ -90,35 +90,27 @@ const projects = [
 ];
 
 const Portfolio: React.FC = () => {
-  // [FRONTEND SPECIALIST] Stato hook per gestire il 3D Tilt indipendente per ogni card
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [cardTransform, setCardTransform] = useState({ rotateX: 0, rotateY: 0 });
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isTouch = useRef(window.matchMedia('(hover: none)').matches);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    // [FRONTEND SPECIALIST] Disabilita il ricalcolo 3D se il device non ha un mouse (è Touch)
-    if (window.matchMedia('(hover: none)').matches) return;
-
-    setHoveredCard(index);
-    const card = e.currentTarget;
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (isTouch.current) return;
+    const card = cardRefs.current[index];
+    if (!card) return;
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const rotateX = (((e.clientY - rect.top) / rect.height) - 0.5) * -20;
+    const rotateY = (((e.clientX - rect.left) / rect.width) - 0.5) * 20;
+    card.style.transition = 'none';
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+  }, []);
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 gradi
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setCardTransform({ rotateX, rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    if (window.matchMedia('(hover: none)').matches) return;
-
-    setHoveredCard(null);
-    setCardTransform({ rotateX: 0, rotateY: 0 });
-  };
+  const handleMouseLeave = useCallback((index: number) => {
+    if (isTouch.current) return;
+    const card = cardRefs.current[index];
+    if (!card) return;
+    card.style.transition = 'transform 0.5s ease';
+    card.style.transform = 'rotateX(0) rotateY(0) scale3d(1,1,1)';
+  }, []);
 
   // Handle image error - fallback to alternative image
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>, fallback: string) => {
@@ -147,15 +139,10 @@ const Portfolio: React.FC = () => {
           {projects.map((project, index) => (
             <div
               key={index}
+              ref={el => { cardRefs.current[index] = el; }}
               onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={handleMouseLeave}
-              style={{
-                transform: hoveredCard === index
-                  ? `rotateX(${cardTransform.rotateX}deg) rotateY(${cardTransform.rotateY}deg) scale3d(1.02, 1.02, 1.02)`
-                  : 'rotateX(0) rotateY(0) scale3d(1, 1, 1)',
-                transition: hoveredCard === index ? 'none' : 'transform 0.5s ease',
-                transformStyle: 'preserve-3d'
-              }}
+              onMouseLeave={() => handleMouseLeave(index)}
+              style={{ transformStyle: 'preserve-3d' }}
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
               {/* Image Container */}

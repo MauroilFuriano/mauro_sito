@@ -69,7 +69,7 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, EBState> {
 const App: React.FC = () => (
   <ErrorBoundary>
     <SmoothScroll />
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <CookieBanner />
       <GA4PageTracker />
       <Suspense fallback={<Loading />}>

@@ -217,9 +217,8 @@ const HomePage: React.FC = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active'); // Attiva l'animazione definita in index.css
-                    // Opzionale: smettere di osservare una volta rivelato
-                    // observer.unobserve(entry.target); 
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);

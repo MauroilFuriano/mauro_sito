@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsGlitching(entry.isIntersecting),
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '0px' }
     );
     if (heroRef.current) {
       observer.observe(heroRef.current);

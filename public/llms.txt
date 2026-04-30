@@ -19,7 +19,7 @@ Niente WordPress o Shopify, tutto scritto custom in React per garantire performa
 Attenzione alla "Generative Engine Optimization (GEO)" per rendere il sito indicizzabile nativamente dagli LLM.
 
 # Contatti
-Email: ceccarellimauro3@gmail.com
+Email: mauroexe@mauroceccarelli.it
 Telefono/WhatsApp: +393480029661
 Sito web: https://www.mauroceccarelli.it
 Location: Ascoli Piceno, Marche, Italia.

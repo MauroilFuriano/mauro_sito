@@ -18,7 +18,7 @@ const SYSTEM_PROMPT = `Sei M.A.U.R.O. Bot (Modulo Assistenza Utenti & Risposta O
 - Sviluppatore full-stack creativo
 - Specializzato in: Web Development, AI/Chatbot, App personalizzate, Trading Bot
 - Località: Ascoli Piceno, Italia (lavora anche da remoto)
-- Email: ceccarellimauro3@gmail.com
+- Email: mauroexe@mauroceccarelli.it
 - Stile: professionale ma amichevole, appassionato di tecnologia e gaming
 
 ## SERVIZI E PREZZI DETTAGLIATI (Prezzi di mercato Italia 2025)
@@ -189,7 +189,7 @@ const ChatBot: React.FC = () => {
         const result = await chatSession.sendMessage({ message: userText });
         botResponse = result.text ?? '';
       } else {
-        botResponse = 'Mi dispiace, al momento ho qualche difficoltà tecnica. 😅\n\nPuoi contattare Mauro direttamente a:\n📧 ceccarellimauro3@gmail.com';
+        botResponse = 'Mi dispiace, al momento ho qualche difficoltà tecnica. 😅\n\nPuoi contattare Mauro direttamente a:\n📧 mauroexe@mauroceccarelli.it';
       }
 
       setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'bot', text: botResponse }]);
@@ -197,8 +197,8 @@ const ChatBot: React.FC = () => {
       console.error('Errore Gemini:', error);
       const is429 = error?.message?.includes('429') || error?.status === 429;
       const errorText = is429
-        ? 'Il servizio AI è momentaneamente sovraccarico. ⏳\n\nAttendi ~60 secondi e riprova, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com'
-        : 'Ops! Qualcosa è andato storto. 😅\n\nProva a riformulare la domanda, oppure contatta Mauro direttamente:\n📧 ceccarellimauro3@gmail.com';
+        ? 'Il servizio AI è momentaneamente sovraccarico. ⏳\n\nAttendi ~60 secondi e riprova, oppure contatta Mauro direttamente:\n📧 mauroexe@mauroceccarelli.it'
+        : 'Ops! Qualcosa è andato storto. 😅\n\nProva a riformulare la domanda, oppure contatta Mauro direttamente:\n📧 mauroexe@mauroceccarelli.it';
       setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), role: 'bot', text: errorText }]);
     } finally {
       setIsTyping(false);

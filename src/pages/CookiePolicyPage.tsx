@@ -99,7 +99,7 @@ const CookiePolicyPage: React.FC = () => {
 
             <section>
               <h2 className="text-white font-bold text-xl mb-3">Contatti</h2>
-              <p>Per qualsiasi domanda relativa all'utilizzo dei cookie su questo sito, contatta il Titolare del trattamento: <a href="mailto:ceccarellimauro3@gmail.com" className="text-cyan-400 hover:underline">ceccarellimauro3@gmail.com</a></p>
+              <p>Per qualsiasi domanda relativa all'utilizzo dei cookie su questo sito, contatta il Titolare del trattamento: <a href="mailto:mauroexe@mauroceccarelli.it" className="text-cyan-400 hover:underline">mauroexe@mauroceccarelli.it</a></p>
               <p className="mt-2">Per informazioni complete sul trattamento dei dati personali, consulta la <a href="/privacy-policy" className="text-cyan-400 hover:underline">Privacy Policy</a>.</p>
             </section>
 

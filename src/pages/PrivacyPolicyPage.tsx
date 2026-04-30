@@ -33,7 +33,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 <p><strong className="text-gray-300">Mauro Ceccarelli</strong></p>
                 <p>Ascoli Piceno (AP), Italia</p>
                 <p>P.IVA: 02606790448</p>
-                <p>Email: <a href="mailto:ceccarellimauro3@gmail.com" className="text-cyan-400 hover:underline">ceccarellimauro3@gmail.com</a></p>
+                <p>Email: <a href="mailto:mauroexe@mauroceccarelli.it" className="text-cyan-400 hover:underline">mauroexe@mauroceccarelli.it</a></p>
                 <p>Telefono: <a href="tel:+393480029661" className="text-cyan-400 hover:underline">+39 348 002 9661</a></p>
               </div>
             </section>
@@ -100,7 +100,7 @@ const PrivacyPolicyPage: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3">Per esercitare i tuoi diritti, contatta il Titolare all'indirizzo <a href="mailto:ceccarellimauro3@gmail.com" className="text-cyan-400 hover:underline">ceccarellimauro3@gmail.com</a>. Risponderemo entro 30 giorni.</p>
+              <p className="mt-3">Per esercitare i tuoi diritti, contatta il Titolare all'indirizzo <a href="mailto:mauroexe@mauroceccarelli.it" className="text-cyan-400 hover:underline">mauroexe@mauroceccarelli.it</a>. Risponderemo entro 30 giorni.</p>
             </section>
 
             <section>

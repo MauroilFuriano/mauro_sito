@@ -8,11 +8,11 @@ const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
   const [isGlitching, setIsGlitching] = useState(true);
 
-  // Ridotto per performance: 370 elementi animati → 130 (mobile: 60)
+  // Ridotto per performance: 370 elementi animati -> 100 (mobile: 45)
   const isMobile = useMemo(() => window.matchMedia('(max-width: 768px)').matches, []);
 
   const particles = useMemo(() => {
-    const count = isMobile ? 25 : 55;
+    const count = isMobile ? 15 : 30; // Ridotto
     return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
   }, [isMobile]);
 
   const stars = useMemo(() => {
-    const count = isMobile ? 60 : 120;
+    const count = isMobile ? 30 : 70; // Ridotto
     return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,

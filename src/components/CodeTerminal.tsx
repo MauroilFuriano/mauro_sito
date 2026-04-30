@@ -37,7 +37,7 @@ const CodeTerminal: React.FC = () => {
         {/* Effetto Glow Sotto il Terminale */}
         <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/30 to-purple-500/30 blur-2xl rounded-[2rem] opacity-50" />
         
-        <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="relative bg-[#0d0d1a]/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl isolate-blur">
           {/* Header Terminale */}
           <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
             <div className="flex gap-1.5">
@@ -67,7 +67,7 @@ const CodeTerminal: React.FC = () => {
         </div>
 
         {/* Floating Notification */}
-        <div className="absolute -bottom-6 -right-6 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float max-w-[220px] hidden md:block">
+        <div className="absolute -bottom-6 -right-6 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float max-w-[220px] hidden md:block isolate-blur">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
               <Shield className="text-cyan-400" size={20} />

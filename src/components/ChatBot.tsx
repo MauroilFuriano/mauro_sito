@@ -9,7 +9,8 @@ interface Message {
 }
 
 // Configurazione Gemini (nuovo SDK v1 — supporta modelli 2.5)
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
+// Inizializzato on-demand per non bloccare il caricamento iniziale (Audit 2026)
+let ai: any = null;
 
 // System prompt con struttura originale ma prezzi "A PARTIRE DA"
 const SYSTEM_PROMPT = `Sei M.A.U.R.O. Bot (Modulo Assistenza Utenti & Risposta Operativa), l'assistente virtuale del portfolio di Mauro, uno sviluppatore freelance italiano.
@@ -138,9 +139,14 @@ const ChatBot: React.FC = () => {
     return () => { clearTimeout(tShow); clearTimeout(tHide); };
   }, [isOpen]);
 
-  // Inizializza la chat session con Gemini 2.5 (nuovo SDK @google/genai)
+  // Inizializza la chat session con Gemini solo all'apertura per non bloccare il parsing (Audit 2026)
   useEffect(() => {
+    if (!isOpen || chatSession) return;
+
     try {
+      if (!ai) {
+        ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
+      }
       const chat = ai.chats.create({
         model: 'gemini-2.5-flash-lite',
         config: {
@@ -153,7 +159,7 @@ const ChatBot: React.FC = () => {
     } catch (error) {
       console.error('Errore inizializzazione Gemini:', error);
     }
-  }, []);
+  }, [isOpen, chatSession]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

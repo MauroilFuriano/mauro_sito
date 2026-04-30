@@ -8,11 +8,11 @@ const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
   const [isGlitching, setIsGlitching] = useState(true);
 
-  // Ridotto per performance: 370 elementi animati -> 100 (mobile: 45)
+  // Ulteriore riduzione per performance (Audit 2026)
   const isMobile = useMemo(() => window.matchMedia('(max-width: 768px)').matches, []);
 
   const particles = useMemo(() => {
-    const count = isMobile ? 15 : 30; // Ridotto
+    const count = isMobile ? 10 : 20; // Ridotto ulteriormente
     return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
   }, [isMobile]);
 
   const stars = useMemo(() => {
-    const count = isMobile ? 30 : 70; // Ridotto
+    const count = isMobile ? 15 : 40; // Ridotto ulteriormente
     return Array.from({ length: count }).map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -33,8 +33,17 @@ const Hero: React.FC = () => {
   }, [isMobile]);
 
   useEffect(() => {
+    let ctx: gsap.Context;
+
     const observer = new IntersectionObserver(
-      ([entry]) => setIsGlitching(entry.isIntersecting),
+      ([entry]) => {
+        setIsGlitching(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+            gsap.globalTimeline.pause();
+        } else {
+            gsap.globalTimeline.play();
+        }
+      },
       { threshold: 0 }
     );
     if (heroRef.current) {
@@ -44,7 +53,7 @@ const Hero: React.FC = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return () => observer.disconnect();
 
-    const ctx = gsap.context(() => {
+    ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
       tl.fromTo('.gsap-badge', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2 }, 0.2);
@@ -57,7 +66,7 @@ const Hero: React.FC = () => {
     }, heroRef);
 
     return () => {
-      ctx.revert();
+      if (ctx) ctx.revert();
       observer.disconnect();
     };
   }, []);

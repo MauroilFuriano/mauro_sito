@@ -142,7 +142,7 @@ const Portfolio: React.FC = () => {
               ref={el => { cardRefs.current[index] = el; }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => handleMouseLeave(index)}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: isTouch.current ? 'flat' : 'preserve-3d' }}
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
               {/* Image Container */}
@@ -163,7 +163,7 @@ const Portfolio: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col flex-1" style={{ transform: 'translateZ(30px)' }}>
+              <div className="p-6 flex flex-col flex-1" style={{ transform: isTouch.current ? 'none' : 'translateZ(30px)' }}>
                 <div className="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-2">
                   {project.category}
                 </div>
@@ -187,7 +187,7 @@ const Portfolio: React.FC = () => {
                 <div className="flex-1"></div> {/* Spacer to push bottom content down on desktop grid */}
 
                 {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 mb-6" style={{ transform: 'translateZ(40px)' }}>
+                <div className="flex flex-wrap gap-2 mb-6" style={{ transform: isTouch.current ? 'none' : 'translateZ(40px)' }}>
                   {project.tech.map((tech, i) => (
                     <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">
                       {tech}
@@ -197,12 +197,22 @@ const Portfolio: React.FC = () => {
 
                 {/* Links */}
                 {/* [FRONTEND SPECIALIST] Animazione underline/freccia sui link */}
-                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5" style={{ transform: 'translateZ(50px)' }}>
+                {/* Fix mobile: position relative + z-index alto per garantire che i tap vengano ricevuti anche con il 3D context attivo */}
+                <div
+                  className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5"
+                  style={{
+                    transform: isTouch.current ? 'none' : 'translateZ(50px)',
+                    position: 'relative',
+                    zIndex: 10,
+                    pointerEvents: 'auto'
+                  }}
+                >
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm font-bold text-white relative group/link"
+                    style={{ touchAction: 'manipulation' }}
                   >
                     <ExternalLink size={16} className="text-cyan-400 group-hover/link:-translate-y-1 transition-transform" />
                     <span>Live</span>

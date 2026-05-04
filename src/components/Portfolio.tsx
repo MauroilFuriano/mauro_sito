@@ -68,6 +68,7 @@ const projects = [
     icon: <Video size={20} />,
     link: "https://demo-videomaker.vercel.app/",
     github: "#",
+    isDemo: true,
     imageStyle: "object-cover object-center"
   },
   {
@@ -85,6 +86,7 @@ const projects = [
     icon: <Car size={20} />,
     link: "https://egocars.vercel.app/",
     github: "#",
+    isDemo: true,
     imageStyle: "object-cover object-center"
   },
   {
@@ -102,6 +104,7 @@ const projects = [
     icon: <Scissors size={20} />,
     link: "https://sito-parrucchieri.vercel.app/",
     github: "#",
+    isDemo: true,
     imageStyle: "object-cover object-top"
   }
 ];
@@ -247,7 +250,7 @@ const Portfolio: React.FC = () => {
                     style={{ touchAction: 'manipulation' }}
                   >
                     <ExternalLink size={16} className="text-cyan-400 group-hover/link:-translate-y-1 transition-transform" />
-                    <span>Live</span>
+                    <span>{project.isDemo ? 'Demo' : 'Live'}</span>
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 group-hover/link:w-full transition-all duration-300"></span>
                   </a>
                   {project.github !== "#" && (

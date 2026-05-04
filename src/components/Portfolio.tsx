@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from 'react';
-import { ExternalLink, Github, Layout, Video, Car, Scissors, Hammer } from 'lucide-react';
+import { ExternalLink, Github, Layout, Video, Car, Scissors, Hammer, Printer } from 'lucide-react';
 
 const projects = [
   {
@@ -33,6 +33,23 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Hammer size={20} />,
     link: "https://fcresinwoodcreations.com/",
+    github: "#",
+    imageStyle: "object-cover object-center"
+  },
+  {
+    title: "Ink Service - Centro Stampa",
+    category: "Centro Stampa & Grafica AI",
+    description: "Sito web professionale per un centro stampa storico di Ascoli Piceno, integrato con servizi di grafica AI generativa e preventivatore immediato online.",
+    features: [
+      "🎨 Integrazione Grafica AI Generativa per contenuti custom",
+      "📐 Preventivatore immediato per stampa, tesi e grande formato",
+      "📍 SEO locale ottimizzato per Ascoli Piceno e provincia"
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "AI Integration", "SEO", "Three.js"],
+    image: "/projects/ink-service.webp",
+    fallbackImage: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=75&w=800&auto=format&fm=webp&fit=crop",
+    icon: <Printer size={20} />,
+    link: "https://ink-service.com/",
     github: "#",
     imageStyle: "object-cover object-center"
   },

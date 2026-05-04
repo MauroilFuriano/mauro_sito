@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
           {/* Badge */}
           <div className="gsap-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 text-xs font-bold tracking-widest uppercase" style={{ opacity: 0 }}>
             <Cpu size={14} className="animate-pulse" aria-hidden="true" />
-            Sviluppatore Web & AI 2026
+            Sviluppatore Web
           </div>
 
           {/* Headline */}

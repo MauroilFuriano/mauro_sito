@@ -41,15 +41,11 @@
   <link rel="icon" href="/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/logo.png" />
 
-  <!-- Google Analytics GA4 + Google Ads -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18055930933"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-29CR0733KS', { send_page_view: false });
-    gtag('config', 'AW-18055930933');
-  </script>
+  <!-- Google Analytics GA4 + Google Ads — Deferito per performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
   <!-- Font: preconnect + stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -124,6 +120,18 @@
   <div id="root"></div>
 
   <script type="module" src="/src/index.tsx"></script>
+  
+  <!-- Analytics & Ads caricati async a fine body per non bloccare LCP -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18055930933"></script>
+  <script>
+    window.addEventListener('load', function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-29CR0733KS', { 'send_page_view': false });
+      gtag('config', 'AW-18055930933');
+    });
+  </script>
 </body>
 
 </html>

@@ -154,7 +154,10 @@ const Portfolio: React.FC = () => {
               ref={el => { cardRefs.current[index] = el; }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => handleMouseLeave(index)}
-              style={{ transformStyle: isTouchDevice ? 'flat' : 'preserve-3d' }}
+              style={{ 
+                transformStyle: isTouchDevice ? 'flat' : 'preserve-3d',
+                willChange: 'transform'
+              }}
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
               {/* Image Container */}

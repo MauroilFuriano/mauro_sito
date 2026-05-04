@@ -207,11 +207,10 @@ const WhatsappIcon = ({ size = 24, className = "" }) => (
 const HomePage: React.FC = () => {
     // [FRONTEND SPECIALIST] Aggiunta logica per Intersection Observer (Scroll Reveal 2026)
     useEffect(() => {
-        // [FRONTEND SPECIALIST] Inizializzazione IntersectionObserver per elementi '.reveal'
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.15, // Attiva quando il 15% è visibile
+            rootMargin: '0px 0px -50px 0px', // Attiva un po' prima della fine dello schermo
+            threshold: 0.05, // Molto basso per garantire l'attivazione in IAB
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -226,8 +225,18 @@ const HomePage: React.FC = () => {
         const revealElements = document.querySelectorAll('.reveal');
         revealElements.forEach((el) => observer.observe(el));
 
+        // Fallback per In-App Browser o situazioni di scroll bloccato
+        const fallbackTimeout = setTimeout(() => {
+            revealElements.forEach((el) => {
+                if (!el.classList.contains('active')) {
+                    el.classList.add('active');
+                }
+            });
+        }, 1500);
+
         return () => {
-            revealElements.forEach((el) => observer.unobserve(el));
+            observer.disconnect();
+            clearTimeout(fallbackTimeout);
         };
     }, []);
 

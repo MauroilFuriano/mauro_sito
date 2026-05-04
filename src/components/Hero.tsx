@@ -123,8 +123,8 @@ const Hero: React.FC = () => {
           {/* Headline */}
           <div>
             <h1 className="gsap-title font-display text-[34px] sm:text-5xl lg:text-[44px] xl:text-[56px] font-black leading-[1.05] tracking-tight text-white mb-6" style={{ opacity: 0 }}>
-              <span className="block whitespace-nowrap">Sviluppatore Web</span>
-              <span className="block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+              <span className="block">Sviluppatore Web</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
                 ad Ascoli Piceno
               </span>
             </h1>

@@ -91,10 +91,22 @@ const projects = [
 
 const Portfolio: React.FC = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isTouch = useRef(window.matchMedia('(hover: none)').matches);
+  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkTouch = () => {
+      const isTouch = window.matchMedia('(hover: none)').matches || 
+                     (window.navigator as any).maxTouchPoints > 0 ||
+                     /FBAN|FBAV|Instagram/i.test(navigator.userAgent);
+      setIsTouchDevice(isTouch);
+    };
+    checkTouch();
+    window.addEventListener('resize', checkTouch);
+    return () => window.removeEventListener('resize', checkTouch);
+  }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    if (isTouch.current) return;
+    if (isTouchDevice) return;
     const card = cardRefs.current[index];
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -102,15 +114,15 @@ const Portfolio: React.FC = () => {
     const rotateY = (((e.clientX - rect.left) / rect.width) - 0.5) * 20;
     card.style.transition = 'none';
     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
-  }, []);
+  }, [isTouchDevice]);
 
   const handleMouseLeave = useCallback((index: number) => {
-    if (isTouch.current) return;
+    if (isTouchDevice) return;
     const card = cardRefs.current[index];
     if (!card) return;
     card.style.transition = 'transform 0.5s ease';
     card.style.transform = 'rotateX(0) rotateY(0) scale3d(1,1,1)';
-  }, []);
+  }, [isTouchDevice]);
 
   // Handle image error - fallback to alternative image
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>, fallback: string) => {
@@ -135,14 +147,14 @@ const Portfolio: React.FC = () => {
           </h3>
         </div>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" style={{ perspective: '1000px' }}>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" style={{ perspective: isTouchDevice ? 'none' : '1000px' }}>
           {projects.map((project, index) => (
             <div
               key={index}
               ref={el => { cardRefs.current[index] = el; }}
               onMouseMove={(e) => handleMouseMove(e, index)}
               onMouseLeave={() => handleMouseLeave(index)}
-              style={{ transformStyle: isTouch.current ? 'flat' : 'preserve-3d' }}
+              style={{ transformStyle: isTouchDevice ? 'flat' : 'preserve-3d' }}
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
               {/* Image Container */}
@@ -163,7 +175,7 @@ const Portfolio: React.FC = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col flex-1" style={{ transform: isTouch.current ? 'none' : 'translateZ(30px)' }}>
+              <div className="p-6 flex flex-col flex-1" style={{ transform: isTouchDevice ? 'none' : 'translateZ(30px)' }}>
                 <div className="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-2">
                   {project.category}
                 </div>
@@ -187,7 +199,7 @@ const Portfolio: React.FC = () => {
                 <div className="flex-1"></div> {/* Spacer to push bottom content down on desktop grid */}
 
                 {/* Tech Stack Tags */}
-                <div className="flex flex-wrap gap-2 mb-6" style={{ transform: isTouch.current ? 'none' : 'translateZ(40px)' }}>
+                <div className="flex flex-wrap gap-2 mb-6" style={{ transform: isTouchDevice ? 'none' : 'translateZ(40px)' }}>
                   {project.tech.map((tech, i) => (
                     <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">
                       {tech}
@@ -201,7 +213,7 @@ const Portfolio: React.FC = () => {
                 <div
                   className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5"
                   style={{
-                    transform: isTouch.current ? 'none' : 'translateZ(50px)',
+                    transform: isTouchDevice ? 'none' : 'translateZ(50px)',
                     position: 'relative',
                     zIndex: 10,
                     pointerEvents: 'auto'

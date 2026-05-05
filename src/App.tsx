@@ -28,6 +28,7 @@ const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
 const SimulatorePreventivo = lazy(() => import('./pages/SimulatorePreventivo'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
+const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 
 /* ── Loading fallback ───────────────────────────────────────── */
 const Loading = () => (
@@ -83,6 +84,7 @@ const App: React.FC = () => (
           <Route path="/simulatore" element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+          <Route path="/card" element={<DigitalCard />} />
           {/* /faq non esiste come pagina — è un anchor nella home. Redirect. */}
           <Route path="/faq" element={<Navigate to="/#faq" replace />} />
           {/* Catch-all: qualsiasi URL sconosciuto torna in home (evita pagine bianche) */}

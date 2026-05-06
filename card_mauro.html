@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mauro Ceccarelli — Sviluppatore Web & AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0f;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #fff;
+    }
+
+    /* Sfondo animato */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 20%, rgba(99,102,241,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(16,185,129,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px 36px 36px;
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 0 0 1px rgba(99,102,241,0.15),
+        0 32px 64px rgba(0,0,0,0.5),
+        0 0 80px rgba(99,102,241,0.08);
+    }
+
+    /* Badge live */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 20px;
+      padding: 4px 12px 4px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #34d399;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* Header */
+    .header { margin-bottom: 32px; }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.3);
+      letter-spacing: -1px;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .role {
+      font-size: 14px;
+      font-weight: 400;
+      color: #a0a0b8;
+      margin-bottom: 4px;
+    }
+
+    .location {
+      font-size: 13px;
+      color: #606078;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      margin: 24px 0;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #8888a8;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .tagline strong {
+      color: #c8c8e8;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* Servizi */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .service-tag {
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #a5b4fc;
+    }
+
+    /* Contatti */
+    .contacts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #d0d0f0;
+      font-size: 13.5px;
+      font-weight: 400;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .contact-link:hover {
+      background: rgba(99,102,241,0.1);
+      border-color: rgba(99,102,241,0.25);
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .icon-phone { background: rgba(16,185,129,0.15); }
+    .icon-email { background: rgba(99,102,241,0.15); }
+    .icon-web   { background: rgba(245,158,11,0.15); }
+
+    /* CTA */
+    .cta {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none;
+      border-radius: 14px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+      letter-spacing: 0.01em;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(99,102,241,0.5);
+      filter: brightness(1.1);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: #404055;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 28px 24px 24px; border-radius: 20px; }
+      .name { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Disponibile per nuovi progetti
+  </div>
+
+  <div class="header">
+    <div class="avatar">MC</div>
+    <div class="name">Mauro Ceccarelli</div>
+    <div class="role">Sviluppatore Web & AI</div>
+    <div class="location">📍 Ascoli Piceno, Italia</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="tagline">
+    Trasformo il tuo sito da <strong>biglietto da visita</strong> a uno
+    <strong>strumento che lavora mentre dormi</strong> — con codice custom,
+    chatbot AI e automazioni su misura.
+  </p>
+
+  <div class="services">
+    <span class="service-tag">⚡ Siti Web Custom</span>
+    <span class="service-tag">🤖 Chatbot AI</span>
+    <span class="service-tag">🛒 E-commerce</span>
+    <span class="service-tag">⚙️ Automazioni</span>
+    <span class="service-tag">📈 Lighthouse 98+</span>
+  </div>
+
+  <div class="contacts">
+    <a class="contact-link" href="tel:+393480029661">
+      <span class="contact-icon icon-phone">📞</span>
+      +39 348 00 29 661
+    </a>
+    <a class="contact-link" href="mailto:ceccarellimauro3@gmail.com">
+      <span class="contact-icon icon-email">✉️</span>
+      ceccarellimauro3@gmail.com
+    </a>
+    <a class="contact-link" href="https://mauroceccarelli.it" target="_blank">
+      <span class="contact-icon icon-web">🌐</span>
+      mauroceccarelli.it
+    </a>
+  </div>
+
+  <a class="cta" href="https://mauroceccarelli.it" target="_blank">
+    Vedi il portfolio completo →
+  </a>
+
+  <div class="footer">
+    Zero template · Zero WordPress · Codice 100% custom
+  </div>
+
+</div>
+
+</body>
+</html>

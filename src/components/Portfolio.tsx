@@ -51,7 +51,7 @@ const projects = [
     icon: <Printer size={20} />,
     link: "https://ink-service.com/",
     github: "#",
-    imageStyle: "object-cover object-center"
+    imageStyle: "object-cover object-top"
   },
   {
     title: "Alex Nova - Videomaker & Fotografo",

@@ -63,7 +63,7 @@ const projects = [
       "📱 Esperienza mobile-first per clienti in movimento"
     ],
     tech: ["React", "Tailwind CSS", "SEO Schema.org", "Responsive Design"],
-    image: "/alex_nova.webp",
+    image: "/alex_nova_v2.webp",
     fallbackImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Video size={20} />,
     link: "https://demo-videomaker.vercel.app/",

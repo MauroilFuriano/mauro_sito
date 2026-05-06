@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-end">
-          <img src="/logo.png" alt="Mauro.exe" width="28" height="28" className="object-contain" />
+          <img src="/logo.webp" alt="Mauro.exe" width="28" height="28" className="object-contain" />
           <span className="font-display font-bold text-white tracking-widest">MAURO.EXE</span>
         </div>
 

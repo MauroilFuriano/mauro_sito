@@ -87,7 +87,7 @@ const projects = [
     link: "https://egocars.vercel.app/",
     github: "#",
     isDemo: true,
-    imageStyle: "object-cover object-center"
+    imageStyle: "object-cover object-top"
   },
   {
     title: "Aura Style Studio - Salone Unisex",
@@ -180,8 +180,8 @@ const Portfolio: React.FC = () => {
               }}
               className="group rounded-2xl bg-dark-800 border border-white/10 hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(0,229,255,0.2)] flex flex-col relative overflow-hidden"
             >
-              {/* Image Container */}
-              <div className="relative h-48 overflow-hidden bg-dark-900 rounded-t-2xl">
+              {/* Image Container — h-64 per evitare tagli visivi */}
+              <div className="relative h-64 overflow-hidden bg-dark-900 rounded-t-2xl">
                 <div className="absolute inset-0 bg-dark-900/20 group-hover:bg-transparent transition-colors z-10 rounded-t-2xl" />
 
                 <img

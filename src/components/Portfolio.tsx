@@ -81,7 +81,7 @@ const projects = [
       "📍 SEO locale ottimizzato con Schema.org AutoDealer"
     ],
     tech: ["React", "TypeScript", "Tailwind CSS", "Chatbot deterministico", "Schema.org", "SEO locale"],
-    image: "/projects/nova-motors.png",
+    image: "/projects/nova-motors.webp",
     fallbackImage: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Car size={20} />,
     link: "https://egocars.vercel.app/",
@@ -99,7 +99,7 @@ const projects = [
       "🖥️ Dashboard gestionale per amministrazione appuntamenti"
     ],
     tech: ["React", "TypeScript", "Tailwind CSS", "LLM Integration", "Booking System", "Admin Dashboard"],
-    image: "/projects/aura-style.png",
+    image: "/projects/aura-style.webp",
     fallbackImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Scissors size={20} />,
     link: "https://sito-parrucchieri.vercel.app/",

@@ -20,14 +20,26 @@ const Testimonials: React.FC = () => {
       const script = document.createElement('script');
       script.src = ELFSIGHT_SRC;
       script.async = true;
+      script.defer = true;
       script.onload = () => setScriptLoaded(true);
       document.body.appendChild(script);
+    };
+
+    // Inietta dentro requestIdleCallback per non bloccare il main thread durante lo scroll.
+    // Fallback con setTimeout per browser senza supporto (Safari < 17).
+    const scheduleInject = () => {
+      const w = window as any;
+      if (typeof w.requestIdleCallback === 'function') {
+        w.requestIdleCallback(injectScript, { timeout: 2000 });
+      } else {
+        setTimeout(injectScript, 200);
+      }
     };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          injectScript();
+          scheduleInject();
           observer.disconnect();
         }
       },
@@ -72,8 +84,13 @@ const Testimonials: React.FC = () => {
           <div className={`elfsight-app-${ELFSIGHT_ID}`} />
 
           {!scriptLoaded && (
-            <div className="absolute inset-0 flex justify-center items-start pt-12 pointer-events-none">
-              <span className="text-gray-500 text-sm animate-pulse">Caricamento recensioni Google...</span>
+            <div
+              className="absolute inset-0 flex justify-center items-start pt-12 pointer-events-none motion-reduce:animate-none"
+              aria-live="polite"
+            >
+              <span className="text-gray-500 text-sm animate-pulse motion-reduce:animate-none">
+                Caricamento recensioni Google...
+              </span>
             </div>
           )}
         </div>

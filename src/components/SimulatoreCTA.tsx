@@ -12,23 +12,27 @@ const STATS = [
   { icon: <Euro size={16} />, label: 'Prezzi trasparenti', value: 'Senza sorprese' },
 ];
 
-// [FRONTEND SPECIALIST] Testo counter animato (Information Gain visivo - SITO_2026)
+// Counter animato via requestAnimationFrame — sincronizzato col paint, zero jank
 const useCountUp = (target: number, duration = 1500, active: boolean) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (!active) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCount(target);
+      return;
+    }
+    let rafId = 0;
+    let startTime = 0;
+    const tick = (now: number) => {
+      if (!startTime) startTime = now;
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) rafId = requestAnimationFrame(tick);
+      else setCount(target);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   }, [target, duration, active]);
   return count;
 };

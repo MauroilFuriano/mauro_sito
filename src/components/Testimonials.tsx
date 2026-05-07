@@ -31,7 +31,7 @@ const Testimonials: React.FC = () => {
           observer.disconnect();
         }
       },
-      { rootMargin: '300px' }
+      { rootMargin: '200px' }
     );
 
     observer.observe(el);
@@ -43,17 +43,17 @@ const Testimonials: React.FC = () => {
       id="testimonials"
       className="py-24 relative overflow-hidden"
       ref={sectionRef}
-      style={{ contain: 'layout paint style', contentVisibility: 'auto', containIntrinsicSize: '1px 800px' }}
+      /* [FIX AUDIT MOBILE] Rimosso contentVisibility: auto — conflitto con Elfsight script injection */
     >
       {/* Background glows — promossi a GPU layer, blur ridotto, size ridotta */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className="absolute top-[30%] left-[5%] w-[280px] h-[280px] bg-cyan-400/5 rounded-full will-change-transform"
-          style={{ filter: 'blur(60px)', transform: 'translate3d(0,0,0)' }}
+          className="absolute top-[30%] left-[5%] w-[280px] h-[280px] bg-cyan-400/5 rounded-full"
+          style={{ filter: 'blur(40px)' }}
         />
         <div
-          className="absolute bottom-[10%] right-[5%] w-[220px] h-[220px] bg-purple-500/5 rounded-full will-change-transform"
-          style={{ filter: 'blur(50px)', transform: 'translate3d(0,0,0)' }}
+          className="absolute bottom-[10%] right-[5%] w-[220px] h-[220px] bg-purple-500/5 rounded-full"
+          style={{ filter: 'blur(40px)' }}
         />
       </div>
 

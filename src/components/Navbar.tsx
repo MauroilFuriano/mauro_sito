@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <a
           href="#home"
-          className="flex items-center gap-4 group"
+          className="flex items-center gap-2 md:gap-4 group flex-shrink-0"
           onClick={(e) => handleNavClick(e, { name: 'Home', href: '#home' })}
         >
           <img
@@ -86,21 +86,21 @@ const Navbar: React.FC = () => {
                        group-hover:scale-110"
           />
           <div className="flex flex-col">
-            <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-xl md:text-3xl">
+            <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-lg sm:text-xl md:text-3xl">
               MAURO.EXE
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link)}
               aria-current={link.isRoute && location.pathname === link.href ? 'page' : undefined}
-              className={`relative text-base font-medium tracking-wide transition-colors py-2 group ${
+              className={`relative text-sm lg:text-base font-medium tracking-wide transition-colors py-2 group ${
                 link.isRoute && location.pathname === link.href
                   ? 'text-cyan-400'
                   : 'text-gray-300 hover:text-cyan-400'

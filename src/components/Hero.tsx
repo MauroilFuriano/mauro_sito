@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" ref={heroRef} className="relative min-h-screen flex items-center pt-24 lg:pt-0 overflow-hidden bg-[#05050A]">
+    <section id="home" ref={heroRef} className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[#05050A]">
 
       {/* ── Background: Stelle e Particelle Originali ── */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">

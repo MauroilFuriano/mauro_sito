@@ -83,17 +83,17 @@ const Navbar: React.FC = () => {
             className="w-14 h-14 md:w-20 md:h-20 object-contain transition-all duration-300
                        drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]
                        group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)]
-                       group-hover:scale-110"
+                       group-hover:scale-110 flex-shrink-0"
           />
-          <div className="flex flex-col">
-            <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-lg sm:text-xl md:text-3xl">
+          <div className="flex flex-col flex-shrink-0">
+            <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap">
               MAURO.EXE
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-8">
+        <div className="hidden md:flex items-center gap-2 lg:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}

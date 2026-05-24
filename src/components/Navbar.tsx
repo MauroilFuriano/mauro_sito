@@ -80,10 +80,11 @@ const Navbar: React.FC = () => {
             width="80"
             height="80"
             fetchPriority="high"
-            className="w-14 h-14 md:w-20 md:h-20 object-contain transition-all duration-300
+            className="w-14 h-14 md:w-20 md:h-20 object-contain transition-[transform,filter] duration-300
                        drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]
-                       group-hover:drop-shadow-[0_0_25px_rgba(0,229,255,1)]
-                       group-hover:scale-110 flex-shrink-0"
+                       group-hover:drop-shadow-[0_0_20px_rgba(0,229,255,0.8)]
+                       group-hover:scale-110 flex-shrink-0
+                       [transform:translate3d(0,0,0)] [will-change:transform]"
           />
           <div className="flex flex-col flex-shrink-0">
             <span className="font-display font-bold tracking-wider text-white group-hover:text-cyan-400 transition-colors glow-text text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap">

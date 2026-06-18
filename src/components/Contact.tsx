@@ -66,16 +66,13 @@ const Contact: React.FC = () => {
 
       // Invio reale tramite EmailJS
       emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-        .then((result) => {
-          console.log('Email inviata:', result.text);
+        .then(() => {
           setIsSubmitting(false);
           setIsSuccess(true);
-          // Reset del form
           setFormData({ user_name: '', user_email: '', subject: 'Voglio automatizzare l\'azienda con l\'AI', message: '' });
 
           setTimeout(() => setIsSuccess(false), 5000);
-        }, (error) => {
-          console.log('Errore invio:', error.text);
+        }, () => {
           setIsSubmitting(false);
           setSendError(true);
         });

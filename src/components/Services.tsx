@@ -6,13 +6,12 @@ interface ServiceCardProps {
   title: string;
   description: string;
   features: string[];
-  delay: string;
   startingPrice: string;
   originalPrice?: string;
   isMostRequested?: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, delay, startingPrice, originalPrice, isMostRequested }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, features, startingPrice, originalPrice, isMostRequested }) => (
   <div className="group relative p-[1px] rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-cyan-400/50 hover:to-transparent transition-all duration-500 hover:scale-[1.02]">
     {isMostRequested && (
       <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
@@ -86,7 +85,6 @@ const Services: React.FC = () => {
               "Design professionale che trasmette fiducia al primo colpo d'occhio",
               "Mobile perfetto: il 70% dei tuoi clienti naviga da smartphone"
             ]}
-            delay="0"
             startingPrice="A partire da €1.500"
           />
           <ServiceCard
@@ -99,7 +97,6 @@ const Services: React.FC = () => {
               "Si collega al tuo gestionale, CRM o sistema di prenotazioni",
               "Qualifica i contatti e li passa a te solo quando sono pronti ad acquistare"
             ]}
-            delay="100"
             startingPrice="A partire da €4.200"
             isMostRequested
           />
@@ -113,7 +110,6 @@ const Services: React.FC = () => {
               "Automazioni che inviano email, aggiornano scorte e generano report",
               "Integrazione con qualsiasi software già in uso in azienda"
             ]}
-            delay="200"
             startingPrice="A partire da €8.000"
           />
         </div>

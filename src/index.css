@@ -50,20 +50,6 @@ html {
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* Ken Burns — lento zoom galassia mobile, effetto immersione */
-@keyframes mobile-bg-zoom {
-  0%,100% { transform: scale(1.0); }
-  50%     { transform: scale(1.12); }
-}
-.mobile-bg-zoom {
-  animation: mobile-bg-zoom 28s ease-in-out infinite;
-  transform-origin: center center;
-  will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .mobile-bg-zoom { animation: none; }
-}
-
 /* Utilities per isolamento GPU e rendering ottimizzato */
 .isolate-blur {
   transform: translateZ(0);
@@ -359,48 +345,6 @@ html {
   animation: shooting-star 6s linear infinite;
 }
 
-/* Nebula/Galaxy effect */
-.nebula {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.15;
-  animation: nebula-pulse 8s ease-in-out infinite;
-}
-
-@keyframes nebula-pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.1;
-  }
-
-  50% {
-    transform: scale(1.1);
-    opacity: 0.2;
-  }
-}
-
-/* ── Hero SVG Circuit Animations ─────────────────────────── */
-
-/* Scintilla elettrica che scorre lungo i percorsi del circuito */
-@keyframes circuit-flow {
-  0%   { stroke-dashoffset: var(--total, 1355); }
-  100% { stroke-dashoffset: 0; }
-}
-
-/* Luce che percorre le connessioni neuronali del cervello */
-@keyframes neuron-flow {
-  0%   { stroke-dashoffset: var(--neuron-len, 200); }
-  100% { stroke-dashoffset: 0; }
-}
-
-/* Pulsazione dei nodi neurali */
-@keyframes node-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50%       { opacity: 1;    transform: scale(1.6); }
-}
 /* Accessibilità: rispetta preferenza utente per animazioni ridotte */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

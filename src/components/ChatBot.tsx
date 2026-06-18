@@ -290,8 +290,6 @@ const ChatBot: React.FC = () => {
         }`}
       >
         <div className={`bg-dark-900 border border-cyan-400/50 rounded-2xl shadow-[0_0_40px_rgba(0,229,255,0.2)] overflow-hidden flex flex-col ${isMinimized ? 'h-14' : 'h-[500px]'} transition-all duration-300`}>
-          
-          {/* Header */}
           <div className="bg-dark-800 border-b border-cyan-400/30 p-3 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
               {/* Mini bot icon */}

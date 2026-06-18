@@ -5,7 +5,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 interface NavLink {
   name: string;
   href: string;
-  isRoute?: boolean;
 }
 
 const navLinks: NavLink[] = [
@@ -45,11 +44,6 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     setIsOpen(false);
 
-    if (link.isRoute) {
-      navigate(link.href);
-      return;
-    }
-
     if (location.pathname !== '/') {
       navigate('/' + link.href);
     } else {
@@ -68,7 +62,6 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center min-w-0">
 
-        {/* Logo */}
         <a
           href="#home"
           className="flex items-center gap-2 md:gap-4 group flex-shrink-0"
@@ -100,12 +93,7 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link)}
-              aria-current={link.isRoute && location.pathname === link.href ? 'page' : undefined}
-              className={`relative text-sm lg:text-base font-medium tracking-wide transition-colors py-2 group ${
-                link.isRoute && location.pathname === link.href
-                  ? 'text-cyan-400'
-                  : 'text-gray-300 hover:text-cyan-400'
-              }`}
+              className="relative text-sm lg:text-base font-medium tracking-wide transition-colors py-2 group text-gray-300 hover:text-cyan-400"
             >
               <span className="relative z-10">{link.name}</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 shadow-[0_0_8px_rgba(0,229,255,0.8)]" />
@@ -148,11 +136,7 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link)}
-              className={`text-lg font-medium transition-all w-full py-3 rounded-lg hover:bg-white/5 ${
-                link.isRoute && location.pathname === link.href
-                  ? 'text-cyan-400'
-                  : 'text-gray-300 hover:text-cyan-400'
-              }`}
+              className="text-lg font-medium transition-all w-full py-3 rounded-lg hover:bg-white/5 text-gray-300 hover:text-cyan-400"
             >
               {link.name}
             </a>

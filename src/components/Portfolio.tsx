@@ -197,7 +197,6 @@ const Portfolio: React.FC = () => {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-6 flex flex-col flex-1" style={{ transform: isTouchDevice ? 'none' : 'translateZ(30px)' }}>
                 <div className="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-2">
                   {project.category}

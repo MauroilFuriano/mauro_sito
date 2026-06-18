@@ -93,7 +93,6 @@ const About: React.FC = () => {
           {/* ── Right Column — Bio ─────────────────────── */}
           <div className="lg:col-span-7 space-y-8">
 
-            {/* Header */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <div className="h-[1px] w-8 bg-cyan-400/50"></div>

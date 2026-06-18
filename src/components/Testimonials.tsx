@@ -26,16 +26,20 @@ const Testimonials: React.FC = () => {
     };
 
     // Inietta dentro requestIdleCallback per non bloccare il main thread durante lo scroll.
+    // Timeout breve: il download dello script è async (non blocca), va anticipato il più
+    // possibile così l'init pesante di Elfsight avviene fuori schermo, non sotto le dita.
     // Fallback con setTimeout per browser senza supporto (Safari < 17).
     const scheduleInject = () => {
       const w = window as any;
       if (typeof w.requestIdleCallback === 'function') {
-        w.requestIdleCallback(injectScript, { timeout: 2000 });
+        w.requestIdleCallback(injectScript, { timeout: 500 });
       } else {
         setTimeout(injectScript, 200);
       }
     };
 
+    // rootMargin ampio (800px): l'iniezione parte mentre l'utente è ancora lontano,
+    // così il mount del widget finisce prima dell'arrivo e lo scroll non si freeza.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -43,7 +47,7 @@ const Testimonials: React.FC = () => {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: '800px' }
     );
 
     observer.observe(el);
@@ -61,11 +65,11 @@ const Testimonials: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
           className="absolute top-[30%] left-[5%] w-[280px] h-[280px] bg-cyan-400/5 rounded-full"
-          style={{ filter: 'blur(40px)' }}
+          style={{ filter: 'blur(40px)', transform: 'translateZ(0)' }}
         />
         <div
           className="absolute bottom-[10%] right-[5%] w-[220px] h-[220px] bg-purple-500/5 rounded-full"
-          style={{ filter: 'blur(40px)' }}
+          style={{ filter: 'blur(40px)', transform: 'translateZ(0)' }}
         />
       </div>
 
@@ -79,8 +83,9 @@ const Testimonials: React.FC = () => {
           </h3>
         </div>
 
-        {/* Container con altezza riservata per evitare CLS quando Elfsight mount */}
-        <div className="relative min-h-[600px] md:min-h-[500px]">
+        {/* Container con altezza riservata per evitare CLS quando Elfsight mount.
+            contain: layout style isola i reflow del widget dal resto della pagina. */}
+        <div className="relative min-h-[600px] md:min-h-[500px]" style={{ contain: 'layout style' }}>
           <div className={`elfsight-app-${ELFSIGHT_ID}`} />
 
           {!scriptLoaded && (

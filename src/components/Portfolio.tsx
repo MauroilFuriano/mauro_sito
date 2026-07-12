@@ -57,42 +57,22 @@ const projects = [
     imageStyle: "object-cover object-top"
   },
   {
-    title: "Alex Nova - Videomaker & Fotografo",
-    alt: "Portfolio web design cinematografico per videomaker e fotografo – Alex Nova, demo progetto",
-    category: "Sito Portfolio Creativo",
-    description: "Portfolio professionale per videomaker e fotografo specializzato in Wedding Film, contenuti commerciali e ritratti editoriali. Design cinematografico con forte impatto visivo.",
+    title: "Graphic Arts - Personalizzazione AI & Stampa",
+    alt: "Web app per tipografia con configuratore t-shirt interattivo e generatore di immagini AI – Graphic Arts, San Benedetto del Tronto",
+    category: "Web App + AI Studio + Configurator",
+    description: "Web application avanzata per un centro stampa e personalizzazione di San Benedetto del Tronto. Include un generatore di immagini AI (Studio AI) e un configuratore interattivo per creare t-shirt e felpe da zero con testi, immagini e colori in tempo reale.",
     features: [
-      "🎬 Design cinematografico che valorizza il portfolio video",
-      "📍 SEO locale ottimizzato per Milano e provincia",
-      "📱 Esperienza mobile-first per clienti in movimento"
+      "🎨 Studio AI: Generatore di immagini con intelligenza artificiale per creare grafiche personalizzate uniche da stampare",
+      "👕 Customizer Interattivo: Configura maglie e felpe da zero gestendo scritte, colori e caricamento di grafiche proprie",
+      "⚡ Galleria Ottimizzata: Caricamento istantaneo di 247+ lavori ottimizzati in WebP con lightbox <dialog> nativo"
     ],
-    tech: ["React", "Tailwind CSS", "SEO Schema.org", "Responsive Design"],
-    image: "/alex_nova_v2.webp",
-    fallbackImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=75&w=800&auto=format&fm=webp&fit=crop",
-    icon: <Video size={20} />,
-    link: "https://demo-videomaker.vercel.app/",
+    tech: ["React", "TypeScript", "Tailwind CSS", "AI Image Generation", "Interactive Configurator", "Sharp", "Sentry", "SEO Locale"],
+    image: "https://graphic-arts-eta.vercel.app/og-image.png",
+    fallbackImage: "https://images.unsplash.com/photo-1513151233558-d860c5398176?q=75&w=800&auto=format&fm=webp&fit=crop",
+    icon: <Printer size={20} />,
+    link: "https://graphic-arts-eta.vercel.app/",
     github: "",
-    isDemo: true,
     imageStyle: "object-cover object-center"
-  },
-  {
-    title: "Nova Motors - Concessionaria Auto Premium",
-    alt: "Sito concessionaria auto con chatbot per qualificazione lead – Nova Motors, demo progetto",
-    category: "Sito Concessionaria + Chatbot",
-    description: "Sito vetrina per concessionaria di auto usate certificate premium ad Ascoli Piceno. Chatbot deterministico per qualificazione lead e gestione richieste di permuta e finanziamento.",
-    features: [
-      "🤖 Chatbot deterministico per permuta, finanziamento e info veicoli",
-      "🏎️ Catalog auto usate premium con schede dettagliate",
-      "📍 SEO locale ottimizzato con Schema.org AutoDealer"
-    ],
-    tech: ["React", "TypeScript", "Tailwind CSS", "Chatbot deterministico", "Schema.org", "SEO locale"],
-    image: "/projects/nova-motors.webp",
-    fallbackImage: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=75&w=800&auto=format&fm=webp&fit=crop",
-    icon: <Car size={20} />,
-    link: "https://egocars.vercel.app/",
-    github: "",
-    isDemo: true,
-    imageStyle: "object-cover object-top"
   },
   {
     title: "Aura Style Studio - Salone Unisex",

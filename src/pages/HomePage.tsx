@@ -46,7 +46,8 @@ const structuredData = {
     {
       "@type": "ProfessionalService",
       "@id": "https://www.mauroceccarelli.it/#service",
-      "name": "Mauro.exe — Sviluppo Web & AI",
+      "name": "MAURO.EXE — Mauro Ceccarelli",
+      "image": "https://www.mauroceccarelli.it/og-image.jpg",
       "url": "https://www.mauroceccarelli.it",
       "telephone": "+393480029661",
       "email": "mauroexe@mauroceccarelli.it",
@@ -88,6 +89,7 @@ const structuredData = {
       "@type": "LocalBusiness",
       "@id": "https://www.mauroceccarelli.it/#localbusiness",
       "name": "MAURO.EXE — Mauro Ceccarelli",
+      "image": "https://www.mauroceccarelli.it/og-image.jpg",
       "description": "Sviluppatore web freelance specializzato in siti web custom, chatbot AI e automazione business per PMI italiane.",
       "url": "https://www.mauroceccarelli.it",
       "telephone": "+393480029661",

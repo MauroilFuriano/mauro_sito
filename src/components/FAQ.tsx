@@ -111,12 +111,12 @@ const FAQ: React.FC = () => {
 
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">
+          <span className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase block">
             Domande Frequenti
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-display font-black text-white glow-text">
+          </span>
+          <h2 className="text-4xl md:text-5xl font-display font-black text-white glow-text">
             Prezzi & Approccio
-          </h3>
+          </h2>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
             Niente template, niente Shopify, niente soluzioni preconfezionate.<br />
             <span className="text-cyan-400 font-medium">Codice custom · AI integrata · Risultati misurabili.</span>
@@ -192,7 +192,7 @@ const FAQ: React.FC = () => {
 
         {/* GEO: timestamp visibile per segnale di freschezza */}
         <p className="text-center text-gray-600 text-xs mt-10">
-          Aggiornato: Aprile 2026 · Mauro Ceccarelli — Sviluppatore Web, Ascoli Piceno
+          Aggiornato: Luglio 2026 · Mauro Ceccarelli — Sviluppatore Web, Ascoli Piceno
         </p>
 
         {/* Bottom CTA */}

@@ -99,11 +99,11 @@ const Contact: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Contattami</h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6 break-words">
+            <span className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase block">Contattami</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6 break-words">
               Pronto a Trasformare{' '}
               <span className="text-cyan-400">il Tuo Business?</span>
-            </h3>
+            </h2>
             <p className="text-gray-400 mb-6 max-w-md whitespace-pre-line">
               Prenota un'analisi gratuita di 30 minuti.
               Parliamo del tuo progetto e ti mostro come posso aiutarti.

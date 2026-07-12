@@ -4,6 +4,7 @@ import { ExternalLink, Github, Layout, Video, Car, Scissors, Hammer, Printer } f
 const projects = [
   {
     title: "Maicol Ceccarelli - Drone Pilot",
+    alt: "Sito web portfolio per pilota droni professionista – design immersivo sviluppato da Mauro Ceccarelli",
     category: "Sito Web Vetrina",
     description: "Portfolio immersivo e ad altissime prestazioni per un pilota di droni professionista.",
     features: [
@@ -16,11 +17,12 @@ const projects = [
     fallbackImage: "/projects/drone-sito.png",
     icon: <Layout size={20} />,
     link: "https://www.maicolceccarelli.it",
-    github: "#",
+    github: "",
     imageStyle: "object-cover object-top"
   },
   {
     title: "FC Resinwood Creations",
+    alt: "Sito web artigianale per laboratorio tavoli in legno e resina epossidica – FC Resinwood, Ascoli Piceno",
     category: "Sito Vetrina Artigianale",
     description: "Sito vetrina per laboratorio artigianale di Ascoli Piceno specializzato in tavoli live edge in ulivo e resina epossidica. Ogni pezzo è unico, fatto a mano su misura.",
     features: [
@@ -33,11 +35,12 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Hammer size={20} />,
     link: "https://fcresinwoodcreations.com/",
-    github: "#",
+    github: "",
     imageStyle: "object-cover object-center"
   },
   {
     title: "Ink Service - Centro Stampa",
+    alt: "Sito web per centro stampa con grafica AI generativa e preventivatore online – Ink Service, Ascoli Piceno",
     category: "Centro Stampa & Grafica AI",
     description: "Sito web professionale per un centro stampa storico di Ascoli Piceno, integrato con servizi di grafica AI generativa e preventivatore immediato online.",
     features: [
@@ -50,11 +53,12 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Printer size={20} />,
     link: "https://ink-service.com/",
-    github: "#",
+    github: "",
     imageStyle: "object-cover object-top"
   },
   {
     title: "Alex Nova - Videomaker & Fotografo",
+    alt: "Portfolio web design cinematografico per videomaker e fotografo – Alex Nova, demo progetto",
     category: "Sito Portfolio Creativo",
     description: "Portfolio professionale per videomaker e fotografo specializzato in Wedding Film, contenuti commerciali e ritratti editoriali. Design cinematografico con forte impatto visivo.",
     features: [
@@ -67,12 +71,13 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Video size={20} />,
     link: "https://demo-videomaker.vercel.app/",
-    github: "#",
+    github: "",
     isDemo: true,
     imageStyle: "object-cover object-center"
   },
   {
     title: "Nova Motors - Concessionaria Auto Premium",
+    alt: "Sito concessionaria auto con chatbot per qualificazione lead – Nova Motors, demo progetto",
     category: "Sito Concessionaria + Chatbot",
     description: "Sito vetrina per concessionaria di auto usate certificate premium ad Ascoli Piceno. Chatbot deterministico per qualificazione lead e gestione richieste di permuta e finanziamento.",
     features: [
@@ -85,12 +90,13 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Car size={20} />,
     link: "https://egocars.vercel.app/",
-    github: "#",
+    github: "",
     isDemo: true,
     imageStyle: "object-cover object-top"
   },
   {
     title: "Aura Style Studio - Salone Unisex",
+    alt: "Sito parrucchiere con chatbot AI e sistema prenotazioni online – Aura Style, demo progetto",
     category: "Sito Parrucchiere + AI + Gestionale",
     description: "Piattaforma completa per salone unisex: chatbot AI con LLM per assistenza clienti, sistema di prenotazione online e dashboard gestionale per la gestione degli appuntamenti.",
     features: [
@@ -103,7 +109,7 @@ const projects = [
     fallbackImage: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Scissors size={20} />,
     link: "https://sito-parrucchieri.vercel.app/",
-    github: "#",
+    github: "",
     isDemo: true,
     imageStyle: "object-cover object-top"
   }
@@ -161,10 +167,10 @@ const Portfolio: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Il Mio Lavoro</h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
+          <span className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase block">Il Mio Lavoro</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
             Progetti Recenti
-          </h3>
+          </h2>
         </div>
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" style={{ perspective: isTouchDevice ? 'none' : '1000px' }}>
@@ -186,7 +192,7 @@ const Portfolio: React.FC = () => {
 
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={project.alt || project.title}
                   loading="lazy"
                   onError={(e) => handleImageError(e, project.fallbackImage)}
                   className={`w-full h-full transform group-hover:scale-110 transition-transform duration-700 rounded-t-2xl ${project.imageStyle}`}

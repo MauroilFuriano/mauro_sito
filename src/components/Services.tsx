@@ -68,10 +68,10 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">Le Mie Competenze</h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
+          <span className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase block">Le Mie Competenze</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
             Soluzioni Digitali
-          </h3>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

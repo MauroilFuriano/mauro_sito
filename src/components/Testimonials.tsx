@@ -75,12 +75,12 @@ const Testimonials: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase">
+          <span className="text-cyan-400 font-display font-bold tracking-widest mb-2 text-sm uppercase block">
             Recensioni Verificate
-          </h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white glow-text break-words">
             Cosa Dicono i Clienti
-          </h3>
+          </h2>
         </div>
 
         {/* Container con altezza riservata per evitare CLS quando Elfsight mount.

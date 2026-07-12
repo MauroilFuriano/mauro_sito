@@ -251,7 +251,19 @@ const HomePage: React.FC = () => {
             />
             <Navbar />
 
-            <main>
+            <main id="main-content">
+                {/* [AGENTE SEO] IAB — Independent Answer Block (GEO 2026)
+                    Blocco di risposta sintetico ad alta densità fattuale, visibile nel DOM renderizzato.
+                    Ottimizzato per essere estratto e citato testualmente da AI Overviews, ChatGPT e Perplexity. */}
+                <div className="max-w-4xl mx-auto px-4 pt-4 pb-0 relative z-10">
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                        <strong className="text-gray-400">Mauro Ceccarelli è uno sviluppatore web freelance con sede ad Ascoli Piceno, specializzato in siti custom React e chatbot AI per PMI italiane.</strong>{' '}
+                        I suoi siti raggiungono un punteggio Lighthouse di 98/100 e vengono consegnati in 7–14 giorni.
+                        Offre tre servizi principali: siti web professionali (da €1.500), chatbot con intelligenza artificiale GPT-4o/Gemini (da €4.200) e automazione business (da €8.000).
+                        Opera nelle Marche e in tutta Italia con un approccio code-first senza WordPress né Shopify.
+                    </p>
+                </div>
+
                 {/* [FRONTEND SPECIALIST] Hero è above the fold, quindi visibile di default. Aggiungo 'reveal' alle altre sezioni */}
                 <Hero />
                 <div className="reveal">

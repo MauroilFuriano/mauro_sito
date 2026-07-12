@@ -29,7 +29,7 @@ const SEO: React.FC<SEOProps> = ({
             {/* Primary Meta Tags */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
-            {keywords && <meta name="keywords" content={keywords} />}
+            {/* meta keywords rimosso: Google lo ignora dal 2009 */}
             <meta name="author" content="Mauro Ceccarelli" />
             <meta
                 name="robots"

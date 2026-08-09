@@ -152,6 +152,29 @@ const Contact: React.FC = () => {
                   <p className="text-gray-400">Ascoli Piceno, Italia / Remoto</p>
                 </div>
               </div>
+
+              {/* --- Google Reviews Block ---
+                  Link diretto alla scheda Google: abbassa la barriera per nuove recensioni.
+                  La leva n°1 per il Map Pack locale. Non rimuovere. */}
+              <a
+                href="https://g.page/r/CRcmqGd6uqZlEBM/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group"
+                aria-label="Lascia una recensione su Google"
+              >
+                <div className="w-12 h-12 bg-dark-900 rounded-full flex items-center justify-center border border-white/10 text-yellow-400 group-hover:border-yellow-400/50 group-hover:shadow-[0_0_16px_rgba(250,204,21,0.2)] transition-all duration-300">
+                  <span className="text-lg leading-none" aria-hidden="true">★</span>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-white group-hover:text-yellow-400 transition-colors">
+                    Lascia una Recensione
+                  </h4>
+                  <p className="text-gray-400 text-sm group-hover:text-yellow-400/70 transition-colors">
+                    La tua opinione aiuta altri imprenditori a scegliere
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
 

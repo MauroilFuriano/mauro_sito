@@ -67,12 +67,12 @@ const projects = [
       "⚡ Galleria Ottimizzata: Caricamento istantaneo di 247+ lavori ottimizzati in WebP con lightbox <dialog> nativo"
     ],
     tech: ["React", "TypeScript", "Tailwind CSS", "AI Image Generation", "Interactive Configurator", "Sharp", "Sentry", "SEO Locale"],
-    image: "https://graphic-arts-eta.vercel.app/og-image.png",
-    fallbackImage: "https://images.unsplash.com/photo-1513151233558-d860c5398176?q=75&w=800&auto=format&fm=webp&fit=crop",
+    image: "/projects/graphic-arts-mockup.webp",
+    fallbackImage: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=75&w=800&auto=format&fm=webp&fit=crop",
     icon: <Printer size={20} />,
-    link: "https://graphic-arts-eta.vercel.app/",
+    link: "https://graphic-arts.net/",
     github: "",
-    imageStyle: "object-contain md:object-cover object-center"
+    imageStyle: "object-cover object-top"
   },
   {
     title: "Aura Style Studio - Salone Unisex",

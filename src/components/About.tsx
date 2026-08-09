@@ -102,6 +102,14 @@ const About: React.FC = () => {
                 Il Tuo Partner Digitale <br />
                 <span className="text-cyan-400">nelle Marche e in Italia.</span>
               </h2>
+              {/* H2 SEO — Web Design Ascoli Piceno: supporta la query a pos. 4,9.
+                  Visibile, integrato nel flusso narrativo. Non rimuovere. */}
+              <h2 className="text-base sm:text-lg font-medium text-gray-400 leading-relaxed pt-1">
+                Web design ad Ascoli Piceno su misura:{' '}
+                <span className="text-gray-300">
+                  siti web veloci, chatbot AI e automazioni per PMI delle Marche e in tutta Italia.
+                </span>
+              </h2>
             </div>
 
             {/* Bio Strategica — Metodo BLUF (GEO 2026) */}

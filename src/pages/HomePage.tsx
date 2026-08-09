@@ -119,6 +119,50 @@ const structuredData = {
         "bestRating": "5",
         "worstRating": "1"
       },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Organization",
+            "name": "Tipolitografia Graphic Arts"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Ottimo risultato, lavoro chiaro e corretto! Programma x t shirt top",
+          "datePublished": "2026-07-09"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Fabio Campanelli"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Cercavo qualcuno che mi costruisse un sito web professionale per la mia attività di tavoli in legno e resina epossidica ad Ascoli Piceno. Grazie a Mauro il sito è veloce, con animazioni professionali, un chatbot integrato e soprattutto è ottimizzato per la SEO e la GEO. Lo consiglio a chiunque abbia un'attività e voglia farsi trovare online da clienti veri.",
+          "datePublished": "2026-04-09"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Maicol Ceccarelli"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Ragazzo serio e professionale, oltre ogni mia aspettativa. Il sito che ha fatto a me è stupendo! Veramente bravo Mauro.",
+          "datePublished": "2026-04-09"
+        }
+      ],
       "sameAs": [
         "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
         "https://github.com/MauroilFuriano",
@@ -245,10 +289,10 @@ const HomePage: React.FC = () => {
     return (
         <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
             <SEO
-                title="Siti Web & Chatbot AI Ascoli Piceno | Mauro Ceccarelli"
-                description="Creo siti web professionali e chatbot AI ad Ascoli Piceno. Automazione business per aziende nelle Marche e in tutta Italia. Contattami."
+                title="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe"
+                description="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi."
                 canonical="https://www.mauroceccarelli.it/"
-                keywords="Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Web Designer Ascoli Piceno, Chatbot AI Marche, Sviluppo Web San Benedetto, Agenzia Web Ascoli, Mauro Ceccarelli"
+                keywords="Web Design Ascoli Piceno, Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Chatbot AI Marche, Sviluppo Web San Benedetto, Web Agency Ascoli, Mauro Ceccarelli"
                 structuredData={structuredData}
             />
             <Navbar />

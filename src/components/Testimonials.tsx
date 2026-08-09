@@ -83,6 +83,107 @@ const Testimonials: React.FC = () => {
           </h2>
         </div>
 
+        {/* ── Recensioni statiche per crawler (SEO/GEO) ──────────────────────────
+            Visibili nel DOM ma nascosti visivamente (sr-only).
+            Elfsight mostra il widget agli utenti; questo markup serve a:
+            1) Google Rich Results (aggregateRating nel JSON-LD di HomePage)
+            2) AI crawler (GPTBot, ClaudeBot, PerplexityBot) che non eseguono JS.
+            Non rimuovere: è il "gemello SEO" del widget Elfsight.
+        ─────────────────────────────────────────────────────────────────────── */}
+        <div className="sr-only" aria-label="Recensioni Google verificate 5 stelle">
+          <article
+            itemScope
+            itemType="https://schema.org/Review"
+          >
+            <span
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Organization"
+            >
+              <span itemProp="name">Tipolitografia Graphic Arts</span>
+            </span>
+            <div
+              itemProp="reviewRating"
+              itemScope
+              itemType="https://schema.org/Rating"
+            >
+              <meta itemProp="ratingValue" content="5" />
+              <meta itemProp="bestRating" content="5" />
+              <meta itemProp="worstRating" content="1" />
+            </div>
+            <p itemProp="reviewBody">
+              Ottimo risultato, lavoro chiaro e corretto! Programma x t shirt top
+            </p>
+            <meta itemProp="datePublished" content="2026-07-09" />
+            <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content="MAURO.EXE di Mauro Ceccarelli" />
+            </span>
+          </article>
+
+          <article
+            itemScope
+            itemType="https://schema.org/Review"
+          >
+            <span
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <span itemProp="name">Fabio Campanelli</span>
+            </span>
+            <div
+              itemProp="reviewRating"
+              itemScope
+              itemType="https://schema.org/Rating"
+            >
+              <meta itemProp="ratingValue" content="5" />
+              <meta itemProp="bestRating" content="5" />
+              <meta itemProp="worstRating" content="1" />
+            </div>
+            <p itemProp="reviewBody">
+              Cercavo qualcuno che mi costruisse un sito web professionale per la mia attività
+              di tavoli in legno e resina epossidica ad Ascoli Piceno. Grazie a Mauro il sito
+              è veloce, con animazioni professionali, un chatbot integrato e soprattutto è
+              ottimizzato per la SEO e la GEO. Lo consiglio a chiunque abbia un'attività e
+              voglia farsi trovare online da clienti veri.
+            </p>
+            <meta itemProp="datePublished" content="2026-04-09" />
+            <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content="MAURO.EXE di Mauro Ceccarelli" />
+            </span>
+          </article>
+
+          <article
+            itemScope
+            itemType="https://schema.org/Review"
+          >
+            <span
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <span itemProp="name">Maicol Ceccarelli</span>
+            </span>
+            <div
+              itemProp="reviewRating"
+              itemScope
+              itemType="https://schema.org/Rating"
+            >
+              <meta itemProp="ratingValue" content="5" />
+              <meta itemProp="bestRating" content="5" />
+              <meta itemProp="worstRating" content="1" />
+            </div>
+            <p itemProp="reviewBody">
+              Ragazzo serio e professionale, oltre ogni mia aspettativa. Il sito che ha fatto
+              a me è stupendo! Veramente bravo Mauro.
+            </p>
+            <meta itemProp="datePublished" content="2026-04-09" />
+            <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content="MAURO.EXE di Mauro Ceccarelli" />
+            </span>
+          </article>
+        </div>
+
         {/* Container con altezza riservata per evitare CLS quando Elfsight mount.
             contain: layout style isola i reflow del widget dal resto della pagina. */}
         <div className="relative min-h-[600px] md:min-h-[500px]" style={{ contain: 'layout style' }}>

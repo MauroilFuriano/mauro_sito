@@ -21,6 +21,24 @@ const projects = [
     imageStyle: "object-cover object-top"
   },
   {
+    title: "Redicar - Auto Usate & Garantite",
+    alt: "Sito web concessionaria auto con valutatore usato integrato e chatbot AI – Redicar, Colonnella (TE)",
+    category: "Web App + Chatbot AI + Valuta Usato",
+    description: "Piattaforma web moderna per concessionaria multimarca a Colonnella (TE). Include un valutatore interattivo dell'usato in tempo reale, chatbot AI con Google GenAI per assistenza e qualificazione lead 24/7, e catalogo veicoli.",
+    features: [
+      "Valutatore Usato Interattivo con stima permuta e invio lead su WhatsApp ed email",
+      "Chatbot AI con Google GenAI per assistenza veicoli e pre-qualifica clienti 24/7",
+      "Architettura ultra-rapida in React 19, Motion, monitoraggio Sentry e conformità GDPR"
+    ],
+    tech: ["React 19", "TypeScript", "Tailwind CSS", "Google GenAI", "Motion", "Sentry", "SEO Locale"],
+    image: "/projects/redicar-mockup.webp",
+    fallbackImage: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=75&w=800&auto=format&fm=webp&fit=crop",
+    icon: <Car size={20} />,
+    link: "https://www.redicar.it/",
+    github: "",
+    imageStyle: "object-cover object-top"
+  },
+  {
     title: "FC Resinwood Creations",
     alt: "Sito web artigianale per laboratorio tavoli in legno e resina epossidica – FC Resinwood, Ascoli Piceno",
     category: "Sito Vetrina Artigianale",

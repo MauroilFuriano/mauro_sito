@@ -9,8 +9,6 @@ const Testimonials: React.FC = () => {
 
   useEffect(() => {
     if (scriptLoaded) return;
-    const el = sectionRef.current;
-    if (!el) return;
 
     const injectScript = () => {
       if (document.querySelector(`script[src="${ELFSIGHT_SRC}"]`)) {
@@ -25,33 +23,28 @@ const Testimonials: React.FC = () => {
       document.body.appendChild(script);
     };
 
-    // Inietta dentro requestIdleCallback per non bloccare il main thread durante lo scroll.
-    // Timeout breve: il download dello script è async (non blocca), va anticipato il più
-    // possibile così l'init pesante di Elfsight avviene fuori schermo, non sotto le dita.
-    // Fallback con setTimeout per browser senza supporto (Safari < 17).
+    // [FRONTEND & BACKEND OPTIMIZATION]
+    // Caricamento anticipato in background:
+    // Non aspettiamo lo scroll dell'utente vicino alla sezione, altrimenti chi naviga o clicca
+    // su 'Recensioni' subisce un ritardo di 3-4 secondi a vuoto.
+    // Avviamo il download in idle/subito dopo il rendering iniziale della pagina,
+    // così quando l'utente scende sulle recensioni il widget Elfsight è già pronto e renderizzato.
     const scheduleInject = () => {
       const w = window as any;
       if (typeof w.requestIdleCallback === 'function') {
-        w.requestIdleCallback(injectScript, { timeout: 500 });
+        w.requestIdleCallback(injectScript, { timeout: 1000 });
       } else {
-        setTimeout(injectScript, 200);
+        setTimeout(injectScript, 300);
       }
     };
 
-    // rootMargin ampio (800px): l'iniezione parte mentre l'utente è ancora lontano,
-    // così il mount del widget finisce prima dell'arrivo e lo scroll non si freeza.
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          scheduleInject();
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '800px' }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
+    if (document.readyState === 'complete') {
+      scheduleInject();
+    } else {
+      window.addEventListener('load', scheduleInject, { once: true });
+      const fallback = setTimeout(scheduleInject, 1500);
+      return () => clearTimeout(fallback);
+    }
   }, [scriptLoaded]);
 
   return (
@@ -59,7 +52,6 @@ const Testimonials: React.FC = () => {
       id="testimonials"
       className="py-24 relative overflow-hidden"
       ref={sectionRef}
-      /* [FIX AUDIT MOBILE] Rimosso contentVisibility: auto — conflitto con Elfsight script injection */
     >
       {/* Background glows — promossi a GPU layer, blur ridotto, size ridotta */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -91,6 +83,35 @@ const Testimonials: React.FC = () => {
             Non rimuovere: è il "gemello SEO" del widget Elfsight.
         ─────────────────────────────────────────────────────────────────────── */}
         <div className="sr-only" aria-label="Recensioni Google verificate 5 stelle">
+          <article
+            itemScope
+            itemType="https://schema.org/Review"
+          >
+            <span
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Organization"
+            >
+              <span itemProp="name">Redicar srl</span>
+            </span>
+            <div
+              itemProp="reviewRating"
+              itemScope
+              itemType="https://schema.org/Rating"
+            >
+              <meta itemProp="ratingValue" content="5" />
+              <meta itemProp="bestRating" content="5" />
+              <meta itemProp="worstRating" content="1" />
+            </div>
+            <p itemProp="reviewBody">
+              Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. il sito è veloce, pulito e il valutatore dell'usato con il chatbot ci stanno già portando contatti veri. Professionista serio e disponibile, consigliatissimo!
+            </p>
+            <meta itemProp="datePublished" content="2026-09-23" />
+            <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content="MAURO.EXE di Mauro Ceccarelli" />
+            </span>
+          </article>
+
           <article
             itemScope
             itemType="https://schema.org/Review"

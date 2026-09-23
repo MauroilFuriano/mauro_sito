@@ -115,11 +115,25 @@ const structuredData = {
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5",
-        "reviewCount": "3",
+        "reviewCount": "4",
         "bestRating": "5",
         "worstRating": "1"
       },
       "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Organization",
+            "name": "Redicar srl"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. il sito è veloce, pulito e il valutatore dell'usato con il chatbot ci stanno già portando contatti veri. Professionista serio e disponibile, consigliatissimo!",
+          "datePublished": "2026-09-23"
+        },
         {
           "@type": "Review",
           "author": {

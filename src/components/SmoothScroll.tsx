@@ -1,8 +1,15 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 
 const SmoothScroll = () => {
+  const { pathname } = useLocation();
+  const suHome = pathname === '/';
+
   useEffect(() => {
+    // La home usa lo scroll nativo: pin e snap del palco dei lavori sono di GSAP
+    if (suHome) return;
+
     // Rispetta la preferenza reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
@@ -30,7 +37,7 @@ const SmoothScroll = () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [suHome]);
 
   return null;
 };

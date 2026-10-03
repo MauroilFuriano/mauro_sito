@@ -40,19 +40,40 @@
   <link rel="icon" href="/logo.webp" type="image/webp" />
   <link rel="apple-touch-icon" href="/logo.webp" />
 
+  <script>if (location.pathname === '/') document.documentElement.classList.add('avvio-home');</script>
+
+  <!-- Consent Mode v2: tutto negato finché il banner non registra una scelta -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('cookie_consent')) {
+        var consensoMarketing = localStorage.getItem('cookie_marketing') === 'true' ? 'granted' : 'denied';
+        gtag('consent', 'update', {
+          analytics_storage: localStorage.getItem('cookie_analytics') === 'true' ? 'granted' : 'denied',
+          ad_storage: consensoMarketing,
+          ad_user_data: consensoMarketing,
+          ad_personalization: consensoMarketing
+        });
+      }
+    } catch (erroreArchivio) {}
+  </script>
+
   <!-- Google Analytics GA4 + Google Ads — Deferito per performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-  <!-- Elfsight CDN Preconnect & DNS-Prefetch per caricamento istantaneo recensioni -->
-  <link rel="preconnect" href="https://elfsightcdn.com" crossorigin />
-  <link rel="dns-prefetch" href="https://elfsightcdn.com" />
-  <link rel="dns-prefetch" href="https://core.service.elfsight.com" />
-
   <!-- Font: stylesheet (preconnect già dichiarato sopra) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 
 
@@ -125,13 +146,10 @@
   
   <!-- Analytics & Ads caricati async a fine body per non bloccare LCP -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18055930933"></script>
+  <!-- I config di GA4 e Ads li manda src/misurazione.ts, solo per le voci accettate nel banner -->
   <script>
     window.addEventListener('load', function() {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-29CR0733KS', { 'send_page_view': false });
-      gtag('config', 'AW-18055930933');
     });
   </script>
 </body>

@@ -1,172 +1,121 @@
-import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  EVENTO_PREFERENZE,
+  leggiValoreCookie,
+  rimuoviCookieSenzaConsenso,
+  salvaSceltaCookie,
+  type SceltaCookie,
+} from '../misurazione';
+import '../styles/consenso-cookie.css';
 
 const CookieBanner: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isCustomizing, setIsCustomizing] = useState(false);
-  
-  // Stati per le preferenze custom
-  const [analytics, setAnalytics] = useState(false);
-  const [marketing, setMarketing] = useState(false);
+  const [bannerVisibile, setBannerVisibile] = useState(() => leggiValoreCookie('cookie_consent') === null);
+  const [preferenzeAperte, setPreferenzeAperte] = useState(false);
+  const [statisticiScelti, setStatisticiScelti] = useState(false);
+  const [marketingScelto, setMarketingScelto] = useState(false);
+  const [richiesteRiapertura, setRichiesteRiapertura] = useState(0);
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const statisticiRef = useRef<HTMLInputElement>(null);
+  const comandoDiRitorno = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    // Controlla se l'utente ha già fatto una scelta
-    const consent = localStorage.getItem('cookie_consent');
-    if (!consent) {
-      // Un piccolo delay per non apparire in modo troppo aggressivo all'istante
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
+    // Il vecchio sito attivava Analytics anche senza consenso: i suoi cookie restano solo se la voce è accettata
+    rimuoviCookieSenzaConsenso();
+    const riapriPreferenze = () => {
+      comandoDiRitorno.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setStatisticiScelti(leggiValoreCookie('cookie_analytics') === 'true');
+      setMarketingScelto(leggiValoreCookie('cookie_marketing') === 'true');
+      setPreferenzeAperte(true);
+      setBannerVisibile(true);
+      setRichiesteRiapertura((richieste) => richieste + 1);
+    };
+    window.addEventListener(EVENTO_PREFERENZE, riapriPreferenze);
+    return () => window.removeEventListener(EVENTO_PREFERENZE, riapriPreferenze);
   }, []);
 
-  const handleAcceptAll = () => {
-    localStorage.setItem('cookie_consent', 'all');
-    localStorage.setItem('cookie_analytics', 'true');
-    localStorage.setItem('cookie_marketing', 'true');
-    // Qui andrebbe logica per attivare Google Analytics/Pixel
-    window.dispatchEvent(new Event('cookieConsentUpdated'));
-    setIsVisible(false);
+  useEffect(() => {
+    if (richiesteRiapertura > 0) statisticiRef.current?.focus();
+  }, [richiesteRiapertura]);
+
+  useLayoutEffect(() => {
+    const banner = bannerRef.current;
+    if (!bannerVisibile || !banner) return undefined;
+    const radice = document.documentElement;
+    const segnaAltezza = () => radice.style.setProperty('--altezza-consenso', `${banner.offsetHeight}px`);
+    radice.classList.add('consenso-aperto');
+    segnaAltezza();
+    const osservatoreAltezza = new ResizeObserver(segnaAltezza);
+    osservatoreAltezza.observe(banner);
+    return () => {
+      osservatoreAltezza.disconnect();
+      radice.classList.remove('consenso-aperto');
+      radice.style.removeProperty('--altezza-consenso');
+    };
+  }, [bannerVisibile]);
+
+  const confermaScelta = (scelta: SceltaCookie, statistici: boolean, marketing: boolean) => {
+    salvaSceltaCookie(scelta, statistici, marketing);
+    setBannerVisibile(false);
+    comandoDiRitorno.current?.focus({ preventScroll: true });
+    comandoDiRitorno.current = null;
   };
 
-  const handleRejectAll = () => {
-    localStorage.setItem('cookie_consent', 'rejected');
-    localStorage.setItem('cookie_analytics', 'false');
-    localStorage.setItem('cookie_marketing', 'false');
-    // Nessuno script non necessario viene caricato
-    window.dispatchEvent(new Event('cookieConsentUpdated'));
-    setIsVisible(false);
-  };
-
-  const handleSavePreferences = () => {
-    localStorage.setItem('cookie_consent', 'custom');
-    localStorage.setItem('cookie_analytics', analytics.toString());
-    localStorage.setItem('cookie_marketing', marketing.toString());
-    window.dispatchEvent(new Event('cookieConsentUpdated'));
-    setIsVisible(false);
-  };
-
-  if (!isVisible) return null;
+  if (!bannerVisibile) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[9999] p-4 pointer-events-none flex justify-center sm:justify-start sm:p-6">
-      <div className="bg-dark-900 border border-white/10 rounded-2xl shadow-2xl p-6 max-w-lg w-full pointer-events-auto backdrop-blur-xl relative">
-        {/* Pulsante X (Rifiuta) obbligatorio per Linee Guida Garante Italia */}
-        <button 
-          onClick={handleRejectAll}
-          className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
-          aria-label="Chiudi e rifiuta tutto"
-          title="Chiudi e rifiuta i cookie non tecnici"
+    <div className="consenso-cookie" ref={bannerRef} role="region" aria-label="Scelta sui cookie">
+      <p>
+        Uso cookie tecnici e, solo se accetti, cookie statistici e di marketing.{' '}
+        <Link className="link-in-linea" to="/cookie-policy" target="_blank" rel="noopener">Cookie policy</Link>
+      </p>
+      <div className="consenso-scelte">
+        <button type="button" onClick={() => confermaScelta('all', true, true)}>Accetta</button>
+        <button type="button" onClick={() => confermaScelta('rejected', false, false)}>Rifiuta</button>
+        <button
+          type="button"
+          aria-expanded={preferenzeAperte}
+          aria-controls="consenso-preferenze"
+          onClick={() => setPreferenzeAperte((aperte) => !aperte)}
         >
-          <X size={20} />
+          Preferenze
         </button>
-
-        {!isCustomizing ? (
-          <>
-            <div className="mb-4 pr-6">
-              <h3 className="text-lg font-bold text-white mb-2 font-display">Informativa sui Cookie</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Questo sito utilizza cookie tecnici strettamente necessari per il funzionamento e, previo tuo consenso, cookie analitici e di profilazione per migliorare l'esperienza e offrirti contenuti personalizzati. 
-                Chiudendo questo banner tramite la "X", manterrai le impostazioni di default (solo cookie tecnici).
-              </p>
-              <div className="mt-2 text-xs text-gray-500">
-                Leggi la nostra <Link to="/cookie-policy" className="text-cyan-400 hover:underline">Cookie Policy</Link> e <Link to="/privacy-policy" className="text-cyan-400 hover:underline">Privacy Policy</Link>.
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <button 
-                onClick={handleAcceptAll}
-                className="w-full sm:w-auto px-5 py-2.5 bg-cyan-400 hover:bg-cyan-300 text-dark-950 font-bold rounded-lg transition-colors text-sm"
-              >
-                Accetta Tutti
-              </button>
-              <button 
-                onClick={handleRejectAll}
-                className="w-full sm:w-auto px-5 py-2.5 border border-white/20 hover:bg-white/5 text-white font-medium rounded-lg transition-colors text-sm"
-              >
-                Rifiuta
-              </button>
-              <button 
-                onClick={() => setIsCustomizing(true)}
-                className="w-full sm:w-auto px-5 py-2.5 text-gray-400 hover:text-white font-medium transition-colors text-sm underline-offset-4 hover:underline"
-              >
-                Personalizza
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-white mb-2 font-display">Personalizza Preferenze</h3>
-              <p className="text-gray-400 text-sm mb-4">
-                Seleziona le categorie di cookie che desideri abilitare. I cookie tecnici non possono essere disabilitati in quanto necessari al funzionamento del sito.
-              </p>
-              
-              <div className="space-y-4">
-                {/* Cookie Tecnici */}
-                <div className="flex items-start justify-between p-3 bg-dark-950 rounded-lg border border-white/5">
-                  <div>
-                    <h4 className="text-white text-sm font-bold">Strettamente Necessari</h4>
-                    <p className="text-gray-500 text-xs mt-1">Garantiscono le funzionalità base del sito.</p>
-                  </div>
-                  <div className="text-cyan-500 text-xs font-bold uppercase tracking-wider mt-1">Sempre Attivi</div>
-                </div>
-
-                {/* Cookie Analitici */}
-                <div className="flex items-start justify-between p-3 bg-dark-950 rounded-lg border border-white/5">
-                  <div>
-                    <h4 className="text-white text-sm font-bold">Cookie Analitici</h4>
-                    <p className="text-gray-500 text-xs mt-1">Ci aiutano a capire come i visitatori interagiscono con il sito (in forma anonima).</p>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer mt-1">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only peer"
-                      checked={analytics}
-                      onChange={(e) => setAnalytics(e.target.checked)}
-                    />
-                    <div className="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyan-500"></div>
-                  </label>
-                </div>
-
-                {/* Cookie Marketing */}
-                <div className="flex items-start justify-between p-3 bg-dark-950 rounded-lg border border-white/5">
-                  <div>
-                    <h4 className="text-white text-sm font-bold">Profilazione / Marketing</h4>
-                    <p className="text-gray-500 text-xs mt-1">Usati per tracciare i visitatori attraverso i siti web per mostrare annunci pertinenti.</p>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer mt-1">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only peer"
-                      checked={marketing}
-                      onChange={(e) => setMarketing(e.target.checked)}
-                    />
-                    <div className="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyan-500"></div>
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <button 
-                onClick={handleSavePreferences}
-                className="w-full sm:w-auto px-5 py-2.5 bg-cyan-400 hover:bg-cyan-300 text-dark-950 font-bold rounded-lg transition-colors text-sm"
-              >
-                Salva Preferenze
-              </button>
-              <button 
-                onClick={() => setIsCustomizing(false)}
-                className="w-full sm:w-auto px-5 py-2.5 border border-white/20 hover:bg-white/5 text-white font-medium rounded-lg transition-colors text-sm"
-              >
-                Indietro
-              </button>
-            </div>
-          </>
-        )}
+      </div>
+      <div className="consenso-preferenze" id="consenso-preferenze" hidden={!preferenzeAperte}>
+        <div className="consenso-opzioni">
+          <div className="consenso-opzione">
+            <input className="casella" id="cookie-tecnici" type="checkbox" checked disabled />
+            <label htmlFor="cookie-tecnici">Tecnici <span>(sempre attivi)</span></label>
+          </div>
+          <div className="consenso-opzione">
+            <input
+              className="casella"
+              id="cookie-statistici"
+              type="checkbox"
+              ref={statisticiRef}
+              checked={statisticiScelti}
+              onChange={(evento) => setStatisticiScelti(evento.target.checked)}
+            />
+            <label htmlFor="cookie-statistici">Statistici <span>(Google Analytics)</span></label>
+          </div>
+          <div className="consenso-opzione">
+            <input
+              className="casella"
+              id="cookie-marketing"
+              type="checkbox"
+              checked={marketingScelto}
+              onChange={(evento) => setMarketingScelto(evento.target.checked)}
+            />
+            <label htmlFor="cookie-marketing">Marketing <span>(Google Ads)</span></label>
+          </div>
+        </div>
+        <button
+          className="consenso-salva"
+          type="button"
+          onClick={() => confermaScelta('custom', statisticiScelti, marketingScelto)}
+        >
+          Salva
+        </button>
       </div>
     </div>
   );

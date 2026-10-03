@@ -1,16 +1,25 @@
-import React, { useEffect } from 'react';
-import Portfolio from '../components/Portfolio';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Services from '../components/Services';
-import SimulatoreCTA from '../components/SimulatoreCTA';
-import Testimonials from '../components/Testimonials';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import FAQ from '../components/FAQ';
-import ChatBot from '../components/ChatBot';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
+import BarraContatti from '../components/vetrina/BarraContatti';
+import ChiSono from '../components/vetrina/ChiSono';
+import Contatti from '../components/vetrina/Contatti';
+import DialogoVideo, { apriDialogoVideo } from '../components/vetrina/DialogoVideo';
+import Domande from '../components/vetrina/Domande';
+import Icone from '../components/vetrina/Icone';
+import Lavori from '../components/vetrina/Lavori';
+import Piede from '../components/vetrina/Piede';
+import Prezzi from '../components/vetrina/Prezzi';
+import PrimaSchermata from '../components/vetrina/PrimaSchermata';
+import Recensioni from '../components/vetrina/Recensioni';
+import Servizi from '../components/vetrina/Servizi';
+import Settori from '../components/vetrina/Settori';
+import Testata from '../components/vetrina/Testata';
+import { ScrollTrigger } from '../components/vetrina/animazioni';
+import { domandeFrequenti } from '../data/home';
+import { segnaEvento } from '../misurazione';
+import '../styles/vetrina.css';
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -186,177 +195,211 @@ const structuredData = {
     {
       "@type": "FAQPage",
       "@id": "https://www.mauroceccarelli.it/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Perché non usi Shopify, WordPress o template?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Costruisco tutto da zero con React, TypeScript e Python. Il sito non dipende da plugin, abbonamenti a piattaforme terze o template uguali ad altri 50.000 siti. Lighthouse score 98/100 è il mio standard minimo di consegna."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto costa un sito web vetrina?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un sito vetrina custom parte da €1.500 per 4–6 pagine (design responsive, SEO on-page, form contatto). Un sito professionale con animazioni e CMS parte da €2.000. I prezzi includono dominio, hosting e SSL gestiti da me con rinnovo annuale concordato."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto costa un chatbot AI per il sito?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un chatbot con LLM (GPT-4o / Gemini / Claude) parte da €4.200. Con RAG (conosce i tuoi documenti aziendali) da €6.000. Un agente AI multi-step con CRM da €10.000. I costi API del modello AI (€35–100/mese) sono a carico del cliente."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto costa un e-commerce?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un e-commerce custom React/Next.js headless parte da €3.500 (starter, fino a 100 prodotti con Stripe). La versione professionale con integrazioni parte da €6.000. Un e-commerce con automazioni AI (raccomandazioni, recupero carrello) parte da €8.000."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto tempo ci vuole per la consegna?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Landing page: 5 giorni. Sito vetrina: 7–14 giorni. E-commerce: 20–60 giorni. Web App/SaaS: 8–12 settimane. Lavoro con sprint settimanali e milestone concordate. Tempi certi, aggiornamenti continui, zero sorprese."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Cosa include la consegna?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sito pubblicato e funzionante, dominio, hosting e certificato SSL gestiti da me con quota annuale concordata. SEO on-page, test cross-browser e cross-device. Il codice sorgente viene consegnato solo su richiesta a sviluppatori o in collaborazione white-label."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso richiedere modifiche dopo la consegna?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sì. Ogni progetto include 2 round di revisione dopo la consegna per correzioni, aggiustamenti grafici o modifiche ai contenuti. Superate le due revisioni, si applica una tariffa oraria per le modifiche aggiuntive o evolutive."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso collaborare con te se sono un'agenzia web?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Assolutamente. Lavoro in white-label: sviluppo il progetto, consegno i sorgenti all'agenzia, nessun contatto con il cliente finale. Mantenimento, hosting e rinnovi restano in carico all'agenzia. Contattami per discutere tariffe B2B."
-          }
+      "mainEntity": domandeFrequenti.map(({ domanda, risposta }) => ({
+        "@type": "Question",
+        "name": domanda,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": risposta
         }
-      ]
+      }))
     }
   ]
 };
 
+const ancoreVecchie = new Map([
+  ['home', 'contenuto'],
+  ['about', 'chi-sono'],
+  ['services', 'servizi'],
+  ['portfolio', 'lavori'],
+  ['faq', 'faq'],
+  ['contact', 'contatti'],
+]);
 
+const ATTESA_MASSIMA_CARATTERI = 1500;
+const PAUSA_RICALCOLO = 150;
+const PAUSA_LETTURA = 120;
+const ATTESA_FINE_RIDIMENSIONAMENTO = 400;
 
-const WhatsappIcon = ({ size = 24, className = "" }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
-    </svg>
-);
+type PuntoDiLettura = { sezione: Element; scarto: number } | { sezione: Element; avanzamento: number };
+
+const zonaDelCollegamento = (collegamento: Element) => {
+  const zona = collegamento.closest('[id], header, footer');
+  return zona ? zona.id || zona.tagName.toLowerCase() : 'pagina';
+};
+
+// Con il palco agganciato la sezione dei lavori vive dentro il pin-spacer di GSAP, alto quanto tutta la corsa orizzontale
+const ingombroSezione = (sezione: Element) => {
+  const contenitore = sezione.parentElement;
+  return (contenitore?.classList.contains('pin-spacer') ? contenitore : sezione).getBoundingClientRect();
+};
 
 const HomePage: React.FC = () => {
-    // [FRONTEND SPECIALIST] Aggiunta logica per Intersection Observer (Scroll Reveal 2026)
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px', // Attiva un po' prima della fine dello schermo
-            threshold: 0.05, // Molto basso per garantire l'attivazione in IAB
-        };
+  const radiceRef = useRef<HTMLDivElement>(null);
+  const contenutoRef = useRef<HTMLElement>(null);
+  const dialogoVideoRef = useRef<HTMLDialogElement>(null);
+  const { hash, key } = useLocation();
+  const [movimentoRidotto] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+  const portaAllaSezione = useCallback((destinazione: HTMLElement, comportamento: ScrollBehavior) => {
+    const testata = radiceRef.current?.querySelector<HTMLElement>('.testata');
+    const scarto = testata && window.matchMedia('(min-width: 900px)').matches ? testata.offsetHeight : 0;
+    window.scrollTo({ top: destinazione.getBoundingClientRect().top + window.scrollY - scarto, behavior: comportamento });
+    destinazione.setAttribute('tabindex', '-1');
+    destinazione.focus({ preventScroll: true });
+  }, []);
 
-        const revealElements = document.querySelectorAll('.reveal');
-        revealElements.forEach((el) => observer.observe(el));
+  const apriVideo = useCallback(() => apriDialogoVideo(dialogoVideoRef.current), []);
 
-        // Fallback per In-App Browser o situazioni di scroll bloccato
-        const fallbackTimeout = setTimeout(() => {
-            revealElements.forEach((el) => {
-                if (!el.classList.contains('active')) {
-                    el.classList.add('active');
-                }
-            });
-        }, 1500);
+  const seguiCollegamento = (evento: React.MouseEvent<HTMLDivElement>) => {
+    const collegamento = (evento.target as Element).closest('a[href]');
+    if (!collegamento) return;
+    const indirizzo = collegamento.getAttribute('href') ?? '';
+    if (indirizzo.startsWith('tel:')) segnaEvento('click_chiamata', { posizione: zonaDelCollegamento(collegamento) });
+    else if (indirizzo.includes('wa.me')) segnaEvento('click_whatsapp', { posizione: zonaDelCollegamento(collegamento) });
+    if (!indirizzo.startsWith('#') || evento.defaultPrevented) return;
+    const destinazione = document.getElementById(indirizzo.slice(1));
+    if (!destinazione) return;
+    evento.preventDefault();
+    portaAllaSezione(destinazione, movimentoRidotto ? 'auto' : 'smooth');
+  };
 
-        return () => {
-            observer.disconnect();
-            clearTimeout(fallbackTimeout);
-        };
-    }, []);
+  useEffect(() => {
+    const contenuto = contenutoRef.current;
+    if (!contenuto) return undefined;
+    let primaMisura = true;
+    let attesaRicalcolo = 0;
+    // Pannelli che si aprono, banner dei cookie e caratteri che arrivano cambiano l'altezza: i punti di GSAP vanno ricalcolati
+    const osservatoreAltezza = new ResizeObserver(() => {
+      if (primaMisura) {
+        primaMisura = false;
+        return;
+      }
+      window.clearTimeout(attesaRicalcolo);
+      attesaRicalcolo = window.setTimeout(() => ScrollTrigger.refresh(), PAUSA_RICALCOLO);
+    });
+    osservatoreAltezza.observe(contenuto);
+    return () => {
+      osservatoreAltezza.disconnect();
+      window.clearTimeout(attesaRicalcolo);
+    };
+  }, []);
 
-    return (
-        <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
-            <SEO
-                title="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe"
-                description="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi."
-                canonical="https://www.mauroceccarelli.it/"
-                keywords="Web Design Ascoli Piceno, Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Chatbot AI Marche, Sviluppo Web San Benedetto, Web Agency Ascoli, Mauro Ceccarelli"
-                structuredData={structuredData}
-            />
-            <Navbar />
+  useEffect(() => {
+    const contenuto = contenutoRef.current;
+    if (!contenuto) return undefined;
+    let larghezzaPrecedente = window.innerWidth;
+    let puntoDiLettura: PuntoDiLettura | null = null;
+    let ripristinoInCorso = false;
+    let attesaMisura = 0;
+    let attesaFine = 0;
+    const misuraPuntoDiLettura = () => {
+      const sezione = [...contenuto.querySelectorAll('section')].find((candidata) => ingombroSezione(candidata).bottom > 0);
+      if (!sezione) {
+        puntoDiLettura = null;
+        return;
+      }
+      const ingombro = ingombroSezione(sezione);
+      puntoDiLettura = ingombro.top > 0 ? { sezione, scarto: ingombro.top } : { sezione, avanzamento: -ingombro.top / ingombro.height };
+    };
+    const seguiLettura = () => {
+      if (ripristinoInCorso) return;
+      window.clearTimeout(attesaMisura);
+      attesaMisura = window.setTimeout(misuraPuntoDiLettura, PAUSA_LETTURA);
+    };
+    const prolungaRipristino = () => {
+      window.clearTimeout(attesaFine);
+      attesaFine = window.setTimeout(() => {
+        ripristinoInCorso = false;
+        misuraPuntoDiLettura();
+      }, ATTESA_FINE_RIDIMENSIONAMENTO);
+    };
+    // Girando il tablet o allargando la finestra il palco dei lavori si aggancia o si sgancia e sposta di migliaia di pixel
+    // quello che sta sotto; ScrollTrigger rimette solo i pixel di prima, quindi si torna al punto letto prima del cambio di larghezza
+    const avviaRipristino = () => {
+      if (window.innerWidth === larghezzaPrecedente) return;
+      larghezzaPrecedente = window.innerWidth;
+      if (!puntoDiLettura) return;
+      ripristinoInCorso = true;
+      window.clearTimeout(attesaMisura);
+      prolungaRipristino();
+    };
+    const tornaAlPuntoDiLettura = () => {
+      if (!ripristinoInCorso || !puntoDiLettura) return;
+      const ingombro = ingombroSezione(puntoDiLettura.sezione);
+      const inizioSezione = ingombro.top + window.scrollY;
+      window.scrollTo(0, 'scarto' in puntoDiLettura ? inizioSezione - puntoDiLettura.scarto : inizioSezione + puntoDiLettura.avanzamento * ingombro.height);
+      prolungaRipristino();
+    };
+    window.addEventListener('scroll', seguiLettura, { passive: true });
+    window.addEventListener('resize', avviaRipristino);
+    ScrollTrigger.addEventListener('refresh', tornaAlPuntoDiLettura);
+    return () => {
+      window.removeEventListener('scroll', seguiLettura);
+      window.removeEventListener('resize', avviaRipristino);
+      ScrollTrigger.removeEventListener('refresh', tornaAlPuntoDiLettura);
+      window.clearTimeout(attesaMisura);
+      window.clearTimeout(attesaFine);
+    };
+  }, []);
 
-            <main id="main-content">
-                {/* [FRONTEND SPECIALIST] Hero è above the fold, quindi visibile di default. Aggiungo 'reveal' alle altre sezioni */}
-                <Hero />
-                <div className="reveal">
-                    <About />
-                </div>
-                <div className="reveal overflow-hidden">
-                    <Services />
-                </div>
-                {/* [SITO_2026] SimulatoreCTA: posizionato dopo Services per sfruttare l'interesse sui prezzi */}
-                <div className="reveal">
-                    <SimulatoreCTA />
-                </div>
-                <div className="reveal">
-                    <Testimonials />
-                </div>
-                <div className="reveal">
-                    <Portfolio />
-                </div>
-                <div id="faq" className="reveal">
-                    <FAQ />
-                </div>
-                <div className="reveal overflow-hidden">
-                    <Contact />
-                </div>
-            </main>
+  useEffect(() => {
+    if (!hash) return undefined;
+    const ancora = hash.slice(1);
+    const idSezione = ancoreVecchie.get(ancora) ?? ancora;
+    let attiva = true;
+    let attesaMassima = 0;
+    const caratteriPronti = document.fonts ? document.fonts.ready : Promise.resolve();
+    const tempoScaduto = new Promise<void>((risolvi) => { attesaMassima = window.setTimeout(risolvi, ATTESA_MASSIMA_CARATTERI); });
+    Promise.race([caratteriPronti, tempoScaduto]).then(() => {
+      window.requestAnimationFrame(() => {
+        const destinazione = document.getElementById(idSezione);
+        if (!attiva || !destinazione) return;
+        ScrollTrigger.refresh();
+        // Nel vecchio menu "Home" era l'inizio pagina: su telefono la testata non è fissa e #contenuto la lascerebbe fuori vista
+        if (ancora === 'home') window.scrollTo(0, 0);
+        else portaAllaSezione(destinazione, 'auto');
+      });
+    });
+    return () => {
+      attiva = false;
+      window.clearTimeout(attesaMassima);
+    };
+  }, [hash, key, portaAllaSezione]);
 
-            <Footer />
+  return (
+    <div className="home-vetrina" ref={radiceRef} onClick={seguiCollegamento}>
+      <SEO
+        title="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe"
+        description="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi."
+        canonical="https://www.mauroceccarelli.it/"
+        keywords="Web Design Ascoli Piceno, Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Chatbot AI Marche, Sviluppo Web San Benedetto, Web Agency Ascoli, Mauro Ceccarelli"
+        structuredData={structuredData}
+      />
+      <Helmet>
+        <link rel="preload" as="image" href="/lavori/redicar-desktop.jpg" fetchPriority="high" />
+      </Helmet>
+      <a className="salta" href="#contenuto">Vai al contenuto</a>
+      <Testata />
 
-            {/* ChatBot - posizionato in basso a destra */}
-            <ChatBot />
+      <main id="contenuto" ref={contenutoRef}>
+        <PrimaSchermata />
+        <Settori />
+        <Servizi />
+        <Lavori onApriVideo={apriVideo} />
+        <Recensioni />
+        <Prezzi />
+        <ChiSono />
+        <Domande />
+        <Contatti />
+      </main>
 
-
-            {/* Background Decorative Elements */}
-            <div className="fixed inset-0 pointer-events-none z-[-1]">
-                <div 
-                    className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full" 
-                    style={{ background: 'radial-gradient(circle, rgba(0,229,255,0.05) 0%, rgba(0,0,0,0) 60%)' }} 
-                />
-                <div 
-                    className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full" 
-                    style={{ background: 'radial-gradient(circle, rgba(147,51,234,0.05) 0%, rgba(0,0,0,0) 60%)' }} 
-                />
-            </div>
-        </div>
-    );
+      <Piede />
+      <BarraContatti />
+      <DialogoVideo dialogoRef={dialogoVideoRef} />
+      <Icone />
+    </div>
+  );
 };
 
 export default HomePage;

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import { apriPreferenzeCookie } from '../misurazione';
 
 const CookiePolicyPage: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const CookiePolicyPage: React.FC = () => {
           <div className="mb-12">
             <p className="text-cyan-400 font-display font-bold tracking-widest text-sm uppercase mb-2">Legale</p>
             <h1 className="text-4xl font-display font-black text-white mb-2">Cookie Policy</h1>
-            <p className="text-gray-500 text-sm">Ultimo aggiornamento: Marzo 2026 · Ai sensi del Provvedimento Garante Privacy 8 gennaio 2022</p>
+            <p className="text-gray-500 text-sm">Ultimo aggiornamento: Ottobre 2026 · Ai sensi del Provvedimento Garante Privacy 8 gennaio 2022</p>
           </div>
 
           <div className="space-y-10 text-gray-400 leading-relaxed">
@@ -48,13 +49,7 @@ const CookiePolicyPage: React.FC = () => {
                       <td className="py-3 pr-4 text-gray-300 font-mono text-xs">cookie_consent / analytics / marketing</td>
                       <td className="py-3 pr-4">Tecnico (Local Storage)</td>
                       <td className="py-3 pr-4">Memorizzare le preferenze di consenso dell'utente</td>
-                      <td className="py-3">12 Mesi</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">__sentry_sdk</td>
-                      <td className="py-3 pr-4">Tecnico</td>
-                      <td className="py-3 pr-4">Monitoraggio errori (Sentry)</td>
-                      <td className="py-3">Sessione</td>
+                      <td className="py-3">Fino a quando la scelta non viene cambiata o cancellata dal browser</td>
                     </tr>
                     <tr>
                       <td className="py-3 pr-4 text-gray-300 font-mono text-xs">_vercel_*</td>
@@ -63,18 +58,32 @@ const CookiePolicyPage: React.FC = () => {
                       <td className="py-3">Sessione</td>
                     </tr>
                     <tr>
-                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">Analytics / Pixel Terze Parti</td>
-                      <td className="py-3 pr-4">Analitico / Profilazione</td>
-                      <td className="py-3 pr-4">Raccolta statistiche o tracciamento conversioni (solo se accettati)</td>
-                      <td className="py-3">Variabile</td>
+                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">_ga, _ga_29CR0733KS</td>
+                      <td className="py-3 pr-4">Statistico (solo se accettato)</td>
+                      <td className="py-3 pr-4">Google Analytics 4: statistiche aggregate sulle visite. Fornitore: Google Ireland Limited, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">informativa</a></td>
+                      <td className="py-3">2 anni</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 pr-4 text-gray-300 font-mono text-xs">_gcl_au e cookie di Google su google.com e doubleclick.net</td>
+                      <td className="py-3 pr-4">Marketing (solo se accettato)</td>
+                      <td className="py-3 pr-4">Google Ads: misurare le richieste di contatto arrivate dagli annunci. Fornitore: Google Ireland Limited, <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">informativa</a></td>
+                      <td className="py-3">_gcl_au 90 giorni, cookie di Google fino a 13 mesi</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <p className="mt-4 text-sm">Sentry, il servizio tecnico usato per il monitoraggio degli errori, non installa cookie.</p>
 
               <div className="mt-4 p-4 bg-dark-800 border border-white/5 rounded-xl text-sm">
                 <p className="text-cyan-400 font-bold mb-1">Gestione delle Preferenze</p>
-                <p>Puoi modificare o revocare il tuo consenso in qualsiasi momento aprendo il pannello di gestione dei cookie cliccando l'icona in basso a sinistra (oppure eliminando i dati di navigazione dal browser).</p>
+                <p>Puoi modificare o revocare il tuo consenso in qualsiasi momento dal link «Preferenze cookie» in fondo alla home page o dal pulsante qui sotto (oppure eliminando i dati di navigazione dal browser).</p>
+                <button
+                  type="button"
+                  onClick={apriPreferenzeCookie}
+                  className="mt-3 inline-flex items-center min-h-[44px] px-4 rounded-lg border border-cyan-400/40 text-cyan-400 font-bold hover:bg-cyan-400/10 transition-colors"
+                >
+                  Apri le preferenze cookie
+                </button>
               </div>
             </section>
 

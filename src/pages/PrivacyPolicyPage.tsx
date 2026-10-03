@@ -19,7 +19,7 @@ const PrivacyPolicyPage: React.FC = () => {
           <div className="mb-12">
             <p className="text-cyan-400 font-display font-bold tracking-widest text-sm uppercase mb-2">Legale</p>
             <h1 className="text-4xl font-display font-black text-white mb-2">Privacy Policy</h1>
-            <p className="text-gray-500 text-sm">Ultimo aggiornamento: Marzo 2026</p>
+            <p className="text-gray-500 text-sm">Ultimo aggiornamento: Ottobre 2026</p>
           </div>
 
           <div className="prose-custom space-y-10 text-gray-400 leading-relaxed">
@@ -45,13 +45,25 @@ const PrivacyPolicyPage: React.FC = () => {
                 <li className="flex gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
                   <div>
-                    <strong className="text-gray-300">Modulo di contatto</strong> — nome, indirizzo email e messaggio inseriti volontariamente dall'utente. Finalità: rispondere alle richieste di contatto e preventivo. Base giuridica: esecuzione di misure precontrattuali (art. 6 §1 lett. b GDPR).
+                    <strong className="text-gray-300">Modulo di contatto</strong> — nome, numero di telefono e servizio di interesse inseriti volontariamente dall'utente nel modulo «Preferisci essere richiamato?» e inviati al Titolare tramite EmailJS. Nel simulatore preventivo nome ed email compongono il messaggio WhatsApp che l'utente sceglie di inviare. Finalità: ricontattare l'utente per rispondere alle sue richieste di contatto e preventivo. Base giuridica: esecuzione di misure precontrattuali (art. 6 §1 lett. b GDPR).
                   </div>
                 </li>
                 <li className="flex gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0" />
                   <div>
                     <strong className="text-gray-300">Dati tecnici e di navigazione</strong> — indirizzo IP, tipo di browser, sistema operativo, pagine visitate, raccolti automaticamente per il monitoraggio degli errori tramite il servizio Sentry. Finalità: manutenzione e miglioramento del sito. Base giuridica: legittimo interesse del Titolare (art. 6 §1 lett. f GDPR).
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 flex-shrink-0" />
+                  <div>
+                    <strong className="text-gray-300">Caratteri tipografici</strong> — per mostrare i caratteri del sito il browser li scarica da Google Fonts (Google Ireland Limited), che riceve l'indirizzo IP. Finalità: corretta visualizzazione del sito. Base giuridica: legittimo interesse del Titolare (art. 6 §1 lett. f GDPR). Privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">policies.google.com</a>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
+                  <div>
+                    <strong className="text-gray-300">Statistiche e annunci</strong> — solo se l'utente li accetta nel banner dei cookie: dati di navigazione raccolti da Google Analytics (statistiche aggregate sulle visite) e da Google Ads (misurazione delle richieste arrivate dagli annunci), descritti nella <a href="/cookie-policy" className="text-cyan-400 hover:underline">Cookie Policy</a>. Base giuridica: consenso (art. 6 §1 lett. a GDPR), revocabile in qualsiasi momento dal link «Preferenze cookie».
                   </div>
                 </li>
               </ul>

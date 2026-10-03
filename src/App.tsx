@@ -1,22 +1,50 @@
 import React, { lazy, Suspense, Component, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
+import { EVENTO_CONSENSO, attivaTagConsentiti, leggiValoreCookie, segnaEvento } from './misurazione';
 
 /* ── GA4 page view tracker per SPA — solo con consenso analytics ── */
 const GA4PageTracker: React.FC = () => {
   const location = useLocation();
   useEffect(() => {
-    const analyticsConsent = localStorage.getItem('cookie_analytics');
-    if (analyticsConsent !== 'true') return;
-    const gtag = (window as any).gtag;
-    if (typeof gtag === 'function') {
-      gtag('event', 'page_view', {
+    let statisticiAccettati = leggiValoreCookie('cookie_analytics') === 'true';
+    const segnaPagina = () => {
+      attivaTagConsentiti();
+      if (leggiValoreCookie('cookie_analytics') !== 'true') return;
+      segnaEvento('page_view', {
         page_path: location.pathname + location.search,
         page_location: window.location.href,
       });
-    }
+    };
+    // In index.html gtag('js') parte al load: prima di allora config e visita andrebbero persi
+    const segnaDopoIlCaricamento = () => {
+      if (document.readyState === 'complete') segnaPagina();
+      else window.addEventListener('load', segnaPagina, { once: true });
+    };
+    // Chi riapre le preferenze è già stato contato: la visita si segna solo quando Statistici passa da no a sì
+    const segnaSeAppenaAccettati = () => {
+      const statisticiOra = leggiValoreCookie('cookie_analytics') === 'true';
+      if (statisticiOra && !statisticiAccettati) segnaDopoIlCaricamento();
+      statisticiAccettati = statisticiOra;
+    };
+    segnaDopoIlCaricamento();
+    window.addEventListener(EVENTO_CONSENSO, segnaSeAppenaAccettati);
+    return () => {
+      window.removeEventListener('load', segnaPagina);
+      window.removeEventListener(EVENTO_CONSENSO, segnaSeAppenaAccettati);
+    };
   }, [location]);
+  return null;
+};
+
+const ScrollInCima: React.FC = () => {
+  const { pathname, hash } = useLocation();
+  const tipoNavigazione = useNavigationType();
+  useEffect(() => {
+    // Con un Link si arriva in cima alla pagina nuova; indietro/avanti e le ancore restano al browser e alla home
+    if (tipoNavigazione !== 'POP' && !hash) window.scrollTo(0, 0);
+  }, [pathname, hash, tipoNavigazione]);
   return null;
 };
 
@@ -31,11 +59,16 @@ const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 
 /* ── Loading fallback ───────────────────────────────────────── */
-const Loading = () => (
-  <div className="min-h-screen bg-dark-950 flex items-center justify-center">
-    <span className="text-cyan-400 text-lg animate-pulse">Caricamento...</span>
-  </div>
-);
+const Loading = () => {
+  const { pathname } = useLocation();
+  // La home è chiara: la classe accende già il fondo chiaro di index.css mentre arriva il resto
+  if (pathname === '/') return <div className="home-vetrina" />;
+  return (
+    <div className="min-h-screen bg-dark-950 flex items-center justify-center">
+      <span className="text-cyan-400 text-lg animate-pulse">Caricamento...</span>
+    </div>
+  );
+};
 
 /* ── Error fallback ─────────────────────────────────────────── */
 const ErrorFallback = () => (
@@ -69,9 +102,9 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, EBState> {
 /* ── App ────────────────────────────────────────────────────── */
 const App: React.FC = () => (
   <ErrorBoundary>
-    <SmoothScroll />
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <CookieBanner />
+      <ScrollInCima />
+      <SmoothScroll />
       <GA4PageTracker />
       <Suspense fallback={<Loading />}>
         <Routes>
@@ -91,6 +124,7 @@ const App: React.FC = () => (
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
+      <CookieBanner />
     </Router>
   </ErrorBoundary>
 );

@@ -21,6 +21,33 @@ html, body, #root {
   text-rendering: optimizeLegibility;
 }
 
+/* Home chiara: overflow-x hidden su body e #root li renderebbe contenitori di scorrimento,
+   e la testata sticky e il pin di GSAP smetterebbero di funzionare. clip taglia senza scorrere. */
+html:has(.home-vetrina),
+body:has(.home-vetrina),
+#root:has(.home-vetrina) {
+  overflow-x: clip;
+  background-color: #F6F6F3;
+  color: #141414;
+  text-rendering: auto;
+}
+
+/* Finché React non disegna, #root è vuoto: avvio-home (index.html) tiene chiaro il fondo della home già al primo frame */
+html.avvio-home:has(#root:empty),
+html.avvio-home:has(#root:empty) body {
+  background-color: #F6F6F3;
+}
+
+/* La home ha il suo "Vai al contenuto" verso #contenuto */
+body:has(.home-vetrina) > a[href="#main-content"] {
+  display: none;
+}
+
+/* Prima che React lo nasconda, il link globale col font-sans farebbe scaricare Roboto, che la home non usa */
+html.avvio-home body > a[href="#main-content"] {
+  font-family: system-ui, sans-serif;
+}
+
 /* --- [WEB DESIGNER] Impostazioni Globali --- */
 /* Disabilitato scroll-behavior nativo per usare Lenis Smooth Scroll
 html {
@@ -56,21 +83,25 @@ html {
 }
 
 
-/* Scrollbar Customization */
-::-webkit-scrollbar {
+/* Scrollbar Customization — la home chiara tiene quella di sistema */
+html:not(:has(.home-vetrina))::-webkit-scrollbar,
+html:not(:has(.home-vetrina)) ::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
+html:not(:has(.home-vetrina))::-webkit-scrollbar-track,
+html:not(:has(.home-vetrina)) ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
 
-::-webkit-scrollbar-thumb {
+html:not(:has(.home-vetrina))::-webkit-scrollbar-thumb,
+html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb {
   background: #00E5FF;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html:not(:has(.home-vetrina))::-webkit-scrollbar-thumb:hover,
+html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
   background: #00B8D4;
 }
 

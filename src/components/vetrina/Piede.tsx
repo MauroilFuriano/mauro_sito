@@ -28,7 +28,7 @@ const Piede: React.FC = () => (
         Offre tre servizi principali: siti web professionali (da €1.500), chatbot con intelligenza artificiale GPT-4o/Gemini (da €4.200) e automazione business (da €8.000).
         Opera nelle Marche e in tutta Italia con un approccio code-first senza WordPress né Shopify. Contatto: mauroexe@mauroceccarelli.it | +39 348 002 9661.
       </p>
-      <p className="piede-firma">Mauro.exe di Mauro Ceccarelli · Sviluppatore web freelance · Ascoli Piceno, Marche · P.IVA 02606790448</p>
+      <p className="piede-firma">MAURO.EXE di Mauro Ceccarelli · Sviluppatore web freelance · Ascoli Piceno, Marche · P.IVA 02606790448</p>
       <p className="piede-contatti">
         <a href={recapiti.telefono}>{recapiti.telefonoLeggibile}</a>
         <a href={`mailto:${recapiti.email}`}>{recapiti.email}</a>

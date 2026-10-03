@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
+import './styles/caratteri.css';
 import './index.css';
 
 /* Sentry caricato dopo page load — non blocca rendering né TTI

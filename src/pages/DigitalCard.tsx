@@ -12,6 +12,7 @@ import {
   Cpu
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import LinkLegali from '../components/LinkLegali';
 
 const DigitalCard: React.FC = () => {
   const contactData = {
@@ -175,6 +176,7 @@ END:VCARD`;
         <p className="text-gray-600 text-[10px] font-bold tracking-widest uppercase">
           Mauro.exe — Powered by AI & High Performance
         </p>
+        <LinkLegali className="mt-4 text-gray-400" />
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Bot, MessageCircle } from 'lucide-react';
+import { segnaEvento } from '../../misurazione';
+import LinkLegali from '../LinkLegali';
 
 const CTASection: React.FC = () => {
     return (
@@ -20,11 +22,7 @@ const CTASection: React.FC = () => {
                             href="https://hotel-automatico.vercel.app/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => {
-                                // Tracciamento evento Demo
-                                (window as any).fbq?.('trackCustom', 'ClickDemoButton');
-                                (window as any).gtag?.('event', 'click_demo', { event_category: 'Lead' });
-                            }}
+                            onClick={() => segnaEvento('click_demo', { event_category: 'Lead' })}
                             className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-black transition-all duration-300 bg-cyan-400 rounded-full hover:bg-cyan-300 animate-glow-pulse w-full sm:w-auto"
                         >
                             <Bot className="mr-2 h-6 w-6" />
@@ -42,11 +40,7 @@ const CTASection: React.FC = () => {
                             href="https://wa.me/393480029661?text=Ciao%20Mauro%2C%20ho%20un%20Hotel%2FB%26B%20e%20vorrei%20richiedere%20la%20demo%20gratuita%20e%20personalizzata%20del%20gestionale%20AI%20per%20la%20mia%20struttura."
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => {
-                                // Tracciamento evento WhatsApp Lead
-                                (window as any).fbq?.('track', 'Contact');
-                                (window as any).gtag?.('event', 'click_whatsapp', { event_category: 'Lead' });
-                            }}
+                            onClick={() => segnaEvento('click_whatsapp', { event_category: 'Lead' })}
                             className="relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-[#25D366] rounded-full hover:bg-[#20bd5a] w-full sm:w-auto shadow-[0_0_15px_rgba(37,211,102,0.3)] hover:shadow-[0_0_25px_rgba(37,211,102,0.5)]"
                         >
                             <MessageCircle className="mr-2 h-6 w-6" />
@@ -62,6 +56,7 @@ const CTASection: React.FC = () => {
                 {/* Branding Footer per Landing isolata */}
                 <div className="mt-24 pt-8 border-t border-white/5 text-center text-sm text-gray-600">
                     <p>© {new Date().getFullYear()} Mauro Ceccarelli. Tutti i diritti riservati.</p>
+                    <LinkLegali className="mt-3 text-gray-400" />
                 </div>
             </div>
         </section>

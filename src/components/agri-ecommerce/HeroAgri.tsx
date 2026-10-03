@@ -80,7 +80,7 @@ const HeroAgri: React.FC = () => {
                         <div className="space-y-4">
                             <div className="aspect-video bg-dark-900 rounded-lg overflow-hidden relative group">
                                 <img 
-                                  src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1000&auto=format&fit=crop" 
+                                  src="/agri/vigneti-vino.webp"
                                   alt="Vigneti e vino" 
                                   className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                 />

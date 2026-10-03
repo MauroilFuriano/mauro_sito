@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Loader2, Shield, Star, Zap, Clock, Lock, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
+import LinkLegali from '../components/LinkLegali';
 import { leggiValoreCookie } from '../misurazione';
 
 // Fires GA4 conversion event for Google Ads tracking
@@ -279,7 +280,7 @@ export default function SimulatorePreventivo() {
     if (!form.phone.trim()) e.phone = 'Il numero WhatsApp è obbligatorio';
     if (!form.email.trim()) e.email = "L'email è obbligatoria";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Email non valida';
-    if (!form.privacy) e.privacy = 'Accetta la privacy policy per continuare';
+    if (!form.privacy) e.privacy = 'Spunta la casella per continuare';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -786,7 +787,7 @@ export default function SimulatorePreventivo() {
                             onChange={e => setForm(p => ({ ...p, privacy: e.target.checked }))}
                             className="mt-1 w-4 h-4 accent-cyan-400 cursor-pointer flex-shrink-0" />
                           <label htmlFor="privacy" className="text-gray-400 text-xs leading-relaxed cursor-pointer">
-                            Accetto la <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Privacy Policy</a>. I miei dati saranno usati solo per inviarmi il preventivo. *
+                            Ho letto la <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Privacy Policy</a>. I miei dati saranno usati solo per inviarmi il preventivo. *
                           </label>
                         </div>
                         {errors.privacy && <p className="text-red-400 text-xs flex items-center gap-1"><AlertCircle size={11} />{errors.privacy}</p>}
@@ -804,6 +805,7 @@ export default function SimulatorePreventivo() {
               </AnimatePresence>
 
             </div>{/* end configuratore steps */}
+            <LinkLegali className={`mt-16 text-gray-400 ${promoTotal > 0 ? 'mb-24 lg:mb-0' : ''}`} />
           </div>{/* end left scrollable */}
 
           {/* ── RIGHT: sidebar sempre visibile (desktop) ──────────────── */}

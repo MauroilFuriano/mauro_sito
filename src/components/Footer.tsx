@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
             <span>·</span>
             <button type="button" onClick={apriPreferenzeCookie} className="hover:text-cyan-400 transition-colors">Preferenze Cookie</button>
             <span>·</span>
-            <a href="#faq" className="hover:text-cyan-400 transition-colors">FAQ</a>
+            <a href="/#faq" className="hover:text-cyan-400 transition-colors">FAQ</a>
           </p>
         </div>
 

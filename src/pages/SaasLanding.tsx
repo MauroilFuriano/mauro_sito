@@ -3,6 +3,7 @@ import SaasNavbar from '../components/saas-landing/SaasNavbar';
 import SaasHero from '../components/saas-landing/SaasHero';
 import SaasFeatures from '../components/saas-landing/SaasFeatures';
 import SEO from '../components/SEO';
+import LinkLegali from '../components/LinkLegali';
 
 const SaasLanding: React.FC = () => {
     useEffect(() => {
@@ -71,6 +72,7 @@ const SaasLanding: React.FC = () => {
                     </a>
                 </div>
                 <p className="text-slate-600">© {new Date().getFullYear()} Mauro Ceccarelli. Tutti i diritti riservati.</p>
+                <LinkLegali className="mt-3 text-slate-400" />
             </footer>
         </div>
     );

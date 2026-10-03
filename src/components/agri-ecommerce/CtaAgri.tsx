@@ -14,7 +14,7 @@ const CtaAgri: React.FC = () => {
             {/* Background Image Setup */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?q=80&w=2000&auto=format&fit=crop"
+                    src="/agri/agricoltura-smart.webp"
                     alt="Agricoltura smart"
                     loading="lazy"
                     className="w-full h-full object-cover opacity-20"

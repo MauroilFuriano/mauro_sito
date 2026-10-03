@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Loader2, Shield, Star, Zap, Clock, Lock, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
+import { leggiValoreCookie } from '../misurazione';
 
 // Fires GA4 conversion event for Google Ads tracking
 const fireSimulatoreConversion = () => {
   const gtag = (window as any).gtag;
-  if (typeof gtag === 'function') {
+  // Con send_to esplicito gtag.js attiva GA4 da solo, anche senza config: serve il consenso Statistici
+  if (typeof gtag === 'function' && leggiValoreCookie('cookie_analytics') === 'true') {
     gtag('event', 'ads_conversion_Richiesta_preventivo_2', {
       send_to: 'G-29CR0733KS',
     });

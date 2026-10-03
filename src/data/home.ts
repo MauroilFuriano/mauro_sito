@@ -285,7 +285,7 @@ export const recensioni: readonly Recensione[] = [
   {
     variante: 'redicar',
     lunga: false,
-    testo: "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. Il sito è veloce, pulito e il valutatore dell'usato con il chatbot ci stanno già portando contatti veri. Professionista serio e disponibile, consigliatissimo!",
+    testo: "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. Il sito è veloce, moderno e si usa bene anche dal telefono. […] Se avete un'attività e volete un sito fatto bene, lo consiglio senza esitazione.",
     autore: 'Redicar srl',
     data: 'settembre 2026',
   },

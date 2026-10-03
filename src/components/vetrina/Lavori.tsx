@@ -89,9 +89,10 @@ const Lavori: React.FC<LavoriProps> = ({ onApriVideo }) => {
       const corsa = () => Math.max(1, scorrimento.scrollWidth - palco.clientWidth);
       const misuraTappe = () => [0, ...pannelli.map((pannello) => Math.min(1, pannello.offsetLeft / corsa()))];
       let tappe = misuraTappe();
-      const tappaVicina = (avanzamentoNaturale: number) => tappe.reduce((migliore, tappa) => (
-        Math.abs(tappa - avanzamentoNaturale) < Math.abs(migliore - avanzamentoNaturale) ? tappa : migliore
-      ), 0);
+      // Snap nel verso dello scorrimento: con la tappa più vicina una rotellata breve riportava indietro. L'1 finale lascia uscire dal palco.
+      const tappaNelVerso = (avanzamentoNaturale: number) => (
+        ScrollTrigger.snapDirectional([...tappe, 1])(avanzamentoNaturale, binario.scrollTrigger?.direction ?? 1)
+      );
       const segnaAvanzamento = (progresso: number) => {
         avanzamento.style.transform = `scaleX(${progresso})`;
         const attivo = tappe.reduce((ultimo, tappa, indice) => (indice > 0 && progresso >= tappa - 0.1 ? indice : ultimo), 0);
@@ -112,7 +113,7 @@ const Lavori: React.FC<LavoriProps> = ({ onApriVideo }) => {
           scrub: 0.7,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          snap: { snapTo: tappaVicina, inertia: false, duration: { min: 0.25, max: 0.6 }, delay: 0.05, ease: 'power2.inOut' },
+          snap: { snapTo: tappaNelVerso, inertia: false, duration: { min: 0.25, max: 0.6 }, delay: 0.05, ease: 'power2.inOut' },
           onRefresh: (palcoScorrimento) => { tappe = misuraTappe(); segnaAvanzamento(palcoScorrimento.progress); },
           onUpdate: (palcoScorrimento) => segnaAvanzamento(palcoScorrimento.progress),
         },
@@ -166,7 +167,7 @@ const Lavori: React.FC<LavoriProps> = ({ onApriVideo }) => {
           <div className="lavori-intro">
             <h2 className="titolo-sezione" id="titolo-lavori">Lavori recenti</h2>
             <figure className="citazione-redicar">
-              <blockquote><p>“Il valutatore dell'usato con il chatbot ci stanno già portando contatti veri.”</p></blockquote>
+              <blockquote><p>“Un piccolo algoritmo proprietario, fatto su misura per noi, che già i primi giorni ha iniziato a portarci richieste nuove.”</p></blockquote>
               <figcaption>Redicar srl, settembre 2026</figcaption>
             </figure>
             <p className="lavori-suggerimento">Scorri per vedere tutti i lavori<Icona nome="freccia" /></p>

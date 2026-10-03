@@ -140,7 +140,7 @@ const structuredData = {
             "ratingValue": "5",
             "bestRating": "5"
           },
-          "reviewBody": "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. il sito è veloce, pulito e il valutatore dell'usato con il chatbot ci stanno già portando contatti veri. Professionista serio e disponibile, consigliatissimo!",
+          "reviewBody": "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. il sito è veloce, moderno e si usa bene anche dal telefono. La cosa che mi ha colpito di più è un modulo che ha integrato direttamente nel sito: i clienti possono inserire i dati della loro auto usata e ricevere subito una stima del valore. Un piccolo algoritmo proprietario, fatto su misura per noi, che già i primi giorni ha iniziato a portarci richieste nuove. Mauro è stato disponibile in ogni fase, ha spiegato tutto con calma senza fare il tecnico, e ha rispettato i tempi. Se avete un'attività e volete un sito fatto bene, lo consiglio senza esitazione. Realino Daniele Di Leo — REDICAR S.R.L., Colonnella (TE)",
           "datePublished": "2026-09-23"
         },
         {

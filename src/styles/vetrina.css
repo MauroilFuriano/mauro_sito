@@ -815,7 +815,7 @@
 .home-vetrina .piede-griglia { max-width: var(--larghezza); margin-inline: auto; display: grid; gap: 14px; }
 .home-vetrina .piede-sintesi { max-width: 96ch; margin-bottom: 10px; font-size: var(--t-piccolo); line-height: 1.5; }
 .home-vetrina .piede-firma { color: var(--inchiostro); font-weight: 500; }
-.home-vetrina .piede-contatti, .home-vetrina .piede-link { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; list-style: none; }
+.home-vetrina .piede-link { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; list-style: none; }
 .home-vetrina .piede a, .home-vetrina .piede-preferenze { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
 .home-vetrina .piede-preferenze { text-decoration-line: underline; text-underline-offset: .22em; text-decoration-thickness: 1px; }
 .home-vetrina .piede-social { display: flex; flex-wrap: wrap; gap: 4px; margin-inline-start: -12px; list-style: none; }

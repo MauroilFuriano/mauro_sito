@@ -13,11 +13,13 @@ const pagineDelSito = [
   { percorso: '/cookie-policy', nome: 'Cookie policy' },
 ];
 
-const profiliSocial: readonly { nome: string; icona: NomeIcona; indirizzo: string }[] = [
-  { nome: 'LinkedIn', icona: 'linkedin', indirizzo: recapiti.linkedin },
-  { nome: 'GitHub', icona: 'github', indirizzo: recapiti.github },
-  { nome: 'Instagram', icona: 'instagram', indirizzo: recapiti.instagram },
-  { nome: 'Facebook', icona: 'facebook', indirizzo: recapiti.facebook },
+const iconeDelPiede: readonly { nome: string; icona: NomeIcona; indirizzo: string; nuovaScheda?: boolean }[] = [
+  { nome: `Chiama il ${recapiti.telefonoLeggibile}`, icona: 'telefono', indirizzo: recapiti.telefono },
+  { nome: `Scrivi a ${recapiti.email}`, icona: 'email', indirizzo: `mailto:${recapiti.email}` },
+  { nome: 'LinkedIn', icona: 'linkedin', indirizzo: recapiti.linkedin, nuovaScheda: true },
+  { nome: 'GitHub', icona: 'github', indirizzo: recapiti.github, nuovaScheda: true },
+  { nome: 'Instagram', icona: 'instagram', indirizzo: recapiti.instagram, nuovaScheda: true },
+  { nome: 'Facebook', icona: 'facebook', indirizzo: recapiti.facebook, nuovaScheda: true },
 ];
 
 const Piede: React.FC = () => (
@@ -30,14 +32,18 @@ const Piede: React.FC = () => (
         Opera nelle Marche e in tutta Italia con un approccio code-first senza WordPress né Shopify. Contatto: mauroexe@mauroceccarelli.it | +39 348 002 9661.
       </p>
       <p className="piede-firma">MAURO.EXE di Mauro Ceccarelli · Sviluppatore web freelance · Ascoli Piceno, Marche · P.IVA 02606790448</p>
-      <p className="piede-contatti">
-        <a href={recapiti.telefono}>{recapiti.telefonoLeggibile}</a>
-        <a href={`mailto:${recapiti.email}`}>{recapiti.email}</a>
-      </p>
-      <ul className="piede-social" aria-label="Profili social">
-        {profiliSocial.map((profilo) => (
-          <li key={profilo.nome}>
-            <a href={profilo.indirizzo} target="_blank" rel="noopener" aria-label={profilo.nome}><Icona nome={profilo.icona} /></a>
+      <ul className="piede-social" aria-label="Contatti e profili social">
+        {iconeDelPiede.map((voce) => (
+          <li key={voce.icona}>
+            <a
+              href={voce.indirizzo}
+              target={voce.nuovaScheda ? '_blank' : undefined}
+              rel={voce.nuovaScheda ? 'noopener' : undefined}
+              aria-label={voce.nome}
+              title={voce.nome}
+            >
+              <Icona nome={voce.icona} />
+            </a>
           </li>
         ))}
       </ul>

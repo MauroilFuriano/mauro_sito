@@ -12,6 +12,8 @@ export default defineConfig({
   plugins: [
     react(),
     ViteImageOptimizer({
+      // Gli screenshot dei lavori sono già WebP a qualità 80: ricomprimerli a 75 sporcherebbe il testo
+      exclude: /lavori[\\/]/,
       png: { quality: 70 },
       jpeg: { quality: 70 },
       webp: { quality: 75 },
@@ -20,11 +22,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react':  ['react', 'react-dom', 'react-router-dom'],
-          'vendor-gsap':   ['gsap'],
-          'vendor-framer': ['framer-motion'],
-          'vendor-misc':   ['lenis', 'lucide-react', 'react-helmet-async'],
+        // Con l'elenco per pacchetto react/jsx-runtime finiva nel chunk di framer-motion, scaricato così su ogni pagina
+        manualChunks: (idModulo) => {
+          if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom|@remix-run[\\/]router)[\\/]/.test(idModulo)) return 'vendor-react';
+          if (/[\\/]node_modules[\\/]gsap[\\/]/.test(idModulo)) return 'vendor-gsap';
+          if (/[\\/]node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/.test(idModulo)) return 'vendor-framer';
+          if (/[\\/]node_modules[\\/](lenis|lucide-react|react-helmet-async)[\\/]/.test(idModulo)) return 'vendor-misc';
         },
       },
     },

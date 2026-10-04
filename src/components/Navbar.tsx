@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
           onClick={(e) => handleNavClick(e, { name: 'Home', href: '#home' })}
         >
           <img
-            src="/logo.webp"
+            src="/logo-160.webp"
             alt="Mauro.exe - Sviluppatore Web Ascoli Piceno"
             width="80"
             height="80"

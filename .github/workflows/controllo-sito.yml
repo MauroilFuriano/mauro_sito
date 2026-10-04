@@ -1,0 +1,26 @@
+name: Controllo sito
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sito-online:
+    name: Sito e assistente raggiungibili
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Home, bundle principale e funzione
+        run: |
+          set -eu
+          SITO=https://www.mauroceccarelli.it
+          PAGINA=$(curl -fsS --max-time 20 "$SITO/")
+          BUNDLE=$(printf '%s' "$PAGINA" | grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' | head -n 1)
+          test -n "$BUNDLE"
+          curl -fsS --max-time 20 -o /dev/null -w '%{content_type}' "$SITO$BUNDLE" | grep -q javascript
+          test "$(curl -sS --max-time 20 -o /dev/null -w '%{http_code}' "$SITO/api/assistente")" = "405"

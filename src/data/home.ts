@@ -96,7 +96,7 @@ export const servizi: readonly Servizio[] = [
     scena: {
       cornice: 'telefono',
       immagine: {
-        src: '/lavori/fc-resinwood-mobile.jpg',
+        src: '/lavori/fc-resinwood-mobile.webp',
         larghezza: 780,
         altezza: 5064,
         alt: 'Il sito di FC Resinwood aperto su un telefono: un tavolo in legno con un fiume di resina blu e il pulsante Scegli il tuo tavolo',
@@ -112,7 +112,7 @@ export const servizi: readonly Servizio[] = [
       cornice: 'telefono',
       pellicolaChat: true,
       immagine: {
-        src: '/lavori/redicar-mobile.jpg',
+        src: '/lavori/redicar-mobile.webp',
         larghezza: 780,
         altezza: 5064,
         alt: "Il sito di Redicar aperto su un telefono, con il pulsante rosso della chat dell'assistente in basso a destra",
@@ -129,7 +129,7 @@ export const servizi: readonly Servizio[] = [
       cornice: 'browser',
       indirizzo: 'protrainer-phi.vercel.app',
       immagine: {
-        src: '/lavori/sarcolab-desktop.jpg',
+        src: '/lavori/sarcolab-desktop.webp',
         larghezza: 1440,
         altezza: 2700,
         alt: 'Sarcolab aperto su un computer: la dashboard con le schede da consegnare agli atleti e i numeri del giorno',
@@ -172,13 +172,13 @@ export const lavori: readonly Lavoro[] = [
     descrizione: "Sito nuovo con valutatore dell'usato: il cliente inserisce i dati dell'auto, riceve una stima per la permuta e la richiesta arriva su WhatsApp e per email. Un assistente risponde alle domande sulle auto anche fuori orario.",
     indirizzo: 'redicar.it',
     computer: {
-      src: '/lavori/redicar-desktop.jpg',
+      src: '/lavori/redicar-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
       alt: 'Il sito di Redicar su computer: il piazzale delle auto a Colonnella e il titolo Veicoli usati certificati e garantiti',
     },
     telefono: {
-      src: '/lavori/redicar-mobile.jpg',
+      src: '/lavori/redicar-mobile.webp',
       larghezza: 780,
       altezza: 5064,
       alt: 'Il sito di Redicar su telefono, con i pulsanti Vedi parco auto e Valuta il tuo usato',
@@ -193,13 +193,13 @@ export const lavori: readonly Lavoro[] = [
     descrizione: 'Sito per un centro stampa storico di Ascoli, con preventivo immediato per stampe, tesi e grande formato.',
     indirizzo: 'ink-service.com',
     computer: {
-      src: '/lavori/ink-service-desktop.jpg',
+      src: '/lavori/ink-service-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
       alt: 'Il sito di Ink Service su computer: fondo blu notte e il titolo Diamo forma alle tue idee',
     },
     telefono: {
-      src: '/lavori/ink-service-mobile.jpg',
+      src: '/lavori/ink-service-mobile.webp',
       larghezza: 780,
       altezza: 5064,
       alt: 'Il sito di Ink Service su telefono, con il pulsante Crea la tua grafica',
@@ -214,13 +214,13 @@ export const lavori: readonly Lavoro[] = [
     descrizione: 'Un configuratore per creare t-shirt e felpe con scritte, colori e grafiche proprie, e una galleria con più di 240 lavori.',
     indirizzo: 'graphic-arts.net',
     computer: {
-      src: '/lavori/graphic-arts-desktop.jpg',
+      src: '/lavori/graphic-arts-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
       alt: 'Il sito di Graphic Arts su computer: il titolo Tipografia e creatività in sintonia con la stampa e i pulsanti per creare una t-shirt',
     },
     telefono: {
-      src: '/lavori/graphic-arts-mobile.jpg',
+      src: '/lavori/graphic-arts-mobile.webp',
       larghezza: 780,
       altezza: 5064,
       alt: "Il sito di Graphic Arts su telefono, con i pulsanti Genera con l'AI e Crea t-shirt",
@@ -235,13 +235,13 @@ export const lavori: readonly Lavoro[] = [
     descrizione: "Tavoli in legno d'ulivo e resina fatti a mano, tutti pezzi unici: per questo il sito è costruito intorno alle foto.",
     indirizzo: 'fcresinwoodcreations.com',
     computer: {
-      src: '/lavori/fc-resinwood-desktop.jpg',
+      src: '/lavori/fc-resinwood-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
       alt: 'Il sito di FC Resinwood su computer: un tavolo in legno con un fiume di resina blu e il titolo Legno e resina su misura',
     },
     telefono: {
-      src: '/lavori/fc-resinwood-mobile.jpg',
+      src: '/lavori/fc-resinwood-mobile.webp',
       larghezza: 780,
       altezza: 5064,
       alt: 'Il sito di FC Resinwood su telefono, con il pulsante Scegli il tuo tavolo',
@@ -256,13 +256,13 @@ export const lavori: readonly Lavoro[] = [
     descrizione: "Il gestionale con cui il personal trainer segue i suoi atleti: prepara le schede di allenamento, controlla quante serie fa ogni gruppo muscolare e consegna la scheda all'atleta, anche in PDF. Meno tempo sulle schede, più attenzione agli iscritti.",
     indirizzo: 'protrainer-phi.vercel.app',
     computer: {
-      src: '/lavori/sarcolab-desktop.jpg',
+      src: '/lavori/sarcolab-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
       alt: "Sarcolab su computer: la dashboard con le schede da consegnare, una scheda di ipertrofia su quattro giorni e l'analisi del volume settimanale per gruppo muscolare",
     },
     telefono: {
-      src: '/lavori/sarcolab-mobile.jpg',
+      src: '/lavori/sarcolab-mobile.webp',
       larghezza: 780,
       altezza: 1688,
       alt: 'Sarcolab su telefono: la pagina di accesso con il motto Metodo, non improvvisazione',

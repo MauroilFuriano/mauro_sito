@@ -27,7 +27,7 @@ const DialogoVideo: React.FC<DialogoVideoProps> = ({ dialogoRef }) => {
         <p className="video-dialogo-titolo" id="video-sarcolab-titolo">Sarcolab in azione · 4 minuti</p>
         <button className="video-dialogo-chiudi" type="button" onClick={chiudiDialogo}>Chiudi</button>
       </div>
-      <video controls playsInline preload="none" poster="/lavori/sarcolab-poster.jpg" src="/video/sarcolab-presentazione.mp4"></video>
+      <video controls playsInline preload="none" poster="/lavori/sarcolab-poster.webp" src="/video/sarcolab-presentazione.mp4"></video>
     </dialog>
   );
 };

@@ -80,7 +80,7 @@ const PrimaSchermata: React.FC = () => {
               <CorniceBrowser
                 indirizzo="fcresinwoodcreations.com"
                 immagine={{
-                  src: '/lavori/fc-resinwood-desktop.jpg',
+                  src: '/lavori/fc-resinwood-desktop.webp',
                   larghezza: 1440,
                   altezza: 2700,
                   alt: 'Il sito di FC Resinwood, laboratorio artigiano ad Ascoli Piceno, aperto su un computer: un tavolo in legno con un fiume di resina blu',
@@ -95,7 +95,7 @@ const PrimaSchermata: React.FC = () => {
                 caricamentoPigro={false}
                 prioritaAlta
                 immagine={{
-                  src: '/lavori/redicar-desktop.jpg',
+                  src: '/lavori/redicar-desktop.webp',
                   larghezza: 1440,
                   altezza: 2700,
                   alt: 'Il sito di Redicar, concessionaria a Colonnella, aperto su un computer: il piazzale delle auto e il titolo Veicoli usati certificati e garantiti',
@@ -109,7 +109,7 @@ const PrimaSchermata: React.FC = () => {
               <CorniceTelefono
                 caricamentoPigro={false}
                 immagine={{
-                  src: '/lavori/graphic-arts-mobile.jpg',
+                  src: '/lavori/graphic-arts-mobile.webp',
                   larghezza: 780,
                   altezza: 5064,
                   alt: "Il sito di Graphic Arts, tipolitografia a San Benedetto del Tronto, aperto su un telefono, con i pulsanti Genera con l'AI e Crea t-shirt",

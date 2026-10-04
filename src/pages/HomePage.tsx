@@ -378,7 +378,7 @@ const HomePage: React.FC = () => {
         structuredData={structuredData}
       />
       <Helmet>
-        <link rel="preload" as="image" href="/lavori/redicar-desktop.jpg" fetchPriority="high" />
+        <link rel="preload" as="image" href="/lavori/redicar-desktop.webp" fetchPriority="high" />
       </Helmet>
       <a className="salta" href="#contenuto">Vai al contenuto</a>
       <Testata />

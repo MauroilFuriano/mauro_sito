@@ -8,22 +8,38 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  type-check:
+  verifica:
+    name: Tipi e build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout del codice
+        uses: actions/checkout@v7
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
+      - name: Node.js come su Vercel
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version-file: package.json
+          cache: npm
 
-      - name: Install dependencies
+      - name: Installazione delle dipendenze
         run: npm ci
 
-      - name: TypeScript type check
+      - name: Controllo dei tipi
         run: npx tsc --noEmit
+
+      - name: Build di produzione
+        run: npm run build
+
+      - name: Audit delle dipendenze di produzione
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true

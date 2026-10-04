@@ -16,9 +16,8 @@ import Servizi from '../components/vetrina/Servizi';
 import Settori from '../components/vetrina/Settori';
 import Testata from '../components/vetrina/Testata';
 import { ScrollTrigger } from '../components/vetrina/animazioni';
-import { segnaEvento } from '../misurazione';
+import { segnaClicContatto } from '../components/vetrina/clicContatto';
 import '../styles/vetrina.css';
-
 
 const ancoreVecchie = new Map([
   ['home', 'contenuto'],
@@ -35,11 +34,6 @@ const PAUSA_LETTURA = 120;
 const ATTESA_FINE_RIDIMENSIONAMENTO = 400;
 
 type PuntoDiLettura = { sezione: Element; scarto: number } | { sezione: Element; avanzamento: number };
-
-const zonaDelCollegamento = (collegamento: Element) => {
-  const zona = collegamento.closest('[id], header, footer');
-  return zona ? zona.id || zona.tagName.toLowerCase() : 'pagina';
-};
 
 // Con il palco agganciato la sezione dei lavori vive dentro il pin-spacer di GSAP, alto quanto tutta la corsa orizzontale
 const ingombroSezione = (sezione: Element) => {
@@ -65,11 +59,9 @@ const HomePage: React.FC = () => {
   const apriVideo = useCallback(() => apriDialogoVideo(dialogoVideoRef.current), []);
 
   const seguiCollegamento = (evento: React.MouseEvent<HTMLDivElement>) => {
+    segnaClicContatto(evento);
     const collegamento = (evento.target as Element).closest('a[href]');
-    if (!collegamento) return;
-    const indirizzo = collegamento.getAttribute('href') ?? '';
-    if (indirizzo.startsWith('tel:')) segnaEvento('click_chiamata', { posizione: zonaDelCollegamento(collegamento) });
-    else if (indirizzo.includes('wa.me')) segnaEvento('click_whatsapp', { posizione: zonaDelCollegamento(collegamento) });
+    const indirizzo = collegamento?.getAttribute('href') ?? '';
     if (!indirizzo.startsWith('#') || evento.defaultPrevented) return;
     const destinazione = document.getElementById(indirizzo.slice(1));
     if (!destinazione) return;

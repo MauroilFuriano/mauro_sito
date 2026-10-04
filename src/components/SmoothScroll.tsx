@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
+import { conStileVetrina } from '../data/seo';
 
 const SmoothScroll = () => {
   const { pathname } = useLocation();
-  const suHome = pathname === '/';
+  const scrollNativo = conStileVetrina(pathname);
 
   useEffect(() => {
-    // La home usa lo scroll nativo: pin e snap del palco dei lavori sono di GSAP
-    if (suHome) return;
+    // Le pagine nello stile della home usano lo scroll nativo: in home pin e snap del palco dei lavori sono di GSAP
+    if (scrollNativo) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
@@ -36,7 +37,7 @@ const SmoothScroll = () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, [suHome]);
+  }, [scrollNativo]);
 
   return null;
 };

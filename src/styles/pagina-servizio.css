@@ -1,0 +1,31 @@
+.home-vetrina .pagina-eroe { padding-block: clamp(32px, 1.5rem + 5vw, 104px) var(--spazio-sezione); }
+.home-vetrina .pagina-etichetta { font-size: var(--t-piccolo); font-weight: 600; color: var(--cobalto-testo); }
+.home-vetrina .pagina-eroe h1 { margin-top: 14px; max-width: 17ch; font-size: clamp(2.25rem, 1.3rem + 4vw, 5rem); font-weight: 500; line-height: .98; letter-spacing: -0.03em; }
+.home-vetrina .pagina-sottotitolo { margin-top: 20px; max-width: 46ch; font-size: clamp(1.125rem, 1rem + .7vw, 1.5rem); line-height: 1.45; color: var(--grafite); }
+.home-vetrina .pagina-eroe .azioni { margin-top: clamp(24px, 2.4vw, 32px); }
+.home-vetrina .pagina-prezzo { max-width: 46ch; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--filo); font-weight: 600; }
+.home-vetrina .pagina-eroe .link-freccia { margin-top: 8px; }
+
+.home-vetrina .pagina-punti { display: grid; gap: 28px; margin-top: clamp(32px, 4vw, 56px); list-style: none; }
+.home-vetrina .pagina-punto { padding-top: 20px; border-top: 1.5px solid var(--inchiostro); }
+.home-vetrina .pagina-punto h3 { font-size: var(--t-h3); font-weight: 500; letter-spacing: -0.02em; }
+.home-vetrina .pagina-punto p { max-width: 40ch; margin-top: 12px; color: var(--grafite); }
+@media (min-width: 760px) {
+  .home-vetrina .pagina-punti { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; row-gap: 48px; }
+}
+@media (min-width: 1100px) {
+  .home-vetrina .pagina-punti { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.home-vetrina .pagina-argomento .testo-grande { max-width: 52ch; margin-top: 24px; }
+@media (min-width: 900px) {
+  .home-vetrina .pagina-argomento { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+  .home-vetrina .pagina-argomento .testo-grande { margin-top: 0; }
+}
+
+/* Qui la linea del metodo è già piena: l'animazione allo scorrimento c'è solo in home */
+.home-vetrina .pagina-metodo { --riempimento-metodo: 1; }
+
+.home-vetrina .pagina-chiusura .testo-grande { max-width: 46ch; margin-top: 20px; color: var(--grafite); }
+.home-vetrina .pagina-chiusura .azioni { margin-top: 32px; }
+.home-vetrina .pagina-chiusura .link-freccia { margin-top: 20px; }

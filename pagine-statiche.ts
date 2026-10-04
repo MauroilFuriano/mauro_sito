@@ -9,6 +9,7 @@ const FINE_TESTA = '<!--/testa-pagina-->';
 const INIZIO_SENZA_JS = '<!--senza-js-->';
 const FINE_SENZA_JS = '<!--/senza-js-->';
 const RADICE = '<div id="root"></div>';
+const APERTURA_HTML = '<html lang="it">';
 
 const testoSicuro = (testo: string) => testo.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const attributoSicuro = (testo: string) => testoSicuro(testo).replace(/"/g, '&quot;');
@@ -104,8 +105,11 @@ export const pagineStatiche = (): Plugin => {
         const conTesta = sostituisciTra(modello, INIZIO_TESTA, FINE_TESTA, bloccoTesta(pagina));
         const html = conTesta && sostituisciTra(conTesta, INIZIO_SENZA_JS, FINE_SENZA_JS, bloccoSenzaJs(pagina));
         if (!html) this.error(`In dist/index.html mancano i segnaposto della testa o del contenuto senza JavaScript (pagina ${pagina.percorso})`);
+        if (!html.includes(APERTURA_HTML)) this.error(`In dist/index.html manca ${APERTURA_HTML}`);
+        // Con la classe, index.css dà già lo sfondo della home (chiaro o scuro) prima che React disegni la pagina
+        const htmlFinale = pagina.stileVetrina ? html.replace(APERTURA_HTML, '<html lang="it" class="avvio-home">') : html;
         const nomeFile = pagina.percorso === '/' ? 'index.html' : `${pagina.percorso.slice(1)}.html`;
-        fs.writeFileSync(path.join(cartellaUscita, nomeFile), html);
+        fs.writeFileSync(path.join(cartellaUscita, nomeFile), htmlFinale);
       }
       fs.writeFileSync(path.join(cartellaUscita, 'sitemap.xml'), sitemap());
     },

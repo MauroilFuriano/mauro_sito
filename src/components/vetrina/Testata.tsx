@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AzioniContatto from './AzioniContatto';
 import CambioTema from './CambioTema';
 
@@ -11,7 +12,27 @@ const vociMenu = [
   { ancora: '#contatti', nome: 'Contatti' },
 ];
 
+const contenutoMarchio = (
+  <>
+    <img
+      className="marchio-logo"
+      src="/marchio-96.webp"
+      srcSet="/marchio-96.webp 96w, /marchio-128.webp 128w, /marchio-192.webp 192w"
+      sizes="44px"
+      width={44}
+      height={44}
+      alt=""
+      decoding="async"
+    />
+    <span className="marchio-testo">
+      <span className="marchio-nome">MAURO<span className="marchio-punto">.</span>EXE</span>{' '}
+      <span className="marchio-titolare">di Mauro Ceccarelli</span>
+    </span>
+  </>
+);
+
 const Testata: React.FC = () => {
+  const suHome = useLocation().pathname === '/';
   const inizioPaginaRef = useRef<HTMLDivElement>(null);
   const testataRef = useRef<HTMLElement>(null);
   const pulsanteMenuRef = useRef<HTMLButtonElement>(null);
@@ -68,23 +89,12 @@ const Testata: React.FC = () => {
       <div ref={inizioPaginaRef} aria-hidden="true" />
       <header className={classiTestata} ref={testataRef} onBlur={menuAperto ? chiudiSeIlFuocoEsce : undefined}>
         <div className="testata-riga">
-          {/* Il punto colorato divide il testo in più nodi: role="img" lo fa leggere come un nome solo */}
-          <p className="marchio" role="img" aria-label="MAURO.EXE di Mauro Ceccarelli">
-            <img
-              className="marchio-logo"
-              src="/marchio-96.webp"
-              srcSet="/marchio-96.webp 96w, /marchio-128.webp 128w, /marchio-192.webp 192w"
-              sizes="44px"
-              width={44}
-              height={44}
-              alt=""
-              decoding="async"
-            />
-            <span className="marchio-testo">
-              <span className="marchio-nome">MAURO<span className="marchio-punto">.</span>EXE</span>{' '}
-              <span className="marchio-titolare">di Mauro Ceccarelli</span>
-            </span>
-          </p>
+          {/* Il punto colorato divide il testo in più nodi: role="img" e aria-label lo fanno leggere come un nome solo */}
+          {suHome ? (
+            <p className="marchio" role="img" aria-label="MAURO.EXE di Mauro Ceccarelli">{contenutoMarchio}</p>
+          ) : (
+            <Link className="marchio" to="/" aria-label="MAURO.EXE di Mauro Ceccarelli, vai alla home">{contenutoMarchio}</Link>
+          )}
           <button
             className="menu-apri"
             type="button"
@@ -100,7 +110,11 @@ const Testata: React.FC = () => {
             <nav aria-label="Menu principale">
               <ul className="menu-voci">
                 {vociMenu.map((voceMenu) => (
-                  <li key={voceMenu.ancora}><a href={voceMenu.ancora} onClick={chiudiPrimaDelloScorrimento}>{voceMenu.nome}</a></li>
+                  <li key={voceMenu.ancora}>
+                    {suHome
+                      ? <a href={voceMenu.ancora} onClick={chiudiPrimaDelloScorrimento}>{voceMenu.nome}</a>
+                      : <Link to={`/${voceMenu.ancora}`}>{voceMenu.nome}</Link>}
+                  </li>
                 ))}
               </ul>
             </nav>

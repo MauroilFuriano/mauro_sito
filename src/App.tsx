@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavig
 import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
 import MetadatiPagina from './components/MetadatiPagina';
+import { conStileVetrina } from './data/seo';
 import { EVENTO_CONSENSO, attivaTagConsentiti, leggiValoreCookie, segnaEvento } from './misurazione';
 
 const GA4PageTracker: React.FC = () => {
@@ -60,7 +61,7 @@ const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 const Loading = () => {
   const { pathname } = useLocation();
   // La classe accende già il fondo della home di index.css, chiaro o scuro secondo data-tema, mentre arriva il resto
-  if (pathname === '/') return <div className="home-vetrina" />;
+  if (conStileVetrina(pathname)) return <div className="home-vetrina" />;
   return (
     <div className="min-h-screen bg-dark-950 flex items-center justify-center">
       <span className="text-cyan-400 text-lg animate-pulse">Caricamento...</span>

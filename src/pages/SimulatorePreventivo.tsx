@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Shield, Clock, Lock, ExternalLink, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LinkLegali from '../components/LinkLegali';
+import AzioniContatto from '../components/vetrina/AzioniContatto';
+import { Icona } from '../components/vetrina/Icone';
+import PaginaVetrina from '../components/vetrina/PaginaVetrina';
 import { inviaRichiestaEmail } from '../inviaRichiesta';
+import '../styles/pagina-servizio.css';
 import { leggiValoreCookie } from '../misurazione';
 
 const fireSimulatoreConversion = () => {
@@ -32,6 +35,9 @@ const P = {
   multilang: 400,   // multilingua IT+EN
   analytics: 200,   // Analytics dashboard GA4
 };
+
+// toLocaleString('it-IT') lascia 1500 senza punto: le migliaia si separano a mano come nel resto del sito
+const inEuro = (importo: number) => `${String(importo).replace(/\B(?=(\d{3})+(?!\d))/g, '.')} €`;
 
 interface ChatbotOption { id: string; label: string; desc: string; price: number; }
 interface ExtraOption { id: string; label: string; desc: string; price: number; }
@@ -246,6 +252,10 @@ export default function SimulatorePreventivo() {
 
   const { value: animatedEstimate, flash: flashEstimate } = useAnimatedPrice(estimateTotal);
 
+  useEffect(() => {
+    if (success) window.scrollTo(0, 0);
+  }, [success]);
+
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Il nome è obbligatorio';
@@ -273,7 +283,7 @@ export default function SimulatorePreventivo() {
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
-      `Preventivo stimato: €${estimateTotal}\n` +
+      `Preventivo stimato: ${inEuro(estimateTotal)}\n` +
       `Email: ${form.email.trim()}`;
 
     setLinkWhatsApp(`https://wa.me/393480029661?text=${encodeURIComponent(`Ciao Mauro! Ho completato il Simulatore Preventivo.\nNome: ${form.name.trim()}\n${riepilogo}\nAttendo il preventivo dettagliato!`)}`);
@@ -299,61 +309,48 @@ export default function SimulatorePreventivo() {
   };
 
   if (success) return (
-    <>
-      <div className="min-h-screen bg-[#0d0d1a] flex items-center justify-center px-4">
-        <div id="main-content" className="text-center max-w-lg">
-          <div className="w-20 h-20 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle size={40} className="text-green-400" />
-          </div>
-          <h2 className="text-3xl font-black text-white mb-3">Richiesta inviata</h2>
-          <p className="text-gray-400 leading-relaxed mb-8">
+    <PaginaVetrina conBarraContatti={false} conAssistente={false}>
+      <section className="pagina-eroe" aria-labelledby="titolo-esito">
+        <div className="larghezza">
+          <p className="pagina-etichetta">Simulatore preventivo</p>
+          <h1 id="titolo-esito">Richiesta inviata</h1>
+          <p className="pagina-sottotitolo">
             Ho ricevuto il riepilogo: entro 24 ore ti mando il preventivo scritto a {form.email.trim()}. Se preferisci, mandamelo anche su WhatsApp.
           </p>
-          <a
-            href={linkWhatsApp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-400 text-white font-bold rounded-xl transition-all text-sm"
-          >
-            <svg width={18} height={18} viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" /></svg>
-            Invia il riepilogo su WhatsApp
-          </a>
-          <div className="mt-8">
-            <button onClick={handleReset} className="text-gray-600 hover:text-gray-400 text-xs underline underline-offset-4 transition-colors">
-              ← Ricomincia il simulatore
-            </button>
+          <div className="azioni">
+            <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="pulsante pulsante--scrivi">
+              <Icona nome="messaggio" />Invia il riepilogo su WhatsApp
+            </a>
           </div>
-          <LinkLegali className="mt-8 text-gray-400" />
+          <button onClick={handleReset} className="link-freccia mt-6 bg-transparent border-0 p-0">
+            Ricomincia il simulatore
+          </button>
         </div>
-      </div>
-    </>
+      </section>
+    </PaginaVetrina>
   );
 
   return (
-    <>
-      <div ref={topRef} className="min-h-screen bg-[#0d0d1a] text-gray-200 selection:bg-cyan-400 selection:text-black">
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-0 left-[-10%] w-[50%] h-[40%] bg-cyan-400/3 rounded-full blur-[140px]" />
-          <div className="absolute bottom-0 right-[-10%] w-[40%] h-[35%] bg-purple-600/3 rounded-full blur-[120px]" />
-        </div>
+    <PaginaVetrina conBarraContatti={false} conAssistente={false}>
+      <div ref={topRef}>
+        <section className="pagina-eroe" aria-labelledby="titolo-pagina">
+          <div className="larghezza">
+            <p className="pagina-etichetta">Simulatore preventivo</p>
+            <h1 id="titolo-pagina">
+              Quanto costa il tuo sito?{' '}<br />
+              <span className="text-[var(--cobalto-testo)]">Calcola il preventivo.</span>
+            </h1>
+            <p className="pagina-sottotitolo">
+              Scegli cosa ti serve e vedi subito una stima. Il prezzo finale te lo scrivo nel preventivo, prima di iniziare.
+            </p>
+            <p className="pagina-prezzo">Nessuna carta di credito · Nessuna email richiesta per configurare · Zero impegno</p>
+            <AzioniContatto conNota />
+          </div>
+        </section>
 
-        <div className="relative z-10 lg:flex lg:min-h-screen">
+        <div className={`larghezza lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 lg:items-start ${estimateTotal > 0 ? 'pb-28 lg:pb-16' : 'pb-16'}`}>
 
-          <div id="main-content" className="flex-1 min-w-0 px-4 py-10 lg:pl-8 xl:pl-16 lg:pr-8">
-
-            <div className="text-center mb-12">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
-                Quanto costa il tuo sito?{' '}<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Calcola il preventivo.</span>
-              </h1>
-              <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
-                Scegli cosa ti serve e vedi subito una stima.{' '}
-                <span className="text-white font-bold">Il prezzo finale te lo scrivo nel preventivo, prima di iniziare.</span>
-              </p>
-              <p className="text-xs text-gray-600 mt-3">
-                Nessuna carta di credito &nbsp;·&nbsp; Nessuna email richiesta per configurare &nbsp;·&nbsp; Zero impegno
-              </p>
-            </div>
+          <div className="min-w-0">
 
             <div className="space-y-12">
 
@@ -363,33 +360,31 @@ export default function SimulatorePreventivo() {
                   <button
                     onClick={() => { setPath('vetrina'); setTemplateId(null); setChatbotOption('none'); setExtras(new Set()); }}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${path === 'vetrina'
-                        ? 'border-cyan-400 bg-cyan-400/5 shadow-[0_0_24px_rgba(0,229,255,0.12)]'
-                        : 'border-white/10 bg-white/[0.02] hover:border-white/25'
+                        ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                        : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                       }`}
                   >
-                    {path === 'vetrina' && <CheckCircle size={18} className="text-cyan-400 float-right" />}
-                    <div className="text-3xl mb-3">⚙️</div>
-                    <h3 className="font-bold text-white text-base mb-1">Sito Vetrina Personalizzato</h3>
-                    <p className="text-gray-500 text-xs mb-3">Design su misura, mobile-first, architettura unica. Per chi non vuole somigliare a nessun altro.</p>
+                    {path === 'vetrina' && <CheckCircle size={18} className="text-[var(--cobalto-testo)] float-right" />}
+                    <h3 className="font-bold text-[var(--inchiostro)] text-base mb-1">Sito Vetrina Personalizzato</h3>
+                    <p className="text-[var(--grafite)] text-xs mb-3">Design su misura, mobile-first, architettura unica. Per chi non vuole somigliare a nessun altro.</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-cyan-400 font-black text-xl">€{P.siteBase.toLocaleString('it-IT')}</span>
+                      <span className="text-[var(--cobalto-testo)] font-bold text-xl">{inEuro(P.siteBase)}</span>
                     </div>
                   </button>
 
                   <button
                     onClick={() => setPath('template')}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 relative ${path === 'template'
-                        ? 'border-cyan-400 bg-cyan-400/5 shadow-[0_0_24px_rgba(0,229,255,0.12)]'
-                        : 'border-cyan-400/30 bg-white/[0.02] hover:border-cyan-400/60'
+                        ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                        : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                       }`}
                   >
-                    {path === 'template' && <CheckCircle size={18} className="text-cyan-400 float-right mt-1" />}
-                    <div className="text-3xl mb-3">🚀</div>
-                    <h3 className="font-bold text-white text-base mb-1">Template Premium per Settore</h3>
-                    <p className="text-cyan-300 text-[11px] font-bold mb-2 uppercase tracking-wide">Online in 3 Giorni</p>
-                    <p className="text-gray-500 text-xs mb-3">Layout 3D già ottimizzato per il tuo settore. Chatbot, gestionale e moduli configurabili.</p>
+                    {path === 'template' && <CheckCircle size={18} className="text-[var(--cobalto-testo)] float-right mt-1" />}
+                    <h3 className="font-bold text-[var(--inchiostro)] text-base mb-1">Template Premium per Settore</h3>
+                    <p className="text-[var(--cobalto-testo)] text-xs font-bold mb-2 uppercase tracking-wide">Online in 3 Giorni</p>
+                    <p className="text-[var(--grafite)] text-xs mb-3">Layout 3D già ottimizzato per il tuo settore. Chatbot, gestionale e moduli configurabili.</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-cyan-400 font-black text-xl">da €{P.siteBase.toLocaleString('it-IT')}</span>
+                      <span className="text-[var(--cobalto-testo)] font-bold text-xl">da {inEuro(P.siteBase)}</span>
                     </div>
                   </button>
                 </div>
@@ -400,15 +395,15 @@ export default function SimulatorePreventivo() {
                   <motion.section key="step2-vetrina" {...reveal} style={{ overflow: 'hidden' }}>
                     <SectionLabel number={2} label="Cosa ottieni con il Sito Vetrina" />
 
-                    <div className="mt-4 mb-7 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
-                      <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
+                    <div className="mt-4 mb-7 p-5 rounded-2xl border border-[var(--filo)] bg-[var(--superficie)]">
+                      <p className="text-xs font-bold text-[var(--cobalto-testo)] uppercase tracking-widest mb-4">Sempre incluso nel prezzo</p>
                       <div className="space-y-3">
                         {VETRINA_INCLUDED.map((item, i) => (
                           <div key={i} className="flex items-start gap-3">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                            <CheckCircle size={14} className="text-[var(--cobalto-testo)] flex-shrink-0 mt-0.5" />
                             <p className="text-xs leading-relaxed">
-                              <span className="text-white font-bold">{item.label}:</span>{' '}
-                              <span className="text-gray-400">{item.sub}</span>
+                              <span className="text-[var(--inchiostro)] font-bold">{item.label}:</span>{' '}
+                              <span className="text-[var(--grafite)]">{item.sub}</span>
                             </p>
                           </div>
                         ))}
@@ -416,34 +411,34 @@ export default function SimulatorePreventivo() {
                     </div>
 
                     <div className="mb-6">
-                      <p className="text-sm font-bold text-gray-300 mb-1">Aggiungi un Assistente Virtuale</p>
-                      <p className="text-xs text-gray-500 mb-3">L'AI che lavora per te mentre dormi.</p>
+                      <p className="text-sm font-bold text-[var(--inchiostro)] mb-1">Aggiungi un Assistente Virtuale</p>
+                      <p className="text-xs text-[var(--grafite)] mb-3">L'AI che lavora per te mentre dormi.</p>
                       <div className="space-y-2">
                         {VETRINA_CHATBOT_OPTIONS.map(opt => (
                           <button
                             key={opt.id}
                             onClick={() => setChatbotOption(opt.id)}
                             className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${chatbotOption === opt.id
-                                ? 'border-cyan-400/60 bg-cyan-400/5'
-                                : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                                : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                               }`}
                           >
-                            <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${chatbotOption === opt.id ? 'border-cyan-400' : 'border-white/30'
+                            <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${chatbotOption === opt.id ? 'border-[var(--cobalto)]' : 'border-[var(--filo)]'
                               }`}>
-                              {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-cyan-400" />}
+                              {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-[var(--cobalto)]" />}
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 flex-wrap">
-                                <p className="text-sm font-bold text-white">{opt.label}</p>
+                                <p className="text-sm font-bold text-[var(--inchiostro)]">{opt.label}</p>
                               </div>
-                              <p className="text-xs text-gray-500 mt-0.5">{opt.desc}</p>
+                              <p className="text-xs text-[var(--grafite)] mt-0.5">{opt.desc}</p>
                             </div>
                             <div className="text-right flex-shrink-0">
                               {opt.price === 0 ? (
-                                <span className="text-gray-500 text-sm">Incluso</span>
+                                <span className="text-[var(--grafite)] text-sm">Incluso</span>
                               ) : (
-                                <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                  +€{opt.price.toLocaleString('it-IT')}
+                                <p className={`font-bold text-sm ${chatbotOption === opt.id ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
+                                  +{inEuro(opt.price)}
                                 </p>
                               )}
                             </div>
@@ -453,8 +448,8 @@ export default function SimulatorePreventivo() {
                     </div>
 
                     <div>
-                      <p className="text-sm font-bold text-gray-300 mb-1">Moduli Aggiuntivi</p>
-                      <p className="text-xs text-gray-500 mb-3">Potenzia il tuo sito con strumenti professionali.</p>
+                      <p className="text-sm font-bold text-[var(--inchiostro)] mb-1">Moduli Aggiuntivi</p>
+                      <p className="text-xs text-[var(--grafite)] mb-3">Potenzia il tuo sito con strumenti professionali.</p>
                       <div className="space-y-2">
                         {VETRINA_EXTRAS.map(ex => {
                           const sel = extras.has(ex.id);
@@ -462,20 +457,20 @@ export default function SimulatorePreventivo() {
                             <button
                               key={ex.id}
                               onClick={() => toggleExtra(ex.id)}
-                              className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${sel ? 'border-purple-400/50 bg-purple-400/5' : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                              className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${sel ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]' : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                                 }`}
                             >
-                              <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${sel ? 'border-purple-400 bg-purple-400' : 'border-white/30'
+                              <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${sel ? 'border-[var(--cobalto)] bg-[var(--cobalto)]' : 'border-[var(--filo)]'
                                 }`}>
-                                {sel && <CheckCircle size={11} className="text-black" />}
+                                {sel && <CheckCircle size={11} className="text-white" />}
                               </div>
                               <div className="flex-1">
-                                <p className="text-sm font-bold text-white">{ex.label}</p>
-                                <p className="text-xs text-gray-500 mt-0.5">{ex.desc}</p>
+                                <p className="text-sm font-bold text-[var(--inchiostro)]">{ex.label}</p>
+                                <p className="text-xs text-[var(--grafite)] mt-0.5">{ex.desc}</p>
                               </div>
                               <div className="text-right flex-shrink-0">
-                                <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
-                                  +€{ex.price.toLocaleString('it-IT')}
+                                <p className={`font-bold text-sm ${sel ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
+                                  +{inEuro(ex.price)}
                                 </p>
                               </div>
                             </button>
@@ -491,26 +486,26 @@ export default function SimulatorePreventivo() {
                 {path === 'template' && (
                   <motion.section key="step2" {...reveal} style={{ overflow: 'hidden' }}>
                     <SectionLabel number={2} label="Scegli il tuo settore" />
-                    <p className="text-gray-500 text-sm mt-1 mb-4">Clicca per selezionare. Ogni template è personalizzabile al 100%.</p>
+                    <p className="text-[var(--grafite)] text-sm mt-1 mb-4">Clicca per selezionare. Ogni template è personalizzabile al 100%.</p>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {TEMPLATES.map(t => (
                         <button
                           key={t.id}
                           onClick={() => selectTemplate(t.id)}
                           className={`text-left p-5 rounded-2xl border-2 transition-all duration-300 ${templateId === t.id
-                              ? 'border-cyan-400 bg-cyan-400/5 shadow-[0_0_20px_rgba(0,229,255,0.1)]'
-                              : 'border-white/10 bg-white/[0.02] hover:border-white/25'
+                              ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                              : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                             }`}
                         >
                           <div className="flex justify-between items-start mb-2">
                             <span className="text-3xl">{t.emoji}</span>
-                            {templateId === t.id && <CheckCircle size={16} className="text-cyan-400" />}
+                            {templateId === t.id && <CheckCircle size={16} className="text-[var(--cobalto-testo)]" />}
                           </div>
-                          <h3 className="font-bold text-white text-sm mb-1">{t.label}</h3>
-                          <p className="text-gray-500 text-xs leading-relaxed mb-3">{t.tagline}</p>
+                          <h3 className="font-bold text-[var(--inchiostro)] text-sm mb-1">{t.label}</h3>
+                          <p className="text-[var(--grafite)] text-xs leading-relaxed mb-3">{t.tagline}</p>
                           <div className="flex items-center justify-between">
                             <div className="flex items-baseline gap-1.5">
-                              <span className="text-cyan-400 font-black">da €{P.siteBase.toLocaleString('it-IT')}</span>
+                              <span className="text-[var(--cobalto-testo)] font-bold">da {inEuro(P.siteBase)}</span>
                             </div>
                             {t.demoUrl && (
                               <a
@@ -518,7 +513,7 @@ export default function SimulatorePreventivo() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={e => e.stopPropagation()}
-                                className="flex items-center gap-1 text-[11px] font-bold text-cyan-400 border border-cyan-400/30 px-2 py-1 rounded-lg hover:bg-cyan-400/10 transition-colors"
+                                className="flex items-center gap-1 text-xs font-bold text-[var(--cobalto-testo)] border border-[var(--cobalto)] px-2 py-1 rounded-lg hover:bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)] transition-colors"
                               >
                                 Demo <ExternalLink size={10} />
                               </a>
@@ -528,15 +523,15 @@ export default function SimulatorePreventivo() {
                       ))}
                     </div>
 
-                    <div className="mt-6 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
-                      <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
+                    <div className="mt-6 p-5 rounded-2xl border border-[var(--filo)] bg-[var(--superficie)]">
+                      <p className="text-xs font-bold text-[var(--cobalto-testo)] uppercase tracking-widest mb-4">Sempre incluso nel prezzo</p>
                       <div className="space-y-3">
                         {TEMPLATE_INCLUDED.map((item, i) => (
                           <div key={i} className="flex items-start gap-3">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
+                            <CheckCircle size={14} className="text-[var(--cobalto-testo)] flex-shrink-0 mt-0.5" />
                             <p className="text-xs leading-relaxed">
-                              <span className="text-white font-bold">{item.label}:</span>{' '}
-                              <span className="text-gray-400">{item.sub}</span>
+                              <span className="text-[var(--inchiostro)] font-bold">{item.label}:</span>{' '}
+                              <span className="text-[var(--grafite)]">{item.sub}</span>
                             </p>
                           </div>
                         ))}
@@ -552,33 +547,33 @@ export default function SimulatorePreventivo() {
                     <SectionLabel number={3} label={`Configura il tuo ${template.label}`} />
 
                     <div className="mb-6">
-                      <p className="text-sm font-bold text-gray-300 mb-3">Opzione Chatbot</p>
+                      <p className="text-sm font-bold text-[var(--inchiostro)] mb-3">Opzione Chatbot</p>
                       <div className="space-y-2">
                         {template.chatbotOptions.map(opt => (
                           <button
                             key={opt.id}
                             onClick={() => setChatbotOption(opt.id)}
                             className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${chatbotOption === opt.id
-                                ? 'border-cyan-400/60 bg-cyan-400/5'
-                                : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                                : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                               }`}
                           >
-                            <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${chatbotOption === opt.id ? 'border-cyan-400' : 'border-white/30'
+                            <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${chatbotOption === opt.id ? 'border-[var(--cobalto)]' : 'border-[var(--filo)]'
                               }`}>
-                              {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-cyan-400" />}
+                              {chatbotOption === opt.id && <div className="w-2 h-2 rounded-full bg-[var(--cobalto)]" />}
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 flex-wrap">
-                                <p className="text-sm font-bold text-white">{opt.label}</p>
+                                <p className="text-sm font-bold text-[var(--inchiostro)]">{opt.label}</p>
                               </div>
-                              <p className="text-xs text-gray-500 mt-0.5">{opt.desc}</p>
+                              <p className="text-xs text-[var(--grafite)] mt-0.5">{opt.desc}</p>
                             </div>
                             <div className="text-right flex-shrink-0">
                               {opt.price === 0 ? (
-                                <span className="text-gray-500 text-sm">Incluso</span>
+                                <span className="text-[var(--grafite)] text-sm">Incluso</span>
                               ) : (
-                                <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                  +€{opt.price.toLocaleString('it-IT')}
+                                <p className={`font-bold text-sm ${chatbotOption === opt.id ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
+                                  +{inEuro(opt.price)}
                                 </p>
                               )}
                             </div>
@@ -589,7 +584,7 @@ export default function SimulatorePreventivo() {
 
                     {template.extras.length > 0 && (
                       <div className="mb-4">
-                        <p className="text-sm font-bold text-gray-300 mb-3">Moduli aggiuntivi per {template.label}</p>
+                        <p className="text-sm font-bold text-[var(--inchiostro)] mb-3">Moduli aggiuntivi per {template.label}</p>
                         <div className="space-y-2">
                           {template.extras.map(ex => {
                             const sel = extras.has(ex.id);
@@ -597,20 +592,20 @@ export default function SimulatorePreventivo() {
                               <button
                                 key={ex.id}
                                 onClick={() => toggleExtra(ex.id)}
-                                className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${sel ? 'border-purple-400/50 bg-purple-400/5' : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${sel ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]' : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                                   }`}
                               >
-                                <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${sel ? 'border-purple-400 bg-purple-400' : 'border-white/30'
+                                <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${sel ? 'border-[var(--cobalto)] bg-[var(--cobalto)]' : 'border-[var(--filo)]'
                                   }`}>
-                                  {sel && <CheckCircle size={11} className="text-black" />}
+                                  {sel && <CheckCircle size={11} className="text-white" />}
                                 </div>
                                 <div className="flex-1">
-                                  <p className="text-sm font-bold text-white">{ex.label}</p>
-                                  <p className="text-xs text-gray-500 mt-0.5">{ex.desc}</p>
+                                  <p className="text-sm font-bold text-[var(--inchiostro)]">{ex.label}</p>
+                                  <p className="text-xs text-[var(--grafite)] mt-0.5">{ex.desc}</p>
                                 </div>
                                 <div className="text-right flex-shrink-0">
-                                  <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
-                                    +€{ex.price.toLocaleString('it-IT')}
+                                  <p className={`font-bold text-sm ${sel ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
+                                    +{inEuro(ex.price)}
                                   </p>
                                 </div>
                               </button>
@@ -627,7 +622,7 @@ export default function SimulatorePreventivo() {
                 {path && (
                   <motion.section key="step4" {...reveal} style={{ overflow: 'hidden' }}>
                     <SectionLabel number={path === 'template' && template ? 4 : 3} label="Aggiungi moduli extra al tuo sito" />
-                    <p className="text-gray-500 text-sm mt-1 mb-4">La SEO di base è sempre inclusa.</p>
+                    <p className="text-[var(--grafite)] text-sm mt-1 mb-4">La SEO di base è sempre inclusa.</p>
                     <div className="space-y-2">
                       {GLOBAL_ADDONS.map(addon => {
                         const sel = globalAddons.has(addon.id);
@@ -637,32 +632,32 @@ export default function SimulatorePreventivo() {
                             onClick={() => toggleGlobal(addon.id)}
                             disabled={addon.locked}
                             className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${addon.locked
-                                ? 'border-green-500/20 bg-green-500/5 cursor-default'
+                                ? 'border-[var(--filo)] bg-[var(--superficie)] cursor-default'
                                 : sel
-                                  ? 'border-cyan-400/50 bg-cyan-400/5'
-                                  : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                                  ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                                  : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
                               }`}
                           >
-                            <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${addon.locked ? 'border-green-400 bg-green-400' : sel ? 'border-cyan-400 bg-cyan-400' : 'border-white/30'
+                            <div className={`w-5 h-5 rounded border-2 flex-shrink-0 flex items-center justify-center ${addon.locked ? 'border-[var(--cobalto)] bg-[var(--cobalto)]' : sel ? 'border-[var(--cobalto)] bg-[var(--cobalto)]' : 'border-[var(--filo)]'
                               }`}>
-                              {(addon.locked || sel) && <CheckCircle size={11} className="text-black" />}
+                              {(addon.locked || sel) && <CheckCircle size={11} className="text-white" />}
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 flex-wrap">
-                                <span className={`text-sm font-bold ${addon.locked ? 'text-green-400' : 'text-white'}`}>{addon.label}</span>
+                                <span className={`text-sm font-bold ${addon.locked ? 'text-[var(--cobalto-testo)]' : 'text-[var(--inchiostro)]'}`}>{addon.label}</span>
                                 {addon.locked && (
-                                  <span className="text-[10px] font-black text-green-400 bg-green-400/10 px-2 py-0.5 rounded-full border border-green-400/20">
+                                  <span className="text-xs font-bold text-[var(--cobalto-testo)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)] px-2 py-0.5 rounded-full border border-[var(--cobalto)]">
                                     INCLUSO GRATIS
                                   </span>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-500 mt-0.5">{addon.desc}</p>
+                              <p className="text-xs text-[var(--grafite)] mt-0.5">{addon.desc}</p>
                             </div>
                             <div className="text-right flex-shrink-0">
                               {addon.locked ? (
-                                <span className="text-green-400 font-black text-sm">€0</span>
+                                <span className="text-[var(--cobalto-testo)] font-bold text-sm">0 €</span>
                               ) : (
-                                <p className={`font-black text-sm ${sel ? 'text-cyan-400' : 'text-gray-400'}`}>+€{addon.price}</p>
+                                <p className={`font-bold text-sm ${sel ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>+{inEuro(addon.price)}</p>
                               )}
                             </div>
                           </button>
@@ -678,39 +673,39 @@ export default function SimulatorePreventivo() {
                   <motion.section key="step5" {...reveal} style={{ overflow: 'hidden' }}>
                     <div ref={formRef}>
                       <SectionLabel number={path === 'template' && template ? 5 : 4} label="Richiedi il tuo preventivo" />
-                      <div className="flex items-center gap-2 my-4 p-3 bg-cyan-400/10 border border-cyan-400/30 rounded-lg">
-                        <Clock size={15} className="text-cyan-400 flex-shrink-0" />
-                        <span className="text-cyan-400 text-sm font-bold">Ti mando il preventivo scritto via email entro 24 ore</span>
+                      <div className="flex items-center gap-2 my-4 p-3 bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)] border border-[var(--cobalto)] rounded-lg">
+                        <Clock size={15} className="text-[var(--cobalto-testo)] flex-shrink-0" />
+                        <span className="text-[var(--cobalto-testo)] text-sm font-bold">Ti mando il preventivo scritto via email entro 24 ore</span>
                       </div>
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid sm:grid-cols-2 gap-4">
                           <div>
-                            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Nome *</label>
+                            <label className="text-xs font-bold text-[var(--grafite)] uppercase tracking-wider block mb-1.5">Nome *</label>
                             <input type="text" name="name" value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
                               placeholder="Mario Rossi"
-                              className={`w-full bg-white/5 border ${errors.name ? 'border-red-500/50' : 'border-white/10'} rounded-xl p-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 transition-all text-sm`} />
-                            {errors.name && <p className="text-red-400 text-xs mt-1 flex items-center gap-1"><AlertCircle size={11} />{errors.name}</p>}
+                              className={`w-full bg-[var(--superficie)] border ${errors.name ? 'border-[var(--inchiostro)]' : 'border-[var(--filo)]'} rounded-xl p-3 text-[var(--inchiostro)] placeholder-[var(--grafite)] focus:outline-none focus:border-[var(--cobalto)] transition-all text-sm`} />
+                            {errors.name && <p className="text-[var(--inchiostro)] font-semibold text-xs mt-1 flex items-center gap-1"><AlertCircle size={11} />{errors.name}</p>}
                           </div>
                           <div>
-                            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1.5">Email *</label>
+                            <label className="text-xs font-bold text-[var(--grafite)] uppercase tracking-wider block mb-1.5">Email *</label>
                             <input type="email" name="email" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
                               placeholder="mario@latuaattivita.it"
-                              className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-xl p-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 transition-all text-sm`} />
-                            {errors.email && <p className="text-red-400 text-xs mt-1 flex items-center gap-1"><AlertCircle size={11} />{errors.email}</p>}
+                              className={`w-full bg-[var(--superficie)] border ${errors.email ? 'border-[var(--inchiostro)]' : 'border-[var(--filo)]'} rounded-xl p-3 text-[var(--inchiostro)] placeholder-[var(--grafite)] focus:outline-none focus:border-[var(--cobalto)] transition-all text-sm`} />
+                            {errors.email && <p className="text-[var(--inchiostro)] font-semibold text-xs mt-1 flex items-center gap-1"><AlertCircle size={11} />{errors.email}</p>}
                           </div>
                         </div>
 
                         <button type="submit" disabled={sending}
-                          className="w-full py-4 rounded-xl font-black text-black text-sm tracking-wider bg-gradient-to-r from-cyan-400 to-cyan-500 hover:shadow-[0_0_28px_rgba(0,229,255,0.4)] hover:-translate-y-0.5 transform transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait disabled:hover:translate-y-0">
+                          className="pulsante pulsante--chiama w-full disabled:opacity-70 disabled:cursor-wait">
                           {sending ? 'Invio in corso…' : 'Invia la richiesta →'}
                         </button>
                         {sendError && (
-                          <p role="alert" className="text-center text-red-400 text-sm">
+                          <p role="alert" className="text-center text-[var(--inchiostro)] font-semibold text-sm">
                             L'invio non è riuscito. Riprova, oppure <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="underline font-bold">mandami il riepilogo su WhatsApp</a>.
                           </p>
                         )}
-                        <p className="text-center text-gray-400 text-xs leading-relaxed">
-                          <Lock size={10} className="inline mr-1.5 -mt-0.5" />Nome, email e configurazione mi arrivano per email: servono solo a prepararti il preventivo. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Privacy Policy</a>
+                        <p className="text-center text-[var(--grafite)] text-xs leading-relaxed">
+                          <Lock size={10} className="inline mr-1.5 -mt-0.5" />Nome, email e configurazione mi arrivano per email: servono solo a prepararti il preventivo. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[var(--cobalto-testo)] hover:underline">Privacy Policy</a>
                         </p>
                       </form>
                     </div>
@@ -719,34 +714,30 @@ export default function SimulatorePreventivo() {
               </AnimatePresence>
 
             </div>
-            <LinkLegali className={`mt-16 text-gray-400 ${estimateTotal > 0 ? 'mb-24 lg:mb-0' : ''}`} />
           </div>
 
-          {/* spacer per non far sovrapporre il contenuto sinistro */}
-          <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0" />
-          <div className="hidden lg:block fixed top-0 right-0 h-screen w-[300px] xl:w-[340px] overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8 z-20">
-
-            <div className={`p-5 rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ${flashEstimate ? 'shadow-[0_0_24px_rgba(0,229,255,0.2)]' : ''}`}>
-              <p className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">Il tuo preventivo</p>
+          <aside className="hidden lg:block sticky top-[calc(var(--altezza-testata)+24px)]" aria-label="Il tuo preventivo">
+            <div className={`p-5 rounded-2xl border bg-[var(--superficie)] transition-colors duration-300 ${flashEstimate ? 'border-[var(--cobalto)]' : 'border-[var(--filo)]'}`}>
+              <p className="text-xs font-bold text-[var(--grafite)] uppercase tracking-widest mb-4">Il tuo preventivo</p>
 
               {path && (
-                <div className="mb-4 pb-4 border-b border-white/10 space-y-1.5 text-xs">
+                <div className="mb-4 pb-4 border-b border-[var(--filo)] space-y-1.5 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Sito base</span>
-                    <span className="text-white font-bold">€{P.siteBase.toLocaleString('it-IT')}</span>
+                    <span className="text-[var(--grafite)]">Sito base</span>
+                    <span className="text-[var(--inchiostro)] font-bold">{inEuro(P.siteBase)}</span>
                   </div>
                   {path === 'template' && template && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{template.emoji} {template.label}</span>
-                      <span className="text-gray-300">incluso</span>
+                      <span className="text-[var(--grafite)]">{template.emoji} {template.label}</span>
+                      <span className="text-[var(--inchiostro)]">incluso</span>
                     </div>
                   )}
                   {path === 'template' && template && chatbotOption !== 'none' && (() => {
                     const cb = template.chatbotOptions.find(c => c.id === chatbotOption);
                     return cb ? (
                       <div className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[150px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[150px]">{cb.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(cb.price)}</span>
                       </div>
                     ) : null;
                   })()}
@@ -754,8 +745,8 @@ export default function SimulatorePreventivo() {
                     const ex = template.extras.find(e => e.id === id);
                     return ex ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[150px]">{ex.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(ex.price)}</span>
                       </div>
                     ) : null;
                   })}
@@ -763,8 +754,8 @@ export default function SimulatorePreventivo() {
                     const cb = VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption);
                     return cb ? (
                       <div className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[150px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[150px]">{cb.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(cb.price)}</span>
                       </div>
                     ) : null;
                   })()}
@@ -772,8 +763,8 @@ export default function SimulatorePreventivo() {
                     const ex = VETRINA_EXTRAS.find(e => e.id === id);
                     return ex ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[150px]">{ex.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(ex.price)}</span>
                       </div>
                     ) : null;
                   })}
@@ -781,45 +772,44 @@ export default function SimulatorePreventivo() {
                     const a = GLOBAL_ADDONS.find(x => x.id === id);
                     return a ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[150px]">{a.label.split('—')[0].trim()}</span>
-                        <span className="text-cyan-400 font-bold">+€{a.price}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[150px]">{a.label.split('—')[0].trim()}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(a.price)}</span>
                       </div>
                     ) : null;
                   })}
-                  <div className="flex justify-between text-gray-600">
+                  <div className="flex justify-between text-[var(--grafite)]">
                     <span>SEO di base</span>
-                    <span className="text-green-400 font-bold">Gratis</span>
+                    <span className="text-[var(--cobalto-testo)] font-bold">Gratis</span>
                   </div>
                 </div>
               )}
 
               {estimateTotal > 0 ? (
                 <div className="text-center mb-4">
-                  <p className={`text-4xl font-black tabular-nums transition-all duration-300 ${flashEstimate ? 'text-cyan-300 scale-105' : 'text-white'}`}>
-                    €{animatedEstimate.toLocaleString('it-IT')}
+                  <p className={`text-4xl font-bold tabular-nums transition-all duration-300 ${flashEstimate ? 'text-[var(--cobalto-testo)] scale-105' : 'text-[var(--inchiostro)]'}`}>
+                    {inEuro(animatedEstimate)}
                   </p>
                 </div>
               ) : (
-                <p className="text-center text-gray-600 text-sm py-6 italic">
+                <p className="text-center text-[var(--grafite)] text-sm py-6 italic">
                   Seleziona una soluzione per vedere il preventivo in tempo reale
                 </p>
               )}
 
-              <div className="pt-4 border-t border-white/10 space-y-2">
+              <div className="pt-4 border-t border-[var(--filo)] space-y-2">
                 {[
-                  { icon: <Shield size={11} className="text-green-400" />, text: 'Prezzo scritto prima di iniziare' },
-                  { icon: <CheckCircle size={11} className="text-purple-400" />, text: 'Pagamento anche a rate' },
-                  { icon: <Clock size={11} className="text-cyan-400" />, text: 'Sito vetrina in 7-14 giorni' },
-                  { icon: <Phone size={11} className="text-amber-400" />, text: 'Al telefono rispondo io' },
+                  { icon: <Shield size={11} className="text-[var(--cobalto-testo)]" />, text: 'Prezzo scritto prima di iniziare' },
+                  { icon: <CheckCircle size={11} className="text-[var(--cobalto-testo)]" />, text: 'Pagamento anche a rate' },
+                  { icon: <Clock size={11} className="text-[var(--cobalto-testo)]" />, text: 'Sito vetrina in 7-14 giorni' },
+                  { icon: <Phone size={11} className="text-[var(--cobalto-testo)]" />, text: 'Al telefono rispondo io' },
                 ].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-gray-500">
+                  <div key={i} className="flex items-center gap-2 text-xs text-[var(--grafite)]">
                     {t.icon}<span>{t.text}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-
+          </aside>
         </div>
 
         {estimateTotal > 0 && (
@@ -831,25 +821,25 @@ export default function SimulatorePreventivo() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-[#0d0d1a]/98 backdrop-blur-md border-t border-white/10 px-4 pt-4 pb-2 space-y-1.5 text-xs"
+                  className="bg-[var(--carta)] border-t border-[var(--filo)] px-4 pt-4 pb-2 space-y-1.5 text-xs"
                 >
-                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Riepilogo voci</p>
+                  <p className="text-xs font-bold text-[var(--grafite)] uppercase tracking-widest mb-2">Riepilogo voci</p>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Sito base</span>
-                    <span className="text-white font-bold">€{P.siteBase.toLocaleString('it-IT')}</span>
+                    <span className="text-[var(--grafite)]">Sito base</span>
+                    <span className="text-[var(--inchiostro)] font-bold">{inEuro(P.siteBase)}</span>
                   </div>
                   {path === 'template' && template && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{template.emoji} {template.label}</span>
-                      <span className="text-gray-300">incluso</span>
+                      <span className="text-[var(--grafite)]">{template.emoji} {template.label}</span>
+                      <span className="text-[var(--inchiostro)]">incluso</span>
                     </div>
                   )}
                   {path === 'template' && template && chatbotOption !== 'none' && (() => {
                     const cb = template.chatbotOptions.find(c => c.id === chatbotOption);
                     return cb ? (
                       <div className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[200px]">{cb.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(cb.price)}</span>
                       </div>
                     ) : null;
                   })()}
@@ -857,8 +847,8 @@ export default function SimulatorePreventivo() {
                     const ex = template.extras.find(e => e.id === id);
                     return ex ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[200px]">{ex.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(ex.price)}</span>
                       </div>
                     ) : null;
                   })}
@@ -866,8 +856,8 @@ export default function SimulatorePreventivo() {
                     const cb = VETRINA_CHATBOT_OPTIONS.find(c => c.id === chatbotOption);
                     return cb ? (
                       <div className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[200px]">{cb.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(cb.price)}</span>
                       </div>
                     ) : null;
                   })()}
@@ -875,8 +865,8 @@ export default function SimulatorePreventivo() {
                     const ex = VETRINA_EXTRAS.find(e => e.id === id);
                     return ex ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[200px]">{ex.label}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(ex.price)}</span>
                       </div>
                     ) : null;
                   })}
@@ -884,48 +874,47 @@ export default function SimulatorePreventivo() {
                     const a = GLOBAL_ADDONS.find(x => x.id === id);
                     return a ? (
                       <div key={id} className="flex justify-between">
-                        <span className="text-gray-400 truncate max-w-[200px]">{a.label.split('—')[0].trim()}</span>
-                        <span className="text-cyan-400 font-bold">+€{a.price}</span>
+                        <span className="text-[var(--grafite)] truncate max-w-[200px]">{a.label.split('—')[0].trim()}</span>
+                        <span className="text-[var(--cobalto-testo)] font-bold">+{inEuro(a.price)}</span>
                       </div>
                     ) : null;
                   })}
-                  <div className="flex justify-between text-gray-600 pb-2 border-b border-white/10">
+                  <div className="flex justify-between text-[var(--grafite)] pb-2 border-b border-[var(--filo)]">
                     <span>SEO di base</span>
-                    <span className="text-green-400 font-bold">Gratis</span>
+                    <span className="text-[var(--cobalto-testo)] font-bold">Gratis</span>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <div className="bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
+            <div className="bg-[var(--carta)] border-t border-[var(--filo)] p-4 flex items-center justify-between gap-4">
               <button onClick={() => setShowMobileDetail(v => !v)} className="text-left flex-1">
-                <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashEstimate ? 'text-cyan-300' : 'text-white'}`}>
-                  €{animatedEstimate.toLocaleString('it-IT')}
+                <p className={`text-2xl font-bold tabular-nums transition-all duration-300 ${flashEstimate ? 'text-[var(--cobalto-testo)]' : 'text-[var(--inchiostro)]'}`}>
+                  {inEuro(animatedEstimate)}
                 </p>
-                <p className="text-[10px] text-gray-600 mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
+                <p className="text-xs text-[var(--grafite)] mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
               </button>
               <button
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                className="flex-shrink-0 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-black text-sm rounded-xl shadow-lg shadow-cyan-400/20"
+                className="pulsante pulsante--chiama flex-shrink-0"
               >
                 Richiedi
               </button>
             </div>
           </div>
         )}
-
       </div>
-    </>
+    </PaginaVetrina>
   );
 }
 
 function SectionLabel({ number, label }: { number: number; label: string }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="w-7 h-7 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center flex-shrink-0">
-        <span className="text-cyan-400 text-xs font-black">{number}</span>
+      <div className="w-7 h-7 rounded-full bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)] border border-[var(--cobalto)] flex items-center justify-center flex-shrink-0">
+        <span className="text-[var(--cobalto-testo)] text-xs font-bold">{number}</span>
       </div>
-      <h2 className="text-lg font-black text-white">{label}</h2>
+      <h2 className="text-lg font-bold text-[var(--inchiostro)]">{label}</h2>
     </div>
   );
 }

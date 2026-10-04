@@ -148,7 +148,7 @@
   font-size: .8125rem; line-height: 1.4;
   color: var(--grafite, #55554F);
 }
-.home-vetrina .assistente-ai-informativa a { color: var(--inchiostro, #141414); font-weight: 600; white-space: nowrap; }
+.home-vetrina .assistente-ai-informativa a { color: inherit; }
 
 @media (hover: hover) {
   .home-vetrina .assistente-ai-apri:hover, .home-vetrina .assistente-ai-invia:not(:disabled):hover { background: color-mix(in oklab, var(--cobalto, #2347E6), #000000 18%); }

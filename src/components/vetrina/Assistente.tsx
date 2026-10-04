@@ -265,7 +265,6 @@ const Assistente: React.FC = () => {
             maxLength={CARATTERI_DOMANDA}
             placeholder="Scrivi la tua domanda"
             enterKeyHint="send"
-            aria-describedby="assistente-ai-informativa"
             value={bozza}
             onChange={(evento) => setBozza(evento.target.value)}
             onKeyDown={inviaConInvio}
@@ -274,8 +273,7 @@ const Assistente: React.FC = () => {
             <Icona nome="invia" />
           </button>
         </form>
-        <p className="assistente-ai-informativa" id="assistente-ai-informativa">
-          Le risposte le scrive Google Gemini: i messaggi passano dai server di Google, che li conserva 55 giorni solo per controllare gli abusi. Il sito non li salva. Non scrivere dati personali o sensibili.{' '}
+        <p className="assistente-ai-informativa">
           <Link to="/privacy-policy" target="_blank" rel="noopener">Privacy policy</Link>
         </p>
       </div>

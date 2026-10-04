@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { pagineStatiche } from './pagine-statiche';
 
 export default defineConfig({
   server: {
@@ -10,6 +11,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    pagineStatiche(),
     ViteImageOptimizer({
       // Su Windows, se Vite vede il disco come "c:" e il plugin come "C:", le copie compresse finiscono sopra gli originali di public/: le immagini lì vanno messe già ottimizzate
       includePublic: false,
@@ -26,7 +28,7 @@ export default defineConfig({
           if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom|@remix-run[\\/]router)[\\/]/.test(idModulo)) return 'vendor-react';
           if (/[\\/]node_modules[\\/]gsap[\\/]/.test(idModulo)) return 'vendor-gsap';
           if (/[\\/]node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/.test(idModulo)) return 'vendor-framer';
-          if (/[\\/]node_modules[\\/](lenis|lucide-react|react-helmet-async)[\\/]/.test(idModulo)) return 'vendor-misc';
+          if (/[\\/]node_modules[\\/](lenis|lucide-react)[\\/]/.test(idModulo)) return 'vendor-misc';
         },
       },
     },

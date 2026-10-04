@@ -12,6 +12,8 @@ export const recapiti = {
   demoHotel: 'https://hotel-automatico.vercel.app/',
 } as const;
 
+export const sottotitoloEroe = 'Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
+
 export interface ImmagineSito {
   src: string;
   larghezza: number;

@@ -1,16 +1,10 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 
 const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
-      <SEO
-        title="Privacy Policy | Mauro.exe"
-        description="Informativa sulla privacy ai sensi del Regolamento UE 2016/679 (GDPR) per il sito mauroceccarelli.it"
-        canonical="https://www.mauroceccarelli.it/privacy-policy"
-      />
       <Navbar />
       <main id="main-content" className="pt-32 pb-24">
         <div className="max-w-3xl mx-auto px-6">

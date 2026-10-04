@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './styles/caratteri.css';
 import './index.css';
@@ -12,9 +11,7 @@ if (!rootElement) {
 
 const app = (
   <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
+    <App />
   </React.StrictMode>
 );
 
@@ -31,6 +28,4 @@ window.addEventListener('vite:preloadError', (erroreCaricamento) => {
   window.location.reload();
 });
 
-/* Sempre createRoot: #root contiene SEO fallback statico che React sostituisce
-   al mount. Hydrate causerebbe mismatch error. */
 ReactDOM.createRoot(rootElement).render(app);

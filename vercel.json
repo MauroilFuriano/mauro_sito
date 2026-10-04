@@ -1,17 +1,18 @@
 {
     "buildCommand": "vite build",
     "regions": ["fra1"],
+    "cleanUrls": true,
     "trailingSlash": false,
     "redirects": [
         {
-            "source": "/:path*",
+            "source": "/:path(.*)",
             "has": [
                 {
                     "type": "host",
                     "value": "mauro-sito.vercel.app"
                 }
             ],
-            "destination": "https://www.mauroceccarelli.it/:path*",
+            "destination": "https://www.mauroceccarelli.it/:path",
             "permanent": true
         },
         {
@@ -23,12 +24,11 @@
             "source": "/promo-pasqua",
             "destination": "/",
             "permanent": true
-        }
-    ],
-    "rewrites": [
+        },
         {
-            "source": "/(hotel|saas|agri-ecommerce|simulatore|privacy-policy|cookie-policy|card|faq)",
-            "destination": "/"
+            "source": "/faq",
+            "destination": "/#faq",
+            "permanent": true
         }
     ],
     "headers": [

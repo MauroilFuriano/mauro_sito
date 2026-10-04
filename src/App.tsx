@@ -2,6 +2,7 @@ import React, { lazy, Suspense, Component, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
+import MetadatiPagina from './components/MetadatiPagina';
 import { EVENTO_CONSENSO, attivaTagConsentiti, leggiValoreCookie, segnaEvento } from './misurazione';
 
 const GA4PageTracker: React.FC = () => {
@@ -99,6 +100,7 @@ const App: React.FC = () => (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollInCima />
       <SmoothScroll />
+      <MetadatiPagina />
       <GA4PageTracker />
       <Suspense fallback={<Loading />}>
         <Routes>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Loader2, Shield, Star, Zap, Clock, Lock, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import SEO from '../components/SEO';
 import LinkLegali from '../components/LinkLegali';
 import { leggiValoreCookie } from '../misurazione';
 
@@ -298,12 +297,6 @@ export default function SimulatorePreventivo() {
 
   if (success) return (
     <>
-      <SEO
-        title="Preventivo Bloccato | Mauro.exe"
-        description="Ultimo passo: invia il riepilogo del preventivo su WhatsApp."
-        canonical="https://www.mauroceccarelli.it/simulatore"
-        noindex={true}
-      />
       <div className="min-h-screen bg-[#0d0d1a] flex items-center justify-center px-4">
         <div id="main-content" className="text-center max-w-lg">
           <div className="w-20 h-20 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -341,11 +334,6 @@ export default function SimulatorePreventivo() {
 
   return (
     <>
-      <SEO
-        title="Simulatore Preventivo Sito Web | Mauro.exe — Ascoli Piceno"
-        description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli extra."
-        canonical="https://www.mauroceccarelli.it/simulatore"
-      />
       <div ref={topRef} className="min-h-screen bg-[#0d0d1a] text-gray-200 selection:bg-cyan-400 selection:text-black">
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute top-0 left-[-10%] w-[50%] h-[40%] bg-cyan-400/3 rounded-full blur-[140px]" />

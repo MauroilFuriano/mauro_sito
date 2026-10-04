@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
-import SEO from '../components/SEO';
 import Assistente from '../components/vetrina/Assistente';
 import BarraContatti from '../components/vetrina/BarraContatti';
 import ChiSono from '../components/vetrina/ChiSono';
@@ -18,195 +16,9 @@ import Servizi from '../components/vetrina/Servizi';
 import Settori from '../components/vetrina/Settori';
 import Testata from '../components/vetrina/Testata';
 import { ScrollTrigger } from '../components/vetrina/animazioni';
-import { domandeFrequenti } from '../data/home';
 import { segnaEvento } from '../misurazione';
 import '../styles/vetrina.css';
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://www.mauroceccarelli.it/#person",
-      "name": "Mauro Ceccarelli",
-      "jobTitle": "Full Stack Developer & AI Integration Specialist",
-      "url": "https://www.mauroceccarelli.it",
-      "image": "https://www.mauroceccarelli.it/mauro.webp",
-      "email": "mauroexe@mauroceccarelli.it",
-      "telephone": "+393480029661",
-      "sameAs": [
-        "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
-        "https://github.com/MauroilFuriano",
-        "https://www.instagram.com/mauroceccarelli.exe",
-        "https://www.facebook.com/profile.php?id=61585910800513"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ascoli Piceno",
-        "addressRegion": "Marche",
-        "addressCountry": "IT"
-      },
-      "knowsAbout": [
-        "React", "TypeScript", "Tailwind CSS", "Node.js",
-        "OpenAI API", "Google Gemini", "Supabase",
-        "Web Development", "Chatbot AI", "LLM Integration",
-        "SaaS Development", "E-commerce Headless"
-      ]
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://www.mauroceccarelli.it/#service",
-      "name": "MAURO.EXE di Mauro Ceccarelli",
-      "image": "https://www.mauroceccarelli.it/og-image.jpg",
-      "url": "https://www.mauroceccarelli.it",
-      "telephone": "+393480029661",
-      "email": "mauroexe@mauroceccarelli.it",
-      "vatID": "IT02606790448",
-      "taxID": "02606790448",
-      "founder": { "@id": "https://www.mauroceccarelli.it/#person" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ascoli Piceno",
-        "addressRegion": "Marche",
-        "addressCountry": "IT"
-      },
-      "areaServed": [
-        { "@type": "State", "name": "Marche" },
-        { "@type": "Country", "name": "Italia" }
-      ],
-      "priceRange": "€€",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servizi Digitali",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sviluppo Siti Web", "description": "Siti web professionali custom con React, ad alta performance e ottimizzati per le conversioni." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Chatbot AI & Integrazione LLM", "description": "Assistenti virtuali intelligenti basati su GPT-4o, Gemini o Claude per automazione business 24/7." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web App & SaaS su Misura", "description": "Dashboard, gestionali, piattaforme SaaS e automazioni di processo personalizzate." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce Headless", "description": "Negozi online custom con React/Next.js, integrazione Stripe e gateway di pagamento." } }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.mauroceccarelli.it/#website",
-      "url": "https://www.mauroceccarelli.it",
-      "name": "Mauro.exe — Sviluppatore Web Ascoli Piceno",
-      "description": "Portfolio e servizi di Mauro Ceccarelli, sviluppatore web specializzato in siti web, chatbot AI e automazione business.",
-      "publisher": { "@id": "https://www.mauroceccarelli.it/#person" },
-      "inLanguage": "it-IT"
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.mauroceccarelli.it/#localbusiness",
-      "name": "MAURO.EXE di Mauro Ceccarelli",
-      "image": "https://www.mauroceccarelli.it/og-image.jpg",
-      "description": "Sviluppatore web freelance specializzato in siti web custom, chatbot AI e automazione business per PMI italiane.",
-      "url": "https://www.mauroceccarelli.it",
-      "telephone": "+393480029661",
-      "email": "mauroexe@mauroceccarelli.it",
-      "vatID": "IT02606790448",
-      "taxID": "02606790448",
-      "priceRange": "€€",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ascoli Piceno",
-        "addressRegion": "Marche",
-        "addressCountry": "IT",
-        "postalCode": "63100"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 42.8535,
-        "longitude": 13.5745
-      },
-      "areaServed": ["Ascoli Piceno", "Marche", "Italia"],
-      "serviceType": ["Sviluppo Siti Web", "Chatbot AI", "Automazione Business"],
-      "openingHours": ["Mo-Fr 09:00-18:00"],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "4",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Organization",
-            "name": "Redicar srl"
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Mauro ci ha rifatto completamente il sito di Redicar e devo dire che il risultato mi ha sorpreso davvero. il sito è veloce, moderno e si usa bene anche dal telefono. La cosa che mi ha colpito di più è un modulo che ha integrato direttamente nel sito: i clienti possono inserire i dati della loro auto usata e ricevere subito una stima del valore. Un piccolo algoritmo proprietario, fatto su misura per noi, che già i primi giorni ha iniziato a portarci richieste nuove. Mauro è stato disponibile in ogni fase, ha spiegato tutto con calma senza fare il tecnico, e ha rispettato i tempi. Se avete un'attività e volete un sito fatto bene, lo consiglio senza esitazione. Realino Daniele Di Leo — REDICAR S.R.L., Colonnella (TE)",
-          "datePublished": "2026-09-23"
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Organization",
-            "name": "Tipolitografia Graphic Arts"
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Ottimo risultato, lavoro chiaro e corretto! Programma x t shirt top",
-          "datePublished": "2026-07-09"
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Fabio Campanelli"
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Cercavo qualcuno che mi costruisse un sito web professionale per la mia attività di tavoli in legno e resina epossidica ad Ascoli Piceno. Grazie a Mauro il sito è veloce, con animazioni professionali, un chatbot integrato e soprattutto è ottimizzato per la SEO e la GEO. Lo consiglio a chiunque abbia un'attività e voglia farsi trovare online da clienti veri.",
-          "datePublished": "2026-04-09"
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Maicol Ceccarelli"
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "reviewBody": "Ragazzo serio e professionale, oltre ogni mia aspettativa. Il sito che ha fatto a me è stupendo! Veramente bravo Mauro.",
-          "datePublished": "2026-04-09"
-        }
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
-        "https://github.com/MauroilFuriano",
-        "https://www.instagram.com/mauroceccarelli.exe"
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.mauroceccarelli.it/#faq",
-      "mainEntity": domandeFrequenti.map(({ domanda, risposta }) => ({
-        "@type": "Question",
-        "name": domanda,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": risposta
-        }
-      }))
-    }
-  ]
-};
 
 const ancoreVecchie = new Map([
   ['home', 'contenuto'],
@@ -370,15 +182,6 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="home-vetrina" ref={radiceRef} onClick={seguiCollegamento}>
-      <SEO
-        title="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe"
-        description="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi."
-        canonical="https://www.mauroceccarelli.it/"
-        structuredData={structuredData}
-      />
-      <Helmet>
-        <link rel="preload" as="image" href="/lavori/redicar-desktop.webp" fetchPriority="high" />
-      </Helmet>
       <a className="salta" href="#contenuto">Vai al contenuto</a>
       <Testata />
 

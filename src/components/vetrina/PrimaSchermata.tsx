@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { clientiRecenti } from '../../data/home';
+import { clientiRecenti, sottotitoloEroe } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import CorniceBrowser from './CorniceBrowser';
 import CorniceTelefono from './CorniceTelefono';
@@ -70,7 +70,7 @@ const PrimaSchermata: React.FC = () => {
       <div className="eroe-griglia">
         <div className="eroe-testo">
           <h1 id="titolo-eroe">Sviluppatore web ad <span className="senza-a-capo">Ascoli Piceno</span></h1>
-          <p className="eroe-sottotitolo">Faccio siti web per hotel, B&amp;B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.</p>
+          <p className="eroe-sottotitolo">{sottotitoloEroe}</p>
           <AzioniContatto id="azioni-eroe" conNota />
         </div>
 

@@ -1,17 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import SEO from '../components/SEO';
 import { apriPreferenzeCookie } from '../misurazione';
 
 const CookiePolicyPage: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-dark-900 text-gray-200 selection:bg-cyan-400 selection:text-black">
-      <SEO
-        title="Cookie Policy | Mauro.exe"
-        description="Cookie e strumenti di tracciamento di mauroceccarelli.it, secondo l'art. 122 del Codice Privacy e le Linee guida cookie del Garante del 10 giugno 2021."
-        canonical="https://www.mauroceccarelli.it/cookie-policy"
-      />
       <Navbar />
       <main id="main-content" className="pt-32 pb-24">
         <div className="max-w-3xl mx-auto px-6">

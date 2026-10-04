@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import SaasNavbar from '../components/saas-landing/SaasNavbar';
 import SaasHero from '../components/saas-landing/SaasHero';
 import SaasFeatures from '../components/saas-landing/SaasFeatures';
-import SEO from '../components/SEO';
 import LinkLegali from '../components/LinkLegali';
 
 const SaasLanding: React.FC = () => {
@@ -12,37 +11,6 @@ const SaasLanding: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-slate-950 font-sans text-slate-200 overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-200">
-            <SEO
-                title="Dashboard E-commerce Personalizzata | Gestione Negozio Smart"
-                description="Crea la tua area ordini e clienti personalizzata. Dashboard e-commerce sviluppata su misura, senza costi mensili di piattaforme standard."
-                canonical="https://www.mauroceccarelli.it/saas"
-                structuredData={{
-                    '@context': 'https://schema.org',
-                    '@type': 'SoftwareApplication',
-                    name: 'Dashboard E-commerce Personalizzata',
-                    description: 'Piattaforma e-commerce su misura con gestione ordini, autenticazione, pagamenti e notifiche. Nessun costo mensile per piattaforme standard.',
-                    applicationCategory: 'BusinessApplication',
-                    operatingSystem: 'Web',
-                    url: 'https://www.mauroceccarelli.it/saas',
-                    author: { '@id': 'https://www.mauroceccarelli.it/#person' },
-                    offers: [
-                        {
-                            '@type': 'Offer',
-                            name: 'Starter',
-                            price: '99',
-                            priceCurrency: 'EUR',
-                            description: 'Dashboard base con gestione ordini e clienti',
-                        },
-                        {
-                            '@type': 'Offer',
-                            name: 'Nexus Pro',
-                            price: '249',
-                            priceCurrency: 'EUR',
-                            description: 'Dashboard completa con pagamenti, notifiche e analytics avanzati',
-                        },
-                    ],
-                }}
-            />
             <SaasNavbar />
 
             <main id="main-content">

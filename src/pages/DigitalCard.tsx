@@ -11,7 +11,6 @@ import {
   Code2,
   Cpu
 } from 'lucide-react';
-import SEO from '../components/SEO';
 import LinkLegali from '../components/LinkLegali';
 
 const DigitalCard: React.FC = () => {
@@ -49,11 +48,6 @@ END:VCARD`;
 
   return (
     <div className="min-h-screen bg-[#05050A] text-white flex flex-col items-center p-4 sm:p-8 font-sans">
-      <SEO 
-        title="Digital Business Card | Mauro Ceccarelli"
-        description="Salva i contatti di Mauro Ceccarelli, Sviluppatore Web & AI. Disponibile per nuovi progetti e consulenze."
-      />
-
       <div id="main-content" className="w-full max-w-[450px] bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl relative">
         
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-[80px]" />

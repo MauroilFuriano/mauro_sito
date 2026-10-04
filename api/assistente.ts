@@ -269,8 +269,7 @@ export default async function handler(req: RichiestaVercel, res: RispostaVercel)
     return res.status(400).json({ errore: 'richiesta' });
   }
 
-  // VITE_GEMINI_API_KEY è il nome del vecchio chatbot, la cui chiave è finita nei bundle pubblici: resta solo finché su Vercel non c'è GEMINI_API_KEY
-  const chiave = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+  const chiave = process.env.GEMINI_API_KEY;
   if (!chiave) {
     console.error('[api/assistente] manca la chiave GEMINI_API_KEY');
     return res.status(500).json({ errore: 'configurazione' });

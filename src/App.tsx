@@ -1,9 +1,7 @@
 import React, { lazy, Suspense, Component, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom';
-import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
 import MetadatiPagina from './components/MetadatiPagina';
-import { conStileVetrina } from './data/seo';
 import { EVENTO_CONSENSO, attivaTagConsentiti, leggiValoreCookie, segnaEvento } from './misurazione';
 
 const GA4PageTracker: React.FC = () => {
@@ -58,16 +56,8 @@ const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 
-const Loading = () => {
-  const { pathname } = useLocation();
-  // La classe accende già il fondo della home di index.css, chiaro o scuro secondo data-tema, mentre arriva il resto
-  if (conStileVetrina(pathname)) return <div className="home-vetrina" />;
-  return (
-    <div className="min-h-screen bg-dark-950 flex items-center justify-center">
-      <span className="text-cyan-400 text-lg animate-pulse">Caricamento...</span>
-    </div>
-  );
-};
+// La classe accende già il fondo della home di index.css, chiaro o scuro secondo data-tema, mentre arriva il resto
+const Loading = () => <div className="home-vetrina" />;
 
 const ErrorFallback = () => (
   <div className="min-h-screen bg-dark-950 flex flex-col items-center justify-center text-white px-6">
@@ -100,7 +90,6 @@ const App: React.FC = () => (
   <ErrorBoundary>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollInCima />
-      <SmoothScroll />
       <MetadatiPagina />
       <GA4PageTracker />
       <Suspense fallback={<Loading />}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { clientiRecenti, numeroRecensioniGoogle, sottotitoloEroe } from '../../data/home';
+import { clientiRecenti, numeroRecensioniGoogle, sottotitoloEroe, vetrinaEroe } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import CorniceBrowser from './CorniceBrowser';
 import CorniceTelefono from './CorniceTelefono';
@@ -59,7 +59,8 @@ const PrimaSchermata: React.FC = () => {
       spostamenti.forEach(([strato, spostamento]) => {
         gsap.to(strato, { yPercent: spostamento, ease: 'none', scrollTrigger: { ...finePrimaSchermata } });
       });
-      gsap.to('.vetrina-principale .schermo-pellicola', { yPercent: -21, ease: 'none', scrollTrigger: { ...finePrimaSchermata, scrub: 0.9 } });
+      // Lo screenshot di Redicar qui è ritagliato a 1440×1540: -36,8% della sua altezza è lo stesso tratto del -21% sullo screenshot intero da 2700
+      gsap.to('.vetrina-principale .schermo-pellicola', { yPercent: -36.8, ease: 'none', scrollTrigger: { ...finePrimaSchermata, scrub: 0.9 } });
     }, eroe);
 
     return () => sceltaMedia.revert();
@@ -77,44 +78,18 @@ const PrimaSchermata: React.FC = () => {
         <div className={vetrinaPronta ? 'vetrina vetrina--pronta' : 'vetrina'} ref={vetrinaRef}>
           <div className="vetrina-livello vetrina-dietro">
             <div className="vetrina-ingresso">
-              <CorniceBrowser
-                indirizzo="fcresinwoodcreations.com"
-                immagine={{
-                  src: '/lavori/fc-resinwood-desktop.webp',
-                  larghezza: 1440,
-                  altezza: 2700,
-                  alt: 'Il sito di FC Resinwood, laboratorio artigiano ad Ascoli Piceno, aperto su un computer: un tavolo in legno con un fiume di resina blu',
-                }}
-              />
+              <CorniceBrowser {...vetrinaEroe.dietro} />
             </div>
           </div>
           <div className="vetrina-livello vetrina-principale">
             <figure className="vetrina-ingresso">
-              <CorniceBrowser
-                indirizzo="redicar.it"
-                caricamentoPigro={false}
-                prioritaAlta
-                immagine={{
-                  src: '/lavori/redicar-desktop.webp',
-                  larghezza: 1440,
-                  altezza: 2700,
-                  alt: 'Il sito di Redicar, concessionaria a Colonnella, aperto su un computer: il piazzale delle auto e il titolo Veicoli usati certificati e garantiti',
-                }}
-              />
+              <CorniceBrowser {...vetrinaEroe.principale} caricamentoPigro={false} prioritaAlta />
               <figcaption className="cartellino"><strong>Redicar</strong><span>Colonnella (TE)</span></figcaption>
             </figure>
           </div>
           <div className="vetrina-livello vetrina-telefono">
             <figure className="vetrina-ingresso">
-              <CorniceTelefono
-                caricamentoPigro={false}
-                immagine={{
-                  src: '/lavori/graphic-arts-mobile.webp',
-                  larghezza: 780,
-                  altezza: 5064,
-                  alt: "Il sito di Graphic Arts, tipolitografia a San Benedetto del Tronto, aperto su un telefono, con i pulsanti Genera con l'AI e Crea t-shirt",
-                }}
-              />
+              <CorniceTelefono {...vetrinaEroe.telefono} caricamentoPigro={false} />
               <figcaption className="cartellino"><strong>Graphic Arts</strong><span>San Benedetto del Tronto</span></figcaption>
             </figure>
           </div>

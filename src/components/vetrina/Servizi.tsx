@@ -6,6 +6,9 @@ import CorniceTelefono from './CorniceTelefono';
 import { Icona } from './Icone';
 import { conMovimento, gsap, ScrollTrigger } from './animazioni';
 
+const MISURE_TELEFONO = '(max-width: 599px) 38vw, (max-width: 899px) 195px, 260px';
+const MISURE_COMPUTER = '(max-width: 899px) 84vw, min(36vw, 530px)';
+
 const ScenaServizio: React.FC<{ servizio: Servizio; attiva?: boolean }> = ({ servizio, attiva = false }) => {
   const { scena, cartellino } = servizio;
   return (
@@ -13,10 +16,10 @@ const ScenaServizio: React.FC<{ servizio: Servizio; attiva?: boolean }> = ({ ser
       <div className="servizio-finestra">
         {scena.cornice === 'telefono' ? (
           <div className="servizio-telefono">
-            <CorniceTelefono immagine={scena.immagine} pellicola={scena.pellicolaChat ? 'chat' : undefined} />
+            <CorniceTelefono immagine={scena.immagine} misure={MISURE_TELEFONO} pellicola={scena.pellicolaChat ? 'chat' : undefined} />
           </div>
         ) : (
-          <CorniceBrowser indirizzo={scena.indirizzo} immagine={scena.immagine} />
+          <CorniceBrowser indirizzo={scena.indirizzo} immagine={scena.immagine} misure={MISURE_COMPUTER} />
         )}
       </div>
       <figcaption className="cartellino"><strong>{cartellino.nome}</strong><span>{cartellino.nota}</span></figcaption>

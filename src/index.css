@@ -51,16 +51,6 @@ html.avvio-home[data-tema="scuro"]:has(#root:empty) body {
   color-scheme: dark;
 }
 
-/* La home ha il suo "Vai al contenuto" verso #contenuto */
-body:has(.home-vetrina) > a[href="#main-content"] {
-  display: none;
-}
-
-/* Prima che React lo nasconda, il link globale col font-sans farebbe scaricare Roboto, che la home non usa */
-html.avvio-home body > a[href="#main-content"] {
-  font-family: system-ui, sans-serif;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(30px);

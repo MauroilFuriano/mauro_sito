@@ -1,4 +1,4 @@
-import { domandeFrequenti, listino, recapiti, servizi, sintesiAttivita, sottotitoloEroe } from './home';
+import { domandeFrequenti, listino, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type ImmagineSito } from './home';
 import { paginaAgricola, paginaGestionale, paginaHotel, type ContenutoPaginaServizio } from './pagineServizio';
 
 export const SITO = 'https://www.mauroceccarelli.it';
@@ -22,9 +22,8 @@ export interface PaginaDelSito {
   titolo: string;
   descrizione: string;
   indicizzabile: boolean;
-  stileVetrina: boolean;
   ultimaModifica?: string;
-  immaginiDaPrecaricare?: readonly string[];
+  immagineDaPrecaricare?: { immagine: ImmagineSito; misure: string };
   datiStrutturati?: readonly Record<string, unknown>[];
   senzaJs: ContenutoSenzaJs;
 }
@@ -113,9 +112,8 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Sviluppatore web Ascoli Piceno: siti da 1.500 € | Mauro.exe',
     descrizione: 'Siti web per hotel, negozi e artigiani del Piceno: prezzo scritto prima di iniziare, sito vetrina in 7-14 giorni. Chiama il 348 002 9661.',
     indicizzabile: true,
-    stileVetrina: true,
     ultimaModifica: '2026-10-04',
-    immaginiDaPrecaricare: ['/lavori/redicar-desktop.webp'],
+    immagineDaPrecaricare: vetrinaEroe.principale,
     datiStrutturati: grafoHome,
     senzaJs: {
       titolo: 'Sviluppatore web ad Ascoli Piceno',
@@ -133,7 +131,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Sito per hotel e B&B con prenotazioni dirette | Mauro.exe',
     descrizione: 'Sito per hotel e B&B con assistente AI che risponde agli ospiti 24 ore su 24, in più lingue, e prenota senza commissioni di Booking.',
     indicizzabile: true,
-    stileVetrina: true,
     ultimaModifica: '2026-10-04',
     datiStrutturati: [
       servizioDellaPagina('/hotel', 'Sito per hotel e B&B con assistente AI', 'Sito per hotel, B&B e case vacanza con un assistente AI che risponde agli ospiti 24 ore su 24 in più lingue e raccoglie prenotazioni dirette.'),
@@ -146,7 +143,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Gestionale ordini e clienti per negozi online | Mauro.exe',
     descrizione: 'Dashboard su misura per gestire ordini e clienti del tuo negozio online, senza canoni mensili di piattaforme standard. Sviluppata ad Ascoli Piceno.',
     indicizzabile: true,
-    stileVetrina: true,
     ultimaModifica: '2026-10-04',
     datiStrutturati: [
       servizioDellaPagina('/saas', 'Gestionale ordini e clienti per negozi online', 'Dashboard su misura per gestire vendite, clienti e ordini di un negozio online, senza canoni mensili di piattaforme standard.'),
@@ -159,7 +155,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'E-commerce per aziende agricole e cantine | Mauro.exe',
     descrizione: 'Negozio online per aziende agricole: vino, miele e formaggi venduti anche di notte, con un assistente AI che risponde ai clienti. Sviluppato nelle Marche.',
     indicizzabile: true,
-    stileVetrina: true,
     ultimaModifica: '2026-10-04',
     datiStrutturati: [
       servizioDellaPagina('/agri-ecommerce', 'E-commerce per aziende agricole con assistente AI', 'Negozio online per aziende agricole e produttori di vino, miele e formaggi, con un assistente AI che risponde ai clienti anche di notte.'),
@@ -172,7 +167,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Quanto costa un sito web? Calcola il preventivo | Mauro.exe',
     descrizione: 'Scegli il tipo di sito e le funzioni che ti servono: il simulatore calcola subito una stima del prezzo e prepara il riepilogo da inviare su WhatsApp.',
     indicizzabile: true,
-    stileVetrina: true,
     ultimaModifica: '2026-10-04',
     senzaJs: {
       titolo: 'Quanto costa il tuo sito? Calcola il preventivo.',
@@ -185,7 +179,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Privacy policy | Mauro.exe',
     descrizione: 'Come mauroceccarelli.it tratta i tuoi dati: richieste di contatto, assistente AI, statistiche con consenso, conservazione e diritti previsti dal GDPR.',
     indicizzabile: true,
-    stileVetrina: false,
     ultimaModifica: '2026-10-04',
     senzaJs: {
       titolo: 'Privacy Policy',
@@ -198,7 +191,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Cookie policy | Mauro.exe',
     descrizione: "Cookie e strumenti di tracciamento di mauroceccarelli.it, secondo l'art. 122 del Codice Privacy e le Linee guida cookie del Garante del 10 giugno 2021.",
     indicizzabile: true,
-    stileVetrina: false,
     ultimaModifica: '2026-10-04',
     senzaJs: {
       titolo: 'Cookie Policy',
@@ -211,7 +203,6 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Biglietto da visita digitale | Mauro Ceccarelli',
     descrizione: 'Salva i contatti di Mauro Ceccarelli, sviluppatore web ad Ascoli Piceno: telefono, WhatsApp ed email.',
     indicizzabile: false,
-    stileVetrina: false,
     senzaJs: {
       titolo: 'Mauro Ceccarelli',
       paragrafi: ['Sviluppatore Web & AI'],
@@ -236,4 +227,3 @@ export const trovaPagina = (percorso: string) => {
   return pagine.find((pagina) => pagina.percorso === percorsoSenzaBarra) ?? pagine[0];
 };
 
-export const conStileVetrina = (percorso: string) => pagine.some((pagina) => pagina.percorso === percorso && pagina.stileVetrina);

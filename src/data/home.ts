@@ -21,7 +21,53 @@ export interface ImmagineSito {
   larghezza: number;
   altezza: number;
   alt: string;
+  varianti?: readonly number[];
 }
+
+// Le copie ridotte le genera npm run immagini accanto all'originale, con la larghezza nel nome
+const VARIANTI_COMPUTER = [720, 1080] as const;
+const VARIANTI_TELEFONO = [260, 390, 520] as const;
+
+export const srcsetDi = (immagine: ImmagineSito) => [
+  ...(immagine.varianti ?? []).map((larghezza) => `${immagine.src.replace(/\.webp$/, `-${larghezza}.webp`)} ${larghezza}w`),
+  `${immagine.src} ${immagine.larghezza}w`,
+].join(', ');
+
+// Misure prese dal layout di vetrina.css a ogni larghezza di schermo: se cambia la griglia della prima schermata vanno rifatte
+export const vetrinaEroe = {
+  dietro: {
+    indirizzo: 'fcresinwoodcreations.com',
+    misure: '(max-width: 899px) 60vw, 41vw',
+    immagine: {
+      src: '/lavori/fc-resinwood-eroe.webp',
+      larghezza: 1440,
+      altezza: 920,
+      varianti: VARIANTI_COMPUTER,
+      alt: 'Il sito di FC Resinwood, laboratorio artigiano ad Ascoli Piceno, aperto su un computer: un tavolo in legno con un fiume di resina blu',
+    },
+  },
+  principale: {
+    indirizzo: 'redicar.it',
+    misure: '(max-width: 599px) 86vw, (max-width: 899px) 80vw, min(43vw, 650px)',
+    immagine: {
+      src: '/lavori/redicar-eroe.webp',
+      larghezza: 1440,
+      altezza: 1540,
+      varianti: VARIANTI_COMPUTER,
+      alt: 'Il sito di Redicar, concessionaria a Colonnella, aperto su un computer: il piazzale delle auto e il titolo Veicoli usati certificati e garantiti',
+    },
+  },
+  telefono: {
+    misure: '(max-width: 599px) 24vw, (max-width: 899px) 21vw, min(10vw, 150px)',
+    immagine: {
+      src: '/lavori/graphic-arts-eroe.webp',
+      larghezza: 780,
+      altezza: 1720,
+      varianti: VARIANTI_TELEFONO,
+      alt: "Il sito di Graphic Arts, tipolitografia a San Benedetto del Tronto, aperto su un telefono, con i pulsanti Genera con l'AI e Crea t-shirt",
+    },
+  },
+};
 
 export interface ClienteRecente {
   nome: string;
@@ -103,6 +149,8 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/fc-resinwood-mobile.webp',
         larghezza: 780,
         altezza: 5064,
+
+        varianti: VARIANTI_TELEFONO,
         alt: 'Il sito di FC Resinwood aperto su un telefono: un tavolo in legno con un fiume di resina blu e il pulsante Scegli il tuo tavolo',
       },
     },
@@ -119,6 +167,8 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/redicar-mobile.webp',
         larghezza: 780,
         altezza: 5064,
+
+        varianti: VARIANTI_TELEFONO,
         alt: "Il sito di Redicar aperto su un telefono, con il pulsante rosso della chat dell'assistente in basso a destra",
       },
     },
@@ -136,6 +186,8 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/sarcolab-desktop.webp',
         larghezza: 1440,
         altezza: 2700,
+
+        varianti: VARIANTI_COMPUTER,
         alt: 'Sarcolab aperto su un computer: la dashboard con le schede da consegnare agli atleti e i numeri del giorno',
       },
     },
@@ -179,12 +231,16 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/redicar-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
+
+      varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Redicar su computer: il piazzale delle auto a Colonnella e il titolo Veicoli usati certificati e garantiti',
     },
     telefono: {
       src: '/lavori/redicar-mobile.webp',
       larghezza: 780,
       altezza: 5064,
+
+      varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di Redicar su telefono, con i pulsanti Vedi parco auto e Valuta il tuo usato',
     },
     etichettaInterruttore: 'Mostra il sito di Redicar su',
@@ -200,12 +256,16 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/ink-service-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
+
+      varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Ink Service su computer: fondo blu notte e il titolo Diamo forma alle tue idee',
     },
     telefono: {
       src: '/lavori/ink-service-mobile.webp',
       larghezza: 780,
       altezza: 5064,
+
+      varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di Ink Service su telefono, con il pulsante Crea la tua grafica',
     },
     etichettaInterruttore: 'Mostra il sito di Ink Service su',
@@ -221,12 +281,16 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/graphic-arts-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
+
+      varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Graphic Arts su computer: il titolo Tipografia e creatività in sintonia con la stampa e i pulsanti per creare una t-shirt',
     },
     telefono: {
       src: '/lavori/graphic-arts-mobile.webp',
       larghezza: 780,
       altezza: 5064,
+
+      varianti: VARIANTI_TELEFONO,
       alt: "Il sito di Graphic Arts su telefono, con i pulsanti Genera con l'AI e Crea t-shirt",
     },
     etichettaInterruttore: 'Mostra il sito di Graphic Arts su',
@@ -242,12 +306,16 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/fc-resinwood-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
+
+      varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di FC Resinwood su computer: un tavolo in legno con un fiume di resina blu e il titolo Legno e resina su misura',
     },
     telefono: {
       src: '/lavori/fc-resinwood-mobile.webp',
       larghezza: 780,
       altezza: 5064,
+
+      varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di FC Resinwood su telefono, con il pulsante Scegli il tuo tavolo',
     },
     etichettaInterruttore: 'Mostra il sito di FC Resinwood su',
@@ -263,6 +331,8 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/sarcolab-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
+
+      varianti: VARIANTI_COMPUTER,
       alt: "Sarcolab su computer: la dashboard con le schede da consegnare, una scheda di ipertrofia su quattro giorni e l'analisi del volume settimanale per gruppo muscolare",
     },
     telefono: {

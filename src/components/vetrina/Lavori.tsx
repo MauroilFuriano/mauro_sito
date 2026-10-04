@@ -8,6 +8,10 @@ import { conMovimento, gsap, ScrollTrigger } from './animazioni';
 
 type VistaLavoro = 'computer' | 'telefono';
 
+const MISURE_COMPUTER = '(max-width: 899px) min(77vw, 480px), min(53vw, 780px)';
+// Scegliendo la vista telefono il telefono si ingrandisce di circa il 20%: le misure ne tengono conto
+const MISURE_TELEFONO = '(max-width: 899px) min(30vw, 186px), min(17.4vw, 252px)';
+
 const vistePossibili: readonly { vista: VistaLavoro; nome: string }[] = [
   { vista: 'computer', nome: 'Computer' },
   { vista: 'telefono', nome: 'Telefono' },
@@ -25,10 +29,10 @@ const PannelloLavoro: React.FC<PannelloLavoroProps> = ({ lavoro, onApriVideo }) 
     <article className="lavoro" id={`lavoro-${lavoro.id}`} aria-labelledby={`nome-${lavoro.id}`}>
       <div className="lavoro-schermi" data-vista={vistaScelta}>
         <div className="lavoro-browser">
-          <CorniceBrowser comeFigura indirizzo={lavoro.indirizzo} immagine={lavoro.computer} />
+          <CorniceBrowser comeFigura indirizzo={lavoro.indirizzo} immagine={lavoro.computer} misure={MISURE_COMPUTER} />
         </div>
         <div className="lavoro-telefono">
-          <CorniceTelefono comeFigura immagine={lavoro.telefono} pellicola={lavoro.telefonoFermo ? 'ferma' : undefined} />
+          <CorniceTelefono comeFigura immagine={lavoro.telefono} misure={MISURE_TELEFONO} pellicola={lavoro.telefonoFermo ? 'ferma' : undefined} />
         </div>
       </div>
       <div className="lavoro-cartellino">

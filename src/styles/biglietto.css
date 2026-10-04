@@ -1,0 +1,28 @@
+.home-vetrina.biglietto-pagina { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100svh; padding-block: clamp(24px, 6vw, 64px); }
+.home-vetrina .biglietto { width: 100%; max-width: 440px; padding: clamp(28px, 7vw, 40px) clamp(20px, 5vw, 32px); border: 1px solid var(--filo); border-radius: var(--raggio-pannello); background: var(--superficie); text-align: center; }
+.home-vetrina .biglietto-foto { width: 112px; height: 112px; margin-inline: auto; border: 1px solid var(--filo); border-radius: 50%; object-fit: cover; object-position: 50% 15%; }
+.home-vetrina .biglietto h1 { margin-top: 20px; font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem); font-weight: 500; letter-spacing: -0.02em; }
+.home-vetrina .biglietto-ruolo { margin-top: 6px; color: var(--cobalto-testo); font-size: var(--t-piccolo); font-weight: 600; }
+.home-vetrina .biglietto-luogo { margin-top: 2px; color: var(--grafite); font-size: var(--t-piccolo); }
+
+.home-vetrina .biglietto .azioni { margin-top: 28px; }
+.home-vetrina .biglietto .azioni .pulsante, .home-vetrina .biglietto-salva { flex: 1 1 100%; width: 100%; }
+.home-vetrina .biglietto .nota-richiamo { font-size: var(--t-piccolo); }
+.home-vetrina .biglietto-salva { margin-top: 20px; }
+
+.home-vetrina .biglietto-collegamenti { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; list-style: none; }
+.home-vetrina .biglietto-collegamenti a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 80px; padding: 12px 6px; border: 1px solid var(--filo); border-radius: var(--raggio-cornice); font-size: var(--t-piccolo); font-weight: 600; text-decoration: none; transition: border-color .2s ease; }
+.home-vetrina .biglietto-collegamenti .icona { width: 22px; height: 22px; color: var(--cobalto-testo); }
+@media (hover: hover) {
+  .home-vetrina .biglietto-collegamenti a:hover { border-color: var(--inchiostro); }
+}
+
+.home-vetrina .biglietto-motivi { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--filo); text-align: left; }
+.home-vetrina .biglietto-motivi h2 { font-family: var(--font-testo); font-size: var(--t-piccolo); font-weight: 600; color: var(--grafite); text-align: center; }
+.home-vetrina .biglietto-motivi ul { display: grid; gap: 14px; margin-top: 16px; list-style: none; }
+.home-vetrina .biglietto-motivi li { color: var(--grafite); font-size: var(--t-piccolo); line-height: 1.45; }
+.home-vetrina .biglietto-motivi strong { display: block; color: var(--inchiostro); font-size: 1rem; font-weight: 600; }
+
+.home-vetrina .biglietto-piede { margin-top: 20px; color: var(--grafite); font-size: .8125rem; text-align: center; }
+.home-vetrina .biglietto-piede .piede-link { justify-content: center; margin-top: 4px; }
+.home-vetrina .biglietto-piede a, .home-vetrina .biglietto-piede .piede-preferenze { display: inline-flex; align-items: center; min-height: 44px; }

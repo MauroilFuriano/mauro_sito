@@ -28,7 +28,7 @@ export default defineConfig({
           if (/[\\/]node_modules[\\/](react|react-dom|scheduler|react-router|react-router-dom|@remix-run[\\/]router)[\\/]/.test(idModulo)) return 'vendor-react';
           if (/[\\/]node_modules[\\/]gsap[\\/]/.test(idModulo)) return 'vendor-gsap';
           if (/[\\/]node_modules[\\/](framer-motion|motion-dom|motion-utils)[\\/]/.test(idModulo)) return 'vendor-framer';
-          if (/[\\/]node_modules[\\/](lenis|lucide-react)[\\/]/.test(idModulo)) return 'vendor-misc';
+          if (/[\\/]node_modules[\\/]lucide-react[\\/]/.test(idModulo)) return 'vendor-misc';
         },
       },
     },

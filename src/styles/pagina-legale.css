@@ -1,0 +1,29 @@
+.home-vetrina .pagina-legale { padding-block: clamp(32px, 1.5rem + 5vw, 104px) var(--spazio-sezione); }
+.home-vetrina .pagina-legale h1 { margin-top: 14px; font-size: clamp(2.25rem, 1.3rem + 4vw, 4.5rem); font-weight: 500; line-height: .98; letter-spacing: -0.03em; }
+.home-vetrina .legale-data { max-width: 64ch; margin-top: 16px; font-size: var(--t-piccolo); color: var(--grafite); }
+
+.home-vetrina .riquadro-legale--breve, .home-vetrina .testo-legale :is(h2, p, ul, .riquadro-legale) { max-width: 72ch; }
+.home-vetrina .riquadro-legale--breve { margin-top: clamp(32px, 4vw, 48px); }
+.home-vetrina .testo-legale { margin-top: clamp(48px, 5vw, 72px); color: var(--grafite); }
+.home-vetrina .testo-legale > section + section { margin-top: clamp(40px, 4vw, 56px); }
+
+.home-vetrina .pagina-legale h2 { color: var(--inchiostro); font-size: clamp(1.375rem, 1.15rem + .7vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; }
+.home-vetrina .pagina-legale :where(h2, p, ul, .riquadro-legale, .tabella-legale) + :where(p, ul, .riquadro-legale, .tabella-legale) { margin-top: 16px; }
+.home-vetrina .pagina-legale strong { color: var(--inchiostro); font-weight: 600; }
+.home-vetrina .pagina-legale a { color: var(--cobalto-testo); }
+.home-vetrina .pagina-legale ul { display: grid; gap: 12px; list-style: none; }
+.home-vetrina .pagina-legale li { position: relative; padding-left: 22px; }
+.home-vetrina .pagina-legale li::before { content: ""; position: absolute; top: .68em; left: 2px; width: 6px; height: 6px; border-radius: 50%; background: var(--cobalto); }
+
+.home-vetrina .riquadro-legale { padding: clamp(20px, 3vw, 28px); border: 1px solid var(--filo); border-radius: var(--raggio-pannello); background: var(--superficie); color: var(--grafite); }
+.home-vetrina .riquadro-legale p + p { margin-top: 4px; }
+.home-vetrina .riquadro-titolo { color: var(--inchiostro); font-weight: 600; }
+.home-vetrina .riquadro-legale .pulsante { margin-top: 20px; }
+.home-vetrina .nota-legale { font-size: var(--t-piccolo); }
+
+.home-vetrina .tabella-legale { max-width: 1100px; overflow-x: auto; }
+.home-vetrina .tabella-legale table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: var(--t-piccolo); line-height: 1.5; }
+.home-vetrina .tabella-legale th { padding: 0 16px 12px 0; border-bottom: 1.5px solid var(--inchiostro); color: var(--inchiostro); font-weight: 600; text-align: left; }
+.home-vetrina .tabella-legale td { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--filo); vertical-align: top; }
+.home-vetrina .tabella-legale :is(th, td):last-child { padding-right: 0; }
+.home-vetrina .nome-cookie { min-width: 9.5rem; color: var(--inchiostro); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .8125rem; }

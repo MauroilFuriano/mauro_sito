@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 
 const AgriEcommerceLanding: React.FC = () => {
     useEffect(() => {
-        // Logica di scroll reveal mutuata dalle altre landing pages
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -36,7 +35,6 @@ const AgriEcommerceLanding: React.FC = () => {
                 title="AI E-Commerce Agroalimentare | Marche Italia"
                 description="Sviluppo di siti web ed E-Commerce per aziende agricole con Chatbot AI. Vendi più velocemente h24 in automatico i tuoi prodotti d'eccellenza."
                 canonical="https://www.mauroceccarelli.it/agri-ecommerce"
-                keywords="Ecommerce Agricolo, Vendita Vino Online, AI Ecommerce, Chatbot Azienda Agricola, Vendita Miele, Vendita Formaggi AI"
                 structuredData={{
                     '@context': 'https://schema.org',
                     '@type': 'Service',
@@ -54,7 +52,6 @@ const AgriEcommerceLanding: React.FC = () => {
                     },
                 }}
             />
-            {/* Header Isolato Minimal */}
             <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-7xl mx-auto flex justify-start">
                     <a href="/" className="flex items-center gap-2 group">

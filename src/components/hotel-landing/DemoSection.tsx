@@ -12,7 +12,6 @@ const DemoSection: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Demo CTA */}
                     <div className="reveal rounded-2xl overflow-hidden glow-box bg-dark-800 border border-white/10 relative h-full min-h-[400px] flex items-center justify-center p-8">
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-transparent opacity-50"></div>
                         <div className="relative z-10 text-center space-y-6">
@@ -31,7 +30,6 @@ const DemoSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Features */}
                     <div className="space-y-8">
                         <div className="reveal group p-6 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-colors duration-300 hover:bg-white/10">
                             <div className="flex items-start gap-4">

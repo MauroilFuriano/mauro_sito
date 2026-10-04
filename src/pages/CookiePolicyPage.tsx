@@ -11,7 +11,6 @@ const CookiePolicyPage: React.FC = () => {
         title="Cookie Policy | Mauro.exe"
         description="Cookie e strumenti di tracciamento di mauroceccarelli.it, secondo l'art. 122 del Codice Privacy e le Linee guida cookie del Garante del 10 giugno 2021."
         canonical="https://www.mauroceccarelli.it/cookie-policy"
-        keywords=""
       />
       <Navbar />
       <main id="main-content" className="pt-32 pb-24">

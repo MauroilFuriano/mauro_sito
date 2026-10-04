@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" alt="Mauro.exe Banner" src="https://github.com/MauroilFuriano/mauro_sito/blob/main/public/logo.png?raw=true" />
+  <img width="160" alt="Mauro.exe Banner" src="https://github.com/MauroilFuriano/mauro_sito/blob/main/public/logo-160.webp?raw=true" />
   
   # Mauro Ceccarelli | Full Stack & AI Portfolio
   
@@ -38,7 +38,7 @@ Se vuoi clonare questo progetto e testarlo in locale, segui questi passaggi:
 
 1.  **Clona la repository:**
     ```bash
-    git clone [https://github.com/MauroilFuriano/mauro_sito.git](https://github.com/MauroilFuriano/mauro_sito.git)
+    git clone https://github.com/MauroilFuriano/mauro_sito.git
     cd mauro_sito
     ```
 

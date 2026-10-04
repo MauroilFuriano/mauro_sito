@@ -374,7 +374,6 @@ const HomePage: React.FC = () => {
         title="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe"
         description="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi."
         canonical="https://www.mauroceccarelli.it/"
-        keywords="Web Design Ascoli Piceno, Sviluppatore Web Ascoli Piceno, Siti Web Marche, Realizzazione Siti Web Ascoli, Chatbot AI Marche, Sviluppo Web San Benedetto, Web Agency Ascoli, Mauro Ceccarelli"
         structuredData={structuredData}
       />
       <Helmet>

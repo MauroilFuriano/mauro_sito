@@ -53,7 +53,6 @@ const CTASection: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Branding Footer per Landing isolata */}
                 <div className="mt-24 pt-8 border-t border-white/5 text-center text-sm text-gray-600">
                     <p>© {new Date().getFullYear()} Mauro Ceccarelli. Tutti i diritti riservati.</p>
                     <LinkLegali className="mt-3 text-gray-400" />

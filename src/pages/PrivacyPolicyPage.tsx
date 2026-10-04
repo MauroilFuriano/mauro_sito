@@ -10,7 +10,6 @@ const PrivacyPolicyPage: React.FC = () => {
         title="Privacy Policy | Mauro.exe"
         description="Informativa sulla privacy ai sensi del Regolamento UE 2016/679 (GDPR) per il sito mauroceccarelli.it"
         canonical="https://www.mauroceccarelli.it/privacy-policy"
-        keywords=""
       />
       <Navbar />
       <main id="main-content" className="pt-32 pb-24">

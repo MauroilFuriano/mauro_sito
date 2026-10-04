@@ -73,7 +73,7 @@ export const settori: readonly Settore[] = [
   },
 ];
 
-export type ScenaServizio =
+type ScenaServizio =
   | { cornice: 'telefono'; immagine: ImmagineSito; pellicolaChat?: boolean }
   | { cornice: 'browser'; indirizzo: string; immagine: ImmagineSito };
 

@@ -4,7 +4,6 @@ import SmoothScroll from './components/SmoothScroll';
 import CookieBanner from './components/CookieBanner';
 import { EVENTO_CONSENSO, attivaTagConsentiti, leggiValoreCookie, segnaEvento } from './misurazione';
 
-/* ── GA4 page view tracker per SPA — solo con consenso analytics ── */
 const GA4PageTracker: React.FC = () => {
   const location = useLocation();
   useEffect(() => {
@@ -48,7 +47,6 @@ const ScrollInCima: React.FC = () => {
   return null;
 };
 
-/* ── Lazy pages ─────────────────────────────────────────────── */
 const HomePage = lazy(() => import('./pages/HomePage'));
 const HotelLanding = lazy(() => import('./pages/HotelLanding'));
 const SaasLanding = lazy(() => import('./pages/SaasLanding'));
@@ -58,7 +56,6 @@ const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 
-/* ── Loading fallback ───────────────────────────────────────── */
 const Loading = () => {
   const { pathname } = useLocation();
   // La classe accende già il fondo della home di index.css, chiaro o scuro secondo data-tema, mentre arriva il resto
@@ -70,7 +67,6 @@ const Loading = () => {
   );
 };
 
-/* ── Error fallback ─────────────────────────────────────────── */
 const ErrorFallback = () => (
   <div className="min-h-screen bg-dark-950 flex flex-col items-center justify-center text-white px-6">
     <h1 className="text-3xl font-bold mb-4">Qualcosa è andato storto</h1>
@@ -98,7 +94,6 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, EBState> {
   }
 }
 
-/* ── App ────────────────────────────────────────────────────── */
 const App: React.FC = () => (
   <ErrorBoundary>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -117,9 +112,7 @@ const App: React.FC = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           <Route path="/card" element={<DigitalCard />} />
-          {/* /faq non esiste come pagina — è un anchor nella home. Redirect. */}
           <Route path="/faq" element={<Navigate to="/#faq" replace />} />
-          {/* Catch-all: qualsiasi URL sconosciuto torna in home (evita pagine bianche) */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

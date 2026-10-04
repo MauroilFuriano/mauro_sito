@@ -15,7 +15,6 @@ html, body, #root {
   width: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* Ottimizzazione rendering desktop */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -62,14 +61,6 @@ html.avvio-home body > a[href="#main-content"] {
   font-family: system-ui, sans-serif;
 }
 
-/* --- [WEB DESIGNER] Impostazioni Globali --- */
-/* Disabilitato scroll-behavior nativo per usare Lenis Smooth Scroll
-html {
-  scroll-behavior: smooth;
-}
-*/
-
-/* --- [WEB DESIGNER] Scroll Reveal Utilities / Effetto 2026 --- */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -85,19 +76,11 @@ html {
   will-change: auto;
 }
 
-/* [REGOLA PICCO-FINE] Animazione tooltip auto-pop ChatBot */
-@keyframes fadeInSlide {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Utilities per isolamento GPU e rendering ottimizzato */
 .isolate-blur {
   transform: translateZ(0);
 }
 
-
-/* Scrollbar Customization — la home chiara tiene quella di sistema */
+/* La home chiara tiene la scrollbar di sistema */
 html:not(:has(.home-vetrina))::-webkit-scrollbar,
 html:not(:has(.home-vetrina)) ::-webkit-scrollbar {
   width: 8px;
@@ -119,7 +102,6 @@ html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
   background: #00B8D4;
 }
 
-/* Glow Utilities */
 .glow-text {
   text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
@@ -132,7 +114,6 @@ html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
 }
 
-/* Cyberpunk Glitch Effect */
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -173,147 +154,7 @@ html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
   text-shadow: -1px 0 rgba(0, 229, 255, 0.5);
 }
 
-/* Animazione solo quando visibile (classe aggiunta via JS) */
-.glitch-text.glitch-active::before {
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
-}
-.glitch-text.glitch-active::after {
-  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .glitch-text.glitch-active::before,
-  .glitch-text.glitch-active::after {
-    animation: none;
-  }
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    clip-path: inset(20% 0 80% 0);
-    transform: translate(-4px, 1px);
-  }
-
-  2% {
-    clip-path: inset(60% 0 10% 0);
-    transform: translate(4px, -1px);
-  }
-
-  4% {
-    clip-path: inset(40% 0 50% 0);
-    transform: translate(-4px, 3px);
-  }
-
-  6% {
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(4px, -3px);
-  }
-
-  8% {
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-4px, 1px);
-  }
-
-  10% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-  }
-
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(10% 0 60% 0);
-    transform: translate(4px, -1px);
-  }
-
-  2% {
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(-4px, 2px);
-  }
-
-  4% {
-    clip-path: inset(30% 0 20% 0);
-    transform: translate(4px, -2px);
-  }
-
-  6% {
-    clip-path: inset(15% 0 80% 0);
-    transform: translate(-4px, 1px);
-  }
-
-  8% {
-    clip-path: inset(55% 0 10% 0);
-    transform: translate(4px, -1px);
-  }
-
-  10% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-  }
-
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-  }
-}
-
-/* Animazione Particelle Fluttuanti Originale */
-@keyframes float-particle {
-  0% { transform: translate(0, 0) scale(1); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translate(20px, -70px) scale(0.5); opacity: 0; }
-}
-
-.animate-float-particle {
-  animation: float-particle linear infinite;
-  will-change: transform, opacity;
-}
-
-/* ===== NEW ANIMATIONS ===== */
-
-/* Star Twinkle Animation */
-@keyframes twinkle {
-
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-.animate-twinkle {
-  will-change: transform, opacity;
-}
-
-/* Floating Animation */
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Glow Pulse for buttons — opacity only (composite, no paint) */
+/* Solo opacity: l'animazione resta sul compositor, senza repaint */
 @keyframes glow-pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.75; }
@@ -322,39 +163,6 @@ html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
 .animate-glow-pulse {
   animation: glow-pulse 2s ease-in-out infinite;
 }
-
-/* ===== HERO ENTRANCE ANIMATIONS ===== */
-
-.hero-fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: hero-enter 0.8s ease-out forwards;
-}
-
-.hero-delay-1 { animation-delay: 0.15s; }
-.hero-delay-2 { animation-delay: 0.3s; }
-.hero-delay-3 { animation-delay: 0.45s; }
-.hero-delay-4 { animation-delay: 0.6s; }
-.hero-delay-5 { animation-delay: 0.75s; }
-
-@keyframes hero-enter {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Terminal Cursor Blink */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
-}
-
-/* ===== MOBILE OPTIMIZATIONS ===== */
 
 @media (max-width: 768px) {
 
@@ -373,24 +181,6 @@ html:not(:has(.home-vetrina)) ::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* Stella Cadente Originale */
-@keyframes shooting-star {
-  0% { transform: translateX(0) translateY(0) rotate(-45deg) scale(0); opacity: 0; }
-  10% { opacity: 1; transform: scale(1); }
-  20% { transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(1); opacity: 0; }
-  100% { transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(0); opacity: 0; }
-}
-
-.animate-shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  box-shadow: 0 0 10px 2px white;
-  animation: shooting-star 6s linear infinite;
-}
-
-/* Accessibilità: rispetta preferenza utente per animazioni ridotte */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

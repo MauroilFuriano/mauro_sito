@@ -62,7 +62,6 @@ const FeaturesAgri: React.FC = () => {
                             key={index} 
                             className={`reveal delay-${(index % 3) * 100} group bg-dark-800 border border-white/5 p-8 rounded-2xl transition-all duration-300 hover:bg-dark-800/80 hover:-translate-y-2 relative overflow-hidden ${feature.glowColor}`}
                         >
-                            {/* Decorative background glow on hover */}
                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/5 to-amber-500/5 rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500"></div>
                             
                             <div className="w-16 h-16 rounded-xl bg-dark-900 border border-white/10 flex items-center justify-center mb-6 relative z-10">

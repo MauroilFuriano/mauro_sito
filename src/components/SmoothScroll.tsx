@@ -10,7 +10,6 @@ const SmoothScroll = () => {
     // La home usa lo scroll nativo: pin e snap del palco dei lavori sono di GSAP
     if (suHome) return;
 
-    // Rispetta la preferenza reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 

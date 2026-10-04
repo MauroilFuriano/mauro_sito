@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, shrink-to-fit=no, viewport-fit=cover" />
   <title>Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe</title>
 
-  <!-- Description e canonical li scrive SEO.tsx per ogni pagina: qui farebbero da doppione, con la home come canonical di tutte -->
   <meta name="author" content="Mauro Ceccarelli" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.mauroceccarelli.it/" />
   <meta property="og:title" content="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe" />
@@ -21,7 +19,6 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="it_IT" />
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://www.mauroceccarelli.it/" />
   <meta property="twitter:title" content="Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe" />
@@ -29,12 +26,10 @@
     content="Sviluppatore Web ad Ascoli Piceno. Siti Web professionali e Chatbot AI per aziende nelle Marche." />
   <meta property="twitter:image" content="https://www.mauroceccarelli.it/og-image.jpg" />
 
-  <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/logo-64.webp" type="image/webp" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <!-- Tema della home prima del primo disegno: la scelta salvata, altrimenti quella del sistema -->
   <script>
     if (location.pathname === '/') document.documentElement.classList.add('avvio-home');
     var temaSalvato = null;
@@ -46,8 +41,6 @@
       : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'scuro' : 'chiaro');
   </script>
 
-  <!-- Consent Mode v2: tutto negato finché il banner non registra una scelta. gtag.js lo carica src/misurazione.ts, solo dopo il consenso.
-       La versione deve restare uguale a VERSIONE_INFORMATIVA in src/misurazione.ts -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -76,12 +69,6 @@
 <body>
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-black focus:font-bold focus:rounded-lg">Vai al contenuto</a>
 
-  <!--
-    Static SEO fallback — visibile a Googlebot PRIMA che React idrati.
-    Contiene H1, keyword locali, servizi, schema breve.
-    React sostituisce questo contenuto su mount (createRoot().render()).
-    Stile minimale inline per evitare FOUC durante il brief flash.
-  -->
   <noscript>
     <div style="min-height:100vh;background:#05050A;color:#fff;padding:80px 20px;font-family:system-ui,-apple-system,sans-serif;">
       <header style="max-width:1200px;margin:0 auto;">

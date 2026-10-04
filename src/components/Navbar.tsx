@@ -37,7 +37,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
@@ -87,7 +86,6 @@ const Navbar: React.FC = () => {
           </div>
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-2 lg:gap-6">
           {navLinks.map((link) => (
             <a
@@ -114,7 +112,6 @@ const Navbar: React.FC = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-white hover:text-cyan-400 transition-colors p-2"
           onClick={() => setIsOpen(!isOpen)}
@@ -124,7 +121,6 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
       <div
         className={`md:hidden absolute top-full left-0 w-full border-b border-white/10 overflow-hidden transition-all duration-300 ${
           isOpen ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'

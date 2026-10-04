@@ -1,4 +1,3 @@
-import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
@@ -32,10 +31,5 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 800,
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, '.'),
-    }
   },
 });

@@ -17,7 +17,6 @@ const SaasNavbar: React.FC = () => {
                         </span>
                     </div>
 
-                    {/* Azioni Destre (Solo CTA Principale) */}
                     <div className="flex items-center gap-4">
                         <a
                             href="https://dashboard-theta-khaki-71.vercel.app/"
@@ -28,7 +27,6 @@ const SaasNavbar: React.FC = () => {
                             <span className="md:hidden">Esplora</span>
                             <span className="hidden md:inline">Esplora Dashboard</span>
                             <ArrowRight className="ml-1 md:ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            {/* Glow effec sulle CTA primarie */}
                             <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-emerald-400 to-emerald-600 opacity-20 blur group-hover:opacity-40 transition duration-200"></div>
                         </a>
                     </div>

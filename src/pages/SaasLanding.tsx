@@ -7,7 +7,6 @@ import LinkLegali from '../components/LinkLegali';
 
 const SaasLanding: React.FC = () => {
     useEffect(() => {
-        // Al mount del componente, scrollo in cima (comportamento SPA)
         window.scrollTo(0, 0);
     }, []);
 
@@ -17,7 +16,6 @@ const SaasLanding: React.FC = () => {
                 title="Dashboard E-commerce Personalizzata | Gestione Negozio Smart"
                 description="Crea la tua area ordini e clienti personalizzata. Dashboard e-commerce sviluppata su misura, senza costi mensili di piattaforme standard."
                 canonical="https://www.mauroceccarelli.it/saas"
-                keywords="Dashboard E-commerce, Gestione Ordini, Software Negozio, Piattaforma Personalizzata, E-commerce Su Misura"
                 structuredData={{
                     '@context': 'https://schema.org',
                     '@type': 'SoftwareApplication',
@@ -45,19 +43,15 @@ const SaasLanding: React.FC = () => {
                     ],
                 }}
             />
-            {/* Navbar Slim (Esclusiva della Landing SaaS) */}
             <SaasNavbar />
 
             <main id="main-content">
-                {/* Sezione Eroe con Mockup Dashboard */}
                 <SaasHero />
 
-                {/* Sezione Infrastruttura / Punti di Forza SaaS */}
                 <SaasFeatures />
 
             </main>
 
-            {/* Footer minimalista CTA */}
             <footer className="pt-20 pb-10 text-center border-t border-slate-800/50 bg-slate-950">
                 <div className="max-w-4xl mx-auto px-4 mb-16">
                     <h2 className="text-3xl font-bold text-white mb-6">Cerchi una gestione negozio smart ed efficiente?</h2>

@@ -5,7 +5,6 @@ import SEO from '../components/SEO';
 import LinkLegali from '../components/LinkLegali';
 import { leggiValoreCookie } from '../misurazione';
 
-// Fires GA4 conversion event for Google Ads tracking
 const fireSimulatoreConversion = () => {
   const gtag = (window as any).gtag;
   // Con send_to esplicito gtag.js attiva GA4 da solo, anche senza config. È una conversione degli annunci: servono Statistici e Marketing
@@ -22,11 +21,6 @@ const reveal = {
   exit: { opacity: 0, height: 0, transition: { duration: 0.25, ease: 'easeIn' as const } },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// PREZZI — listino ufficiale mauroceccarelli.it
-// ─────────────────────────────────────────────────────────────────────────────
-const disc = (p: number) => p;
-
 const P = {
   siteBase: 1500,   // sito vetrina professionale custom
   chatbotDet: 800,   // chatbot deterministico (info azienda)
@@ -39,9 +33,6 @@ const P = {
   analytics: 200,   // Analytics dashboard GA4
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// TYPES
-// ─────────────────────────────────────────────────────────────────────────────
 interface ChatbotOption { id: string; label: string; desc: string; price: number; }
 interface ExtraOption { id: string; label: string; desc: string; price: number; }
 interface Template {
@@ -51,9 +42,6 @@ interface Template {
   extras: ExtraOption[];
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// TEMPLATES
-// ─────────────────────────────────────────────────────────────────────────────
 const TEMPLATES: Template[] = [
   {
     id: 'fotografo',
@@ -145,9 +133,6 @@ const TEMPLATES: Template[] = [
 
 type TemplateId = string;
 
-// ─────────────────────────────────────────────────────────────────────────────
-// GLOBAL ADD-ONS (indipendenti dal template)
-// ─────────────────────────────────────────────────────────────────────────────
 const GLOBAL_ADDONS = [
   { id: 'seo', label: 'SEO Base & Lighthouse 98/100', desc: 'Meta tag, schema JSON-LD, Core Web Vitals, sitemap XML', price: 0, locked: true },
   { id: 'geo2026', label: 'GEO 2026 — ChatGPT & AI Overviews', desc: 'llms.txt, FAQ schema, citazione nei risultati AI generativi', price: P.geo2026, locked: false },
@@ -155,9 +140,6 @@ const GLOBAL_ADDONS = [
   { id: 'analytics', label: 'Analytics Dashboard GA4 + Hotjar', desc: 'Report mensile automatico, heatmap, conversioni tracciate', price: P.analytics, locked: false },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// VETRINA OPTIONS
-// ─────────────────────────────────────────────────────────────────────────────
 const VETRINA_CHATBOT_OPTIONS: ChatbotOption[] = [
   { id: 'none', label: 'Nessun chatbot', desc: 'Solo form contatto standard.', price: 0 },
   { id: 'det', label: 'Chatbot Deterministico', desc: 'Risponditore automatico H24. Filtra i contatti e risponde alle domande frequenti (orari, servizi) mentre tu lavori.', price: P.chatbotDet },
@@ -179,9 +161,6 @@ const VETRINA_INCLUDED = [
   { label: 'Sezione FAQ Strategica', sub: "Risposte alle domande frequenti posizionate per abbattere le obiezioni all'acquisto." },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ANIMATED PRICE HOOK
-// ─────────────────────────────────────────────────────────────────────────────
 function useAnimatedPrice(target: number) {
   const [value, setValue] = useState(target);
   const [flash, setFlash] = useState(false);
@@ -211,14 +190,8 @@ function useAnimatedPrice(target: number) {
   return { value, flash };
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FORM TYPE
-// ─────────────────────────────────────────────────────────────────────────────
 interface FormData { name: string; email: string; }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
 export default function SimulatorePreventivo() {
   const [path, setPath] = useState<'vetrina' | 'template' | null>(null);
   const [templateId, setTemplateId] = useState<TemplateId | null>(null);
@@ -236,7 +209,6 @@ export default function SimulatorePreventivo() {
 
   const template = TEMPLATES.find(t => t.id === templateId) ?? null;
 
-  // Reset template-specific choices when template changes
   const selectTemplate = (id: TemplateId) => {
     setTemplateId(id);
     setChatbotOption('ai'); // Pre-seleziona chatbot AI (Status Quo Bias)
@@ -252,8 +224,7 @@ export default function SimulatorePreventivo() {
     setGlobalAddons(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
   };
 
-  // ── Price calculation ─────────────────────────────────────────────────────
-  const originalTotal = (() => {
+  const estimateTotal = (() => {
     if (!path) return 0;
     let t = P.siteBase;
     if (path === 'template' && template) {
@@ -270,11 +241,8 @@ export default function SimulatorePreventivo() {
     return t;
   })();
 
-  const promoTotal = disc(originalTotal);
+  const { value: animatedEstimate, flash: flashEstimate } = useAnimatedPrice(estimateTotal);
 
-  const { value: animatedPromo, flash: flashPromo } = useAnimatedPrice(promoTotal);
-
-  // ── Form ─────────────────────────────────────────────────────────────────
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Il nome è obbligatorio';
@@ -304,7 +272,7 @@ export default function SimulatorePreventivo() {
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
-      `Preventivo stimato: €${promoTotal}\n` +
+      `Preventivo stimato: €${estimateTotal}\n` +
       `Email: ${form.email}\n` +
       `Attendo il preventivo dettagliato!`
     );
@@ -315,7 +283,7 @@ export default function SimulatorePreventivo() {
     setTimeout(() => {
       setSubmitting(false);
       setSuccess(true);
-      fireSimulatoreConversion(); // GA4 → Google Ads conversion tracking
+      fireSimulatoreConversion();
       setTimeout(() => window.open(linkConRiepilogo, '_blank'), 800);
     }, 1200);
   };
@@ -328,14 +296,12 @@ export default function SimulatorePreventivo() {
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // ─────────────────────────────────────────────────────────────────────────
   if (success) return (
     <>
       <SEO
         title="Preventivo Bloccato | Mauro.exe"
         description="Ultimo passo: invia il riepilogo del preventivo su WhatsApp."
         canonical="https://www.mauroceccarelli.it/simulatore"
-        keywords="preventivo sito web Ascoli Piceno"
         noindex={true}
       />
       <div className="min-h-screen bg-[#0d0d1a] flex items-center justify-center px-4">
@@ -373,29 +339,23 @@ export default function SimulatorePreventivo() {
     </>
   );
 
-  // ─────────────────────────────────────────────────────────────────────────
   return (
     <>
       <SEO
         title="Simulatore Preventivo Sito Web | Mauro.exe — Ascoli Piceno"
         description="Scopri il costo del tuo sito web professionale. Configura template, chatbot AI e moduli extra."
         canonical="https://www.mauroceccarelli.it/simulatore"
-        keywords="preventivo sito web Ascoli Piceno, costo chatbot AI, template sito web PMI Marche"
       />
       <div ref={topRef} className="min-h-screen bg-[#0d0d1a] text-gray-200 selection:bg-cyan-400 selection:text-black">
-        {/* Glow bg */}
         <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute top-0 left-[-10%] w-[50%] h-[40%] bg-cyan-400/3 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 right-[-10%] w-[40%] h-[35%] bg-purple-600/3 rounded-full blur-[120px]" />
         </div>
 
-        {/* ── lg: left scrolls, right sidebar sempre visibile ─────── */}
         <div className="relative z-10 lg:flex lg:min-h-screen">
 
-          {/* ── LEFT: contenuto scorrevole ──────────────────────────── */}
           <div id="main-content" className="flex-1 min-w-0 px-4 py-10 lg:pl-8 xl:pl-16 lg:pr-8">
 
-            {/* ── HEADER ─────────────────────────────────────────────────── */}
             <div className="text-center mb-12">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
                 Ogni Giorno Senza Preventivo<br />
@@ -410,14 +370,11 @@ export default function SimulatorePreventivo() {
               </p>
             </div>
 
-            {/* ── CONFIGURATORE STEPS ─────────────────────────────────── */}
             <div className="space-y-12">
 
-              {/* ① SCELTA BASE ──────────────────────────────────────── */}
               <section>
                 <SectionLabel number={1} label="Da dove vuoi partire?" />
                 <div className="grid sm:grid-cols-2 gap-4 mt-4">
-                  {/* Sito Vetrina */}
                   <button
                     onClick={() => { setPath('vetrina'); setTemplateId(null); setChatbotOption('none'); setExtras(new Set()); }}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${path === 'vetrina'
@@ -430,11 +387,10 @@ export default function SimulatorePreventivo() {
                     <h3 className="font-bold text-white text-base mb-1">Sito Vetrina Personalizzato</h3>
                     <p className="text-gray-500 text-xs mb-3">Design su misura, mobile-first, architettura unica. Per chi non vuole somigliare a nessun altro.</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-cyan-400 font-black text-xl">€{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                      <span className="text-cyan-400 font-black text-xl">€{P.siteBase.toLocaleString('it-IT')}</span>
                     </div>
                   </button>
 
-                  {/* Template settore */}
                   <button
                     onClick={() => setPath('template')}
                     className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 relative ${path === 'template'
@@ -451,19 +407,17 @@ export default function SimulatorePreventivo() {
                     <p className="text-cyan-300 text-[11px] font-bold mb-2 uppercase tracking-wide">Online in 3 Giorni</p>
                     <p className="text-gray-500 text-xs mb-3">Layout 3D già ottimizzato per il tuo settore. Chatbot, gestionale e moduli configurabili.</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-cyan-400 font-black text-xl">da €{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                      <span className="text-cyan-400 font-black text-xl">da €{P.siteBase.toLocaleString('it-IT')}</span>
                     </div>
                   </button>
                 </div>
               </section>
 
-              {/* ② VETRINA — Incluso + Opzioni ──────────────────────── */}
               <AnimatePresence>
                 {path === 'vetrina' && (
                   <motion.section key="step2-vetrina" {...reveal} style={{ overflow: 'hidden' }}>
                     <SectionLabel number={2} label="Cosa ottieni con il Sito Vetrina" />
 
-                    {/* Sempre incluso */}
                     <div className="mt-4 mb-7 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
                       <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
                       <div className="space-y-3">
@@ -479,7 +433,6 @@ export default function SimulatorePreventivo() {
                       </div>
                     </div>
 
-                    {/* Chatbot options */}
                     <div className="mb-6">
                       <p className="text-sm font-bold text-gray-300 mb-1">Aggiungi un Assistente Virtuale</p>
                       <p className="text-xs text-gray-500 mb-3">L'AI che lavora per te mentre dormi.</p>
@@ -511,7 +464,7 @@ export default function SimulatorePreventivo() {
                                 <span className="text-gray-500 text-sm">Incluso</span>
                               ) : (
                                 <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                  +€{disc(opt.price).toLocaleString('it-IT')}
+                                  +€{opt.price.toLocaleString('it-IT')}
                                 </p>
                               )}
                             </div>
@@ -520,7 +473,6 @@ export default function SimulatorePreventivo() {
                       </div>
                     </div>
 
-                    {/* Extra: Admin Panel */}
                     <div>
                       <p className="text-sm font-bold text-gray-300 mb-1">Moduli Aggiuntivi</p>
                       <p className="text-xs text-gray-500 mb-3">Potenzia il tuo sito con strumenti professionali.</p>
@@ -544,7 +496,7 @@ export default function SimulatorePreventivo() {
                               </div>
                               <div className="text-right flex-shrink-0">
                                 <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
-                                  +€{disc(ex.price).toLocaleString('it-IT')}
+                                  +€{ex.price.toLocaleString('it-IT')}
                                 </p>
                               </div>
                             </button>
@@ -556,7 +508,6 @@ export default function SimulatorePreventivo() {
                 )}
               </AnimatePresence>
 
-              {/* ② TEMPLATE SETTORE (solo se path = template) ────────── */}
               <AnimatePresence>
                 {path === 'template' && (
                   <motion.section key="step2" {...reveal} style={{ overflow: 'hidden' }}>
@@ -580,7 +531,7 @@ export default function SimulatorePreventivo() {
                           <p className="text-gray-500 text-xs leading-relaxed mb-3">{t.tagline}</p>
                           <div className="flex items-center justify-between">
                             <div className="flex items-baseline gap-1.5">
-                              <span className="text-cyan-400 font-black">da €{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                              <span className="text-cyan-400 font-black">da €{P.siteBase.toLocaleString('it-IT')}</span>
                             </div>
                             {t.demoUrl && (
                               <a
@@ -598,7 +549,6 @@ export default function SimulatorePreventivo() {
                       ))}
                     </div>
 
-                    {/* Sempre incluso */}
                     <div className="mt-6 p-5 rounded-2xl border border-green-500/20 bg-green-500/5">
                       <p className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4">✅ Sempre incluso nel prezzo</p>
                       <div className="space-y-3">
@@ -617,13 +567,11 @@ export default function SimulatorePreventivo() {
                 )}
               </AnimatePresence>
 
-              {/* ③ CONFIGURAZIONE (solo se template selezionato) ─────── */}
               <AnimatePresence>
                 {path === 'template' && template && (
                   <motion.section key={`step3-${templateId}`} {...reveal} style={{ overflow: 'hidden' }}>
                     <SectionLabel number={3} label={`Configura il tuo ${template.label}`} />
 
-                    {/* Chatbot options */}
                     <div className="mb-6">
                       <p className="text-sm font-bold text-gray-300 mb-3">Opzione Chatbot</p>
                       <div className="space-y-2">
@@ -654,7 +602,7 @@ export default function SimulatorePreventivo() {
                                 <span className="text-gray-500 text-sm">Incluso</span>
                               ) : (
                                 <p className={`font-black text-sm ${chatbotOption === opt.id ? 'text-cyan-400' : 'text-gray-400'}`}>
-                                  +€{disc(opt.price).toLocaleString('it-IT')}
+                                  +€{opt.price.toLocaleString('it-IT')}
                                 </p>
                               )}
                             </div>
@@ -663,7 +611,6 @@ export default function SimulatorePreventivo() {
                       </div>
                     </div>
 
-                    {/* Template extras */}
                     {template.extras.length > 0 && (
                       <div className="mb-4">
                         <p className="text-sm font-bold text-gray-300 mb-3">Moduli aggiuntivi per {template.label}</p>
@@ -687,7 +634,7 @@ export default function SimulatorePreventivo() {
                                 </div>
                                 <div className="text-right flex-shrink-0">
                                   <p className={`font-black text-sm ${sel ? 'text-purple-400' : 'text-gray-400'}`}>
-                                    +€{disc(ex.price).toLocaleString('it-IT')}
+                                    +€{ex.price.toLocaleString('it-IT')}
                                   </p>
                                 </div>
                               </button>
@@ -700,7 +647,6 @@ export default function SimulatorePreventivo() {
                 )}
               </AnimatePresence>
 
-              {/* ④ ADD-ON GLOBALI (visibili se path scelto) ────────────── */}
               <AnimatePresence>
                 {path && (
                   <motion.section key="step4" {...reveal} style={{ overflow: 'hidden' }}>
@@ -740,7 +686,7 @@ export default function SimulatorePreventivo() {
                               {addon.locked ? (
                                 <span className="text-green-400 font-black text-sm">€0</span>
                               ) : (
-                                <p className={`font-black text-sm ${sel ? 'text-cyan-400' : 'text-gray-400'}`}>+€{disc(addon.price)}</p>
+                                <p className={`font-black text-sm ${sel ? 'text-cyan-400' : 'text-gray-400'}`}>+€{addon.price}</p>
                               )}
                             </div>
                           </button>
@@ -751,7 +697,6 @@ export default function SimulatorePreventivo() {
                 )}
               </AnimatePresence>
 
-              {/* ⑤ FORM ─────────────────────────────────────────────── */}
               <AnimatePresence>
                 {path && (
                   <motion.section key="step5" {...reveal} style={{ overflow: 'hidden' }}>
@@ -793,24 +738,22 @@ export default function SimulatorePreventivo() {
                 )}
               </AnimatePresence>
 
-            </div>{/* end configuratore steps */}
-            <LinkLegali className={`mt-16 text-gray-400 ${promoTotal > 0 ? 'mb-24 lg:mb-0' : ''}`} />
-          </div>{/* end left scrollable */}
+            </div>
+            <LinkLegali className={`mt-16 text-gray-400 ${estimateTotal > 0 ? 'mb-24 lg:mb-0' : ''}`} />
+          </div>
 
-          {/* ── RIGHT: sidebar sempre visibile (desktop) ──────────────── */}
           {/* spacer per non far sovrapporre il contenuto sinistro */}
           <div className="hidden lg:block w-[300px] xl:w-[340px] flex-shrink-0" />
           <div className="hidden lg:block fixed top-0 right-0 h-screen w-[300px] xl:w-[340px] overflow-y-auto border-l border-white/10 bg-[#0d0d1a] px-5 py-8 z-20">
 
-            <div className={`p-5 rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ${flashPromo ? 'shadow-[0_0_24px_rgba(0,229,255,0.2)]' : ''}`}>
+            <div className={`p-5 rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 ${flashEstimate ? 'shadow-[0_0_24px_rgba(0,229,255,0.2)]' : ''}`}>
               <p className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-4">Il tuo preventivo</p>
 
-              {/* Riepilogo configurazione */}
               {path && (
                 <div className="mb-4 pb-4 border-b border-white/10 space-y-1.5 text-xs">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Sito base</span>
-                    <span className="text-white font-bold">€{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                    <span className="text-white font-bold">€{P.siteBase.toLocaleString('it-IT')}</span>
                   </div>
                   {path === 'template' && template && (
                     <div className="flex justify-between">
@@ -823,7 +766,7 @@ export default function SimulatorePreventivo() {
                     return cb ? (
                       <div className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[150px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })()}
@@ -832,7 +775,7 @@ export default function SimulatorePreventivo() {
                     return ex ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })}
@@ -841,7 +784,7 @@ export default function SimulatorePreventivo() {
                     return cb ? (
                       <div className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[150px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })()}
@@ -850,7 +793,7 @@ export default function SimulatorePreventivo() {
                     return ex ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[150px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })}
@@ -859,7 +802,7 @@ export default function SimulatorePreventivo() {
                     return a ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[150px]">{a.label.split('—')[0].trim()}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(a.price)}</span>
+                        <span className="text-cyan-400 font-bold">+€{a.price}</span>
                       </div>
                     ) : null;
                   })}
@@ -870,11 +813,10 @@ export default function SimulatorePreventivo() {
                 </div>
               )}
 
-              {/* Price display */}
-              {promoTotal > 0 ? (
+              {estimateTotal > 0 ? (
                 <div className="text-center mb-4">
-                  <p className={`text-4xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300 scale-105' : 'text-white'}`}>
-                    €{animatedPromo.toLocaleString('it-IT')}
+                  <p className={`text-4xl font-black tabular-nums transition-all duration-300 ${flashEstimate ? 'text-cyan-300 scale-105' : 'text-white'}`}>
+                    €{animatedEstimate.toLocaleString('it-IT')}
                   </p>
                 </div>
               ) : (
@@ -883,7 +825,6 @@ export default function SimulatorePreventivo() {
                 </p>
               )}
 
-              {/* Trust signals */}
               <div className="pt-4 border-t border-white/10 space-y-2">
                 {[
                   { icon: <Shield size={11} className="text-green-400" />, text: 'Nessun anticipo richiesto' },
@@ -897,14 +838,12 @@ export default function SimulatorePreventivo() {
                 ))}
               </div>
             </div>
-          </div>{/* end sidebar fixed */}
+          </div>
 
-        </div>{/* end lg:flex */}
+        </div>
 
-        {/* ── MOBILE ONLY: floating bottom bar ──────────────────────────── */}
-        {promoTotal > 0 && (
+        {estimateTotal > 0 && (
           <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50">
-            {/* Pannello dettaglio espandibile */}
             <AnimatePresence>
               {showMobileDetail && (
                 <motion.div
@@ -917,7 +856,7 @@ export default function SimulatorePreventivo() {
                   <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Riepilogo voci</p>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Sito base</span>
-                    <span className="text-white font-bold">€{disc(P.siteBase).toLocaleString('it-IT')}</span>
+                    <span className="text-white font-bold">€{P.siteBase.toLocaleString('it-IT')}</span>
                   </div>
                   {path === 'template' && template && (
                     <div className="flex justify-between">
@@ -930,7 +869,7 @@ export default function SimulatorePreventivo() {
                     return cb ? (
                       <div className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })()}
@@ -939,7 +878,7 @@ export default function SimulatorePreventivo() {
                     return ex ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })}
@@ -948,7 +887,7 @@ export default function SimulatorePreventivo() {
                     return cb ? (
                       <div className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[200px]">{cb.label}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(cb.price).toLocaleString('it-IT')}</span>
+                        <span className="text-cyan-400 font-bold">+€{cb.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })()}
@@ -957,7 +896,7 @@ export default function SimulatorePreventivo() {
                     return ex ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[200px]">{ex.label}</span>
-                        <span className="text-purple-400 font-bold">+€{disc(ex.price).toLocaleString('it-IT')}</span>
+                        <span className="text-purple-400 font-bold">+€{ex.price.toLocaleString('it-IT')}</span>
                       </div>
                     ) : null;
                   })}
@@ -966,7 +905,7 @@ export default function SimulatorePreventivo() {
                     return a ? (
                       <div key={id} className="flex justify-between">
                         <span className="text-gray-400 truncate max-w-[200px]">{a.label.split('—')[0].trim()}</span>
-                        <span className="text-cyan-400 font-bold">+€{disc(a.price)}</span>
+                        <span className="text-cyan-400 font-bold">+€{a.price}</span>
                       </div>
                     ) : null;
                   })}
@@ -978,11 +917,10 @@ export default function SimulatorePreventivo() {
               )}
             </AnimatePresence>
 
-            {/* Barra inferiore */}
             <div className="bg-[#0d0d1a]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
               <button onClick={() => setShowMobileDetail(v => !v)} className="text-left flex-1">
-                <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashPromo ? 'text-cyan-300' : 'text-white'}`}>
-                  €{animatedPromo.toLocaleString('it-IT')}
+                <p className={`text-2xl font-black tabular-nums transition-all duration-300 ${flashEstimate ? 'text-cyan-300' : 'text-white'}`}>
+                  €{animatedEstimate.toLocaleString('it-IT')}
                 </p>
                 <p className="text-[10px] text-gray-600 mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
               </button>
@@ -1002,9 +940,6 @@ export default function SimulatorePreventivo() {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SECTION LABEL
-// ─────────────────────────────────────────────────────────────────────────────
 function SectionLabel({ number, label }: { number: number; label: string }) {
   return (
     <div className="flex items-center gap-3">

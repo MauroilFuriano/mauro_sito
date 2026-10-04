@@ -12,7 +12,6 @@ const ProblemSolution: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Problema */}
                     <div className="reveal p-8 rounded-2xl bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20 shadow-[0_0_30px_rgba(239,68,68,0.05)]">
                         <div className="flex items-center gap-4 mb-8">
                             <div className="p-3 bg-red-500/20 rounded-xl">
@@ -26,7 +25,6 @@ const ProblemSolution: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* Soluzione */}
                     <div className="reveal p-8 rounded-2xl bg-gradient-to-br from-cyan-500/15 to-transparent border border-cyan-400/30 glow-box" style={{ transitionDelay: '100ms' }}>
                         <div className="flex items-center gap-4 mb-8">
                             <div className="p-3 bg-cyan-400/20 rounded-xl shadow-[0_0_15px_rgba(0,229,255,0.3)]">

@@ -11,7 +11,6 @@ const benefits = [
 const CtaAgri: React.FC = () => {
     return (
         <section className="relative py-24 overflow-hidden" id="contatti">
-            {/* Background Image Setup */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="/agri/agricoltura-smart.webp"

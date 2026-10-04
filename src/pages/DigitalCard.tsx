@@ -54,14 +54,11 @@ END:VCARD`;
         description="Salva i contatti di Mauro Ceccarelli, Sviluppatore Web & AI. Disponibile per nuovi progetti e consulenze."
       />
 
-      {/* Main Card Container */}
       <div id="main-content" className="w-full max-w-[450px] bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl relative">
         
-        {/* Decorative Background Glows */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-[80px]" />
         <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-purple-500/20 rounded-full blur-[80px]" />
 
-        {/* Header / Profile Section */}
         <div className="pt-12 pb-8 px-8 flex flex-col items-center text-center relative z-10">
           <div className="relative group mb-6">
             <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-400 to-purple-500 rounded-full blur opacity-40 group-hover:opacity-70 transition duration-1000"></div>
@@ -83,7 +80,6 @@ END:VCARD`;
           </div>
         </div>
 
-        {/* Primary CTA - Save Contact */}
         <div className="px-8 pb-8 relative z-10">
           <button 
             onClick={generateVCard}
@@ -94,7 +90,6 @@ END:VCARD`;
           </button>
         </div>
 
-        {/* Action Links Grid */}
         <div className="px-8 grid grid-cols-2 gap-3 mb-8 relative z-10">
           <a 
             href={`https://wa.me/${contactData.phone.replace(/\s+/g, '')}`}
@@ -130,7 +125,6 @@ END:VCARD`;
           </a>
         </div>
 
-        {/* Micro-Portfolio / Values */}
         <div className="px-8 pb-12 relative z-10">
           <h3 className="text-gray-500 text-[10px] font-black tracking-[0.2em] uppercase mb-4 text-center">Perché collaborare con me?</h3>
           <div className="space-y-3">
@@ -171,7 +165,6 @@ END:VCARD`;
 
       </div>
 
-      {/* Footer / Branding */}
       <div className="mt-8 text-center pb-8">
         <p className="text-gray-600 text-[10px] font-bold tracking-widest uppercase">
           Mauro.exe — Powered by AI & High Performance

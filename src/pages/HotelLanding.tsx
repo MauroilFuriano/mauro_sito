@@ -8,7 +8,6 @@ import SEO from '../components/SEO';
 
 const HotelLanding: React.FC = () => {
     useEffect(() => {
-        // Interseca logica di scroll reveal per la landing
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -37,7 +36,6 @@ const HotelLanding: React.FC = () => {
                 title="AI Concierge per Hotel | Disintermedia e Lavora H24"
                 description="Trasforma il tuo sito web hotel nella tua migliore Receptionist con Intelligenza Artificiale. Chatbot AI che prenota per te 24/7 in multilingua."
                 canonical="https://www.mauroceccarelli.it/hotel"
-                keywords="AI Hotel, Concierge Virtuale, Chatbot Hotel, Prenotazioni Dirette, Disintermediazione Booking, Receptionist AI"
                 structuredData={{
                     '@context': 'https://schema.org',
                     '@type': 'Service',
@@ -55,7 +53,6 @@ const HotelLanding: React.FC = () => {
                     },
                 }}
             />
-            {/* Header Isolato Minimal (Solo Logo che refresha la pagina) */}
             <header className="fixed top-0 left-0 w-full z-50 px-6 py-4 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-7xl mx-auto flex justify-start">
                     <a href="/hotel" className="flex items-center gap-2 group">

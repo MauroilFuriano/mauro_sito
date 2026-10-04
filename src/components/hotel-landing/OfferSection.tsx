@@ -4,7 +4,6 @@ import { ShieldCheck, Star } from 'lucide-react';
 const OfferSection: React.FC = () => {
     return (
         <section className="py-24 px-6 bg-dark-900 border-t border-white/5 relative overflow-hidden">
-            {/* Decoro di background */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full max-h-lg bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none" />
 
             <div className="max-w-4xl mx-auto relative z-10">

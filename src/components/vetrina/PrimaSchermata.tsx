@@ -70,7 +70,7 @@ const PrimaSchermata: React.FC = () => {
       <div className="eroe-griglia">
         <div className="eroe-testo">
           <h1 id="titolo-eroe">Sviluppatore web ad <span className="senza-a-capo">Ascoli Piceno</span></h1>
-          <p className="eroe-sottotitolo">Faccio siti per hotel, concessionarie, artigiani e negozi del Piceno. Ti dico il prezzo prima di cominciare, e al telefono rispondo io.</p>
+          <p className="eroe-sottotitolo">Faccio siti web per hotel, B&amp;B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.</p>
           <AzioniContatto id="azioni-eroe" conNota />
         </div>
 

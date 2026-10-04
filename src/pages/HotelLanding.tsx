@@ -67,7 +67,7 @@ const HotelLanding: React.FC = () => {
                 </div>
             </header>
 
-            <main className="pt-16">
+            <main id="main-content" className="pt-16">
                 <HeroSection />
                 <DemoSection />
                 <ProblemSolution />

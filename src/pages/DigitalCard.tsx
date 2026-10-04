@@ -55,7 +55,7 @@ END:VCARD`;
       />
 
       {/* Main Card Container */}
-      <div className="w-full max-w-[450px] bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl relative">
+      <div id="main-content" className="w-full max-w-[450px] bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl relative">
         
         {/* Decorative Background Glows */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-[80px]" />

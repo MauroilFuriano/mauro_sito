@@ -66,7 +66,7 @@ const AgriEcommerceLanding: React.FC = () => {
                 </div>
             </header>
 
-            <main className="pt-16">
+            <main id="main-content" className="pt-16">
                 <HeroAgri />
                 <FeaturesAgri />
                 <CtaAgri />

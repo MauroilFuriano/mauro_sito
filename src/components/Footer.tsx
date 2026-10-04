@@ -82,13 +82,13 @@ const Footer: React.FC = () => {
         <div className="text-gray-500 text-sm md:text-center w-full md:w-auto text-center order-last md:order-none mt-4 md:mt-0 space-y-1">
           <p>&copy; {new Date().getFullYear()} Mauro.exe. Tutti i Sistemi Operativi.</p>
           <p className="text-xs">Mauro Ceccarelli &middot; P.IVA 02606790448</p>
-          <p className="flex flex-wrap items-center justify-center gap-3 text-xs">
+          <p className="flex flex-wrap items-center justify-center gap-3 text-xs text-gray-400">
             <a href="/privacy-policy" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <a href="/cookie-policy" className="hover:text-cyan-400 transition-colors">Cookie Policy</a>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <button type="button" onClick={apriPreferenzeCookie} className="hover:text-cyan-400 transition-colors">Preferenze Cookie</button>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <a href="/#faq" className="hover:text-cyan-400 transition-colors">FAQ</a>
           </p>
         </div>

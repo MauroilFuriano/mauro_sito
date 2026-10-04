@@ -17,7 +17,7 @@ const GA4PageTracker: React.FC = () => {
         page_location: window.location.href,
       });
     };
-    // In index.html gtag('js') parte al load: prima di allora config e visita andrebbero persi
+    // attivaTagConsentiti carica gtag.js solo a pagina caricata: prima di allora config e visita non partirebbero
     const segnaDopoIlCaricamento = () => {
       if (document.readyState === 'complete') segnaPagina();
       else window.addEventListener('load', segnaPagina, { once: true });
@@ -61,7 +61,7 @@ const DigitalCard = lazy(() => import('./pages/DigitalCard'));
 /* ── Loading fallback ───────────────────────────────────────── */
 const Loading = () => {
   const { pathname } = useLocation();
-  // La home è chiara: la classe accende già il fondo chiaro di index.css mentre arriva il resto
+  // La classe accende già il fondo della home di index.css, chiaro o scuro secondo data-tema, mentre arriva il resto
   if (pathname === '/') return <div className="home-vetrina" />;
   return (
     <div className="min-h-screen bg-dark-950 flex items-center justify-center">
@@ -86,7 +86,6 @@ const ErrorFallback = () => (
   </div>
 );
 
-/* ── Custom ErrorBoundary — Sentry è lazy, non disponibile al mount ─ */
 interface EBState { hasError: boolean }
 class ErrorBoundary extends Component<{ children: React.ReactNode }, EBState> {
   state: EBState = { hasError: false };

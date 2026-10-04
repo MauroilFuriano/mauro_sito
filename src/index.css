@@ -32,10 +32,24 @@ body:has(.home-vetrina),
   text-rendering: auto;
 }
 
-/* Finché React non disegna, #root è vuoto: avvio-home (index.html) tiene chiaro il fondo della home già al primo frame */
+html[data-tema="scuro"]:has(.home-vetrina),
+html[data-tema="scuro"] body:has(.home-vetrina),
+html[data-tema="scuro"] #root:has(.home-vetrina) {
+  background-color: #121212;
+  color: #F1F1EC;
+  color-scheme: dark;
+}
+
+/* Finché React non disegna, #root è vuoto: avvio-home e data-tema (index.html) danno il fondo giusto della home già al primo frame */
 html.avvio-home:has(#root:empty),
 html.avvio-home:has(#root:empty) body {
   background-color: #F6F6F3;
+}
+
+html.avvio-home[data-tema="scuro"]:has(#root:empty),
+html.avvio-home[data-tema="scuro"]:has(#root:empty) body {
+  background-color: #121212;
+  color-scheme: dark;
 }
 
 /* La home ha il suo "Vai al contenuto" verso #contenuto */

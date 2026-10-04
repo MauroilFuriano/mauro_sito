@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
+import Assistente from '../components/vetrina/Assistente';
 import BarraContatti from '../components/vetrina/BarraContatti';
 import ChiSono from '../components/vetrina/ChiSono';
 import Contatti from '../components/vetrina/Contatti';
@@ -37,7 +38,7 @@ const structuredData = {
         "https://www.linkedin.com/in/mauro-ceccarelli-282255296",
         "https://github.com/MauroilFuriano",
         "https://www.instagram.com/mauroceccarelli.exe",
-        "https://www.facebook.com/mauro.exe"
+        "https://www.facebook.com/profile.php?id=61585910800513"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -396,6 +397,7 @@ const HomePage: React.FC = () => {
 
       <Piede />
       <BarraContatti />
+      <Assistente />
       <DialogoVideo dialogoRef={dialogoVideoRef} />
       <Icone />
     </div>

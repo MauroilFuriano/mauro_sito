@@ -6,10 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, shrink-to-fit=no, viewport-fit=cover" />
   <title>Web Design & Sviluppatore Web Ascoli Piceno | Mauro.exe</title>
 
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="Web design e sviluppo siti custom ad Ascoli Piceno. Chatbot AI, React, Lighthouse 98/100. PMI delle Marche. Analisi gratuita in 24h — scrivimi." />
-
+  <!-- Description e canonical li scrive SEO.tsx per ogni pagina: qui farebbero da doppione, con la home come canonical di tutte -->
   <meta name="author" content="Mauro Ceccarelli" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
@@ -32,17 +29,25 @@
     content="Sviluppatore Web ad Ascoli Piceno. Siti Web professionali e Chatbot AI per aziende nelle Marche." />
   <meta property="twitter:image" content="https://www.mauroceccarelli.it/og-image.jpg" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.mauroceccarelli.it/" />
-
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/logo.webp" type="image/webp" />
   <link rel="apple-touch-icon" href="/logo.webp" />
 
-  <script>if (location.pathname === '/') document.documentElement.classList.add('avvio-home');</script>
+  <!-- Tema della home prima del primo disegno: la scelta salvata, altrimenti quella del sistema -->
+  <script>
+    if (location.pathname === '/') document.documentElement.classList.add('avvio-home');
+    var temaSalvato = null;
+    try {
+      temaSalvato = localStorage.getItem('tema');
+    } catch (erroreArchivio) {}
+    document.documentElement.dataset.tema = temaSalvato === 'chiaro' || temaSalvato === 'scuro'
+      ? temaSalvato
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'scuro' : 'chiaro');
+  </script>
 
-  <!-- Consent Mode v2: tutto negato finché il banner non registra una scelta. gtag.js lo carica src/misurazione.ts, solo dopo il consenso -->
+  <!-- Consent Mode v2: tutto negato finché il banner non registra una scelta. gtag.js lo carica src/misurazione.ts, solo dopo il consenso.
+       La versione deve restare uguale a VERSIONE_INFORMATIVA in src/misurazione.ts -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -54,7 +59,7 @@
       wait_for_update: 500
     });
     try {
-      if (localStorage.getItem('cookie_consent')) {
+      if (localStorage.getItem('cookie_consent') && localStorage.getItem('cookie_versione') === '2026-10-04') {
         var consensoMarketing = localStorage.getItem('cookie_marketing') === 'true' ? 'granted' : 'denied';
         gtag('consent', 'update', {
           analytics_storage: localStorage.getItem('cookie_analytics') === 'true' ? 'granted' : 'denied',

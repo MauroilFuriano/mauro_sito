@@ -41,6 +41,7 @@ const Navbar: React.FC = () => {
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavLink) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     setIsOpen(false);
 
@@ -63,7 +64,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center min-w-0">
 
         <a
-          href="#home"
+          href="/"
           className="flex items-center gap-2 md:gap-4 group flex-shrink-0"
           onClick={(e) => handleNavClick(e, { name: 'Home', href: '#home' })}
         >
@@ -91,7 +92,7 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
+              href={`/${link.href}`}
               onClick={(e) => handleNavClick(e, link)}
               className="relative text-sm lg:text-base font-medium tracking-wide transition-colors py-2 group text-gray-300 hover:text-cyan-400"
             >
@@ -134,7 +135,7 @@ const Navbar: React.FC = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
+              href={`/${link.href}`}
               onClick={(e) => handleNavClick(e, link)}
               className="text-lg font-medium transition-all w-full py-3 rounded-lg hover:bg-white/5 text-gray-300 hover:text-cyan-400"
             >

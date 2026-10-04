@@ -24,7 +24,6 @@ export default defineConfig({
           'vendor-react':  ['react', 'react-dom', 'react-router-dom'],
           'vendor-gsap':   ['gsap'],
           'vendor-framer': ['framer-motion'],
-          'vendor-sentry': ['@sentry/react'],
           'vendor-misc':   ['lenis', 'lucide-react', 'react-helmet-async'],
         },
       },

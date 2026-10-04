@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { recapiti } from '../../data/home';
 import { apriPreferenzeCookie } from '../../misurazione';
+import { Icona, type NomeIcona } from './Icone';
 
 const pagineDelSito = [
   { percorso: '/hotel', nome: 'Hotel' },
@@ -12,11 +13,11 @@ const pagineDelSito = [
   { percorso: '/cookie-policy', nome: 'Cookie policy' },
 ];
 
-const profiliSocial = [
-  { nome: 'LinkedIn', indirizzo: recapiti.linkedin },
-  { nome: 'GitHub', indirizzo: recapiti.github },
-  { nome: 'Instagram', indirizzo: recapiti.instagram },
-  { nome: 'Facebook', indirizzo: recapiti.facebook },
+const profiliSocial: readonly { nome: string; icona: NomeIcona; indirizzo: string }[] = [
+  { nome: 'LinkedIn', icona: 'linkedin', indirizzo: recapiti.linkedin },
+  { nome: 'GitHub', icona: 'github', indirizzo: recapiti.github },
+  { nome: 'Instagram', icona: 'instagram', indirizzo: recapiti.instagram },
+  { nome: 'Facebook', icona: 'facebook', indirizzo: recapiti.facebook },
 ];
 
 const Piede: React.FC = () => (
@@ -32,10 +33,14 @@ const Piede: React.FC = () => (
       <p className="piede-contatti">
         <a href={recapiti.telefono}>{recapiti.telefonoLeggibile}</a>
         <a href={`mailto:${recapiti.email}`}>{recapiti.email}</a>
-        {profiliSocial.map((profilo) => (
-          <a key={profilo.nome} href={profilo.indirizzo} target="_blank" rel="noopener">{profilo.nome}</a>
-        ))}
       </p>
+      <ul className="piede-social" aria-label="Profili social">
+        {profiliSocial.map((profilo) => (
+          <li key={profilo.nome}>
+            <a href={profilo.indirizzo} target="_blank" rel="noopener" aria-label={profilo.nome}><Icona nome={profilo.icona} /></a>
+          </li>
+        ))}
+      </ul>
       <nav aria-label="Pagine del sito">
         <ul className="piede-link">
           {pagineDelSito.map((pagina) => (

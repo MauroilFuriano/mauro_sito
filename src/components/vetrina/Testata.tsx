@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { recapiti } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
-import { Icona } from './Icone';
+import CambioTema from './CambioTema';
 
 const vociMenu = [
   { ancora: '#servizi', nome: 'Servizi' },
@@ -69,7 +68,8 @@ const Testata: React.FC = () => {
       <div ref={inizioPaginaRef} aria-hidden="true" />
       <header className={classiTestata} ref={testataRef} onBlur={menuAperto ? chiudiSeIlFuocoEsce : undefined}>
         <div className="testata-riga">
-          <p className="marchio">
+          {/* Il punto colorato divide il testo in più nodi: role="img" lo fa leggere come un nome solo */}
+          <p className="marchio" role="img" aria-label="MAURO.EXE di Mauro Ceccarelli">
             <img
               className="marchio-logo"
               src="/marchio-96.webp"
@@ -81,8 +81,8 @@ const Testata: React.FC = () => {
               decoding="async"
             />
             <span className="marchio-testo">
-              <span className="marchio-nome">Mauro Ceccarelli</span>
-              <span className="marchio-ruolo">Sviluppatore web<span className="marchio-punto"> · </span><span className="marchio-luogo">Ascoli Piceno</span></span>
+              <span className="marchio-nome">MAURO<span className="marchio-punto">.</span>EXE</span>{' '}
+              <span className="marchio-titolare">di Mauro Ceccarelli</span>
             </span>
           </p>
           <button
@@ -106,9 +106,7 @@ const Testata: React.FC = () => {
             </nav>
             <AzioniContatto />
           </div>
-          <a className="pulsante pulsante--chiama pulsante--testata" href={recapiti.telefono} aria-label={`Chiamami: ${recapiti.telefonoLeggibile}`}>
-            <Icona nome="telefono" /><span className="pulsante-testata-testo">Chiamami</span>
-          </a>
+          <CambioTema />
         </div>
       </header>
     </>

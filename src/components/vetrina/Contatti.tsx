@@ -6,20 +6,19 @@ import { segnaEvento } from '../../misurazione';
 import AzioniContatto from './AzioniContatto';
 import { Icona } from './Icone';
 
-type CampoRichiamo = 'nome' | 'telefono' | 'bisogno' | 'privacy';
+type CampoRichiamo = 'nome' | 'telefono' | 'bisogno';
 type EsitoRichiamo = 'inviata' | 'errore' | null;
 
 interface RichiestaRichiamo {
   nome: string;
   telefono: string;
   bisogno: string;
-  privacy: boolean;
   esca: string;
 }
 
-const richiestaVuota: RichiestaRichiamo = { nome: '', telefono: '', bisogno: '', privacy: false, esca: '' };
+const richiestaVuota: RichiestaRichiamo = { nome: '', telefono: '', bisogno: '', esca: '' };
 
-const ordineCampi: readonly CampoRichiamo[] = ['nome', 'telefono', 'bisogno', 'privacy'];
+const ordineCampi: readonly CampoRichiamo[] = ['nome', 'telefono', 'bisogno'];
 
 const bisogniPossibili = [
   { valore: 'sito-web', etichetta: 'Sito web' },
@@ -33,7 +32,6 @@ const campoValido: Record<CampoRichiamo, (richiesta: RichiestaRichiamo) => boole
   nome: (richiesta) => richiesta.nome.trim().length >= 2,
   telefono: (richiesta) => richiesta.telefono.replace(/\D/g, '').length >= 6,
   bisogno: (richiesta) => richiesta.bisogno !== '',
-  privacy: (richiesta) => richiesta.privacy,
 };
 
 const ErroreCampo: React.FC<{ id: string; visibile: boolean; children: React.ReactNode }> = ({ id, visibile, children }) => (
@@ -161,21 +159,6 @@ const Contatti: React.FC = () => {
               </div>
               <ErroreCampo id="errore-bisogno" visibile={Boolean(campiErrati.bisogno)}>Scegli una voce: va bene anche “Non lo so ancora”.</ErroreCampo>
             </div>
-            <div className="campo campo--casella">
-              <input
-                className="casella"
-                id="richiamo-privacy"
-                name="privacy"
-                type="checkbox"
-                required
-                aria-describedby={campiErrati.privacy ? 'errore-privacy' : undefined}
-                aria-invalid={campiErrati.privacy}
-                checked={richiesta.privacy}
-                onChange={(evento) => aggiornaCampo('privacy', evento.target.checked)}
-              />
-              <label htmlFor="richiamo-privacy">Ho letto la <Link className="link-in-linea" to="/privacy-policy" target="_blank" rel="noopener">privacy policy</Link></label>
-              <ErroreCampo id="errore-privacy" visibile={Boolean(campiErrati.privacy)}>Spunta la casella per continuare.</ErroreCampo>
-            </div>
             <div className="campo-esca" aria-hidden="true">
               <label htmlFor="richiamo-controllo">Lascia vuoto questo campo</label>
               <input
@@ -188,6 +171,9 @@ const Contatti: React.FC = () => {
                 onChange={(evento) => aggiornaCampo('esca', evento.target.value)}
               />
             </div>
+            <p className="modulo-nota">
+              Uso nome e telefono per richiamarti. Dettagli nella <Link className="link-in-linea" to="/privacy-policy" target="_blank" rel="noopener">privacy policy</Link>.
+            </p>
             <button className="pulsante pulsante--chiama" type="submit" aria-disabled={invioInCorso}>
               <Icona nome="telefono" />Richiamami
             </button>

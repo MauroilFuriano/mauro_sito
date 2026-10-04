@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  EVENTO_CONSENSO,
   EVENTO_PREFERENZE,
   leggiValoreCookie,
   rimuoviCookieSenzaConsenso,
@@ -30,8 +31,16 @@ const CookieBanner: React.FC = () => {
       setBannerVisibile(true);
       setRichiesteRiapertura((richieste) => richieste + 1);
     };
+    // La scelta può arrivare da un'altra scheda del sito: qui il banner non serve più
+    const chiudiSeGiaScelto = () => {
+      if (leggiValoreCookie('cookie_consent') !== null) setBannerVisibile(false);
+    };
     window.addEventListener(EVENTO_PREFERENZE, riapriPreferenze);
-    return () => window.removeEventListener(EVENTO_PREFERENZE, riapriPreferenze);
+    window.addEventListener(EVENTO_CONSENSO, chiudiSeGiaScelto);
+    return () => {
+      window.removeEventListener(EVENTO_PREFERENZE, riapriPreferenze);
+      window.removeEventListener(EVENTO_CONSENSO, chiudiSeGiaScelto);
+    };
   }, []);
 
   useEffect(() => {
@@ -66,7 +75,7 @@ const CookieBanner: React.FC = () => {
   return (
     <div className="consenso-cookie" ref={bannerRef} role="region" aria-label="Scelta sui cookie">
       <p>
-        Uso cookie tecnici e, solo se accetti, cookie statistici e di marketing.{' '}
+        Uso solo strumenti tecnici e, se accetti, cookie statistici e di marketing.{' '}
         <Link className="link-in-linea" to="/cookie-policy" target="_blank" rel="noopener">Cookie policy</Link>
       </p>
       <div className="consenso-scelte">
@@ -106,7 +115,7 @@ const CookieBanner: React.FC = () => {
               checked={marketingScelto}
               onChange={(evento) => setMarketingScelto(evento.target.checked)}
             />
-            <label htmlFor="cookie-marketing">Marketing <span>(Google Ads)</span></label>
+            <label htmlFor="cookie-marketing">Marketing <span>(Google Ads e Google signals)</span></label>
           </div>
         </div>
         <button

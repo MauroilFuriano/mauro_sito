@@ -48,7 +48,7 @@ const SaasLanding: React.FC = () => {
             {/* Navbar Slim (Esclusiva della Landing SaaS) */}
             <SaasNavbar />
 
-            <main>
+            <main id="main-content">
                 {/* Sezione Eroe con Mockup Dashboard */}
                 <SaasHero />
 

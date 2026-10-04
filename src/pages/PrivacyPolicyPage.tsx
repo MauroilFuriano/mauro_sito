@@ -54,7 +54,7 @@ const PrivacyPolicyPage: React.FC = () => {
                 <li className="flex gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
                   <div>
-                    <strong className="text-gray-300">Richieste di contatto e preventivo</strong> — Nel modulo «Preferisci essere richiamato?» inserisci nome, telefono e servizio di interesse: arrivano al Titolare per email tramite EmailJS. Nel simulatore preventivo nome, email, configurazione scelta e prezzo stimato compongono un messaggio WhatsApp, che parte solo se lo invii tu. Se chiami, scrivi su WhatsApp o mandi un'email, il Titolare riceve il tuo numero o indirizzo, il nome del profilo WhatsApp e il testo del messaggio. I messaggi WhatsApp passano da WhatsApp Ireland Limited, titolare autonomo. Finalità: rispondere alle richieste di contatto e preventivo. Base giuridica: misure precontrattuali adottate su tua richiesta (art. 6 §1 lett. b GDPR).
+                    <strong className="text-gray-300">Richieste di contatto e preventivo</strong> — Nel modulo «Preferisci essere richiamato?» inserisci nome, telefono e servizio di interesse: arrivano al Titolare per email tramite EmailJS. Nel simulatore preventivo nome, email, configurazione scelta e prezzo stimato arrivano al Titolare per email tramite EmailJS; se vuoi, puoi mandare lo stesso riepilogo anche su WhatsApp. Se chiami, scrivi su WhatsApp o mandi un'email, il Titolare riceve il tuo numero o indirizzo, il nome del profilo WhatsApp e il testo del messaggio. I messaggi WhatsApp passano da WhatsApp Ireland Limited, titolare autonomo. Finalità: rispondere alle richieste di contatto e preventivo. Base giuridica: misure precontrattuali adottate su tua richiesta (art. 6 §1 lett. b GDPR).
                   </div>
                 </li>
                 <li className="flex gap-3">
@@ -91,7 +91,7 @@ const PrivacyPolicyPage: React.FC = () => {
               <ul className="mt-2 space-y-2 list-none">
                 <li className="flex gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
-                  <span><strong className="text-gray-300">EmailJS</strong> (EmailJS Pte. Ltd., Singapore; server negli USA presso Amazon Web Services) — inoltra al Titolare le richieste del modulo «Preferisci essere richiamato?». Privacy policy: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">emailjs.com</a></span>
+                  <span><strong className="text-gray-300">EmailJS</strong> (EmailJS Pte. Ltd., Singapore; server negli USA presso Amazon Web Services) — inoltra al Titolare le richieste del modulo «Preferisci essere richiamato?» e del simulatore preventivo. Privacy policy: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">emailjs.com</a></span>
                 </li>
                 <li className="flex gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
@@ -176,7 +176,7 @@ const PrivacyPolicyPage: React.FC = () => {
 
             <section>
               <h2 className="text-white font-bold text-xl mb-3">8. Conferimento dei Dati</h2>
-              <p>Fornire i dati è facoltativo. Senza nome e telefono, però, il Titolare non può richiamarti; senza nome ed email il simulatore non prepara il messaggio. Se rifiuti i cookie statistici e di marketing, il sito funziona allo stesso modo.</p>
+              <p>Fornire i dati è facoltativo. Senza nome e telefono, però, il Titolare non può richiamarti; senza nome ed email il simulatore non può inviare la richiesta. Se rifiuti i cookie statistici e di marketing, il sito funziona allo stesso modo.</p>
             </section>
 
             <section>

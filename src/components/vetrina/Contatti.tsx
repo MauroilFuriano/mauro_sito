@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
 import { recapiti } from '../../data/home';
+import { inviaRichiestaEmail } from '../../inviaRichiesta';
 import { segnaEvento } from '../../misurazione';
 import AzioniContatto from './AzioniContatto';
 import { Icona } from './Icone';
@@ -69,23 +69,14 @@ const Contatti: React.FC = () => {
       return;
     }
 
-    const servizio = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const modello = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const chiavePubblica = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    if (!servizio || !modello || !chiavePubblica) {
-      setEsito('errore');
-      return;
-    }
-
     const bisognoScelto = bisogniPossibili.find((bisogno) => bisogno.valore === richiesta.bisogno)?.etichetta ?? richiesta.bisogno;
     setInvioInCorso(true);
     try {
-      await emailjs.send(servizio, modello, {
-        user_name: richiesta.nome.trim(),
-        user_email: '',
-        subject: `Richiesta di richiamata: ${bisognoScelto}`,
-        message: `Telefono: ${richiesta.telefono.trim()}\nDi cosa ha bisogno: ${bisognoScelto}`,
-      }, { publicKey: chiavePubblica });
+      await inviaRichiestaEmail({
+        nome: richiesta.nome.trim(),
+        oggetto: `Richiesta di richiamata: ${bisognoScelto}`,
+        messaggio: `Telefono: ${richiesta.telefono.trim()}\nDi cosa ha bisogno: ${bisognoScelto}`,
+      });
       segnaEvento('generate_lead', { event_category: 'Lead', bisogno: richiesta.bisogno });
       setRichiesta(richiestaVuota);
       setCampiErrati({});

@@ -57,18 +57,18 @@ COME LAVORA
 
 SERVIZI
 - Siti web per attività: si caricano subito anche dal telefono, fanno capire cosa fa l'attività e il cliente può chiamare con un tocco. Mauro li prepara anche per Google e per gli assistenti come ChatGPT (SEO e GEO), così l'attività viene trovata da chi cerca quel servizio in zona. Da 1.500 €, pronti in 7-14 giorni.
-- Assistente AI per il sito: un chatbot che risponde alle domande dei clienti, prende appuntamenti e passa all'attività i contatti interessati, anche fuori orario, la sera o la domenica. Da 4.200 €. Per gli hotel c'è una demo dal vivo, raggiungibile dalla sezione Servizi del sito.
+- Assistente AI per il sito: un chatbot che risponde alle domande dei clienti, prende appuntamenti e passa all'attività i contatti interessati, anche fuori orario, la sera o la domenica. Da 2.000 €. Per gli hotel c'è una demo dal vivo, raggiungibile dalla sezione Servizi del sito.
 - Automazioni e gestionali: Mauro collega i software che l'attività usa già e crea piccoli gestionali che fanno al posto dei dipendenti il lavoro di copiare dati da un programma all'altro. Da 8.000 €.
 
 LISTINO (prezzi IVA esclusa, pagamento anche a rate)
 - Landing page: da 700 €, pronta in 5 giorni
 - Sito vetrina (4-10 pagine): da 1.500 €, pronto in 7-14 giorni
 - E-commerce: da 3.500 €, pronto in 20-60 giorni
-- Assistente AI: da 4.200 €
-- Sito con assistente AI: da 5.700 €
-- E-commerce con assistente AI: da 8.000 €
+- Assistente AI: da 2.000 €
+- Sito con assistente AI: da 3.500 €
+- E-commerce con assistente AI: da 5.500 €
 - Gestionali e web app: da 8.000 €, pronti in 8-12 settimane
-Sul sito c'è anche un simulatore che calcola il preventivo in 2 minuti: la pagina "Calcola il preventivo".
+Sul sito c'è anche un simulatore che calcola una stima del prezzo: la pagina "Calcola il preventivo".
 
 SETTORI
 - Hotel e B&B: prenotazioni dirette, senza regalare commissioni a Booking (pagina mauroceccarelli.it/hotel).

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle, AlertCircle, Shield, Clock, Lock, ExternalLink, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LinkLegali from '../components/LinkLegali';
+import { inviaRichiestaEmail } from '../inviaRichiesta';
 import { leggiValoreCookie } from '../misurazione';
 
 const fireSimulatoreConversion = () => {
@@ -23,7 +24,7 @@ const reveal = {
 const P = {
   siteBase: 1500,   // sito vetrina professionale custom
   chatbotDet: 800,   // chatbot deterministico (info azienda)
-  chatbotAI: 4200,   // chatbot LLM (GPT-4o / Gemini)
+  chatbotAI: 2000,   // chatbot LLM (GPT-4o / Gemini)
   gestionale: 1200,   // gestionale prenotazioni / admin panel
   ecommerce: 2000,   // negozio online sul sito base: con i 1.500 del sito fa i 3.500 € del listino
   apiCarfax: 2000,   // API Carfax + funzione "Salva nel Garage"
@@ -201,6 +202,8 @@ export default function SimulatorePreventivo() {
   const [globalAddons, setGlobalAddons] = useState<Set<string>>(new Set(['seo']));
   const [form, setForm] = useState<FormData>({ name: '', email: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [linkWhatsApp, setLinkWhatsApp] = useState('https://wa.me/393480029661');
   const topRef = useRef<HTMLDivElement>(null);
@@ -252,7 +255,7 @@ export default function SimulatorePreventivo() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -264,31 +267,34 @@ export default function SimulatorePreventivo() {
       : [...extras].map(id => template?.extras.find(x => x.id === id)?.label).filter(Boolean).join(', ');
     const globalsLabel = [...globalAddons].filter(id => id !== 'seo').map(id => GLOBAL_ADDONS.find(a => a.id === id)?.label).filter(Boolean).join(', ');
 
-    const waMsg = encodeURIComponent(
-      `Ciao Mauro! Ho completato il Simulatore Preventivo.\n` +
-      `Nome: ${form.name}\n` +
-      `Soluzione: ${path === 'vetrina' ? 'Sito Vetrina Custom' : `Template ${template?.label}`}\n` +
+    const soluzione = path === 'vetrina' ? 'Sito Vetrina Custom' : `Template ${template?.label}`;
+    const riepilogo =
+      `Soluzione: ${soluzione}\n` +
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
       `Preventivo stimato: €${estimateTotal}\n` +
-      `Email: ${form.email}\n` +
-      `Attendo il preventivo dettagliato!`
-    );
+      `Email: ${form.email.trim()}`;
 
-    const linkConRiepilogo = `https://wa.me/393480029661?text=${waMsg}`;
-    setLinkWhatsApp(linkConRiepilogo);
-    setSuccess(true);
-    fireSimulatoreConversion();
-    // Aperto subito, nello stesso clic: dopo un'attesa Safari e altri browser bloccano la nuova scheda
-    window.open(linkConRiepilogo, '_blank', 'noopener');
+    setLinkWhatsApp(`https://wa.me/393480029661?text=${encodeURIComponent(`Ciao Mauro! Ho completato il Simulatore Preventivo.\nNome: ${form.name.trim()}\n${riepilogo}\nAttendo il preventivo dettagliato!`)}`);
+    setSending(true);
+    setSendError(false);
+    try {
+      await inviaRichiestaEmail({ nome: form.name.trim(), email: form.email.trim(), oggetto: `Richiesta di preventivo: ${soluzione}`, messaggio: riepilogo });
+      fireSimulatoreConversion();
+      setSuccess(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleReset = () => {
     setPath(null); setTemplateId(null); setChatbotOption('none');
     setExtras(new Set()); setGlobalAddons(new Set(['seo']));
     setForm({ name: '', email: '' });
-    setErrors({}); setSuccess(false);
+    setErrors({}); setSendError(false); setSuccess(false);
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -299,9 +305,9 @@ export default function SimulatorePreventivo() {
           <div className="w-20 h-20 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle size={40} className="text-green-400" />
           </div>
-          <h2 className="text-3xl font-black text-white mb-3">Ultimo passo: invia il messaggio</h2>
+          <h2 className="text-3xl font-black text-white mb-3">Richiesta inviata</h2>
           <p className="text-gray-400 leading-relaxed mb-8">
-            Si è aperto WhatsApp con il riepilogo: premi Invia e ti rispondo entro 24 ore con il preventivo scritto. Se WhatsApp non si è aperto, usa il pulsante qui sotto.
+            Ho ricevuto il riepilogo: entro 24 ore ti mando il preventivo scritto a {form.email.trim()}. Se preferisci, mandamelo anche su WhatsApp.
           </p>
           <a
             href={linkWhatsApp}
@@ -674,7 +680,7 @@ export default function SimulatorePreventivo() {
                       <SectionLabel number={path === 'template' && template ? 5 : 4} label="Richiedi il tuo preventivo" />
                       <div className="flex items-center gap-2 my-4 p-3 bg-cyan-400/10 border border-cyan-400/30 rounded-lg">
                         <Clock size={15} className="text-cyan-400 flex-shrink-0" />
-                        <span className="text-cyan-400 text-sm font-bold">Ti rispondo su WhatsApp entro 24 ore con il preventivo scritto</span>
+                        <span className="text-cyan-400 text-sm font-bold">Ti mando il preventivo scritto via email entro 24 ore</span>
                       </div>
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="grid sm:grid-cols-2 gap-4">
@@ -694,12 +700,17 @@ export default function SimulatorePreventivo() {
                           </div>
                         </div>
 
-                        <button type="submit"
-                          className="w-full py-4 rounded-xl font-black text-black text-sm tracking-wider bg-gradient-to-r from-cyan-400 to-cyan-500 hover:shadow-[0_0_28px_rgba(0,229,255,0.4)] hover:-translate-y-0.5 transform transition-all duration-300 flex items-center justify-center gap-2">
-                          Continua su WhatsApp →
+                        <button type="submit" disabled={sending}
+                          className="w-full py-4 rounded-xl font-black text-black text-sm tracking-wider bg-gradient-to-r from-cyan-400 to-cyan-500 hover:shadow-[0_0_28px_rgba(0,229,255,0.4)] hover:-translate-y-0.5 transform transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait disabled:hover:translate-y-0">
+                          {sending ? 'Invio in corso…' : 'Invia la richiesta →'}
                         </button>
+                        {sendError && (
+                          <p role="alert" className="text-center text-red-400 text-sm">
+                            L'invio non è riuscito. Riprova, oppure <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" className="underline font-bold">mandami il riepilogo su WhatsApp</a>.
+                          </p>
+                        )}
                         <p className="text-center text-gray-400 text-xs leading-relaxed">
-                          <Lock size={10} className="inline mr-1.5 -mt-0.5" />Nome ed email servono a prepararti il preventivo: il messaggio parte da WhatsApp solo se lo invii tu. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Privacy Policy</a>
+                          <Lock size={10} className="inline mr-1.5 -mt-0.5" />Nome, email e configurazione mi arrivano per email: servono solo a prepararti il preventivo. <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Privacy Policy</a>
                         </p>
                       </form>
                     </div>

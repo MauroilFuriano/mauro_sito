@@ -14,7 +14,7 @@ export const recapiti = {
 
 export const sottotitoloEroe = 'Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
-export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche: un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 4.200 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
+export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche: un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 2.000 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
 
 export interface ImmagineSito {
   src: string;
@@ -111,7 +111,7 @@ export const servizi: readonly Servizio[] = [
   {
     titolo: 'Un assistente AI che risponde ai clienti.',
     descrizione: "La tua attività perde clienti ogni sera alle 18, quando chiudi. L'assistente, un chatbot AI sul tuo sito, risponde alle domande, prende appuntamenti e ti passa i contatti interessati, anche la domenica alle 23.",
-    prezzo: 'Da 4.200 €',
+    prezzo: 'Da 2.000 €',
     scena: {
       cornice: 'telefono',
       pellicolaChat: true,
@@ -335,9 +335,9 @@ export const listino: readonly VoceListino[] = [
   { nome: 'Landing page', tempi: 'in 5 giorni', prezzo: 'da 700 €' },
   { nome: 'Sito vetrina (4-10 pagine)', tempi: 'in 7-14 giorni', prezzo: 'da 1.500 €' },
   { nome: 'E-commerce', tempi: 'in 20-60 giorni', prezzo: 'da 3.500 €' },
-  { nome: 'Assistente AI', prezzo: 'da 4.200 €' },
-  { nome: 'Sito con assistente AI', prezzo: 'da 5.700 €' },
-  { nome: 'E-commerce con assistente AI', prezzo: 'da 8.000 €' },
+  { nome: 'Assistente AI', prezzo: 'da 2.000 €' },
+  { nome: 'Sito con assistente AI', prezzo: 'da 3.500 €' },
+  { nome: 'E-commerce con assistente AI', prezzo: 'da 5.500 €' },
   { nome: 'Gestionali e web app', tempi: 'in 8-12 settimane', prezzo: 'da 8.000 €' },
 ];
 

@@ -667,8 +667,7 @@
   .home-vetrina .recensione--redicar { grid-column: 1 / span 9; }
   .home-vetrina .recensione--graphic { grid-column: 1 / span 4; }
   .home-vetrina .recensione--resinwood { grid-column: 6 / span 7; grid-row: span 2; }
-  .home-vetrina .recensione--maicol { grid-column: 1 / span 4; }
-  .home-vetrina .recensioni-chiusura { grid-column: 1 / span 6; }
+  .home-vetrina .recensioni-chiusura { grid-column: 1 / span 4; }
 }
 
 .home-vetrina .metodo { position: relative; display: grid; gap: 36px; margin-top: clamp(40px, 4vw, 56px); list-style: none; }

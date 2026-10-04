@@ -1,4 +1,4 @@
-import { domandeFrequenti, listino, recapiti, servizi, sottotitoloEroe } from './home';
+import { domandeFrequenti, listino, recapiti, servizi, sintesiAttivita, sottotitoloEroe } from './home';
 
 export const SITO = 'https://www.mauroceccarelli.it';
 
@@ -110,7 +110,7 @@ export const pagine: readonly PaginaDelSito[] = [
     datiStrutturati: grafoHome,
     senzaJs: {
       titolo: 'Sviluppatore web ad Ascoli Piceno',
-      paragrafi: [sottotitoloEroe, 'Se non rispondo subito, ti richiamo entro 24 ore.'],
+      paragrafi: [sottotitoloEroe, 'Se non rispondo subito, ti richiamo entro 24 ore.', sintesiAttivita],
       sezioni: [
         { titolo: 'Servizi', voci: servizi.map((servizio) => `${servizio.titolo} ${servizio.prezzo}. ${servizio.descrizione}`) },
         { titolo: 'Listino', voci: listino.map((voce) => `${voce.nome}: ${conTempi(voce.prezzo, voce.tempi)}`) },
@@ -171,8 +171,8 @@ export const pagine: readonly PaginaDelSito[] = [
     indicizzabile: true,
     ultimaModifica: '2026-10-04',
     senzaJs: {
-      titolo: 'Ogni Giorno Senza Preventivo Stai Scegliendo il Buio.',
-      paragrafi: ['Configura il sito dei tuoi sogni — ottieni il prezzo esatto in 30 secondi, gratis.'],
+      titolo: 'Quanto costa il tuo sito? Calcola il preventivo.',
+      paragrafi: ['Scegli cosa ti serve e vedi subito una stima. Il prezzo finale te lo scrivo nel preventivo, prima di iniziare.'],
     },
   },
   {

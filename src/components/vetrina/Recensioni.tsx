@@ -1,5 +1,5 @@
 import React from 'react';
-import { recapiti, recensioni } from '../../data/home';
+import { numeroRecensioniGoogle, recapiti, recensioni } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import { Icona, Stelle } from './Icone';
 import SenzaACapo from './SenzaACapo';
@@ -13,7 +13,7 @@ const Recensioni: React.FC = () => (
           <p className="voto-numero">5,0</p>
           <div className="voto-dettagli">
             <Stelle />
-            <p className="voto-fonte">su Google</p>
+            <p className="voto-fonte">su Google, {numeroRecensioniGoogle} recensioni</p>
             <a className="link-freccia link-freccia--esterno" href={recapiti.schedaGoogle} target="_blank" rel="noopener">
               Leggi tutte le recensioni su Google<Icona nome="esterno" />
             </a>

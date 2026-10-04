@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { clientiRecenti, sottotitoloEroe } from '../../data/home';
+import { clientiRecenti, numeroRecensioniGoogle, sottotitoloEroe } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import CorniceBrowser from './CorniceBrowser';
 import CorniceTelefono from './CorniceTelefono';
@@ -123,7 +123,7 @@ const PrimaSchermata: React.FC = () => {
 
       <div className="fiducia" ref={fiduciaRef}>
         <div className="fiducia-testa">
-          <p className="fiducia-voto"><Stelle />5,0 su Google</p>
+          <p className="fiducia-voto"><Stelle />5,0 su Google · {numeroRecensioniGoogle} recensioni</p>
           <p className="fiducia-intro">Ultimi lavori per</p>
         </div>
         <div className="fiducia-nastro">

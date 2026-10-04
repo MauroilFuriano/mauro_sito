@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Facebook, Instagram, MapPin, Phone } from 'lucide-react';
+import { sintesiAttivita } from '../data/home';
 import { apriPreferenzeCookie } from '../misurazione';
 
 const Footer: React.FC = () => {
@@ -7,12 +8,7 @@ const Footer: React.FC = () => {
     <footer className="bg-dark-950 border-t border-white/5 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-8 border-b border-white/5 pb-8 text-center">
-          <p className="text-gray-500 text-xs leading-relaxed max-w-4xl mx-auto">
-            <strong className="text-gray-400">Mauro Ceccarelli è uno sviluppatore web freelance con sede ad Ascoli Piceno, specializzato in siti custom React e chatbot AI per PMI italiane.</strong>{' '}
-            I suoi siti raggiungono un punteggio Lighthouse di 98/100 e vengono consegnati in 7–14 giorni.
-            Offre tre servizi principali: siti web professionali (da €1.500), chatbot con intelligenza artificiale GPT-4o/Gemini (da €4.200) e automazione business (da €8.000).
-            Opera nelle Marche e in tutta Italia con un approccio code-first senza WordPress né Shopify. Contatto: mauroexe@mauroceccarelli.it | +39 348 002 9661.
-          </p>
+          <p className="text-gray-500 text-xs leading-relaxed max-w-4xl mx-auto">{sintesiAttivita}</p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 text-gray-400 text-sm">

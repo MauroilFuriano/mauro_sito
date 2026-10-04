@@ -14,6 +14,8 @@ export const recapiti = {
 
 export const sottotitoloEroe = 'Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
+export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche: un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 4.200 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
+
 export interface ImmagineSito {
   src: string;
   larghezza: number;
@@ -275,7 +277,7 @@ export const lavori: readonly Lavoro[] = [
 ];
 
 export interface Recensione {
-  variante: 'redicar' | 'graphic' | 'resinwood' | 'maicol';
+  variante: 'redicar' | 'graphic' | 'resinwood';
   lunga: boolean;
   testo: string;
   senzaACapo?: string;
@@ -306,14 +308,10 @@ export const recensioni: readonly Recensione[] = [
     autore: 'Fabio Campanelli, FC Resinwood',
     data: 'aprile 2026',
   },
-  {
-    variante: 'maicol',
-    lunga: true,
-    testo: 'Ragazzo serio e professionale, oltre ogni mia aspettativa. Il sito che ha fatto a me è stupendo! Veramente bravo Mauro.',
-    autore: 'Maicol Ceccarelli',
-    data: 'aprile 2026',
-  },
 ];
+
+// Il totale della scheda Google, non le recensioni riportate qui sopra
+export const numeroRecensioniGoogle = 4;
 
 export interface PassoMetodo {
   evidenza: string;

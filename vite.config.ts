@@ -11,8 +11,8 @@ export default defineConfig({
   plugins: [
     react(),
     ViteImageOptimizer({
-      // Gli screenshot dei lavori sono già WebP a qualità 80: ricomprimerli a 75 sporcherebbe il testo
-      exclude: /lavori[\\/]/,
+      // Su Windows, se Vite vede il disco come "c:" e il plugin come "C:", le copie compresse finiscono sopra gli originali di public/: le immagini lì vanno messe già ottimizzate
+      includePublic: false,
       png: { quality: 70 },
       jpeg: { quality: 70 },
       webp: { quality: 75 },

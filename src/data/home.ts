@@ -12,7 +12,7 @@ export const recapiti = {
   demoHotel: 'https://hotel-automatico.vercel.app/',
 } as const;
 
-export const sottotitoloEroe = 'Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
+export const sottotitoloEroe = 'Faccio siti web e gestionali su misura per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
 export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche: un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 2.000 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
 

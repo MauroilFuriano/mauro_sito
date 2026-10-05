@@ -4,10 +4,10 @@ import { paginaAgricola, paginaGestionale, paginaHotel, type ContenutoPaginaServ
 export const SITO = 'https://www.mauroceccarelli.it';
 
 export const immagineAnteprima = {
-  indirizzo: `${SITO}/og-image.jpg`,
+  indirizzo: `${SITO}/anteprima-sito.jpg`,
   larghezza: 1200,
   altezza: 630,
-  alt: 'Mauro Ceccarelli, web developer: sviluppatore web e chatbot AI',
+  alt: 'MAURO.EXE di Mauro Ceccarelli, sviluppatore web ad Ascoli Piceno: siti web e gestionali su misura, con il sito di Redicar su computer e quello di Graphic Arts su telefono',
 } as const;
 
 export interface ContenutoSenzaJs {

@@ -316,7 +316,7 @@ export const paginaConcessionarie: ContenutoPaginaServizio = {
     { domanda: 'Quanto costa il sito per una concessionaria?', risposta: 'Un sito vetrina parte da 1.500 €, pronto in 7-14 giorni. Con un assistente AI parte da 1.990 €, più 149 € al mese.' },
     { domanda: "Quanto costa il valutatore dell'usato?", risposta: 'È un lavoro su misura: dipende da come deve stimare l\'auto e da dove deve arrivare la richiesta. Ti scrivo il prezzo prima di iniziare.' },
     { domanda: "Cosa fa il valutatore dell'usato?", risposta: "Il cliente inserisce i dati dell'auto e riceve una stima per la permuta; la richiesta arriva a te su WhatsApp e per email." },
-    { domanda: 'Lavori anche fuori da Ascoli Piceno?', risposta: 'Lavoro ad Ascoli Piceno, nelle Marche e in Abruzzo, anche a distanza.' },
+    { domanda: 'Lavori anche fuori da Ascoli Piceno?', risposta: 'Sì. Ho sede ad Ascoli Piceno, lavoro di persona nelle Marche e in Abruzzo e a distanza in tutta Italia.' },
   ],
   altriPassi: [
     { testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' },

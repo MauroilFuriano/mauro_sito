@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { recapiti } from '../../data/home';
+import { recapiti, zonaDiLavoro } from '../../data/home';
 import { inviaRichiestaEmail } from '../../inviaRichiesta';
 import { segnaEvento } from '../../misurazione';
 import AzioniContatto from './AzioniContatto';
@@ -96,7 +96,7 @@ const Contatti: React.FC = () => {
           <div className="contatti-diretti">
             <p className="testo-grande">Chiamami o scrivimi su WhatsApp. Rispondo io, e se non posso ti richiamo entro 24 ore.</p>
             <AzioniContatto grandi />
-            <p className="contatti-recapiti"><a className="link-in-linea" href={`mailto:${recapiti.email}`}>{recapiti.email}</a> · Lavoro ad Ascoli Piceno, in tutte le Marche e in Abruzzo, anche a distanza.</p>
+            <p className="contatti-recapiti"><a className="link-in-linea" href={`mailto:${recapiti.email}`}>{recapiti.email}</a> · {zonaDiLavoro}</p>
           </div>
 
           <form className="modulo" id="modulo-richiamo" noValidate onSubmit={inviaRichiesta}>

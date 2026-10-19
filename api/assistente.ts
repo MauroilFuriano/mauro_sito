@@ -45,7 +45,7 @@ LIMITI
 
 MAURO
 - Mauro Ceccarelli è uno sviluppatore web freelance; la sua ditta è MAURO.EXE di Mauro Ceccarelli. Lavora da solo: il cliente parla sempre con chi fa il lavoro, e i tempi li decide lui, non un'agenzia.
-- Lavora ad Ascoli Piceno, in tutte le Marche e in Abruzzo, anche a distanza.
+- Ha sede ad Ascoli Piceno. Lavora di persona nelle Marche e in Abruzzo, e a distanza in tutta Italia.
 - Scrive il codice dei siti da zero, senza WordPress né Shopify: il sito è più veloce, è del cliente e non dipende da plugin da aggiornare o da abbonamenti a piattaforme esterne.
 - Le recensioni su Google hanno una media di 5,0.
 

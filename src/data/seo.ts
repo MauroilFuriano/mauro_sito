@@ -72,7 +72,7 @@ const grafoHome = [
     founder: { '@id': ID_PERSONA },
     address: { '@type': 'PostalAddress', addressLocality: 'Ascoli Piceno', postalCode: '63100', addressRegion: 'AP', addressCountry: 'IT' },
     geo: { '@type': 'GeoCoordinates', latitude: 42.8535, longitude: 13.5745 },
-    areaServed: ['Ascoli Piceno', 'Marche', 'Italia'],
+    areaServed: ['Ascoli Piceno', 'Marche', 'Abruzzo', 'Italia'],
     priceRange: '€€',
     hasMap: recapiti.schedaGoogle,
     sameAs: [recapiti.linkedin, recapiti.github, recapiti.instagram, recapiti.facebook],

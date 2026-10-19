@@ -12,9 +12,11 @@ export const recapiti = {
   demoHotel: 'https://hotel-automatico.vercel.app/',
 } as const;
 
+export const zonaDiLavoro = 'Ho sede ad Ascoli Piceno. Lavoro di persona nelle Marche e in Abruzzo, e a distanza in tutta Italia.';
+
 export const sottotitoloEroe = 'Faccio siti web e gestionali su misura per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
-export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web e gestionali per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche. Si parte da 199 € per sistemare la scheda Google della tua attività; un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 490 € più 149 € al mese, un gestionale da 8.000 €; gli abbonamenti mensili partono da 79 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
+export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web e gestionali per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche. Si parte da 199 € per sistemare la scheda Google della tua attività; un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 490 € più 149 € al mese, un gestionale da 8.000 €; gli abbonamenti mensili partono da 79 €. Lavoro di persona nelle Marche e in Abruzzo, e a distanza in tutta Italia. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
 
 export interface ImmagineSito {
   src: string;

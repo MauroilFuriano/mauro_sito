@@ -1,5 +1,5 @@
 import React from 'react';
-import { recapiti } from '../../data/home';
+import { recapiti, zonaDiLavoro } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import { Icona } from './Icone';
 
@@ -22,7 +22,7 @@ const ChiSono: React.FC = () => (
       <div className="chi-sono-testo">
         <h2 className="titolo-sezione" id="titolo-chi-sono">Chi sono</h2>
         <h3>Chi è Mauro Ceccarelli?</h3>
-        <p className="testo-grande">Sono Mauro, sviluppatore web freelance. Lavoro ad Ascoli Piceno e scrivo il codice dei miei siti da zero, uno per uno. Lavoro da solo, e per te è un vantaggio: parli sempre con chi fa il lavoro, e i tempi li decido io, non un'agenzia. Se nelle foto vedi un gatto nero, è Titti: passa le giornate sulla mia scrivania.</p>
+        <p className="testo-grande">Sono Mauro, sviluppatore web freelance. {zonaDiLavoro} Scrivo il codice dei miei siti da zero, uno per uno. Lavoro da solo, e per te è un vantaggio: parli sempre con chi fa il lavoro, e i tempi li decido io, non un'agenzia. Se nelle foto vedi un gatto nero, è Titti: passa le giornate sulla mia scrivania.</p>
         <a className="link-freccia link-freccia--esterno" href={recapiti.linkedin} target="_blank" rel="noopener">
           Il mio profilo su LinkedIn<Icona nome="esterno" />
         </a>

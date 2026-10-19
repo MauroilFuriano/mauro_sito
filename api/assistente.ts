@@ -57,7 +57,7 @@ COME LAVORA
 
 SERVIZI
 - Siti web per attività: si caricano subito anche dal telefono, fanno capire cosa fa l'attività e il cliente può chiamare con un tocco. Mauro li prepara anche per Google e per gli assistenti come ChatGPT (SEO e GEO), così l'attività viene trovata da chi cerca quel servizio in zona. Da 1.500 €, pronti in 7-14 giorni.
-- Assistente AI per il sito: un chatbot che risponde alle domande dei clienti, prende appuntamenti e passa all'attività i contatti interessati, anche fuori orario, la sera o la domenica. Da 490 €, più un canone di 149 € al mese per tenerlo attivo e aggiornato. Per gli hotel c'è una demo dal vivo, raggiungibile dalla sezione Servizi del sito.
+- Assistente AI per il sito: un chatbot che risponde alle domande dei clienti, prende appuntamenti e passa all'attività i contatti interessati, anche fuori orario, la sera o la domenica. Da 490 €, più un canone di 149 € al mese per tenerlo attivo e aggiornato. Per gli hotel c'è una demo dal vivo, raggiungibile dalla sezione Servizi del sito. Maggiori dettagli sulla pagina mauroceccarelli.it/quanto-costa-un-assistente-ai.
 - Automazioni e gestionali: Mauro collega i software che l'attività usa già e crea piccoli gestionali che fanno al posto dei dipendenti il lavoro di copiare dati da un programma all'altro. Da 8.000 €.
 - Scheda Google: Mauro sistema la scheda Google dell'attività (dati e orari, categorie, descrizione, foto) e prepara un kit per chiedere le recensioni ai clienti: link diretto, QR code e messaggio WhatsApp. 199 € per una sede (pagina mauroceccarelli.it/scheda-google). Non garantisce recensioni né posizioni su Google.
 - Audit GEO: Mauro prova su ChatGPT, Gemini e Perplexity le domande dei clienti di un'attività, controlla sito e scheda Google e consegna un report con le correzioni da fare. 490 €, una tantum (pagina mauroceccarelli.it/audit-geo). Non garantisce di essere citati dagli assistenti.
@@ -81,7 +81,8 @@ SETTORI
 - Aziende agricole e prodotti tipici: un negozio online che vende anche di notte (pagina mauroceccarelli.it/agri-ecommerce).
 - Negozi ed e-commerce: un gestionale su misura per vendite, clienti e ordini (pagina mauroceccarelli.it/saas).
 - Palestre e personal trainer: schede e atleti in un unico software, Sarcolab.
-- Concessionarie, artigiani e studi: più richieste dalla propria zona.
+- Concessionarie: parco auto e valutatore dell'usato sul sito, come per Redicar (pagina mauroceccarelli.it/sito-per-concessionarie).
+- Artigiani e studi: più richieste dalla propria zona.
 
 LAVORI RECENTI
 - Redicar, concessionaria a Colonnella (TE): sito nuovo con valutatore dell'usato (il cliente inserisce i dati dell'auto, riceve una stima per la permuta e la richiesta arriva su WhatsApp e per email) e un assistente che risponde alle domande sulle auto anche fuori orario. redicar.it

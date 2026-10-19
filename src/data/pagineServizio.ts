@@ -42,6 +42,7 @@ export const paginaHotel: ContenutoPaginaServizio = {
     titolo: 'Vuoi vedere come funzionerebbe da te?',
     testo: "Chiamami o scrivimi: se mi mandi foto e logo, ti preparo un'anteprima gratuita con la tua struttura.",
   },
+  altriPassi: [{ testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' }],
 };
 
 export const paginaGestionale: ContenutoPaginaServizio = {
@@ -87,6 +88,7 @@ export const paginaAgricola: ContenutoPaginaServizio = {
     titolo: 'Parliamo dei tuoi prodotti',
     testo: "Chiamami o scrivimi: in mezz'ora capiamo cosa vendere online e quanto costa.",
   },
+  altriPassi: [{ testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' }],
 };
 
 export const paginaSchedaGoogle: ContenutoPaginaServizio = {
@@ -203,6 +205,7 @@ export const paginaPrezzi: ContenutoPaginaServizio = {
     { testo: 'Sistemo la tua scheda Google a 199 €', percorso: '/scheda-google' },
     { testo: 'Controllo se ChatGPT e Gemini ti citano', percorso: '/audit-geo' },
     { testo: 'Abbonamenti mensili', percorso: '/abbonamenti' },
+    { testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' },
   ],
 };
 
@@ -243,6 +246,80 @@ export const paginaAbbonamenti: ContenutoPaginaServizio = {
   altriPassi: [
     { testo: 'Sistemo la tua scheda Google a 199 €', percorso: '/scheda-google' },
     { testo: 'Controllo se ChatGPT e Gemini ti citano', percorso: '/audit-geo' },
+    { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
+  ],
+};
+
+export const paginaAssistente: ContenutoPaginaServizio = {
+  etichetta: 'Assistente AI',
+  titolo: 'Quanto costa un assistente AI che prende appuntamenti e prenotazioni',
+  sottotitolo: 'Un assistente AI per il sito della tua attività costa da 490 € per prepararlo, più 149 € al mese per tenerlo attivo e aggiornato. Risponde ai clienti a qualsiasi ora, prende appuntamenti o prenotazioni e ti passa i contatti interessati. Se lo prendi insieme a un sito vetrina nuovo, si parte da 1.990 € più 149 € al mese. Il prezzo esatto te lo scrivo nel preventivo, prima di iniziare.',
+  prezzo: 'Da 490 € più 149 € al mese, IVA esclusa.',
+  demo: { testo: "Prova l'assistente sul sito demo", indirizzo: recapiti.demoHotel },
+  titoloPunti: "Cosa fa l'assistente",
+  punti: [
+    { titolo: 'Risponde a qualsiasi ora', testo: 'Domande su orari, prezzi e servizi anche la sera o la domenica, quando tu non puoi rispondere.' },
+    { titolo: 'Prende appuntamenti e prenotazioni', testo: 'Raccoglie le richieste dei clienti e ti passa i contatti interessati.' },
+    { titolo: 'Capisce come scrive il cliente', testo: 'Il cliente scrive come parlerebbe a voce: niente menu o comandi da imparare. Risponde anche in altre lingue.' },
+    { titolo: 'Parte da quello che gli insegni tu', testo: 'Risponde con le informazioni della tua attività. Se una cosa non gli risulta, non la inventa: lo dice e invita a chiamarti.' },
+  ],
+  argomento: {
+    titolo: 'Quando conviene e quando no',
+    testo: 'Conviene se ricevi molte domande ripetute o richieste fuori orario, come succede a hotel e concessionarie. Se ricevi poche richieste, o ti bastano risposte generiche, un servizio già pronto da poche decine di euro al mese può essere sufficiente: te lo dico in telefonata, prima di venderti qualcosa.',
+  },
+  passi: [
+    { evidenza: 'Ci sentiamo al telefono:', seguito: "mi racconti cosa ti chiedono i clienti e a che ora. Mezz'ora, gratis." },
+    { evidenza: 'Ti mando un preventivo scritto,', seguito: 'con il prezzo di preparazione e il canone mensile.' },
+    { evidenza: "Preparo l'assistente", seguito: 'con le informazioni della tua attività e lo metto sul tuo sito.' },
+  ],
+  chiusura: {
+    titolo: 'Vuoi capire se ti serve?',
+    testo: 'Chiamami o scrivimi cosa ti chiedono i clienti: ti dico se un assistente ti conviene, o se basta altro.',
+  },
+  domande: [
+    { domanda: 'Quanto costa un assistente AI per una piccola attività?', risposta: 'Da 490 € per prepararlo, più 149 € al mese per tenerlo attivo e aggiornato. Prezzi IVA esclusa.' },
+    { domanda: 'Cosa comprende il canone mensile?', risposta: "Il funzionamento dell'assistente e l'aggiornamento delle informazioni che gli ho dato." },
+    { domanda: 'Esistono alternative più economiche?', risposta: 'Sì: servizi già pronti da poche decine di euro al mese. Vanno bene se ti bastano risposte generiche; io lo preparo con le informazioni della tua attività, e al telefono rispondo io.' },
+    { domanda: "L'assistente prende davvero appuntamenti e prenotazioni?", risposta: 'Raccoglie le richieste dei clienti e ti passa i contatti interessati. Per gli hotel puoi vedere come funziona sulla demo.' },
+    { domanda: 'I clienti capiscono che parlano con un\'AI?', risposta: "Sì: se glielo chiedono, l'assistente dice chiaramente di essere un'intelligenza artificiale e non una persona." },
+    { domanda: 'Mi garantisci più prenotazioni?', risposta: "No: nessuno può garantirlo. L'assistente risponde ai clienti quando tu non puoi; quante richieste ne nascono dipende dalla tua attività." },
+  ],
+  altriPassi: [
+    { testo: 'Sito per hotel e B&B con assistente AI', percorso: '/hotel' },
+    { testo: 'Sito per concessionarie', percorso: '/sito-per-concessionarie' },
+    { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
+  ],
+};
+
+export const paginaConcessionarie: ContenutoPaginaServizio = {
+  etichetta: 'Per concessionarie e autosaloni',
+  titolo: "Sito per concessionarie con valutatore dell'usato",
+  sottotitolo: "Faccio siti per concessionarie che fanno vedere il parco auto, rispondono ai clienti anche fuori orario e raccolgono le richieste di permuta. Per Redicar, a Colonnella, ho fatto un valutatore dell'usato: il cliente inserisce i dati dell'auto, riceve una stima per la permuta e la richiesta ti arriva su WhatsApp e per email.",
+  prezzo: "Sito vetrina da 1.500 €, con assistente AI da 1.990 € più 149 € al mese. Il valutatore dell'usato è un lavoro su misura: il prezzo te lo scrivo prima di iniziare.",
+  demo: { testo: 'Guarda il sito di Redicar', indirizzo: 'https://www.redicar.it/' },
+  titoloPunti: 'Cosa trovi nel sito',
+  punti: [
+    { titolo: 'Il parco auto in primo piano', testo: "Chi cerca un'auto trova subito cosa hai in vendita e può chiamarti con un tocco." },
+    { titolo: "Il valutatore dell'usato", testo: "Il cliente inserisce i dati dell'auto e riceve una stima per la permuta: la richiesta ti arriva su WhatsApp e per email. L'ho fatto per Redicar." },
+    { titolo: 'Un assistente che risponde fuori orario', testo: 'Risponde alle domande sulle auto anche la sera e la domenica, e ti passa i contatti interessati.' },
+    { titolo: 'Pensato per il telefono', testo: "Chi cerca un'auto lo fa spesso dal telefono, magari in macchina: il sito si carica subito e ha i pulsanti per chiamare e scrivere su WhatsApp." },
+  ],
+  argomento: {
+    titolo: 'Perché un sito tuo accanto ai portali',
+    testo: 'Sui portali di annunci il cliente vede la tua auto accanto a quelle di tutti gli altri. Sul tuo sito vede solo te: il parco auto, il valutatore dell\'usato e il tuo numero di telefono.',
+  },
+  chiusura: {
+    titolo: 'Parliamo della tua concessionaria',
+    testo: "Chiamami o scrivimi: in mezz'ora capiamo cosa ti serve e quanto costa.",
+  },
+  domande: [
+    { domanda: 'Quanto costa il sito per una concessionaria?', risposta: 'Un sito vetrina parte da 1.500 €, pronto in 7-14 giorni. Con un assistente AI parte da 1.990 €, più 149 € al mese.' },
+    { domanda: "Quanto costa il valutatore dell'usato?", risposta: 'È un lavoro su misura: dipende da come deve stimare l\'auto e da dove deve arrivare la richiesta. Ti scrivo il prezzo prima di iniziare.' },
+    { domanda: "Cosa fa il valutatore dell'usato?", risposta: "Il cliente inserisce i dati dell'auto e riceve una stima per la permuta; la richiesta arriva a te su WhatsApp e per email." },
+    { domanda: 'Lavori anche fuori da Ascoli Piceno?', risposta: 'Lavoro ad Ascoli Piceno, nelle Marche e in Abruzzo, anche a distanza.' },
+  ],
+  altriPassi: [
+    { testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' },
     { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
   ],
 };

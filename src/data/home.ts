@@ -116,7 +116,13 @@ export const settori: readonly Settore[] = [
     percorso: '#lavori',
   },
   {
-    nome: 'Concessionarie, artigiani e studi',
+    nome: 'Concessionarie',
+    descrizione: "Parco auto e valutatore dell'usato sul tuo sito",
+    destinazione: 'mauroceccarelli.it/sito-per-concessionarie',
+    percorso: '/sito-per-concessionarie',
+  },
+  {
+    nome: 'Artigiani e studi',
     descrizione: 'Più richieste dalla tua zona',
     destinazione: 'Lavori recenti, in questa pagina',
     percorso: '#lavori',
@@ -396,7 +402,7 @@ export const listino: readonly VoceListino[] = [
   { nome: 'Landing page', tempi: 'in 5 giorni', prezzo: 'da 700 €' },
   { nome: 'Sito vetrina (4-10 pagine)', tempi: 'in 7-14 giorni', prezzo: 'da 1.500 €' },
   { nome: 'E-commerce', tempi: 'in 20-60 giorni', prezzo: 'da 3.500 €' },
-  { nome: 'Assistente AI', prezzo: 'da 490 €', canone: '+ 149 €/mese' },
+  { nome: 'Assistente AI', prezzo: 'da 490 €', canone: '+ 149 €/mese', percorso: '/quanto-costa-un-assistente-ai' },
   { nome: 'Sito con assistente AI', prezzo: 'da 1.990 €', canone: '+ 149 €/mese' },
   { nome: 'E-commerce con assistente AI', prezzo: 'da 3.990 €', canone: '+ 149 €/mese' },
   { nome: 'Audit GEO (ChatGPT, Gemini)', tempi: 'una tantum', prezzo: '490 €', percorso: '/audit-geo' },

@@ -1,5 +1,5 @@
 import { abbonamenti, domandeFrequenti, listino, prezzoDellaVoce, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type DomandaFrequente, type ImmagineSito } from './home';
-import { paginaAbbonamenti, paginaAgricola, paginaAuditGeo, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
+import { paginaAbbonamenti, paginaAgricola, paginaAssistente, paginaAuditGeo, paginaConcessionarie, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
 
 export const SITO = 'https://www.mauroceccarelli.it';
 
@@ -175,6 +175,32 @@ export const pagine: readonly PaginaDelSito[] = [
       servizioDellaPagina('/agri-ecommerce', 'E-commerce per aziende agricole con assistente AI', 'Negozio online per aziende agricole e produttori di vino, miele e formaggi, con un assistente AI che risponde ai clienti anche di notte.'),
     ],
     senzaJs: senzaJsDelServizio(paginaAgricola),
+  },
+  {
+    percorso: '/quanto-costa-un-assistente-ai',
+    etichetta: 'Quanto costa un assistente AI',
+    titolo: "Quanto costa un assistente AI per prenotazioni | Mauro.exe",
+    descrizione: "Un assistente AI che risponde ai clienti e prende appuntamenti e prenotazioni costa da 490 € più 149 € al mese. Cosa fa, cosa comprende e quando conviene.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [
+      servizioDellaPagina('/quanto-costa-un-assistente-ai', 'Assistente AI per appuntamenti e prenotazioni', "Assistente AI per il sito di un'attività: risponde ai clienti a qualsiasi ora, prende appuntamenti e prenotazioni e passa i contatti interessati. Da 490 € più un canone mensile di 149 €.", 490),
+      domandeDellaPagina(paginaAssistente.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaAssistente),
+  },
+  {
+    percorso: '/sito-per-concessionarie',
+    etichetta: 'Sito per concessionarie',
+    titolo: "Sito per concessionarie con valutatore usato | Mauro.exe",
+    descrizione: "Siti per concessionarie con parco auto, valutatore dell'usato e assistente AI che risponde fuori orario. Sito vetrina da 1.500 €. Ascoli Piceno e Marche.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [
+      servizioDellaPagina('/sito-per-concessionarie', 'Sito per concessionarie', "Sito per concessionarie con parco auto, valutatore dell'usato e assistente AI che risponde ai clienti anche fuori orario."),
+      domandeDellaPagina(paginaConcessionarie.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaConcessionarie),
   },
   {
     percorso: '/scheda-google',

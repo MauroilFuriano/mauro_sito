@@ -4,12 +4,15 @@ import { passiMetodo } from '../../data/home';
 import type { ContenutoPaginaServizio } from '../../data/pagineServizio';
 import { segnaEvento } from '../../misurazione';
 import AzioniContatto from './AzioniContatto';
+import Domande from './Domande';
 import { Icona } from './Icone';
+import ListinoVoci from './ListinoVoci';
 import PaginaVetrina from './PaginaVetrina';
 import '../../styles/pagina-servizio.css';
 
 const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ contenuto }) => {
-  const { etichetta, titolo, sottotitolo, prezzo, demo, titoloPunti, punti, argomento, chiusura } = contenuto;
+  const { etichetta, titolo, sottotitolo, prezzo, demo, titoloPunti, punti, conListino, argomento, passi, chiusura, domande, altriPassi } = contenuto;
+  const passiDellaPagina = passi ?? passiMetodo;
   return (
     <PaginaVetrina>
       <section className="pagina-eroe" aria-labelledby="titolo-pagina">
@@ -47,6 +50,15 @@ const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ cont
         </div>
       </section>
 
+      {conListino && (
+        <section className="sezione sezione--filo" aria-labelledby="titolo-listino">
+          <div className="larghezza">
+            <h2 className="titolo-sezione" id="titolo-listino">Il listino</h2>
+            <ListinoVoci />
+          </div>
+        </section>
+      )}
+
       <section className="sezione sezione--filo" aria-labelledby="titolo-argomento">
         <div className="larghezza pagina-argomento">
           <h2 className="titolo-sezione titolo-sezione--medio" id="titolo-argomento">{argomento.titolo}</h2>
@@ -54,19 +66,23 @@ const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ cont
         </div>
       </section>
 
-      <section className="sezione sezione--filo" aria-labelledby="titolo-metodo">
-        <div className="larghezza">
-          <h2 className="titolo-sezione" id="titolo-metodo">Come lavoro</h2>
-          <ol className="metodo pagina-metodo">
-            {passiMetodo.map((passo, indice) => (
-              <li className="passo" key={passo.evidenza}>
-                <span className="passo-numero" aria-hidden="true">{indice + 1}</span>
-                <p><strong>{passo.evidenza}</strong> {passo.seguito}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      {passiDellaPagina.length > 0 && (
+        <section className="sezione sezione--filo" aria-labelledby="titolo-metodo">
+          <div className="larghezza">
+            <h2 className="titolo-sezione" id="titolo-metodo">Come lavoro</h2>
+            <ol className="metodo pagina-metodo">
+              {passiDellaPagina.map((passo, indice) => (
+                <li className="passo" key={passo.evidenza}>
+                  <span className="passo-numero" aria-hidden="true">{indice + 1}</span>
+                  <p><strong>{passo.evidenza}</strong> {passo.seguito}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {domande && <Domande domande={domande} id="domande" />}
 
       <section className="sezione sezione--filo pagina-chiusura" aria-labelledby="titolo-chiusura">
         <div className="larghezza">
@@ -74,6 +90,9 @@ const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ cont
           <p className="testo-grande">{chiusura.testo}</p>
           <AzioniContatto grandi conNota />
           <Link className="link-freccia" to="/simulatore">Calcola una stima del prezzo<Icona nome="freccia" /></Link>
+          {altriPassi?.map((altroPasso) => (
+            <Link className="link-freccia" to={altroPasso.percorso} key={altroPasso.percorso}>{altroPasso.testo}<Icona nome="freccia" /></Link>
+          ))}
         </div>
       </section>
     </PaginaVetrina>

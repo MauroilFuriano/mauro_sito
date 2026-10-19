@@ -28,4 +28,4 @@
 
 .home-vetrina .pagina-chiusura .testo-grande { max-width: 46ch; margin-top: 20px; color: var(--grafite); }
 .home-vetrina .pagina-chiusura .azioni { margin-top: 32px; }
-.home-vetrina .pagina-chiusura .link-freccia { margin-top: 20px; }
+.home-vetrina .pagina-chiusura .link-freccia { display: flex; width: fit-content; margin-top: 20px; }

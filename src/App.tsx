@@ -51,6 +51,9 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const HotelLanding = lazy(() => import('./pages/HotelLanding'));
 const SaasLanding = lazy(() => import('./pages/SaasLanding'));
 const AgriEcommerceLanding = lazy(() => import('./pages/AgriEcommerceLanding'));
+const SchedaGooglePage = lazy(() => import('./pages/SchedaGooglePage'));
+const AuditGeoPage = lazy(() => import('./pages/AuditGeoPage'));
+const PrezziPage = lazy(() => import('./pages/PrezziPage'));
 const SimulatorePreventivo = lazy(() => import('./pages/SimulatorePreventivo'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
@@ -99,6 +102,9 @@ const App: React.FC = () => (
           <Route path="/reception-ai" element={<Navigate to="/hotel" replace />} />
           <Route path="/saas" element={<SaasLanding />} />
           <Route path="/agri-ecommerce" element={<AgriEcommerceLanding />} />
+          <Route path="/scheda-google" element={<SchedaGooglePage />} />
+          <Route path="/audit-geo" element={<AuditGeoPage />} />
+          <Route path="/quanto-costa-un-sito-web" element={<PrezziPage />} />
           <Route path="/promo-pasqua" element={<Navigate to="/" replace />} />
           <Route path="/simulatore" element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

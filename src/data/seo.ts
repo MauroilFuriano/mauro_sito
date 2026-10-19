@@ -1,5 +1,5 @@
-import { domandeFrequenti, listino, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type ImmagineSito } from './home';
-import { paginaAgricola, paginaGestionale, paginaHotel, type ContenutoPaginaServizio } from './pagineServizio';
+import { domandeFrequenti, listino, prezzoDellaVoce, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type DomandaFrequente, type ImmagineSito } from './home';
+import { paginaAgricola, paginaAuditGeo, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
 
 export const SITO = 'https://www.mauroceccarelli.it';
 
@@ -38,13 +38,23 @@ const prezzoMinimo = (prezzo: string) => Number(prezzo.replace(/\D/g, ''));
 
 const fornitore = { '@type': 'ProfessionalService', '@id': ID_AZIENDA, name: NOME_ATTIVITA, url: `${SITO}/`, telephone: TELEFONO };
 
-const servizioDellaPagina = (percorso: string, nome: string, descrizione: string) => ({
+const servizioDellaPagina = (percorso: string, nome: string, descrizione: string, prezzo?: number) => ({
   '@type': 'Service',
   name: nome,
   description: descrizione,
   url: `${SITO}${percorso}`,
   provider: fornitore,
   areaServed: { '@type': 'Country', name: 'Italia' },
+  ...(prezzo ? { offers: { '@type': 'Offer', price: prezzo, priceCurrency: 'EUR', url: `${SITO}${percorso}` } } : {}),
+});
+
+const domandeDellaPagina = (domande: readonly DomandaFrequente[]) => ({
+  '@type': 'FAQPage',
+  mainEntity: domande.map(({ domanda, risposta }) => ({
+    '@type': 'Question',
+    name: domanda,
+    acceptedAnswer: { '@type': 'Answer', text: risposta },
+  })),
 });
 
 const grafoHome = [
@@ -72,7 +82,12 @@ const grafoHome = [
       itemListElement: listino.map((voce) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: voce.nome },
-        priceSpecification: { '@type': 'PriceSpecification', minPrice: prezzoMinimo(voce.prezzo), priceCurrency: 'EUR' },
+        ...(voce.canone ? { description: `Canone mensile: ${voce.canone.replace(/^\+\s*/, '')}` } : {}),
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          ...(voce.prezzo.startsWith('da') ? { minPrice: prezzoMinimo(voce.prezzo) } : { price: prezzoMinimo(voce.prezzo) }),
+          priceCurrency: 'EUR',
+        },
       })),
     },
   },
@@ -87,22 +102,21 @@ const grafoHome = [
     sameAs: [recapiti.linkedin, recapiti.github, recapiti.instagram],
   },
   { '@type': 'WebSite', '@id': ID_SITO, url: `${SITO}/`, name: 'Mauro.exe', inLanguage: 'it-IT', publisher: { '@id': ID_AZIENDA } },
-  {
-    '@type': 'FAQPage',
-    mainEntity: domandeFrequenti.map(({ domanda, risposta }) => ({
-      '@type': 'Question',
-      name: domanda,
-      acceptedAnswer: { '@type': 'Answer', text: risposta },
-    })),
-  },
+  domandeDellaPagina(domandeFrequenti),
 ];
 
 const conTempi = (prezzo: string, tempi?: string) => (tempi ? `${prezzo}, ${tempi}` : prezzo);
 
-const senzaJsDelServizio = ({ titolo, sottotitolo, prezzo, titoloPunti, punti, argomento, chiusura }: ContenutoPaginaServizio): ContenutoSenzaJs => ({
+const vociDelleDomande = (domande: readonly DomandaFrequente[]) => domande.map(({ domanda, risposta }) => `${domanda} ${risposta}`);
+
+const senzaJsDelServizio = ({ titolo, sottotitolo, prezzo, titoloPunti, punti, conListino, argomento, chiusura, domande }: ContenutoPaginaServizio): ContenutoSenzaJs => ({
   titolo,
   paragrafi: [sottotitolo, prezzo, argomento.testo, chiusura.testo],
-  sezioni: [{ titolo: titoloPunti, voci: punti.map((punto) => `${punto.titolo}: ${punto.testo}`) }],
+  sezioni: [
+    { titolo: titoloPunti, voci: punti.map((punto) => `${punto.titolo}: ${punto.testo}`) },
+    ...(conListino ? [{ titolo: 'Il listino', voci: listino.map((voce) => `${voce.nome}: ${conTempi(prezzoDellaVoce(voce), voce.tempi)}`) }] : []),
+    ...(domande ? [{ titolo: 'Domande frequenti', voci: vociDelleDomande(domande) }] : []),
+  ],
 });
 
 export const pagine: readonly PaginaDelSito[] = [
@@ -112,7 +126,7 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'Sviluppatore web Ascoli Piceno: siti da 1.500 € | Mauro.exe',
     descrizione: 'Siti web per hotel, negozi e artigiani del Piceno: prezzo scritto prima di iniziare, sito vetrina in 7-14 giorni. Chiama il 348 002 9661.',
     indicizzabile: true,
-    ultimaModifica: '2026-10-04',
+    ultimaModifica: '2026-10-19',
     immagineDaPrecaricare: vetrinaEroe.principale,
     datiStrutturati: grafoHome,
     senzaJs: {
@@ -120,18 +134,18 @@ export const pagine: readonly PaginaDelSito[] = [
       paragrafi: [sottotitoloEroe, 'Se non rispondo subito, ti richiamo entro 24 ore.', sintesiAttivita],
       sezioni: [
         { titolo: 'Servizi', voci: servizi.map((servizio) => `${servizio.titolo} ${servizio.prezzo}. ${servizio.descrizione}`) },
-        { titolo: 'Listino', voci: listino.map((voce) => `${voce.nome}: ${conTempi(voce.prezzo, voce.tempi)}`) },
-        { titolo: 'Domande frequenti', voci: domandeFrequenti.map(({ domanda, risposta }) => `${domanda} ${risposta}`) },
+        { titolo: 'Listino', voci: listino.map((voce) => `${voce.nome}: ${conTempi(prezzoDellaVoce(voce), voce.tempi)}`) },
+        { titolo: 'Domande frequenti', voci: vociDelleDomande(domandeFrequenti) },
       ],
     },
   },
   {
     percorso: '/hotel',
     etichetta: 'Hotel',
-    titolo: 'Sito per hotel e B&B con prenotazioni dirette | Mauro.exe',
-    descrizione: 'Sito per hotel e B&B con assistente AI che risponde agli ospiti 24 ore su 24, in più lingue, e prenota senza commissioni di Booking.',
+    titolo: "Sito per hotel e B&B nelle Marche | Mauro.exe",
+    descrizione: "Sito per hotel e B&B nelle Marche: assistente AI che risponde agli ospiti 24 ore su 24, in più lingue, e prenotazioni dirette senza commissioni Booking.",
     indicizzabile: true,
-    ultimaModifica: '2026-10-04',
+    ultimaModifica: '2026-10-19',
     datiStrutturati: [
       servizioDellaPagina('/hotel', 'Sito per hotel e B&B con assistente AI', 'Sito per hotel, B&B e case vacanza con un assistente AI che risponde agli ospiti 24 ore su 24 in più lingue e raccoglie prenotazioni dirette.'),
     ],
@@ -155,19 +169,55 @@ export const pagine: readonly PaginaDelSito[] = [
     titolo: 'E-commerce per aziende agricole e cantine | Mauro.exe',
     descrizione: 'Negozio online per aziende agricole: vino, miele e formaggi venduti anche di notte, con un assistente AI che risponde ai clienti. Sviluppato nelle Marche.',
     indicizzabile: true,
-    ultimaModifica: '2026-10-04',
+    ultimaModifica: '2026-10-19',
     datiStrutturati: [
       servizioDellaPagina('/agri-ecommerce', 'E-commerce per aziende agricole con assistente AI', 'Negozio online per aziende agricole e produttori di vino, miele e formaggi, con un assistente AI che risponde ai clienti anche di notte.'),
     ],
     senzaJs: senzaJsDelServizio(paginaAgricola),
   },
   {
+    percorso: '/scheda-google',
+    etichetta: 'Scheda Google',
+    titolo: "Scheda Google attività Ascoli Piceno: 199 € | Mauro.exe",
+    descrizione: "Sistemo la scheda Google della tua attività: dati, orari, categorie, foto e un kit per chiedere le recensioni. 199 € per una sede. Ascoli Piceno e Marche.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [
+      servizioDellaPagina('/scheda-google', 'Sistemazione della scheda Google', "Sistemazione della scheda Google di un'attività locale: dati, orari, categorie, descrizione, foto e un kit per chiedere le recensioni ai clienti.", 199),
+      domandeDellaPagina(paginaSchedaGoogle.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaSchedaGoogle),
+  },
+  {
+    percorso: '/audit-geo',
+    etichetta: 'Audit GEO',
+    titolo: "Audit GEO: comparire su ChatGPT e Gemini | Mauro.exe",
+    descrizione: "Provo le domande dei tuoi clienti su ChatGPT, Gemini e Perplexity e ti consegno un report su cosa sistemare per essere citato. Audit GEO a 490 €.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [
+      servizioDellaPagina('/audit-geo', 'Audit GEO', "Controllo se ChatGPT, Gemini e Perplexity citano un'attività, con un report delle correzioni da fare in ordine di importanza.", 490),
+      domandeDellaPagina(paginaAuditGeo.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaAuditGeo),
+  },
+  {
+    percorso: '/quanto-costa-un-sito-web',
+    etichetta: 'Quanto costa un sito web',
+    titolo: "Quanto costa un sito web? Prezzi da 700 € | Mauro.exe",
+    descrizione: "Landing page da 700 €, sito vetrina da 1.500 €, e-commerce da 3.500 €. Cosa fa cambiare il prezzo di un sito web e come funziona il preventivo scritto.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [domandeDellaPagina(paginaPrezzi.domande ?? [])],
+    senzaJs: senzaJsDelServizio(paginaPrezzi),
+  },
+  {
     percorso: '/simulatore',
     etichetta: 'Calcola il preventivo',
-    titolo: 'Quanto costa un sito web? Calcola il preventivo | Mauro.exe',
-    descrizione: 'Scegli il tipo di sito e le funzioni che ti servono: il simulatore calcola subito una stima del prezzo e prepara il riepilogo da inviare su WhatsApp.',
+    titolo: "Simulatore preventivo sito web: stima subito | Mauro.exe",
+    descrizione: "Scegli il tipo di sito e le funzioni che ti servono: il simulatore calcola subito una stima del prezzo. Poi ti mando il preventivo scritto via email.",
     indicizzabile: true,
-    ultimaModifica: '2026-10-04',
+    ultimaModifica: '2026-10-19',
     senzaJs: {
       titolo: 'Quanto costa il tuo sito? Calcola il preventivo.',
       paragrafi: ['Scegli cosa ti serve e vedi subito una stima. Il prezzo finale te lo scrivo nel preventivo, prima di iniziare.'],

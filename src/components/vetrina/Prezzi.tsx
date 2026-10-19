@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { listino, passiMetodo } from '../../data/home';
+import { passiMetodo } from '../../data/home';
 import AzioniContatto from './AzioniContatto';
 import { Icona } from './Icone';
+import ListinoVoci from './ListinoVoci';
 import { conMovimento, gsap } from './animazioni';
 
 const Prezzi: React.FC = () => {
@@ -37,16 +38,9 @@ const Prezzi: React.FC = () => {
             <h3>Listino</h3>
             <p>Prezzi IVA esclusa, pagamento anche a rate.</p>
             <Link className="link-freccia" to="/simulatore">Calcola il tuo preventivo in 2 minuti<Icona nome="freccia" /></Link>
+            <Link className="link-freccia" to="/quanto-costa-un-sito-web">Come si formano i prezzi<Icona nome="freccia" /></Link>
           </div>
-          <ul className="listino-voci">
-            {listino.map((voceListino) => (
-              <li className="listino-voce" key={voceListino.nome}>
-                <span className="voce-nome">{voceListino.nome}</span>
-                {voceListino.tempi && <span className="voce-tempi">{voceListino.tempi}</span>}
-                <span className="voce-prezzo">{voceListino.prezzo}</span>
-              </li>
-            ))}
-          </ul>
+          <ListinoVoci />
         </div>
 
         <div className="prezzi-chiusura">

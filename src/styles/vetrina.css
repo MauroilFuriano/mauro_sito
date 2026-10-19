@@ -706,6 +706,7 @@
   border-bottom: 1px solid var(--filo);
 }
 .home-vetrina .voce-nome { grid-area: nome; font-weight: 600; }
+.home-vetrina .voce-canone { display: block; margin-top: 2px; font-family: var(--font-testo); font-size: .9375rem; font-weight: 500; letter-spacing: 0; color: var(--grafite); }
 .home-vetrina .voce-tempi { grid-area: tempi; color: var(--grafite); }
 .home-vetrina .voce-prezzo { grid-area: prezzo; align-self: center; font-family: var(--font-titoli); font-weight: 500; font-size: clamp(1.375rem, 1.1rem + .8vw, 1.875rem); letter-spacing: -0.025em; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .home-vetrina .prezzi-chiusura { margin-top: clamp(48px, 5vw, 64px); }

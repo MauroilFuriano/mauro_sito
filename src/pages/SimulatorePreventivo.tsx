@@ -27,7 +27,8 @@ const reveal = {
 const P = {
   siteBase: 1500,   // sito vetrina professionale custom
   chatbotDet: 800,   // chatbot deterministico (info azienda)
-  chatbotAI: 2000,   // chatbot LLM (GPT-4o / Gemini)
+  chatbotAI: 490,   // preparazione dell'assistente: il canone mensile è canoneAssistente
+  canoneAssistente: 149,   // al mese, per tenerlo attivo e aggiornato
   gestionale: 1200,   // gestionale prenotazioni / admin panel
   ecommerce: 2000,   // negozio online sul sito base: con i 1.500 del sito fa i 3.500 € del listino
   apiCarfax: 2000,   // API Carfax + funzione "Salva nel Garage"
@@ -250,6 +251,8 @@ export default function SimulatorePreventivo() {
     return t;
   })();
 
+  const canoneMensile = path && chatbotOption === 'ai' ? P.canoneAssistente : 0;
+
   const { value: animatedEstimate, flash: flashEstimate } = useAnimatedPrice(estimateTotal);
 
   useEffect(() => {
@@ -283,7 +286,7 @@ export default function SimulatorePreventivo() {
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
-      `Preventivo stimato: ${inEuro(estimateTotal)}\n` +
+      `Preventivo stimato: ${inEuro(estimateTotal)}${canoneMensile > 0 ? ` + ${inEuro(canoneMensile)} al mese per l'assistente` : ''}\n` +
       `Email: ${form.email.trim()}`;
 
     setLinkWhatsApp(`https://wa.me/393480029661?text=${encodeURIComponent(`Ciao Mauro! Ho completato il Simulatore Preventivo.\nNome: ${form.name.trim()}\n${riepilogo}\nAttendo il preventivo dettagliato!`)}`);
@@ -439,6 +442,7 @@ export default function SimulatorePreventivo() {
                               ) : (
                                 <p className={`font-bold text-sm ${chatbotOption === opt.id ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
                                   +{inEuro(opt.price)}
+                                  {opt.id === 'ai' && <span className="block text-xs font-normal text-[var(--grafite)]">+ {inEuro(P.canoneAssistente)}/mese</span>}
                                 </p>
                               )}
                             </div>
@@ -574,6 +578,7 @@ export default function SimulatorePreventivo() {
                               ) : (
                                 <p className={`font-bold text-sm ${chatbotOption === opt.id ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
                                   +{inEuro(opt.price)}
+                                  {opt.id === 'ai' && <span className="block text-xs font-normal text-[var(--grafite)]">+ {inEuro(P.canoneAssistente)}/mese</span>}
                                 </p>
                               )}
                             </div>
@@ -789,6 +794,7 @@ export default function SimulatorePreventivo() {
                   <p className={`text-4xl font-bold tabular-nums transition-all duration-300 ${flashEstimate ? 'text-[var(--cobalto-testo)] scale-105' : 'text-[var(--inchiostro)]'}`}>
                     {inEuro(animatedEstimate)}
                   </p>
+                  {canoneMensile > 0 && <p className="mt-1 text-sm text-[var(--grafite)]">+ {inEuro(canoneMensile)} al mese per l'assistente</p>}
                 </div>
               ) : (
                 <p className="text-center text-[var(--grafite)] text-sm py-6 italic">
@@ -892,7 +898,7 @@ export default function SimulatorePreventivo() {
                 <p className={`text-2xl font-bold tabular-nums transition-all duration-300 ${flashEstimate ? 'text-[var(--cobalto-testo)]' : 'text-[var(--inchiostro)]'}`}>
                   {inEuro(animatedEstimate)}
                 </p>
-                <p className="text-xs text-[var(--grafite)] mt-0.5">{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
+                <p className="text-xs text-[var(--grafite)] mt-0.5">{canoneMensile > 0 ? `+ ${inEuro(canoneMensile)}/mese · ` : ''}{showMobileDetail ? '▼ chiudi dettaglio' : '▲ vedi dettaglio'}</p>
               </button>
               <button
                 onClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}

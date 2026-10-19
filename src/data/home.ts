@@ -14,7 +14,7 @@ export const recapiti = {
 
 export const sottotitoloEroe = 'Faccio siti web e gestionali su misura per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
-export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche: un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 2.000 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
+export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web e gestionali per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche. Si parte da 199 € per sistemare la scheda Google della tua attività; un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 490 € più 149 € al mese, un gestionale da 8.000 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
 
 export interface ImmagineSito {
   src: string;
@@ -149,7 +149,6 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/fc-resinwood-mobile.webp',
         larghezza: 780,
         altezza: 5064,
-
         varianti: VARIANTI_TELEFONO,
         alt: 'Il sito di FC Resinwood aperto su un telefono: un tavolo in legno con un fiume di resina blu e il pulsante Scegli il tuo tavolo',
       },
@@ -159,7 +158,7 @@ export const servizi: readonly Servizio[] = [
   {
     titolo: 'Un assistente AI che risponde ai clienti.',
     descrizione: "La tua attività perde clienti ogni sera alle 18, quando chiudi. L'assistente, un chatbot AI sul tuo sito, risponde alle domande, prende appuntamenti e ti passa i contatti interessati, anche la domenica alle 23.",
-    prezzo: 'Da 2.000 €',
+    prezzo: 'Da 490 € + 149 €/mese',
     scena: {
       cornice: 'telefono',
       pellicolaChat: true,
@@ -167,7 +166,6 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/redicar-mobile.webp',
         larghezza: 780,
         altezza: 5064,
-
         varianti: VARIANTI_TELEFONO,
         alt: "Il sito di Redicar aperto su un telefono, con il pulsante rosso della chat dell'assistente in basso a destra",
       },
@@ -186,7 +184,6 @@ export const servizi: readonly Servizio[] = [
         src: '/lavori/sarcolab-desktop.webp',
         larghezza: 1440,
         altezza: 2700,
-
         varianti: VARIANTI_COMPUTER,
         alt: 'Sarcolab aperto su un computer: la dashboard con le schede da consegnare agli atleti e i numeri del giorno',
       },
@@ -231,7 +228,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/redicar-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
-
       varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Redicar su computer: il piazzale delle auto a Colonnella e il titolo Veicoli usati certificati e garantiti',
     },
@@ -239,7 +235,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/redicar-mobile.webp',
       larghezza: 780,
       altezza: 5064,
-
       varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di Redicar su telefono, con i pulsanti Vedi parco auto e Valuta il tuo usato',
     },
@@ -256,7 +251,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/ink-service-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
-
       varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Ink Service su computer: fondo blu notte e il titolo Diamo forma alle tue idee',
     },
@@ -264,7 +258,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/ink-service-mobile.webp',
       larghezza: 780,
       altezza: 5064,
-
       varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di Ink Service su telefono, con il pulsante Crea la tua grafica',
     },
@@ -281,7 +274,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/graphic-arts-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
-
       varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di Graphic Arts su computer: il titolo Tipografia e creatività in sintonia con la stampa e i pulsanti per creare una t-shirt',
     },
@@ -289,7 +281,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/graphic-arts-mobile.webp',
       larghezza: 780,
       altezza: 5064,
-
       varianti: VARIANTI_TELEFONO,
       alt: "Il sito di Graphic Arts su telefono, con i pulsanti Genera con l'AI e Crea t-shirt",
     },
@@ -306,7 +297,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/fc-resinwood-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
-
       varianti: VARIANTI_COMPUTER,
       alt: 'Il sito di FC Resinwood su computer: un tavolo in legno con un fiume di resina blu e il titolo Legno e resina su misura',
     },
@@ -314,7 +304,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/fc-resinwood-mobile.webp',
       larghezza: 780,
       altezza: 5064,
-
       varianti: VARIANTI_TELEFONO,
       alt: 'Il sito di FC Resinwood su telefono, con il pulsante Scegli il tuo tavolo',
     },
@@ -331,7 +320,6 @@ export const lavori: readonly Lavoro[] = [
       src: '/lavori/sarcolab-desktop.webp',
       larghezza: 1440,
       altezza: 2700,
-
       varianti: VARIANTI_COMPUTER,
       alt: "Sarcolab su computer: la dashboard con le schede da consegnare, una scheda di ipertrofia su quattro giorni e l'analisi del volume settimanale per gruppo muscolare",
     },
@@ -399,17 +387,23 @@ export interface VoceListino {
   nome: string;
   tempi?: string;
   prezzo: string;
+  canone?: string;
+  percorso?: string;
 }
 
 export const listino: readonly VoceListino[] = [
+  { nome: 'Scheda Google della tua attività', tempi: 'per una sede', prezzo: '199 €', percorso: '/scheda-google' },
   { nome: 'Landing page', tempi: 'in 5 giorni', prezzo: 'da 700 €' },
   { nome: 'Sito vetrina (4-10 pagine)', tempi: 'in 7-14 giorni', prezzo: 'da 1.500 €' },
   { nome: 'E-commerce', tempi: 'in 20-60 giorni', prezzo: 'da 3.500 €' },
-  { nome: 'Assistente AI', prezzo: 'da 2.000 €' },
-  { nome: 'Sito con assistente AI', prezzo: 'da 3.500 €' },
-  { nome: 'E-commerce con assistente AI', prezzo: 'da 5.500 €' },
+  { nome: 'Assistente AI', prezzo: 'da 490 €', canone: '+ 149 €/mese' },
+  { nome: 'Sito con assistente AI', prezzo: 'da 1.990 €', canone: '+ 149 €/mese' },
+  { nome: 'E-commerce con assistente AI', prezzo: 'da 3.990 €', canone: '+ 149 €/mese' },
+  { nome: 'Audit GEO (ChatGPT, Gemini)', tempi: 'una tantum', prezzo: '490 €', percorso: '/audit-geo' },
   { nome: 'Gestionali e web app', tempi: 'in 8-12 settimane', prezzo: 'da 8.000 €' },
 ];
+
+export const prezzoDellaVoce = (voce: VoceListino) => (voce.canone ? `${voce.prezzo} ${voce.canone}` : voce.prezzo);
 
 export interface DomandaFrequente {
   domanda: string;
@@ -419,7 +413,11 @@ export interface DomandaFrequente {
 export const domandeFrequenti: readonly DomandaFrequente[] = [
   {
     domanda: 'Quanto costa un sito?',
-    risposta: 'Un sito vetrina parte da 1.500 €, una landing page da 700 €. Il prezzo finale è scritto nel preventivo, prima di iniziare.',
+    risposta: 'Un sito vetrina parte da 1.500 €, una landing page da 700 €. Per cominciare con meno, la scheda Google della tua attività costa 199 €. Il prezzo finale è scritto nel preventivo, prima di iniziare.',
+  },
+  {
+    domanda: "Non so da dove cominciare: c'è qualcosa di piccolo?",
+    risposta: 'Sì: la scheda Google della tua attività, a 199 €. La sistemo io: dati, orari, categorie, foto e un kit per chiedere le recensioni ai clienti. È il primo passo per farti trovare su Google Maps.',
   },
   {
     domanda: 'In quanto tempo è pronto?',
@@ -428,6 +426,10 @@ export const domandeFrequenti: readonly DomandaFrequente[] = [
   {
     domanda: 'Cosa è compreso?',
     risposta: "Il sito online e funzionante, con dominio, hosting e certificato SSL che gestisco io: il rinnovo annuale ha una quota che concordiamo all'inizio. Sono compresi anche due giri di modifiche dopo la consegna.",
+  },
+  {
+    domanda: 'Quanto costa un assistente AI?',
+    risposta: 'Da 490 € per prepararlo, più 149 € al mese per tenerlo attivo e aggiornato. Con un sito vetrina nuovo si parte da 1.990 € più 149 € al mese.',
   },
   {
     domanda: 'E se dopo voglio cambiare qualcosa?',
@@ -443,7 +445,7 @@ export const domandeFrequenti: readonly DomandaFrequente[] = [
   },
   {
     domanda: "Cos'è la GEO e perché mi riguarda?",
-    risposta: 'È il lavoro che serve perché ChatGPT, Google e gli altri assistenti ti citino quando qualcuno chiede, per esempio, “chi fa siti ad Ascoli Piceno?”. La curo insieme alla SEO.',
+    risposta: 'È il lavoro che serve perché ChatGPT, Google e gli altri assistenti ti citino quando qualcuno chiede, per esempio, “chi fa siti ad Ascoli Piceno?”. Parto da un audit a 490 €: provo le domande dei tuoi clienti sugli assistenti AI e ti dico cosa sistemare. Non posso garantire di essere citato: nessuno può.',
   },
   {
     domanda: 'Lavori anche con le agenzie?',

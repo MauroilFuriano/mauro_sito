@@ -14,6 +14,7 @@ export interface ContenutoPaginaServizio {
   titoloPunti: string;
   punti: readonly PuntoServizio[];
   conListino?: boolean;
+  conAbbonamenti?: boolean;
   argomento: { titolo: string; testo: string };
   passi?: readonly PassoMetodo[];
   chiusura: { titolo: string; testo: string };
@@ -121,9 +122,11 @@ export const paginaSchedaGoogle: ContenutoPaginaServizio = {
     { domanda: 'Quanto tempo ci vuole?', risposta: 'Dipende da quando mi mandi foto e informazioni e dalla verifica di Google, che ha tempi suoi. Il lavoro sulla scheda lo faccio appena ho tutto.' },
     { domanda: 'Mi serve anche il sito?', risposta: 'No: la scheda funziona anche da sola. Se un giorno vuoi un sito, lo colleghiamo alla scheda.' },
     { domanda: 'Posso sistemarla da solo?', risposta: 'Sì, la scheda è gratuita e puoi sistemarla anche da solo. Se non hai tempo o non sai da dove cominciare, lo faccio io.' },
+    { domanda: 'Posso farla tenere aggiornata ogni mese?', risposta: "Sì, con l'abbonamento Presenza locale, da 79 € al mese. Durata minima 6 mesi, poi si rinnova; puoi disdire con 30 giorni di preavviso." },
   ],
   altriPassi: [
     { testo: 'Controllo se ChatGPT e Gemini ti citano', percorso: '/audit-geo' },
+    { testo: 'Abbonamenti mensili', percorso: '/abbonamenti' },
     { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
   ],
 };
@@ -158,10 +161,11 @@ export const paginaAuditGeo: ContenutoPaginaServizio = {
     { domanda: "Quanto costa l'audit GEO?", risposta: '490 €, IVA esclusa, una tantum.' },
     { domanda: 'Mi garantisci che ChatGPT mi citerà?', risposta: "No: nessuno può garantirlo. Ti dico com'è la situazione oggi e cosa puoi migliorare." },
     { domanda: 'Serve a una piccola attività locale?', risposta: "Dipende da come ti cercano i clienti. Se ti trovano soprattutto su Google Maps o con il passaparola, conviene partire dalla scheda Google, a 199 €. Te lo dico in telefonata, prima di venderti l'audit." },
-    { domanda: 'Fai anche un lavoro continuativo?', risposta: "Sì, su richiesta: dopo l'audit ti dico cosa serve e quanto costa." },
+    { domanda: 'Fai anche un lavoro continuativo?', risposta: "Sì: con l'abbonamento GEO base, da 490 € al mese, o con il GEO completo, da 890 €, che comprende contenuti nuovi. Dopo l'audit ti dico quale ha senso per te." },
   ],
   altriPassi: [
     { testo: 'Sistemo la tua scheda Google a 199 €', percorso: '/scheda-google' },
+    { testo: 'Abbonamenti mensili', percorso: '/abbonamenti' },
     { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
   ],
 };
@@ -193,9 +197,52 @@ export const paginaPrezzi: ContenutoPaginaServizio = {
     { domanda: 'Cosa è compreso nel prezzo?', risposta: "Il sito online e funzionante, con dominio, hosting e certificato SSL che gestisco io: il rinnovo annuale ha una quota che concordiamo all'inizio. Sono compresi anche due giri di modifiche dopo la consegna." },
     { domanda: 'Posso pagare a rate?', risposta: 'Sì, il pagamento può essere a rate. Ne parliamo nel preventivo.' },
     { domanda: "C'è qualcosa che costa meno di 700 €?", risposta: 'Sì: la scheda Google della tua attività, a 199 €. La sistemo io, con un kit per chiedere le recensioni ai clienti.' },
+    { domanda: 'Ci sono abbonamenti mensili?', risposta: 'Sì: Presenza locale da 79 € al mese, GEO base da 490 € e GEO completo da 890 €. Durata minima 6 mesi, poi si rinnova; puoi disdire con 30 giorni di preavviso.' },
   ],
   altriPassi: [
     { testo: 'Sistemo la tua scheda Google a 199 €', percorso: '/scheda-google' },
     { testo: 'Controllo se ChatGPT e Gemini ti citano', percorso: '/audit-geo' },
+    { testo: 'Abbonamenti mensili', percorso: '/abbonamenti' },
+  ],
+};
+
+export const paginaAbbonamenti: ContenutoPaginaServizio = {
+  etichetta: 'Abbonamenti mensili',
+  titolo: 'Abbonamenti mensili: scheda Google e GEO',
+  sottotitolo: "Se vuoi che ti segua io ogni mese, ci sono tre abbonamenti: Presenza locale da 79 € al mese, GEO base da 490 € e GEO completo, con contenuti nuovi, da 890 €. Ti scrivo cosa è compreso e cosa no. Durata minima 6 mesi, poi si rinnova; puoi disdire con 30 giorni di preavviso. Se paghi l'anno in anticipo, paghi 10 mesi invece di 12.",
+  prezzo: 'Prezzi IVA esclusa, da pagare ogni mese o per l\'anno in anticipo.',
+  titoloPunti: 'Le regole, scritte chiare',
+  punti: [
+    { titolo: 'Durata minima 6 mesi', testo: 'Su Google e sugli assistenti AI i risultati non arrivano dopo poche settimane. Sei mesi ti danno il tempo di vedere cosa cambia.' },
+    { titolo: 'Poi si rinnova, e puoi chiudere', testo: "Dopo i primi 6 mesi l'abbonamento si rinnova da solo. Puoi disdire con 30 giorni di preavviso." },
+    { titolo: 'Annuale: paghi 10 mesi', testo: "Se paghi l'anno in anticipo, paghi 10 mesi invece di 12." },
+    { titolo: 'Cosa è compreso lo scrivo prima', testo: "Prima di iniziare ricevi per iscritto cosa faccio ogni mese. Quello che non c'è scritto non è compreso." },
+  ],
+  conAbbonamenti: true,
+  argomento: {
+    titolo: 'Cosa non è compreso',
+    testo: 'Modifiche in più, contenuti oltre a quelli indicati nel piano e campagne a pagamento, come gli annunci su Google, si concordano a parte. Nessuno può garantire posizioni su Google o citazioni da ChatGPT: ti consegno il lavoro scritto nel piano e ogni mese ti dico cosa è cambiato.',
+  },
+  passi: [
+    { evidenza: 'Ci sentiamo al telefono:', seguito: "mi racconti la tua attività e scegliamo il piano. Mezz'ora, gratis." },
+    { evidenza: 'Ti mando il contratto scritto,', seguito: 'con cosa è compreso, la durata e il prezzo.' },
+    { evidenza: 'Ogni mese ti scrivo', seguito: 'cosa ho fatto e cosa è cambiato.' },
+  ],
+  chiusura: {
+    titolo: 'Quale abbonamento fa per te?',
+    testo: 'Chiamami o scrivimi cosa fai e dove: ti dico quale piano ha senso, anche nessuno se non ti serve.',
+  },
+  domande: [
+    { domanda: 'Quanto costano gli abbonamenti mensili?', risposta: 'Presenza locale da 79 € al mese, GEO base da 490 €, GEO completo da 890 €. Prezzi IVA esclusa.' },
+    { domanda: 'Perché una durata minima di 6 mesi?', risposta: 'Il lavoro su Google e sugli assistenti AI si vede dopo mesi, non dopo qualche settimana. Con 6 mesi hai il tempo di vedere cosa cambia.' },
+    { domanda: 'Posso disdire?', risposta: 'Dopo i primi 6 mesi il contratto si rinnova da solo; puoi chiuderlo con 30 giorni di preavviso.' },
+    { domanda: 'Mi garantisci posizioni su Google o citazioni da ChatGPT?', risposta: 'No: nessuno può garantirle. Ti consegno il lavoro scritto nel piano e ogni mese ti dico cosa è cambiato.' },
+    { domanda: 'Serve fare prima l\'audit GEO?', risposta: "Non è obbligatorio, ma conviene: l'audit, a 490 €, ti dice se serve il GEO base o quello completo." },
+    { domanda: "E l'assistente AI?", risposta: 'Si paga a parte: da 490 € per prepararlo, più 149 € al mese per tenerlo attivo e aggiornato.' },
+  ],
+  altriPassi: [
+    { testo: 'Sistemo la tua scheda Google a 199 €', percorso: '/scheda-google' },
+    { testo: 'Controllo se ChatGPT e Gemini ti citano', percorso: '/audit-geo' },
+    { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
   ],
 };

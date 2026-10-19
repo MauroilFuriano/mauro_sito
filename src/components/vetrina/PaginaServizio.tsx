@@ -8,10 +8,11 @@ import Domande from './Domande';
 import { Icona } from './Icone';
 import ListinoVoci from './ListinoVoci';
 import PaginaVetrina from './PaginaVetrina';
+import PianiMensili from './PianiMensili';
 import '../../styles/pagina-servizio.css';
 
 const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ contenuto }) => {
-  const { etichetta, titolo, sottotitolo, prezzo, demo, titoloPunti, punti, conListino, argomento, passi, chiusura, domande, altriPassi } = contenuto;
+  const { etichetta, titolo, sottotitolo, prezzo, demo, titoloPunti, punti, conListino, conAbbonamenti, argomento, passi, chiusura, domande, altriPassi } = contenuto;
   const passiDellaPagina = passi ?? passiMetodo;
   return (
     <PaginaVetrina>
@@ -35,6 +36,15 @@ const PaginaServizio: React.FC<{ contenuto: ContenutoPaginaServizio }> = ({ cont
           )}
         </div>
       </section>
+
+      {conAbbonamenti && (
+        <section className="sezione sezione--filo" aria-labelledby="titolo-piani">
+          <div className="larghezza">
+            <h2 className="titolo-sezione" id="titolo-piani">I tre abbonamenti</h2>
+            <PianiMensili />
+          </div>
+        </section>
+      )}
 
       <section className="sezione sezione--filo" aria-labelledby="titolo-punti">
         <div className="larghezza">

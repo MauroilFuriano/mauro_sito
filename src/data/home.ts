@@ -14,7 +14,7 @@ export const recapiti = {
 
 export const sottotitoloEroe = 'Faccio siti web e gestionali su misura per hotel, B&B, concessionarie, artigiani e negozi del Piceno. Il prezzo te lo scrivo prima di iniziare, e al telefono rispondo io.';
 
-export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web e gestionali per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche. Si parte da 199 € per sistemare la scheda Google della tua attività; un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 490 € più 149 € al mese, un gestionale da 8.000 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
+export const sintesiAttivita = "MAURO.EXE è l'attività di Mauro Ceccarelli, sviluppatore web freelance ad Ascoli Piceno. Faccio siti web e gestionali per hotel, B&B, concessionarie, artigiani e negozi del Piceno e delle Marche. Si parte da 199 € per sistemare la scheda Google della tua attività; un sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni, un e-commerce da 3.500 €, un assistente AI da 490 € più 149 € al mese, un gestionale da 8.000 €; gli abbonamenti mensili partono da 79 €. Il prezzo lo scrivo nel preventivo prima di iniziare. Telefono e WhatsApp: 348 002 9661.";
 
 export interface ImmagineSito {
   src: string;
@@ -400,10 +400,60 @@ export const listino: readonly VoceListino[] = [
   { nome: 'Sito con assistente AI', prezzo: 'da 1.990 €', canone: '+ 149 €/mese' },
   { nome: 'E-commerce con assistente AI', prezzo: 'da 3.990 €', canone: '+ 149 €/mese' },
   { nome: 'Audit GEO (ChatGPT, Gemini)', tempi: 'una tantum', prezzo: '490 €', percorso: '/audit-geo' },
+  { nome: 'Abbonamenti mensili', tempi: 'durata minima 6 mesi', prezzo: 'da 79 €', canone: 'al mese', percorso: '/abbonamenti' },
   { nome: 'Gestionali e web app', tempi: 'in 8-12 settimane', prezzo: 'da 8.000 €' },
 ];
 
 export const prezzoDellaVoce = (voce: VoceListino) => (voce.canone ? `${voce.prezzo} ${voce.canone}` : voce.prezzo);
+
+export interface Abbonamento {
+  id: 'presenza-locale' | 'geo-base' | 'geo-completo';
+  nome: string;
+  prezzoMensile: number;
+  breve: string;
+  perChi: string;
+  incluso: readonly string[];
+  consigliato?: boolean;
+}
+
+export const abbonamenti: readonly Abbonamento[] = [
+  {
+    id: 'presenza-locale',
+    nome: 'Presenza locale',
+    prezzoMensile: 79,
+    breve: 'Scheda Google tenuta in ordine ogni mese',
+    perChi: 'Per chi ha già la scheda Google e vuole tenerla in ordine.',
+    incluso: [
+      'Un aggiornamento al mese della scheda: orari, servizi e foto che mi mandi',
+      'Bozze di risposta alle recensioni che arrivano',
+      'Un riepilogo mensile di cosa ho fatto',
+    ],
+  },
+  {
+    id: 'geo-base',
+    nome: 'GEO base',
+    prezzoMensile: 490,
+    breve: 'Monitoraggio citazioni AI, report mensile, 1 modifica al mese',
+    perChi: 'Per chi vuole sapere ogni mese se ChatGPT e Gemini lo citano.',
+    incluso: [
+      'Monitoraggio delle citazioni AI: le domande dei tuoi clienti provate ogni mese su ChatGPT, Gemini e Perplexity',
+      'Un report mensile con le risposte e cosa è cambiato',
+      'Una modifica al mese al sito o ai tuoi dati, scelta insieme guardando il report',
+    ],
+    consigliato: true,
+  },
+  {
+    id: 'geo-completo',
+    nome: 'GEO completo',
+    prezzoMensile: 890,
+    breve: 'GEO base più 4 contenuti nuovi al mese',
+    perChi: 'Per chi vuole anche testi nuovi ogni mese.',
+    incluso: [
+      'Tutto quello che c\'è nel GEO base',
+      '4 contenuti nuovi al mese: articoli, pagine o domande frequenti',
+    ],
+  },
+];
 
 export interface DomandaFrequente {
   domanda: string;
@@ -432,6 +482,10 @@ export const domandeFrequenti: readonly DomandaFrequente[] = [
     risposta: 'Da 490 € per prepararlo, più 149 € al mese per tenerlo attivo e aggiornato. Con un sito vetrina nuovo si parte da 1.990 € più 149 € al mese.',
   },
   {
+    domanda: 'Ci sono abbonamenti mensili?',
+    risposta: 'Sì: Presenza locale da 79 € al mese, GEO base da 490 € e GEO completo, con contenuti nuovi, da 890 €. Durata minima 6 mesi, poi si rinnova; puoi disdire con 30 giorni di preavviso.',
+  },
+  {
     domanda: 'E se dopo voglio cambiare qualcosa?',
     risposta: 'Dopo i due giri compresi, le modifiche si pagano a ore. Mi scrivi su WhatsApp e ne parliamo.',
   },
@@ -445,7 +499,7 @@ export const domandeFrequenti: readonly DomandaFrequente[] = [
   },
   {
     domanda: "Cos'è la GEO e perché mi riguarda?",
-    risposta: 'È il lavoro che serve perché ChatGPT, Google e gli altri assistenti ti citino quando qualcuno chiede, per esempio, “chi fa siti ad Ascoli Piceno?”. Parto da un audit a 490 €: provo le domande dei tuoi clienti sugli assistenti AI e ti dico cosa sistemare. Non posso garantire di essere citato: nessuno può.',
+    risposta: "È il lavoro che serve perché ChatGPT, Google e gli altri assistenti ti citino quando qualcuno chiede, per esempio, “chi fa siti ad Ascoli Piceno?”. Parto da un audit a 490 €: provo le domande dei tuoi clienti sugli assistenti AI e ti dico cosa sistemare. Se vuoi che ti segua ogni mese, c'è l'abbonamento GEO da 490 € al mese. Non posso garantire di essere citato: nessuno può.",
   },
   {
     domanda: 'Lavori anche con le agenzie?',

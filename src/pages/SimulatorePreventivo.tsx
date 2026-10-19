@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import AzioniContatto from '../components/vetrina/AzioniContatto';
 import { Icona } from '../components/vetrina/Icone';
 import PaginaVetrina from '../components/vetrina/PaginaVetrina';
+import { abbonamenti } from '../data/home';
 import { inviaRichiestaEmail } from '../inviaRichiesta';
 import '../styles/pagina-servizio.css';
 import { leggiValoreCookie } from '../misurazione';
@@ -32,7 +33,6 @@ const P = {
   gestionale: 1200,   // gestionale prenotazioni / admin panel
   ecommerce: 2000,   // negozio online sul sito base: con i 1.500 del sito fa i 3.500 € del listino
   apiCarfax: 2000,   // API Carfax + funzione "Salva nel Garage"
-  geo2026: 300,   // GEO ottimizzazione AI Overviews
   multilang: 400,   // multilingua IT+EN
   analytics: 200,   // Analytics dashboard GA4
 };
@@ -142,7 +142,6 @@ type TemplateId = string;
 
 const GLOBAL_ADDONS = [
   { id: 'seo', label: 'SEO di base', desc: 'Titoli e descrizioni per Google, dati strutturati, sitemap, pagine veloci', price: 0, locked: true },
-  { id: 'geo2026', label: 'GEO — testi per ChatGPT e AI Overviews', desc: 'Domande frequenti con dati strutturati e testi chiari, facili da riprendere per gli assistenti AI', price: P.geo2026, locked: false },
   { id: 'multilang', label: 'Multilingua (IT + EN)', desc: 'Il sito anche in inglese, con titoli e indirizzi per Google in tutte e due le lingue', price: P.multilang, locked: false },
   { id: 'analytics', label: 'Statistiche GA4 + Hotjar', desc: 'Report mensile automatico, mappe dei clic e richieste tracciate', price: P.analytics, locked: false },
 ];
@@ -207,6 +206,7 @@ export default function SimulatorePreventivo() {
   const [chatbotOption, setChatbotOption] = useState<string>('none');
   const [extras, setExtras] = useState<Set<string>>(new Set());
   const [globalAddons, setGlobalAddons] = useState<Set<string>>(new Set(['seo']));
+  const [abbonamentoId, setAbbonamentoId] = useState('nessuno');
   const [form, setForm] = useState<FormData>({ name: '', email: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
@@ -251,7 +251,12 @@ export default function SimulatorePreventivo() {
     return t;
   })();
 
-  const canoneMensile = path && chatbotOption === 'ai' ? P.canoneAssistente : 0;
+  const abbonamentoScelto = abbonamenti.find(piano => piano.id === abbonamentoId);
+  const canoniMensili = path ? [
+    ...(chatbotOption === 'ai' ? [{ etichetta: 'Assistente AI', importo: P.canoneAssistente }] : []),
+    ...(abbonamentoScelto ? [{ etichetta: abbonamentoScelto.nome, importo: abbonamentoScelto.prezzoMensile }] : []),
+  ] : [];
+  const canoneMensile = canoniMensili.reduce((somma, canone) => somma + canone.importo, 0);
 
   const { value: animatedEstimate, flash: flashEstimate } = useAnimatedPrice(estimateTotal);
 
@@ -286,7 +291,8 @@ export default function SimulatorePreventivo() {
       `Chatbot: ${chatbotLabel}\n` +
       `Extra template: ${extrasLabel || 'Nessuno'}\n` +
       `Add-on globali: SEO (incluso)${globalsLabel ? ', ' + globalsLabel : ''}\n` +
-      `Preventivo stimato: ${inEuro(estimateTotal)}${canoneMensile > 0 ? ` + ${inEuro(canoneMensile)} al mese per l'assistente` : ''}\n` +
+      `Preventivo stimato: ${inEuro(estimateTotal)}\n` +
+      (canoneMensile > 0 ? `Canoni mensili: ${canoniMensili.map(canone => `${canone.etichetta} ${inEuro(canone.importo)}`).join(', ')} (${inEuro(canoneMensile)} al mese)\n` : '') +
       `Email: ${form.email.trim()}`;
 
     setLinkWhatsApp(`https://wa.me/393480029661?text=${encodeURIComponent(`Ciao Mauro! Ho completato il Simulatore Preventivo.\nNome: ${form.name.trim()}\n${riepilogo}\nAttendo il preventivo dettagliato!`)}`);
@@ -305,7 +311,7 @@ export default function SimulatorePreventivo() {
 
   const handleReset = () => {
     setPath(null); setTemplateId(null); setChatbotOption('none');
-    setExtras(new Set()); setGlobalAddons(new Set(['seo']));
+    setExtras(new Set()); setGlobalAddons(new Set(['seo'])); setAbbonamentoId('nessuno');
     setForm({ name: '', email: '' });
     setErrors({}); setSendError(false); setSuccess(false);
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -669,6 +675,39 @@ export default function SimulatorePreventivo() {
                         );
                       })}
                     </div>
+                    <div className="mt-8 mb-3 space-y-1">
+                      <p className="text-sm font-bold text-[var(--inchiostro)]">Abbonamento mensile (facoltativo)</p>
+                      <p className="text-xs text-[var(--grafite)]">Durata minima 6 mesi, poi si rinnova; disdetta con 30 giorni di preavviso. Se paghi l'anno in anticipo, paghi 10 mesi invece di 12.</p>
+                    </div>
+                    <div className="space-y-2">
+                      {[{ id: 'nessuno', nome: 'Nessun abbonamento', breve: 'Solo il sito.', prezzoMensile: 0 }, ...abbonamenti].map(piano => (
+                        <button
+                          key={piano.id}
+                          onClick={() => setAbbonamentoId(piano.id)}
+                          className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${abbonamentoId === piano.id
+                              ? 'border-[var(--cobalto)] bg-[color-mix(in_srgb,var(--cobalto)_8%,transparent)]'
+                              : 'border-[var(--filo)] bg-[var(--superficie)] hover:border-[var(--grafite)]'
+                            }`}
+                        >
+                          <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${abbonamentoId === piano.id ? 'border-[var(--cobalto)]' : 'border-[var(--filo)]'}`}>
+                            {abbonamentoId === piano.id && <div className="w-2 h-2 rounded-full bg-[var(--cobalto)]" />}
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm font-bold text-[var(--inchiostro)]">{piano.nome}</p>
+                            <p className="text-xs text-[var(--grafite)] mt-0.5">{piano.breve}</p>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            {piano.prezzoMensile === 0 ? (
+                              <span className="text-[var(--grafite)] text-sm">Nessun canone</span>
+                            ) : (
+                              <p className={`font-bold text-sm ${abbonamentoId === piano.id ? 'text-[var(--cobalto-testo)]' : 'text-[var(--grafite)]'}`}>
+                                +{inEuro(piano.prezzoMensile)}<span className="block text-xs font-normal">al mese</span>
+                              </p>
+                            )}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </motion.section>
                 )}
               </AnimatePresence>
@@ -794,7 +833,9 @@ export default function SimulatorePreventivo() {
                   <p className={`text-4xl font-bold tabular-nums transition-all duration-300 ${flashEstimate ? 'text-[var(--cobalto-testo)] scale-105' : 'text-[var(--inchiostro)]'}`}>
                     {inEuro(animatedEstimate)}
                   </p>
-                  {canoneMensile > 0 && <p className="mt-1 text-sm text-[var(--grafite)]">+ {inEuro(canoneMensile)} al mese per l'assistente</p>}
+                  {canoniMensili.map(canone => (
+                    <p key={canone.etichetta} className="mt-1 text-sm text-[var(--grafite)]">+ {inEuro(canone.importo)} al mese · {canone.etichetta}</p>
+                  ))}
                 </div>
               ) : (
                 <p className="text-center text-[var(--grafite)] text-sm py-6 italic">

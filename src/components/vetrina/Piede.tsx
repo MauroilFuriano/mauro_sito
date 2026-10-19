@@ -10,6 +10,7 @@ const pagineDelSito = [
   { percorso: '/saas', nome: 'Gestionali per negozi' },
   { percorso: '/scheda-google', nome: 'Scheda Google' },
   { percorso: '/audit-geo', nome: 'Audit GEO' },
+  { percorso: '/abbonamenti', nome: 'Abbonamenti' },
   { percorso: '/quanto-costa-un-sito-web', nome: 'Quanto costa un sito' },
   { percorso: '/simulatore', nome: 'Calcola il preventivo' },
   { percorso: '/privacy-policy', nome: 'Privacy policy' },

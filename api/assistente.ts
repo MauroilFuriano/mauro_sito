@@ -61,6 +61,7 @@ SERVIZI
 - Automazioni e gestionali: Mauro collega i software che l'attività usa già e crea piccoli gestionali che fanno al posto dei dipendenti il lavoro di copiare dati da un programma all'altro. Da 8.000 €.
 - Scheda Google: Mauro sistema la scheda Google dell'attività (dati e orari, categorie, descrizione, foto) e prepara un kit per chiedere le recensioni ai clienti: link diretto, QR code e messaggio WhatsApp. 199 € per una sede (pagina mauroceccarelli.it/scheda-google). Non garantisce recensioni né posizioni su Google.
 - Audit GEO: Mauro prova su ChatGPT, Gemini e Perplexity le domande dei clienti di un'attività, controlla sito e scheda Google e consegna un report con le correzioni da fare. 490 €, una tantum (pagina mauroceccarelli.it/audit-geo). Non garantisce di essere citati dagli assistenti.
+- Abbonamenti mensili (pagina mauroceccarelli.it/abbonamenti): Presenza locale da 79 € al mese (scheda Google tenuta in ordine, bozze di risposta alle recensioni, riepilogo mensile); GEO base da 490 € al mese (monitoraggio delle citazioni AI, report mensile, una modifica al mese); GEO completo da 890 € al mese (GEO base più 4 contenuti nuovi al mese). Durata minima 6 mesi, poi si rinnova; disdetta con 30 giorni di preavviso. Pagando l'anno in anticipo si pagano 10 mesi invece di 12. Modifiche in più, contenuti extra e campagne a pagamento si concordano a parte. Non garantiscono posizioni su Google né citazioni dagli assistenti.
 
 LISTINO (prezzi IVA esclusa, pagamento anche a rate)
 - Scheda Google della tua attività: 199 € per una sede
@@ -71,6 +72,7 @@ LISTINO (prezzi IVA esclusa, pagamento anche a rate)
 - Sito con assistente AI: da 1.990 €, più 149 € al mese
 - E-commerce con assistente AI: da 3.990 €, più 149 € al mese
 - Audit GEO: 490 €, una tantum
+- Abbonamenti mensili: da 79 € al mese (Presenza locale 79 €, GEO base 490 €, GEO completo 890 €)
 - Gestionali e web app: da 8.000 €, pronti in 8-12 settimane
 Sul sito c'è anche la pagina "Quanto costa un sito web" (mauroceccarelli.it/quanto-costa-un-sito-web) e un simulatore che calcola una stima del prezzo: la pagina "Calcola il preventivo".
 
@@ -97,7 +99,7 @@ DOMANDE FREQUENTI
 - E se dopo voglio cambiare qualcosa? Dopo i due giri compresi, le modifiche si pagano a ore: basta scrivere a Mauro su WhatsApp e se ne parla.
 - Ho già Facebook e Instagram: mi serve anche un sito? Sì, se l'attività vuole farsi trovare da chi la cerca su Google. I social cambiano le regole quando vogliono e la visibilità cambia con loro; il sito invece è del cliente.
 - Perché non usa WordPress o Shopify? Scrive il codice da zero: il sito è più veloce e non dipende da plugin da aggiornare o da abbonamenti a piattaforme esterne.
-- Cos'è la GEO? È il lavoro che serve perché ChatGPT, Google e gli altri assistenti citino l'attività quando qualcuno chiede, per esempio, "chi fa siti ad Ascoli Piceno?". Mauro parte da un audit a 490 €: prova le domande dei clienti sugli assistenti AI e dice cosa sistemare. Non può garantire che l'attività venga citata.
+- Cos'è la GEO? È il lavoro che serve perché ChatGPT, Google e gli altri assistenti citino l'attività quando qualcuno chiede, per esempio, "chi fa siti ad Ascoli Piceno?". Mauro parte da un audit a 490 €: prova le domande dei clienti sugli assistenti AI e dice cosa sistemare. Per seguire l'attività ogni mese c'è l'abbonamento GEO, da 490 € al mese. Non può garantire che l'attività venga citata.
 - Lavora anche con le agenzie? Sì, anche in white label: sviluppa il progetto e consegna il codice all'agenzia.
 
 CONTATTI

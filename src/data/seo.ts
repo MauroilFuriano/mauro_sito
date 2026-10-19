@@ -1,5 +1,5 @@
-import { domandeFrequenti, listino, prezzoDellaVoce, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type DomandaFrequente, type ImmagineSito } from './home';
-import { paginaAgricola, paginaAuditGeo, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
+import { abbonamenti, domandeFrequenti, listino, prezzoDellaVoce, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type DomandaFrequente, type ImmagineSito } from './home';
+import { paginaAbbonamenti, paginaAgricola, paginaAuditGeo, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
 
 export const SITO = 'https://www.mauroceccarelli.it';
 
@@ -82,7 +82,7 @@ const grafoHome = [
       itemListElement: listino.map((voce) => ({
         '@type': 'Offer',
         itemOffered: { '@type': 'Service', name: voce.nome },
-        ...(voce.canone ? { description: `Canone mensile: ${voce.canone.replace(/^\+\s*/, '')}` } : {}),
+        ...(voce.canone ? { description: voce.canone.startsWith('+') ? `Più ${voce.canone.replace(/^\+\s*/, '')}` : 'Prezzo mensile, durata minima 6 mesi' } : {}),
         priceSpecification: {
           '@type': 'PriceSpecification',
           ...(voce.prezzo.startsWith('da') ? { minPrice: prezzoMinimo(voce.prezzo) } : { price: prezzoMinimo(voce.prezzo) }),
@@ -109,10 +109,11 @@ const conTempi = (prezzo: string, tempi?: string) => (tempi ? `${prezzo}, ${temp
 
 const vociDelleDomande = (domande: readonly DomandaFrequente[]) => domande.map(({ domanda, risposta }) => `${domanda} ${risposta}`);
 
-const senzaJsDelServizio = ({ titolo, sottotitolo, prezzo, titoloPunti, punti, conListino, argomento, chiusura, domande }: ContenutoPaginaServizio): ContenutoSenzaJs => ({
+const senzaJsDelServizio = ({ titolo, sottotitolo, prezzo, titoloPunti, punti, conListino, conAbbonamenti, argomento, chiusura, domande }: ContenutoPaginaServizio): ContenutoSenzaJs => ({
   titolo,
   paragrafi: [sottotitolo, prezzo, argomento.testo, chiusura.testo],
   sezioni: [
+    ...(conAbbonamenti ? [{ titolo: 'I tre abbonamenti', voci: abbonamenti.map((piano) => `${piano.nome}, da ${piano.prezzoMensile} € al mese. ${piano.incluso.join('; ')}`) }] : []),
     { titolo: titoloPunti, voci: punti.map((punto) => `${punto.titolo}: ${punto.testo}`) },
     ...(conListino ? [{ titolo: 'Il listino', voci: listino.map((voce) => `${voce.nome}: ${conTempi(prezzoDellaVoce(voce), voce.tempi)}`) }] : []),
     ...(domande ? [{ titolo: 'Domande frequenti', voci: vociDelleDomande(domande) }] : []),
@@ -210,6 +211,16 @@ export const pagine: readonly PaginaDelSito[] = [
     ultimaModifica: '2026-10-19',
     datiStrutturati: [domandeDellaPagina(paginaPrezzi.domande ?? [])],
     senzaJs: senzaJsDelServizio(paginaPrezzi),
+  },
+  {
+    percorso: '/abbonamenti',
+    etichetta: 'Abbonamenti mensili',
+    titolo: "Abbonamenti mensili: scheda Google e GEO | Mauro.exe",
+    descrizione: "Presenza locale da 79 € al mese, GEO base da 490 €, GEO completo da 890 €. Cosa è compreso, durata minima 6 mesi e disdetta con 30 giorni di preavviso.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-19',
+    datiStrutturati: [domandeDellaPagina(paginaAbbonamenti.domande ?? [])],
+    senzaJs: senzaJsDelServizio(paginaAbbonamenti),
   },
   {
     percorso: '/simulatore',

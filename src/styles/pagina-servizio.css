@@ -26,6 +26,21 @@
 /* Qui la linea del metodo è già piena: l'animazione allo scorrimento c'è solo in home */
 .home-vetrina .pagina-metodo { --riempimento-metodo: 1; }
 
+.home-vetrina .piani { display: grid; gap: 20px; margin-top: clamp(32px, 4vw, 56px); list-style: none; }
+.home-vetrina .piano { display: grid; align-content: start; gap: 12px; padding: clamp(20px, 3vw, 28px); border: 1px solid var(--filo); border-radius: var(--raggio-pannello); background: var(--superficie); }
+.home-vetrina .piano--consigliato { border: 2px solid var(--cobalto); }
+.home-vetrina .piano-etichetta { justify-self: start; padding: 2px 12px; border-radius: 999px; background: var(--cobalto); color: #FFFFFF; font-size: var(--t-piccolo); font-weight: 600; }
+.home-vetrina .piano h3 { font-size: var(--t-h3); font-weight: 500; letter-spacing: -0.02em; }
+.home-vetrina .piano-prezzo { font-family: var(--font-titoli); font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.home-vetrina .piano-prezzo span, .home-vetrina .piano-prezzo small { font-family: var(--font-testo); font-size: var(--t-piccolo); font-weight: 500; letter-spacing: 0; color: var(--grafite); }
+.home-vetrina .piano-per-chi { color: var(--grafite); }
+.home-vetrina .piano-incluso { display: grid; gap: 10px; margin-top: 4px; padding-top: 16px; border-top: 1px solid var(--filo); list-style: none; }
+.home-vetrina .piano-incluso li { position: relative; padding-left: 22px; }
+.home-vetrina .piano-incluso li::before { content: ""; position: absolute; top: .62em; left: 2px; width: 6px; height: 6px; border-radius: 50%; background: var(--cobalto); }
+@media (min-width: 900px) {
+  .home-vetrina .piani { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 .home-vetrina .pagina-chiusura .testo-grande { max-width: 46ch; margin-top: 20px; color: var(--grafite); }
 .home-vetrina .pagina-chiusura .azioni { margin-top: 32px; }
 .home-vetrina .pagina-chiusura .link-freccia { display: flex; width: fit-content; margin-top: 20px; }

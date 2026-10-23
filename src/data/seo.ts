@@ -1,5 +1,5 @@
 import { abbonamenti, domandeFrequenti, listino, prezzoDellaVoce, recapiti, servizi, sintesiAttivita, sottotitoloEroe, vetrinaEroe, type DomandaFrequente, type ImmagineSito } from './home';
-import { paginaAbbonamenti, paginaAgricola, paginaAssistente, paginaAuditGeo, paginaConcessionarie, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
+import { paginaAbbonamenti, paginaAgricola, paginaAssistente, paginaAuditGeo, paginaCommercialisti, paginaConcessionarie, paginaDentisti, paginaGestionale, paginaHotel, paginaPrezzi, paginaSchedaGoogle, type ContenutoPaginaServizio } from './pagineServizio';
 
 export const SITO = 'https://www.mauroceccarelli.it';
 
@@ -201,6 +201,32 @@ export const pagine: readonly PaginaDelSito[] = [
       domandeDellaPagina(paginaConcessionarie.domande ?? []),
     ],
     senzaJs: senzaJsDelServizio(paginaConcessionarie),
+  },
+  {
+    percorso: '/sito-per-commercialisti',
+    etichetta: 'Sito per commercialisti',
+    titolo: "Sito per commercialisti Ascoli Piceno | Mauro.exe",
+    descrizione: "Siti per commercialisti e consulenti del lavoro ad Ascoli Piceno: servizi chiari, richiesta di appuntamento online e assistente AI. Da 1.500 €.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-23',
+    datiStrutturati: [
+      servizioDellaPagina('/sito-per-commercialisti', 'Sito per commercialisti e consulenti del lavoro', 'Sito per studi di commercialisti e consulenti del lavoro, con servizi spiegati in chiaro, richiesta di appuntamento online e assistente AI per le domande frequenti.'),
+      domandeDellaPagina(paginaCommercialisti.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaCommercialisti),
+  },
+  {
+    percorso: '/sito-per-dentisti',
+    etichetta: 'Sito per dentisti',
+    titolo: "Sito per dentisti e studi medici Ascoli Piceno | Mauro.exe",
+    descrizione: "Siti per dentisti e studi medici ad Ascoli Piceno: orari e contatti chiari, richiesta di visita online e assistente AI. Da 1.500 €.",
+    indicizzabile: true,
+    ultimaModifica: '2026-10-23',
+    datiStrutturati: [
+      servizioDellaPagina('/sito-per-dentisti', 'Sito per dentisti e studi medici', 'Sito per studi dentistici e medici, con orari e contatti chiari, richiesta di visita online senza dati sanitari e assistente AI per le domande frequenti.'),
+      domandeDellaPagina(paginaDentisti.domande ?? []),
+    ],
+    senzaJs: senzaJsDelServizio(paginaDentisti),
   },
   {
     percorso: '/scheda-google',

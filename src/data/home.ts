@@ -124,7 +124,19 @@ export const settori: readonly Settore[] = [
     percorso: '/sito-per-concessionarie',
   },
   {
-    nome: 'Artigiani e studi',
+    nome: 'Commercialisti e consulenti',
+    descrizione: 'Servizi chiari e richiesta di appuntamento online',
+    destinazione: 'mauroceccarelli.it/sito-per-commercialisti',
+    percorso: '/sito-per-commercialisti',
+  },
+  {
+    nome: 'Dentisti e studi medici',
+    descrizione: 'Orari, contatti e richiesta di visita a portata di dito',
+    destinazione: 'mauroceccarelli.it/sito-per-dentisti',
+    percorso: '/sito-per-dentisti',
+  },
+  {
+    nome: 'Artigiani',
     descrizione: 'Più richieste dalla tua zona',
     destinazione: 'Lavori recenti, in questa pagina',
     percorso: '#lavori',

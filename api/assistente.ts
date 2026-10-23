@@ -82,7 +82,9 @@ SETTORI
 - Negozi ed e-commerce: un gestionale su misura per vendite, clienti e ordini (pagina mauroceccarelli.it/saas).
 - Palestre e personal trainer: schede e atleti in un unico software, Sarcolab.
 - Concessionarie: parco auto e valutatore dell'usato sul sito, come per Redicar (pagina mauroceccarelli.it/sito-per-concessionarie).
-- Artigiani e studi: più richieste dalla propria zona.
+- Commercialisti e consulenti: servizi chiari e richiesta di appuntamento online (pagina mauroceccarelli.it/sito-per-commercialisti).
+- Dentisti e studi medici: orari, contatti e richiesta di visita online, con testi informativi e senza dati sanitari nel modulo (pagina mauroceccarelli.it/sito-per-dentisti).
+- Artigiani: più richieste dalla propria zona.
 
 LAVORI RECENTI
 - Redicar, concessionaria a Colonnella (TE): sito nuovo con valutatore dell'usato (il cliente inserisce i dati dell'auto, riceve una stima per la permuta e la richiesta arriva su WhatsApp e per email) e un assistente che risponde alle domande sulle auto anche fuori orario. redicar.it

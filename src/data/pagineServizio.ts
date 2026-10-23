@@ -323,3 +323,67 @@ export const paginaConcessionarie: ContenutoPaginaServizio = {
     { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
   ],
 };
+
+export const paginaCommercialisti: ContenutoPaginaServizio = {
+  etichetta: 'Per commercialisti e consulenti',
+  titolo: 'Sito per commercialisti e consulenti del lavoro ad Ascoli Piceno',
+  sottotitolo: "Chi cerca un commercialista guarda spesso il sito prima di chiamare: vuole capire cosa fai, per chi lavori e come si prende un appuntamento. Faccio il sito del tuo studio ad Ascoli Piceno con i servizi spiegati in modo chiaro, i contatti sempre a un tocco e la richiesta di appuntamento online. Si parte da 1.500 € per il sito vetrina; con un assistente AI per le domande frequenti, da 1.990 € più 149 € al mese.",
+  prezzo: 'Il prezzo te lo scrivo nel preventivo, prima di iniziare: sito vetrina da 1.500 €, con assistente AI da 1.990 € più 149 € al mese.',
+  titoloPunti: 'Cosa trovi nel sito',
+  punti: [
+    { titolo: 'I servizi spiegati in chiaro', testo: 'Per esempio contabilità, dichiarazioni, buste paga e consulenza: una sezione chiara per ogni servizio, con le parole che usano i tuoi clienti.' },
+    { titolo: 'Richiesta di appuntamento online', testo: 'Il cliente lascia nome, recapito e un giorno preferito, e la richiesta ti arriva per email. Può anche scriverti su WhatsApp o chiamarti con un tocco.' },
+    { titolo: 'Un assistente per le domande che ripeti ogni giorno', testo: 'Orari, come prendere un appuntamento, a chi rivolgersi: risponde anche fuori orario, con le informazioni che gli dai tu, e ti passa i contatti interessati.' },
+    { titolo: 'Riservatezza prima di tutto', testo: "I dati di uno studio sono delicati. Se ti serve un'area riservata per scambiare documenti, la valuto con te e la prezzo a parte: richiede più lavoro e più attenzione alla privacy." },
+  ],
+  argomento: {
+    titolo: 'Perché un sito tuo',
+    testo: 'Se un cliente riceve il tuo nome dal passaparola, spesso ti cerca su Google. Un sito chiaro dice subito chi sei, cosa fai e come contattarti, anche quando lo studio è chiuso. Ho sede ad Ascoli Piceno e lavoro di persona nelle Marche e in Abruzzo: se vuoi, ci vediamo nel tuo studio.',
+  },
+  chiusura: {
+    titolo: 'Parliamo del tuo studio',
+    testo: 'Chiamami o scrivimi: mi racconti come lavori e ti dico cosa serve al tuo studio e quanto costa.',
+  },
+  domande: [
+    { domanda: 'Quanto costa il sito per uno studio di commercialista?', risposta: "Per uno studio di commercialista il sito vetrina parte da 1.500 € ed è pronto in 7-14 giorni. Con l'assistente AI si parte da 1.990 € più 149 € al mese. Il prezzo finale è nel preventivo." },
+    { domanda: "Posso avere un'area per caricare i documenti?", risposta: 'Lo valuto con te: richiede più lavoro e più attenzione alla privacy dei dati dei tuoi clienti, quindi ha un prezzo a parte. Te lo scrivo prima di iniziare.' },
+    { domanda: "L'assistente AI può dare consigli fiscali?", risposta: 'No: lo preparo perché risponda solo su orari, servizi e appuntamenti, e per tutto il resto inviti a contattare lo studio.' },
+    { domanda: 'Cosa serve per partire?', risposta: "Una telefonata per capire come lavora il tuo studio, e i tuoi riferimenti: logo, indirizzo e orari. Se ci sono funzioni in più, come un'area riservata, i tempi li scrivo nel preventivo." },
+  ],
+  altriPassi: [
+    { testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' },
+    { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
+  ],
+};
+
+export const paginaDentisti: ContenutoPaginaServizio = {
+  etichetta: 'Per dentisti e studi medici',
+  titolo: 'Sito per dentisti e studi medici ad Ascoli Piceno',
+  sottotitolo: "Chi cerca un dentista o uno studio medico vuole capire subito dove sei, quando sei aperto e come prenotare, spesso dal telefono e a volte per un'urgenza. Faccio il sito del tuo studio ad Ascoli Piceno con orari, contatti e richiesta di visita sempre a portata di dito. Il sito vetrina parte da 1.500 €; aggiungendo l'assistente AI per le domande frequenti, si parte da 1.990 € più 149 € al mese.",
+  prezzo: "Prima di iniziare ricevi il prezzo scritto. Sito vetrina da 1.500 €; con l'assistente AI da 1.990 € più 149 € al mese.",
+  titoloPunti: 'Cosa trovi nel sito',
+  punti: [
+    { titolo: 'Orari, indirizzo e telefono subito', testo: 'Chi ha un dubbio o un dolore trova in pochi secondi dove sei, quando sei aperto e il numero da chiamare con un tocco.' },
+    { titolo: 'Richiesta di visita online', testo: 'Il paziente lascia nome, telefono e un orario preferito: la richiesta ti arriva per email e lo richiami tu. Nel modulo non ci sono dettagli sanitari.' },
+    { titolo: 'Un assistente per le domande ripetute', testo: "Orari, come prenotare, a chi telefonare per un'urgenza: risponde anche fuori orario, con le informazioni che gli dai tu. Non dà consigli medici." },
+    { titolo: 'Lo studio presentato con chiarezza', testo: 'Chi sei, quali servizi offri e chi lavora con te, con i testi informativi che servono a un paziente per sapere cosa aspettarsi.' },
+  ],
+  argomento: {
+    titolo: 'Un sito informativo, nelle regole',
+    testo: 'La pubblicità sanitaria ha regole precise. Preparo il sito con contenuti informativi, senza promesse sulle cure, e ti consiglio di far controllare i testi al tuo ordine professionale prima di pubblicarli. Ho sede ad Ascoli Piceno e lavoro di persona nelle Marche e in Abruzzo.',
+  },
+  chiusura: {
+    titolo: 'Parliamo del tuo studio',
+    testo: 'Chiamami o scrivimi: parliamo di come lavora il tuo studio e di cosa ti serve, poi ti scrivo il prezzo.',
+  },
+  domande: [
+    { domanda: 'Quanto costa il sito per uno studio dentistico o medico?', risposta: "Per uno studio dentistico o medico il sito vetrina parte da 1.500 € e si prepara in 7-14 giorni. Aggiungendo l'assistente AI si parte da 1.990 € più 149 € al mese: il prezzo esatto è scritto nel preventivo." },
+    { domanda: 'Il modulo di richiesta raccoglie dati sanitari?', risposta: 'No: raccoglie nome, telefono e un orario preferito. I dettagli clinici si parlano al telefono o in studio.' },
+    { domanda: "L'assistente AI dà consigli medici?", risposta: 'No: lo preparo perché risponda solo su orari, servizi e come prenotare, e per urgenze o dubbi clinici rimandi al telefono dello studio.' },
+    { domanda: 'Posso scrivere prezzi e promozioni delle cure?', risposta: 'Le regole sulla pubblicità sanitaria sono precise: verifica con il tuo ordine professionale cosa puoi pubblicare. Io inserisco quello che mi confermi.' },
+  ],
+  altriPassi: [
+    { testo: 'Quanto costa un assistente AI', percorso: '/quanto-costa-un-assistente-ai' },
+    { testo: 'Quanto costa un sito web', percorso: '/quanto-costa-un-sito-web' },
+  ],
+};

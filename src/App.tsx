@@ -57,6 +57,8 @@ const PrezziPage = lazy(() => import('./pages/PrezziPage'));
 const AbbonamentiPage = lazy(() => import('./pages/AbbonamentiPage'));
 const AssistentePage = lazy(() => import('./pages/AssistentePage'));
 const ConcessionarieLanding = lazy(() => import('./pages/ConcessionarieLanding'));
+const CommercialistiLanding = lazy(() => import('./pages/CommercialistiLanding'));
+const DentistiLanding = lazy(() => import('./pages/DentistiLanding'));
 const SimulatorePreventivo = lazy(() => import('./pages/SimulatorePreventivo'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
@@ -111,6 +113,8 @@ const App: React.FC = () => (
           <Route path="/abbonamenti" element={<AbbonamentiPage />} />
           <Route path="/quanto-costa-un-assistente-ai" element={<AssistentePage />} />
           <Route path="/sito-per-concessionarie" element={<ConcessionarieLanding />} />
+          <Route path="/sito-per-commercialisti" element={<CommercialistiLanding />} />
+          <Route path="/sito-per-dentisti" element={<DentistiLanding />} />
           <Route path="/promo-pasqua" element={<Navigate to="/" replace />} />
           <Route path="/simulatore" element={<SimulatorePreventivo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
